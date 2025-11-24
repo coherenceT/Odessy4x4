@@ -1,0 +1,1791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odyssey 4x4 | Engineer Your Adventure</title>
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for rugged color scheme */
+        :root {
+            --primary: #e30613;    /* Vibrant Red for CTAs and accents */
+            --primary-dark: #c10510;
+            --primary-light: #ff4d4d;
+            --base: #000000;       /* Deep Black for text and structure */
+            --base-light: #333333;
+            --background: #ffffff; /* Crisp White for backgrounds */
+            --gray-light: #f5f5f5;
+            --gray: #e0e0e0;
+            --gray-medium: #9e9e9e;
+            --border-radius: 4px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--base);
+            background-color: var(--background);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            color: var(--base);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(227, 6, 19, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+            margin: 15px auto 0;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--background);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .top-bar {
+            background-color: var(--base);
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .top-bar-links a {
+            color: var(--gray);
+            transition: var(--transition);
+        }
+
+        .top-bar-links a:hover {
+            color: var(--primary);
+        }
+
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 55px;
+            width: auto;
+        }
+
+        .logo-text {
+            display: none;
+        }
+
+        .search-cart {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            padding: 10px 15px;
+            border: 1px solid var(--gray);
+            border-radius: var(--border-radius);
+            width: 250px;
+            transition: var(--transition);
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(227, 6, 19, 0.2);
+        }
+
+        .search-box button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--gray-medium);
+            cursor: pointer;
+        }
+
+        .cart-icon {
+            position: relative;
+            font-size: 1.5rem;
+            color: var(--base);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--base);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .main-nav {
+            display: flex;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item.has-mega {
+            position: static;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            font-weight: 500;
+            transition: var(--transition);
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-link:hover {
+            background-color: var(--primary);
+        }
+
+        .nav-link i {
+            margin-left: 5px;
+            font-size: 0.8rem;
+        }
+
+        /* Mega Menu */
+        .mega-menu {
+            position: absolute;
+            left: 50%;
+            top: calc(100% - 3px);
+            transform: translateX(-50%);
+            width: min(1100px, calc(100vw - 40px));
+            background-color: var(--background);
+            box-shadow: var(--box-shadow);
+            border-top: 3px solid var(--primary);
+            padding: 30px;
+            display: none;
+            z-index: 999;
+            pointer-events: auto;
+        }
+
+        .nav-item:hover .mega-menu {
+            display: block;
+        }
+
+        .nav-item.has-mega.open .mega-menu {
+            display: block;
+        }
+
+        .mega-menu-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .mega-menu-column h4 {
+            color: var(--base);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--gray);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .mega-menu-links li {
+            margin-bottom: 8px;
+        }
+
+        .mega-menu-links a {
+            color: var(--base-light);
+            transition: var(--transition);
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .mega-menu-links a:hover {
+            color: var(--primary);
+        }
+
+        .mega-menu-featured {
+            margin-top: 15px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .mega-menu-featured img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .mega-menu-featured:hover img {
+            transform: scale(1.05);
+        }
+
+        .mega-menu-featured-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 10px;
+        }
+
+        .shop-all {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--base);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 70vh;
+            min-height: 500px;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1470246973918-29a93221c455?auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            color: #ffffff;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Product Finder */
+        .product-finder {
+            background-color: var(--background);
+        }
+
+        .finder-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .finder-header p {
+            color: var(--base-light);
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .finder-search {
+            display: flex;
+            gap: 15px;
+            max-width: 640px;
+            margin: 0 auto 30px;
+        }
+
+        .finder-search input {
+            flex: 1;
+            padding: 14px 18px;
+            border: 1px solid var(--gray);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .finder-search button {
+            padding: 0 24px;
+            border: none;
+            background-color: var(--primary);
+            color: white;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .category-card {
+            border: 1px solid var(--gray);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            text-align: left;
+            background-color: white;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .category-card.active,
+        .category-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+        }
+
+        .category-card h4 {
+            margin-bottom: 8px;
+        }
+
+        .category-card p {
+            color: var(--base-light);
+            font-size: 0.9rem;
+        }
+
+        .category-detail {
+            margin-top: 45px;
+            border: 1px solid var(--gray);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            background-color: var(--gray-light);
+        }
+
+        .category-detail-header {
+            margin-bottom: 25px;
+        }
+
+        .category-products {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .category-product-card {
+            background-color: white;
+            border: 1px solid var(--gray);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .category-product-meta {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .category-product-meta h4 {
+            margin-bottom: 5px;
+        }
+
+        .category-product-meta span {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .category-product-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .category-empty {
+            text-align: center;
+            padding: 25px;
+            border: 1px dashed var(--primary);
+            border-radius: var(--border-radius);
+            background-color: rgba(227, 6, 19, 0.05);
+        }
+
+        /* Single Product Preview */
+        .single-product-preview {
+            background-color: var(--gray-light);
+        }
+
+        .single-product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 40px;
+            align-items: center;
+        }
+
+        .single-product-media img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            object-fit: cover;
+        }
+
+        .single-product-info .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .single-product-info p {
+            color: var(--base-light);
+        }
+
+        .single-product-specs {
+            margin: 20px 0;
+            padding-left: 20px;
+            color: var(--base);
+        }
+
+        .single-product-ctas {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* Featured Categories */
+        .featured-categories {
+            background-color: var(--gray-light);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .category-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border: 1px solid var(--gray);
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+        }
+
+        .category-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .category-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .category-card:hover .category-img img {
+            transform: scale(1.05);
+        }
+
+        .category-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .category-content h3 {
+            color: var(--base);
+            margin-bottom: 15px;
+        }
+
+        /* Vehicle Fitment Promo */
+        .fitment-promo {
+            background-color: var(--base);
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .fitment-promo h2 {
+            margin-bottom: 15px;
+        }
+
+        .fitment-promo p {
+            max-width: 600px;
+            margin: 0 auto 25px;
+            color: var(--gray);
+        }
+
+        /* Featured Products */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border: 1px solid var(--gray);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+        }
+
+        .product-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--primary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .product-content {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--base);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .product-price {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .product-actions .btn {
+            flex: 1;
+            padding: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            background-color: var(--base);
+            color: white;
+            padding: 40px 0;
+        }
+
+        .trust-items {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .trust-item i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .trust-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .trust-item p {
+            color: var(--gray);
+        }
+
+        .order-note {
+            margin-top: 15px;
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--base);
+            color: white;
+            padding: 60px 0 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .footer-column h4 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .footer-column p {
+            color: var(--gray);
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-contact li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .footer-contact i {
+            color: var(--primary);
+            margin-top: 3px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            color: var(--base);
+        }
+
+        .footer-bottom {
+            margin-top: 50px;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .whatsapp-orders {
+            margin-top: 10px;
+            color: white;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .categories-grid,
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .trust-items {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .single-product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .mega-menu-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .main-nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: white;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                flex-direction: column;
+            }
+            
+            .main-nav.active {
+                display: flex;
+            }
+            
+            .nav-link {
+                color: var(--base);
+                padding: 15px 20px;
+                border-bottom: 1px solid var(--gray);
+            }
+            
+            .mega-menu {
+                position: static;
+                display: none;
+                box-shadow: none;
+                padding: 15px;
+            }
+            
+            .nav-item:hover .mega-menu {
+                display: none;
+            }
+            
+            .mega-menu.active {
+                display: block;
+            }
+            
+            .search-box input {
+                width: 200px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .categories-grid,
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .finder-search {
+                flex-direction: column;
+            }
+
+            .finder-search button {
+                width: 100%;
+                height: 48px;
+            }
+
+            .category-product-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .categories-grid,
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .trust-items {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-box {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .category-card {
+                padding: 18px;
+            }
+
+            .category-detail {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="top-bar-links">
+                <a href="tel:+27722573089"><i class="fas fa-phone"></i> +27 72 257 3089</a>
+                <a href="mailto:info@odyssey4x4.co.za"><i class="fas fa-envelope"></i> info@odyssey4x4.co.za</a>
+            </div>
+            <div class="top-bar-links">
+                <a href="#" data-whatsapp-message="Hi Odyssey 4x4, can you update me on my order status?">Track Order</a>
+                <a href="#" data-whatsapp-message="Hi Odyssey 4x4, I need support with my order.">WhatsApp Support</a>
+                <a href="#">Dealer Login</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container main-header">
+            <div class="logo">
+                <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4 logo">
+            </div>
+            
+            <div class="search-cart">
+                <div class="search-box">
+                    <input type="text" placeholder="Search products...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <a href="#" class="cart-icon" data-cart-trigger title="Open WhatsApp cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <div class="cart-count">0</div>
+                </a>
+                <button class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav>
+            <div class="container nav-container">
+                <ul class="main-nav">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item has-mega">
+                        <a href="#" class="nav-link">Products <i class="fas fa-chevron-down"></i></a>
+                        <div class="mega-menu">
+                            <div class="mega-menu-content">
+                                <div class="mega-menu-column">
+                                    <h4>Suspension</h4>
+                                    <ul class="mega-menu-links">
+                                        <li><a href="#">Lift Kits</a></li>
+                                        <li><a href="#">Shock Absorbers</a></li>
+                                        <li><a href="#">Coil Springs</a></li>
+                                        <li><a href="#">Accessories</a></li>
+                                    </ul>
+                                    <div class="mega-menu-featured">
+                                        <img src="https://images.unsplash.com/photo-1511300636408-a63a89df3482?auto=format&fit=crop&w=1170&q=80" alt="Heavy duty suspension kit">
+                                        <div class="mega-menu-featured-text">
+                                            <p>Premium Lift Kits</p>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="shop-all">Shop All Suspension <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h4>Vehicle Protection</h4>
+                                    <ul class="mega-menu-links">
+                                        <li><a href="#">Bull Bars</a></li>
+                                        <li><a href="#">Side Steps</a></li>
+                                        <li><a href="#">Skid Plates</a></li>
+                                        <li><a href="#">Rock Sliders</a></li>
+                                    </ul>
+                                    <div class="mega-menu-featured">
+                                        <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1170&q=80" alt="4x4 bull bar">
+                                        <div class="mega-menu-featured-text">
+                                            <p>Aluminum Bull Bars</p>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="shop-all">Shop All Protection <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h4>Adventure Gear</h4>
+                                    <ul class="mega-menu-links">
+                                        <li><a href="#">Roof Racks</a></li>
+                                        <li><a href="#">Recovery Gear</a></li>
+                                        <li><a href="#">Air Compressors</a></li>
+                                        <li><a href="#">Storage Solutions</a></li>
+                                    </ul>
+                                    <div class="mega-menu-featured">
+                                        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1170&q=80" alt="Roof rack on 4x4">
+                                        <div class="mega-menu-featured-text">
+                                            <p>Modular Roof Racks</p>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="shop-all">Shop All Gear <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h4>Lighting & Electrical</h4>
+                                    <ul class="mega-menu-links">
+                                        <li><a href="#">LED Light Bars</a></li>
+                                        <li><a href="#">Spotlights</a></li>
+                                        <li><a href="#">Wiring Kits</a></li>
+                                        <li><a href="#">Dual Battery Systems</a></li>
+                                    </ul>
+                                    <div class="mega-menu-featured">
+                                        <img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=1170&q=80" alt="Off-road lighting">
+                                        <div class="mega-menu-featured-text">
+                                            <p>Premium LED Lighting</p>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="shop-all">Shop All Lighting <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Vehicle Fitment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Specials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Tech Hub</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Dealer Locator</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Engineer Your Adventure</h1>
+            <p>Premium 4x4 accessories designed for the toughest terrains and built to last. Every order is finalised with a human specialist over WhatsApp so nothing gets lost in checkout.</p>
+            <a href="#" class="btn" data-whatsapp-message="Hi Odyssey 4x4, I'm ready to engineer my adventure. Please help me place an order.">Order On WhatsApp</a>
+            <p class="order-note">We confirm specs, payment and delivery via WhatsApp for total clarity.</p>
+        </div>
+    </section>
+
+    <!-- Product Finder -->
+    <section class="section product-finder" id="product-finder">
+        <div class="container">
+            <div class="finder-header">
+                <h2 class="section-title">Search & Filter Products</h2>
+                <p>Use the explorer to jump straight into our core product families. Start typing to narrow down the categories or click a filter to see the products available right now.</p>
+            </div>
+            <div class="finder-search">
+                <input type="text" id="product-finder-search" placeholder="Search by category name...">
+                <button type="button" id="product-finder-search-btn">Filter</button>
+            </div>
+            <div class="category-grid" role="tablist">
+                <button class="category-card" data-category-card="front-bumpers" data-category-label="Front Bumpers" aria-pressed="false">
+                    <h4>Front Bumpers</h4>
+                    <p>Heavy-duty protection with winch-ready options.</p>
+                </button>
+                <button class="category-card" data-category-card="rear-bumpers" data-category-label="Rear Bumpers" aria-pressed="false">
+                    <h4>Rear Bumpers</h4>
+                    <p>Tailored to improve departure angles and recovery.</p>
+                </button>
+                <button class="category-card" data-category-card="roof-top-tents" data-category-label="Roof Top Tents" aria-pressed="false">
+                    <h4>Roof Top Tents</h4>
+                    <p>Rapid-deploy shelters for multi-day expeditions.</p>
+                </button>
+                <button class="category-card" data-category-card="canopies" data-category-label="Canopies" aria-pressed="false">
+                    <h4>Canopies</h4>
+                    <p>Modular storage and protection for double cabs.</p>
+                </button>
+                <button class="category-card" data-category-card="fridge-slides" data-category-label="Fridge Slides" aria-pressed="false">
+                    <h4>Fridge Slides</h4>
+                    <p>Access your cold storage without climbing in.</p>
+                </button>
+                <button class="category-card" data-category-card="drawer-systems" data-category-label="Drawer Systems" aria-pressed="false">
+                    <h4>Drawer Systems</h4>
+                    <p>Secure, organised storage for tools and gear.</p>
+                </button>
+            </div>
+
+            <div class="category-detail">
+                <div class="category-detail-header">
+                    <h3 data-category-detail-title>Select a product category</h3>
+                    <p data-category-detail-desc>Choose one of the categories above to see all available products and jump into the detailed spec page.</p>
+                </div>
+
+                <div class="category-products" data-category-products="rear-bumpers" hidden>
+                    <div class="category-product-card" data-product-name="Signature Series Rear Bumper" data-product-category="Rear Bumpers" data-product-description="Our flagship rear bumper with integrated recovery points, hi-lift jacking slots and dual swing-away options." data-product-image="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1170&q=80">
+                        <div class="category-product-meta">
+                            <div>
+                                <span>Rear Bumpers</span>
+                                <h4>Signature Series Rear Bumper</h4>
+                            </div>
+                            <strong>From R 18,999</strong>
+                        </div>
+                        <p>Engineered for overlanding rigs that need premium protection without compromising departure angles.</p>
+                        <div class="category-product-actions">
+                            <a href="#single-product-preview" class="btn btn-outline" data-view-product>View Product</a>
+                            <a href="#" class="btn add-to-cart" data-product-name="Signature Series Rear Bumper">Purchase</a>
+                        </div>
+                    </div>
+                    <div class="category-product-card" data-product-name="Expedition Series Rear Bumper (Aluminum)" data-product-category="Rear Bumpers" data-product-description="Lightweight aluminum construction rated for extreme expeditions with modular swing-arm accessories." data-product-image="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1170&q=80">
+                        <div class="category-product-meta">
+                            <div>
+                                <span>Rear Bumpers</span>
+                                <h4>Expedition Series Rear Bumper (Aluminum)</h4>
+                            </div>
+                            <strong>From R 16,499</strong>
+                        </div>
+                        <p>Shed weight without sacrificing strength thanks to aircraft-grade aluminum and reinforced mounting plates.</p>
+                        <div class="category-product-actions">
+                            <a href="#single-product-preview" class="btn btn-outline" data-view-product>View Product</a>
+                            <a href="#" class="btn add-to-cart" data-product-name="Expedition Series Rear Bumper (Aluminum)">Purchase</a>
+                        </div>
+                    </div>
+                    <div class="category-product-card" data-product-name="Classic Heavy-Duty Rear Bumper" data-product-category="Rear Bumpers" data-product-description="Traditional steel bumper with integrated tow bar and high-clearance corners for working trucks." data-product-image="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1170&q=80">
+                        <div class="category-product-meta">
+                            <div>
+                                <span>Rear Bumpers</span>
+                                <h4>Classic Heavy-Duty Rear Bumper</h4>
+                            </div>
+                            <strong>From R 13,499</strong>
+                        </div>
+                        <p>No-nonsense durability built for fleets, bush operators, and adventure seekers who punish their rigs.</p>
+                        <div class="category-product-actions">
+                            <a href="#single-product-preview" class="btn btn-outline" data-view-product>View Product</a>
+                            <a href="#" class="btn add-to-cart" data-product-name="Classic Heavy-Duty Rear Bumper">Purchase</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category-products" data-category-products="fridge-slides" hidden>
+                    <div class="category-product-card" data-product-name="Standard Fridge Slide" data-product-category="Fridge Slides" data-product-description="Low-profile slide compatible with 40L-60L fridges, featuring slam latches and full-extension runners." data-product-image="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1170&q=80">
+                        <div class="category-product-meta">
+                            <div>
+                                <span>Fridge Slides</span>
+                                <h4>Standard Fridge Slide</h4>
+                            </div>
+                            <strong>From R 5,499</strong>
+                        </div>
+                        <p>Keep camp setups quick with 110% extension, tie-down slots, and rattle-free operation.</p>
+                        <div class="category-product-actions">
+                            <a href="#single-product-preview" class="btn btn-outline" data-view-product>View Product</a>
+                            <a href="#" class="btn add-to-cart" data-product-name="Standard Fridge Slide">Purchase</a>
+                        </div>
+                    </div>
+                    <div class="category-product-card" data-product-name="Tilt-Out Fridge Slide" data-product-category="Fridge Slides" data-product-description="Ergonomic tilt mechanism brings the fridge closer to you—ideal for taller 4x4s or lifted rigs." data-product-image="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1170&q=80">
+                        <div class="category-product-meta">
+                            <div>
+                                <span>Fridge Slides</span>
+                                <h4>Tilt-Out Fridge Slide</h4>
+                            </div>
+                            <strong>From R 6,899</strong>
+                        </div>
+                        <p>Safety-lock struts and soft-return motion keep one-handed operation effortless at camp.</p>
+                        <div class="category-product-actions">
+                            <a href="#single-product-preview" class="btn btn-outline" data-view-product>View Product</a>
+                            <a href="#" class="btn add-to-cart" data-product-name="Tilt-Out Fridge Slide">Purchase</a>
+                        </div>
+                    </div>
+                    <div class="category-product-card" data-product-name="Extra-Wide Fridge Slide" data-product-category="Fridge Slides" data-product-description="Built for dual-zone and 80L+ fridges with reinforced rails and integrated cable management." data-product-image="https://images.unsplash.com/photo-1470246973918-29a93221c455?auto=format&fit=crop&w=1170&q=80">
+                        <div class="category-product-meta">
+                            <div>
+                                <span>Fridge Slides</span>
+                                <h4>Extra-Wide Fridge Slide</h4>
+                            </div>
+                            <strong>From R 7,299</strong>
+                        </div>
+                        <p>Holds the heaviest payloads while keeping motion smooth thanks to dual-bearing runners.</p>
+                        <div class="category-product-actions">
+                            <a href="#single-product-preview" class="btn btn-outline" data-view-product>View Product</a>
+                            <a href="#" class="btn add-to-cart" data-product-name="Extra-Wide Fridge Slide">Purchase</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category-empty" data-category-empty>
+                    <strong data-empty-label>Pick a category</strong>
+                    <p data-empty-copy>Use the controls above to explore the catalog.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Single Product Preview -->
+    <section class="section single-product-preview" id="single-product-preview">
+        <div class="container single-product-grid">
+            <div class="single-product-media">
+                <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1170&q=80" alt="Signature Series Rear Bumper" data-product-preview-image>
+            </div>
+            <div class="single-product-info">
+                <p class="eyebrow" data-product-preview-category>Rear Bumpers</p>
+                <h2 data-product-preview-title>Signature Series Rear Bumper</h2>
+                <p data-product-preview-description>This flagship rear bumper keeps departure angles sharp, integrates recovery and lighting, and is ready for swing-away accessories.</p>
+                <ul class="single-product-specs">
+                    <li>High-clearance wings with replaceable corner caps</li>
+                    <li>Dual recovery points + receiver hitch integration</li>
+                    <li>Pre-drilled for parking sensors and auxiliary lights</li>
+                    <li>Compatible with Odyssey tire carriers and ladder kits</li>
+                </ul>
+                <div class="single-product-ctas">
+                    <a href="#" class="btn add-to-cart" data-product-preview-purchase data-product-name="Signature Series Rear Bumper">Purchase</a>
+                    <a href="#" class="btn btn-outline" data-product-preview-inquire data-whatsapp-message="Hi Odyssey 4x4, can you share more info about the Signature Series Rear Bumper?">Inquire for Info</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="section featured-categories">
+        <div class="container">
+            <h2 class="section-title">Shop By Category</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="https://images.unsplash.com/photo-1510070009289-b5bc34383727?auto=format&fit=crop&w=1170&q=80" alt="Suspension kits display">
+                    </div>
+                    <div class="category-content">
+                        <h3>Suspension Kits</h3>
+                        <a href="#" class="btn" data-whatsapp-message="Hi Odyssey 4x4, I would like to chat about your suspension kits.">Chat on WhatsApp</a>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=1170&q=80" alt="Vehicle protection accessories">
+                    </div>
+                    <div class="category-content">
+                        <h3>Vehicle Protection</h3>
+                        <a href="#" class="btn" data-whatsapp-message="Hi Odyssey 4x4, can you assist with bull bars and protection gear?">Chat on WhatsApp</a>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1170&q=80" alt="Adventure gear on roof rack">
+                    </div>
+                    <div class="category-content">
+                        <h3>Adventure Gear</h3>
+                        <a href="#" class="btn" data-whatsapp-message="Hi Odyssey 4x4, I need help choosing adventure gear for my rig.">Chat on WhatsApp</a>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="https://images.unsplash.com/photo-1470246973918-29a93221c455?auto=format&fit=crop&w=1170&q=80" alt="Lighting and electrical accessories">
+                    </div>
+                    <div class="category-content">
+                        <h3>Lighting & Electrical</h3>
+                        <a href="#" class="btn" data-whatsapp-message="Hi Odyssey 4x4, I'm shopping for lighting and electrical upgrades.">Chat on WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vehicle Fitment Promo -->
+    <section class="fitment-promo">
+        <div class="container">
+            <h2>Find Parts For Your Vehicle</h2>
+            <p>Share your make, model, and build goals over WhatsApp and our team will send a curated list of parts, pricing, and the payment link directly in the chat.</p>
+            <a href="#" class="btn" data-whatsapp-message="Hi Odyssey 4x4, can you help me find parts that fit my vehicle?">Start A WhatsApp Consult</a>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1529429617124-aee711a70412?auto=format&fit=crop&w=1170&q=80" alt="Performance suspension lift kit">
+                        <div class="product-badge">Best Seller</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">2" Suspension Lift Kit</h3>
+                        <div class="product-price">R 8,499</div>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-outline" data-whatsapp-message="Hi Odyssey 4x4, can you share the detailed specs for the 2 inch Suspension Lift Kit?">Ask For Specs</a>
+                            <a href="#" class="btn add-to-cart" data-product-name='2" Suspension Lift Kit'>Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1170&q=80" alt="Aluminum bull bar upgrade">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Aluminum Bull Bar</h3>
+                        <div class="product-price">R 6,299</div>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-outline" data-whatsapp-message="Hi Odyssey 4x4, I need more info on the Aluminum Bull Bar.">Ask For Specs</a>
+                            <a href="#" class="btn add-to-cart" data-product-name="Aluminum Bull Bar">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1170&q=80" alt="Modular roof rack system">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Modular Roof Rack</h3>
+                        <div class="product-price">R 4,999</div>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-outline" data-whatsapp-message="Hi Odyssey 4x4, can you help me choose the right Modular Roof Rack setup?">Ask For Specs</a>
+                            <a href="#" class="btn add-to-cart" data-product-name="Modular Roof Rack">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1497493292307-31c376b6e479?auto=format&fit=crop&w=1170&q=80" alt="50 inch LED light bar on trail">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">50" LED Light Bar</h3>
+                        <div class="product-price">R 2,199</div>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-outline" data-whatsapp-message="Hi Odyssey 4x4, could you share specs for the 50 inch LED Light Bar?">Ask For Specs</a>
+                            <a href="#" class="btn add-to-cart" data-product-name='50" LED Light Bar'>Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <section class="trust-bar">
+        <div class="container">
+            <div class="trust-items">
+                <div class="trust-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <h3>WhatsApp Order Concierge</h3>
+                    <p>Speak directly with a specialist who captures your order details and confirms everything in chat.</p>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-lock"></i>
+                    <h3>Secure Payment Links</h3>
+                    <p>Payments are requested only through verified Odyssey 4x4 WhatsApp messages for your safety.</p>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-road"></i>
+                    <h3>Nationwide Fulfilment</h3>
+                    <p>Courier or collection is arranged in the same WhatsApp thread so you always know the plan.</p>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-headset"></i>
+                    <h3>After-Sales Support</h3>
+                    <p>Run into issues? Ping us on WhatsApp and we’ll keep the conversation going until it’s sorted.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>About Odyssey 4x4</h4>
+                    <p>We engineer premium 4x4 accessories for adventurers who demand durability, performance, and style. Orders, payment confirmations, and delivery arrangements all happen through our verified WhatsApp channel so you always talk to a real expert.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Products</a></li>
+                        <li><a href="#">Vehicle Fitment</a></li>
+                        <li><a href="#">Specials</a></li>
+                        <li><a href="#">Tech Hub</a></li>
+                        <li><a href="#">Dealer Locator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Customer Service</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" data-whatsapp-message="Hi Odyssey 4x4, I need assistance with an order.">Contact Us On WhatsApp</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Warranty Information</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#" data-whatsapp-message="Hi Odyssey 4x4, can you give me an update on my order?">Track Your Order On WhatsApp</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact Info</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+27 72 257 3089</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@odyssey4x4.co.za</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon-Fri: 8:00-17:00<br>Sat: 8:00-13:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; Since 2025 Odyssey 4x4. All Rights Reserved.</p>
+                <p class="whatsapp-orders">All payments are handled safely on WhatsApp at +27 72 257 3089. We never request funds elsewhere.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-toggle').addEventListener('click', function() {
+            document.querySelector('.main-nav').classList.toggle('active');
+        });
+
+        // Mega menu hover stability
+        const productNavItem = document.querySelector('.nav-item.has-mega');
+        const megaMenu = productNavItem ? productNavItem.querySelector('.mega-menu') : null;
+        let hoverTimeout;
+
+        if (productNavItem && megaMenu) {
+            const showMenu = () => {
+                clearTimeout(hoverTimeout);
+                productNavItem.classList.add('open');
+            };
+
+            const hideMenu = () => {
+                hoverTimeout = setTimeout(() => {
+                    productNavItem.classList.remove('open');
+                }, 120);
+            };
+
+            productNavItem.addEventListener('mouseenter', showMenu);
+            productNavItem.addEventListener('mouseleave', hideMenu);
+            megaMenu.addEventListener('mouseenter', showMenu);
+            megaMenu.addEventListener('mouseleave', hideMenu);
+
+            const productLink = productNavItem.querySelector('.nav-link');
+            productLink.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    megaMenu.classList.toggle('active');
+                }
+            });
+        }
+
+        // Product finder interactions
+        const finderSearchInput = document.querySelector('#product-finder-search');
+        const finderSearchBtn = document.querySelector('#product-finder-search-btn');
+        const categoryCards = document.querySelectorAll('[data-category-card]');
+        const categoryGroups = document.querySelectorAll('[data-category-products]');
+        const categoryDetailTitle = document.querySelector('[data-category-detail-title]');
+        const categoryDetailDesc = document.querySelector('[data-category-detail-desc]');
+        const categoryEmptyState = document.querySelector('[data-category-empty]');
+        const categoryEmptyLabel = document.querySelector('[data-empty-label]');
+        const categoryEmptyCopy = document.querySelector('[data-empty-copy]');
+        const defaultDetailTitle = categoryDetailTitle ? categoryDetailTitle.textContent : '';
+        const defaultDetailDesc = categoryDetailDesc ? categoryDetailDesc.textContent : '';
+
+        const updateProductPreview = (data = {}) => {
+            const previewSection = document.querySelector('#single-product-preview');
+            const previewImage = document.querySelector('[data-product-preview-image]');
+            const previewTitle = document.querySelector('[data-product-preview-title]');
+            const previewCategory = document.querySelector('[data-product-preview-category]');
+            const previewDescription = document.querySelector('[data-product-preview-description]');
+            const previewPurchase = document.querySelector('[data-product-preview-purchase]');
+            const previewInquire = document.querySelector('[data-product-preview-inquire]');
+
+            if (previewImage && data.image) {
+                previewImage.src = data.image;
+                previewImage.alt = data.name || 'Odyssey 4x4 product';
+            }
+            if (previewTitle && data.name) {
+                previewTitle.textContent = data.name;
+            }
+            if (previewCategory) {
+                previewCategory.textContent = data.category || 'Product Spotlight';
+            }
+            if (previewDescription && data.description) {
+                previewDescription.textContent = data.description;
+            }
+            if (previewPurchase && data.name) {
+                previewPurchase.dataset.productName = data.name;
+            }
+            if (previewInquire && data.name) {
+                previewInquire.dataset.whatsappMessage = `Hi Odyssey 4x4, can you share more info about the ${data.name}?`;
+            }
+
+            return previewSection;
+        };
+
+        const setEmptyState = (show, labelText, copyText) => {
+            if (!categoryEmptyState) return;
+            categoryEmptyState.hidden = !show;
+            if (show) {
+                if (categoryEmptyLabel && labelText) {
+                    categoryEmptyLabel.textContent = labelText;
+                }
+                if (categoryEmptyCopy && copyText) {
+                    categoryEmptyCopy.textContent = copyText;
+                }
+            }
+        };
+
+        const resetCategoryDetail = () => {
+            categoryGroups.forEach(group => group.hidden = true);
+            if (categoryDetailTitle) categoryDetailTitle.textContent = defaultDetailTitle;
+            if (categoryDetailDesc) categoryDetailDesc.textContent = defaultDetailDesc;
+            setEmptyState(true, 'Pick a category', 'Use the controls above to explore the catalog.');
+            categoryCards.forEach(card => {
+                card.classList.remove('active');
+                card.setAttribute('aria-pressed', 'false');
+            });
+        };
+
+        const handleCategorySelection = (category, label) => {
+            if (!category) {
+                resetCategoryDetail();
+                return;
+            }
+
+            categoryCards.forEach(card => {
+                const isActive = card.dataset.categoryCard === category;
+                card.classList.toggle('active', isActive);
+                card.setAttribute('aria-pressed', String(isActive));
+            });
+
+            let hasMatch = false;
+            let firstProductCard = null;
+            categoryGroups.forEach(group => {
+                const matches = group.dataset.categoryProducts === category;
+                group.hidden = !matches;
+                if (matches) {
+                    hasMatch = true;
+                    firstProductCard = group.querySelector('.category-product-card');
+                }
+            });
+
+            if (categoryDetailTitle) {
+                categoryDetailTitle.textContent = hasMatch ? `${label} Products` : `${label} Overview`;
+            }
+            if (categoryDetailDesc) {
+                categoryDetailDesc.textContent = hasMatch
+                    ? 'Select a product below to view full specs and purchase options.'
+                    : `We are finalising the ${label} catalog. Reach out on WhatsApp for early access.`;
+            }
+
+            if (hasMatch && firstProductCard) {
+                updateProductPreview({
+                    name: firstProductCard.dataset.productName,
+                    category: firstProductCard.dataset.productCategory,
+                    description: firstProductCard.dataset.productDescription,
+                    image: firstProductCard.dataset.productImage
+                });
+            }
+
+            setEmptyState(!hasMatch, label, `We're curating ${label} options. Chat with us on WhatsApp to get updates.`);
+        };
+
+        const filterCategoryCards = () => {
+            if (!finderSearchInput) return;
+            const query = finderSearchInput.value.trim().toLowerCase();
+            categoryCards.forEach(card => {
+                const label = card.dataset.categoryLabel.toLowerCase();
+                const matches = !query || label.includes(query);
+                card.hidden = !matches;
+            });
+        };
+
+        finderSearchInput?.addEventListener('input', filterCategoryCards);
+        finderSearchInput?.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                filterCategoryCards();
+                const firstVisible = Array.from(categoryCards).find(card => !card.hidden);
+                if (firstVisible) {
+                    handleCategorySelection(firstVisible.dataset.categoryCard, firstVisible.dataset.categoryLabel);
+                }
+            }
+        });
+
+        finderSearchBtn?.addEventListener('click', () => {
+            filterCategoryCards();
+            const firstVisible = Array.from(categoryCards).find(card => !card.hidden);
+            if (firstVisible) {
+                handleCategorySelection(firstVisible.dataset.categoryCard, firstVisible.dataset.categoryLabel);
+            }
+        });
+
+        categoryCards.forEach(card => {
+            card.addEventListener('click', () => {
+                handleCategorySelection(card.dataset.categoryCard, card.dataset.categoryLabel);
+            });
+        });
+
+        resetCategoryDetail();
+
+        document.querySelectorAll('[data-view-product]').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const card = button.closest('.category-product-card');
+                if (!card) return;
+                const previewSection = updateProductPreview({
+                    name: card.dataset.productName,
+                    category: card.dataset.productCategory,
+                    description: card.dataset.productDescription,
+                    image: card.dataset.productImage
+                });
+                previewSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // WhatsApp ordering helper & cart
+        const whatsappNumber = '27722573089';
+        const defaultWhatsAppMessage = 'Hi Odyssey 4x4, I would like to place an order.';
+        const buildWhatsAppUrl = (message) => `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+        const openWhatsApp = (message) => window.open(buildWhatsAppUrl(message), '_blank');
+
+        document.querySelectorAll('[data-whatsapp-message]').forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                const message = trigger.getAttribute('data-whatsapp-message') || defaultWhatsAppMessage;
+                openWhatsApp(message);
+            });
+        });
+
+        const cartState = { count: 0, items: [] };
+        const cartCountEl = document.querySelector('.cart-count');
+        const cartTrigger = document.querySelector('[data-cart-trigger]');
+
+        const updateCartCount = () => {
+            if (cartCountEl) {
+                cartCountEl.textContent = cartState.count;
+            }
+        };
+
+        const formatCartSummary = () => {
+            if (!cartState.count) {
+                return defaultWhatsAppMessage;
+            }
+            return `Hi Odyssey 4x4, here is my cart (${cartState.count} items): ${cartState.items.join(', ')}. Please confirm payment and delivery details on WhatsApp.`;
+        };
+
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const productName = button.dataset.productName || 'Odyssey 4x4 product';
+                cartState.count += 1;
+                cartState.items.push(productName);
+                updateCartCount();
+                const cartMessage = `Hi Odyssey 4x4, please add ${productName} to my cart. Current cart: ${cartState.items.join(', ')}.`;
+                openWhatsApp(cartMessage);
+            });
+        });
+
+        if (cartTrigger) {
+            cartTrigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                openWhatsApp(formatCartSummary());
+            });
+        }
+
+        updateCartCount();
+
+        // Search functionality
+        const searchInput = document.querySelector('.search-box input');
+        const searchButton = document.querySelector('.search-box button');
+        
+        searchButton.addEventListener('click', function() {
+            if (searchInput.value.trim() !== '') {
+                alert(`Searching for: ${searchInput.value}`);
+                // In a real implementation, this would redirect to search results
+            }
+        });
+        
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && searchInput.value.trim() !== '') {
+                alert(`Searching for: ${searchInput.value}`);
+                // In a real implementation, this would redirect to search results
+            }
+        });
+    </script>
+</body>
+</html>
