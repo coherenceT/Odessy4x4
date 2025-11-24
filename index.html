@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Odyssey 4x4 | Engineer Your Adventure</title>
     
     <!-- Favicons -->
@@ -43,6 +46,14 @@
             line-height: 1.6;
             color: var(--base);
             background-color: var(--background);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -140,6 +151,7 @@
             color: white;
             padding: 8px 0;
             font-size: 0.9rem;
+            display: none; /* Hidden - moved to footer */
         }
 
         .top-bar-content {
@@ -167,17 +179,23 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 0;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
         .logo {
             display: flex;
             align-items: center;
             gap: 10px;
+            flex-shrink: 0;
+            min-width: 0;
         }
 
         .logo img {
             height: 55px;
             width: auto;
+            max-width: 100%;
+            object-fit: contain;
         }
 
         .logo-text {
@@ -187,7 +205,10 @@
         .search-cart {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
+            flex: 1;
+            justify-content: flex-end;
+            min-width: 0;
         }
 
         .search-box {
@@ -240,11 +261,169 @@
             border-radius: 50%;
             width: 20px;
             height: 20px;
-            display: flex;
+            display: none;
             align-items: center;
             justify-content: center;
             font-size: 0.8rem;
             font-weight: 600;
+        }
+
+        .cart-count:not(:empty) {
+            display: flex;
+        }
+
+        /* Cart Modal */
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 450px;
+            height: 100vh;
+            background-color: var(--background);
+            box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+            z-index: 10000;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .cart-modal.active {
+            right: 0;
+        }
+
+        .cart-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .cart-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .cart-modal-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--base);
+            color: white;
+        }
+
+        .cart-modal-header h3 {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+        }
+
+        .cart-modal-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+            transition: var(--transition);
+        }
+
+        .cart-modal-close:hover {
+            color: var(--primary);
+        }
+
+        .cart-modal-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--base-light);
+        }
+
+        .cart-empty i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--gray);
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .cart-item-info h4 {
+            margin: 0 0 5px 0;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--base);
+        }
+
+        .cart-item-info p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--base-light);
+        }
+
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 5px;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            align-self: flex-start;
+        }
+
+        .cart-item-remove:hover {
+            color: var(--primary-dark);
+            transform: scale(1.1);
+        }
+
+        .cart-modal-footer {
+            padding: 20px;
+            border-top: 1px solid var(--gray);
+            background-color: var(--gray-light);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .cart-modal-footer .btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 1rem;
         }
 
         /* Navigation */
@@ -388,6 +567,26 @@
             font-size: 1.5rem;
             color: var(--base);
             cursor: pointer;
+            padding: 8px;
+            min-width: 44px;
+            min-height: 44px;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: flex;
+            }
+        }
+
+        .mobile-toggle:hover {
+            color: var(--primary);
+        }
+
+        .mobile-toggle:active {
+            transform: scale(0.95);
         }
 
         /* Hero Section */
@@ -839,6 +1038,15 @@
             margin-top: 3px;
         }
 
+        .footer-contact a {
+            color: var(--gray);
+            transition: var(--transition);
+        }
+
+        .footer-contact a:hover {
+            color: white;
+        }
+
         .social-links {
             display: flex;
             gap: 15px;
@@ -877,44 +1085,90 @@
             font-family: 'Montserrat', sans-serif;
         }
 
+        /* Mobile-First Touch Optimizations */
+        * {
+            -webkit-tap-highlight-color: rgba(227, 6, 19, 0.2);
+        }
+
+        button, a, .btn {
+            touch-action: manipulation;
+            -webkit-touch-callout: none;
+        }
+
+        input, textarea, select {
+            font-size: 16px; /* Prevents zoom on iOS */
+        }
+
         /* Responsive Styles */
         @media (max-width: 992px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
             .categories-grid,
             .products-grid {
                 grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
             }
             
             .trust-items {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
             }
             
             .single-product-grid {
                 grid-template-columns: 1fr;
+                gap: 30px;
             }
             
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
             }
             
             .mega-menu-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .category-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .section {
+                padding: 50px 0;
+            }
+
             .mobile-toggle {
                 display: block;
+                font-size: 1.3rem;
+                padding: 8px;
+                min-width: 44px;
+                min-height: 44px;
             }
             
             .main-nav {
                 display: none;
-                position: absolute;
-                top: 100%;
+                position: fixed;
+                top: 0;
                 left: 0;
                 right: 0;
+                bottom: 0;
                 background-color: white;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                z-index: 1000;
                 flex-direction: column;
+                overflow-y: auto;
+                padding-top: 0;
             }
             
             .main-nav.active {
@@ -923,8 +1177,26 @@
             
             .nav-link {
                 color: var(--base);
-                padding: 15px 20px;
+                padding: 18px 20px;
                 border-bottom: 1px solid var(--gray);
+                font-size: 1rem;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                transition: background-color 0.2s ease;
+            }
+
+            .nav-link:active {
+                background-color: var(--gray-light);
+            }
+
+            .nav-link i {
+                transition: transform 0.3s ease;
+            }
+
+            .nav-item.has-mega.active .nav-link i {
+                transform: rotate(180deg);
             }
             
             .mega-menu {
@@ -932,6 +1204,7 @@
                 display: none;
                 box-shadow: none;
                 padding: 15px;
+                background-color: var(--gray-light);
             }
             
             .nav-item:hover .mega-menu {
@@ -942,62 +1215,445 @@
                 display: block;
             }
             
-            .search-box input {
-                width: 200px;
+            .search-box {
+                display: none;
+            }
+            
+            .hero {
+                height: 60vh;
+                min-height: 400px;
+                padding: 20px 0;
             }
             
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
+                margin-bottom: 15px;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+
+            .hero .btn {
+                padding: 14px 24px;
+                font-size: 0.9rem;
             }
             
             .categories-grid,
             .products-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .category-card,
+            .product-card {
+                border-radius: 8px;
+            }
+
+            .category-img,
+            .product-img {
+                height: 180px;
             }
 
             .finder-search {
                 flex-direction: column;
+                gap: 12px;
+            }
+
+            .finder-search input {
+                width: 100%;
+                padding: 14px;
+                font-size: 16px;
             }
 
             .finder-search button {
                 width: 100%;
                 height: 48px;
+                min-height: 44px;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .category-card {
+                padding: 15px;
             }
 
             .category-product-actions {
                 flex-direction: column;
                 align-items: stretch;
             }
+
+            .category-product-actions .btn {
+                width: 100%;
+                min-height: 44px;
+                padding: 12px;
+            }
+
+            .cart-modal {
+                max-width: 100%;
+            }
+
+            .main-header {
+                flex-wrap: nowrap;
+                padding: 15px 0;
+            }
+
+            .logo img {
+                height: 45px;
+            }
+
+            .cart-icon {
+                font-size: 1.4rem;
+                min-width: 44px;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .top-bar {
+                font-size: 0.8rem;
+                padding: 6px 0;
+            }
+
+            .top-bar-links {
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+
+            .top-bar-links a {
+                padding: 4px 0;
+                min-height: 32px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 30px;
+            }
+
+            .trust-bar {
+                padding: 30px 0;
+            }
+
+            .trust-item {
+                padding: 15px;
+            }
+
+            .trust-item i {
+                font-size: 2rem;
+            }
+
+            .trust-item h3 {
+                font-size: 1rem;
+            }
+
+            .trust-item p {
+                font-size: 0.85rem;
+            }
+
+            .single-product-ctas {
+                flex-direction: column;
+            }
+
+            .single-product-ctas .btn {
+                width: 100%;
+                min-height: 48px;
+            }
+
+            .product-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .product-actions .btn {
+                width: 100%;
+                min-height: 44px;
+            }
         }
 
         @media (max-width: 576px) {
+            .container {
+                padding: 0 12px;
+            }
+
+            .section {
+                padding: 40px 0;
+            }
+
             .categories-grid,
             .products-grid {
                 grid-template-columns: 1fr;
+                gap: 15px;
             }
             
             .trust-items {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
             
             .footer-content {
                 grid-template-columns: 1fr;
+                gap: 30px;
             }
             
             .search-box {
                 display: none;
             }
             
+            .hero {
+                height: 55vh;
+                min-height: 350px;
+                padding: 15px 0;
+            }
+            
             .hero h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+                line-height: 1.2;
+                margin-bottom: 12px;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+                margin-bottom: 18px;
+            }
+
+            .hero .btn {
+                padding: 12px 20px;
+                font-size: 0.85rem;
+                width: 100%;
+                max-width: 280px;
             }
 
             .category-card {
-                padding: 18px;
+                padding: 15px;
             }
 
             .category-detail {
+                padding: 15px;
+            }
+
+            .main-header {
+                padding: 12px 0;
+                gap: 12px;
+            }
+
+            .logo img {
+                height: 38px;
+            }
+
+            .search-cart {
+                gap: 8px;
+            }
+
+            .cart-icon {
+                font-size: 1.3rem;
+            }
+
+            .cart-modal {
+                max-width: 100%;
+            }
+
+            .cart-modal-header {
+                padding: 15px;
+            }
+
+            .cart-modal-header h3 {
+                font-size: 1.1rem;
+            }
+
+            .cart-modal-body {
+                padding: 15px;
+            }
+
+            .cart-item {
+                flex-direction: column;
+                gap: 10px;
+                padding: 12px 0;
+            }
+
+            .cart-item-info h4 {
+                font-size: 0.95rem;
+            }
+
+            .cart-item-remove {
+                align-self: flex-end;
+                font-size: 1.1rem;
+                padding: 8px;
+                min-width: 44px;
+                min-height: 44px;
+            }
+
+            .cart-modal-footer {
+                padding: 15px;
+            }
+
+            .cart-total {
+                font-size: 1.1rem;
+                margin-bottom: 12px;
+            }
+
+            .cart-modal-footer .btn {
+                padding: 14px;
+                font-size: 0.95rem;
+            }
+
+            .top-bar {
+                font-size: 0.75rem;
+                padding: 5px 0;
+            }
+
+            .top-bar-content {
+                flex-direction: column;
+                gap: 8px;
+                align-items: flex-start;
+            }
+
+            .top-bar-links {
+                width: 100%;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .top-bar-links a {
+                font-size: 0.75rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+                margin-bottom: 25px;
+            }
+
+            .section-title:after {
+                width: 60px;
+                height: 2px;
+            }
+
+            .category-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .finder-header h2 {
+                font-size: 1.6rem;
+            }
+
+            .finder-header p {
+                font-size: 0.9rem;
+            }
+
+            .category-product-card {
+                padding: 15px;
+            }
+
+            .category-product-meta h4 {
+                font-size: 1rem;
+            }
+
+            .category-product-meta strong {
+                font-size: 1rem;
+            }
+
+            .single-product-info h2 {
+                font-size: 1.5rem;
+            }
+
+            .single-product-specs {
+                font-size: 0.9rem;
+                padding-left: 15px;
+            }
+
+            .single-product-specs li {
+                margin-bottom: 8px;
+            }
+
+            .product-title {
+                font-size: 1rem;
+            }
+
+            .product-price {
+                font-size: 1.1rem;
+            }
+
+            .btn {
+                padding: 12px 20px;
+                font-size: 0.85rem;
+                min-height: 44px;
+            }
+
+            .fitment-promo {
+                padding: 40px 0;
+            }
+
+            .fitment-promo h2 {
+                font-size: 1.6rem;
+            }
+
+            .fitment-promo p {
+                font-size: 0.95rem;
+            }
+
+            .footer-bottom {
+                padding: 15px 0;
+                font-size: 0.8rem;
+            }
+
+            .whatsapp-orders {
+                font-size: 0.85rem;
+                margin-top: 8px;
+            }
+
+            .mega-menu-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .mega-menu {
                 padding: 20px;
+            }
+
+            .trust-bar {
+                padding: 25px 0;
+            }
+
+            .trust-item {
+                padding: 12px;
+            }
+
+            .trust-item i {
+                font-size: 1.8rem;
+                margin-bottom: 10px;
+            }
+
+            .trust-item h3 {
+                font-size: 0.95rem;
+                margin-bottom: 8px;
+            }
+
+            .trust-item p {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Extra small devices (phones in landscape, less than 400px) */
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .logo img {
+                height: 35px;
+            }
+
+            .cart-icon {
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -1481,11 +2137,13 @@
                 <div class="footer-column">
                     <h4>Customer Service</h4>
                     <ul class="footer-links">
+                        <li><a href="#" data-whatsapp-message="Hi Odyssey 4x4, can you update me on my order status?">Track Order</a></li>
+                        <li><a href="#" data-whatsapp-message="Hi Odyssey 4x4, I need support with my order.">WhatsApp Support</a></li>
+                        <li><a href="#">Dealer Login</a></li>
                         <li><a href="#" data-whatsapp-message="Hi Odyssey 4x4, I need assistance with an order.">Contact Us On WhatsApp</a></li>
                         <li><a href="#">Shipping & Returns</a></li>
                         <li><a href="#">Warranty Information</a></li>
                         <li><a href="#">FAQ</a></li>
-                        <li><a href="#" data-whatsapp-message="Hi Odyssey 4x4, can you give me an update on my order?">Track Your Order On WhatsApp</a></li>
                         <li><a href="#">Size Guide</a></li>
                     </ul>
                 </div>
@@ -1494,11 +2152,11 @@
                     <ul class="footer-contact">
                         <li>
                             <i class="fas fa-phone"></i>
-                            <span>+27 72 257 3089</span>
+                            <a href="tel:+27722573089">+27 72 257 3089</a>
                         </li>
                         <li>
                             <i class="fas fa-envelope"></i>
-                            <span>info@odyssey4x4.co.za</span>
+                            <a href="mailto:info@odyssey4x4.co.za">info@odyssey4x4.co.za</a>
                         </li>
                         <li>
                             <i class="fas fa-clock"></i>
@@ -1514,11 +2172,100 @@
         </div>
     </footer>
 
+    <!-- Cart Modal -->
+    <div class="cart-modal-overlay" id="cart-overlay"></div>
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-modal-header">
+            <h3>Your Cart</h3>
+            <button class="cart-modal-close" id="cart-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-modal-body" id="cart-body">
+            <div class="cart-empty" id="cart-empty">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Your cart is empty</p>
+                <p style="font-size: 0.9rem; margin-top: 10px;">Add products to get started!</p>
+            </div>
+            <div id="cart-items"></div>
+        </div>
+        <div class="cart-modal-footer" id="cart-footer" style="display: none;">
+            <div class="cart-total">
+                <span>Total Items:</span>
+                <span id="cart-total-count">0</span>
+            </div>
+            <a href="#" class="btn" id="cart-checkout">Proceed to WhatsApp</a>
+        </div>
+    </div>
+
     <script>
-        // Mobile menu toggle
-        document.querySelector('.mobile-toggle').addEventListener('click', function() {
-            document.querySelector('.main-nav').classList.toggle('active');
-        });
+        // Enhanced Mobile menu toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const mainNav = document.querySelector('.main-nav');
+        const body = document.body;
+
+        if (mobileToggle && mainNav) {
+            const toggleMenu = () => {
+                mainNav.classList.toggle('active');
+                body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
+                
+                // Change icon
+                const icon = mobileToggle.querySelector('i');
+                if (icon) {
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-times');
+                }
+            };
+
+            mobileToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                toggleMenu();
+            });
+
+            // Close menu when clicking on a nav link
+            mainNav.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) {
+                        mainNav.classList.remove('active');
+                        body.style.overflow = '';
+                        const icon = mobileToggle.querySelector('i');
+                        if (icon) {
+                            icon.classList.add('fa-bars');
+                            icon.classList.remove('fa-times');
+                        }
+                    }
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768 && 
+                    mainNav.classList.contains('active') && 
+                    !mainNav.contains(e.target) && 
+                    !mobileToggle.contains(e.target)) {
+                    mainNav.classList.remove('active');
+                    body.style.overflow = '';
+                    const icon = mobileToggle.querySelector('i');
+                    if (icon) {
+                        icon.classList.add('fa-bars');
+                        icon.classList.remove('fa-times');
+                    }
+                }
+            });
+
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    mainNav.classList.remove('active');
+                    body.style.overflow = '';
+                    const icon = mobileToggle.querySelector('i');
+                    if (icon) {
+                        icon.classList.add('fa-bars');
+                        icon.classList.remove('fa-times');
+                    }
+                }
+            });
+        }
 
         // Mega menu hover stability
         const productNavItem = document.querySelector('.nav-item.has-mega');
@@ -1731,43 +2478,202 @@
             });
         });
 
-        const cartState = { count: 0, items: [] };
+        // Enhanced Cart System
+        const cartState = {
+            items: [],
+            get count() {
+                return this.items.length;
+            }
+        };
+
         const cartCountEl = document.querySelector('.cart-count');
         const cartTrigger = document.querySelector('[data-cart-trigger]');
+        const cartModal = document.getElementById('cart-modal');
+        const cartOverlay = document.getElementById('cart-overlay');
+        const cartClose = document.getElementById('cart-close');
+        const cartBody = document.getElementById('cart-body');
+        const cartItems = document.getElementById('cart-items');
+        const cartEmpty = document.getElementById('cart-empty');
+        const cartFooter = document.getElementById('cart-footer');
+        const cartTotalCount = document.getElementById('cart-total-count');
+        const cartCheckout = document.getElementById('cart-checkout');
 
         const updateCartCount = () => {
             if (cartCountEl) {
                 cartCountEl.textContent = cartState.count;
+                cartCountEl.style.display = cartState.count > 0 ? 'flex' : 'none';
+                if (cartCountEl.parentElement) {
+                    cartCountEl.parentElement.classList.add('cart-pulse');
+                    setTimeout(() => {
+                        cartCountEl.parentElement.classList.remove('cart-pulse');
+                    }, 300);
+                }
             }
+        };
+
+        const getProductDetails = (button) => {
+            const productCard = button.closest('.product-card, .category-product-card');
+            const productName = button.dataset.productName || 'Odyssey 4x4 Product';
+            let productPrice = 'Price on request';
+            let productImage = '';
+
+            if (productCard) {
+                const priceEl = productCard.querySelector('.product-price, strong');
+                if (priceEl) {
+                    productPrice = priceEl.textContent.trim();
+                }
+                const imgEl = productCard.querySelector('img');
+                if (imgEl) {
+                    productImage = imgEl.src || imgEl.dataset.productImage || '';
+                }
+            }
+
+            return {
+                id: Date.now() + Math.random(),
+                name: productName,
+                price: productPrice,
+                image: productImage
+            };
+        };
+
+        const renderCart = () => {
+            if (cartState.count === 0) {
+                cartEmpty.style.display = 'block';
+                cartItems.innerHTML = '';
+                cartFooter.style.display = 'none';
+            } else {
+                cartEmpty.style.display = 'none';
+                cartTotalCount.textContent = cartState.count;
+                cartFooter.style.display = 'block';
+
+                cartItems.innerHTML = cartState.items.map(item => `
+                    <div class="cart-item" data-item-id="${item.id}">
+                        <div class="cart-item-info">
+                            <h4>${item.name}</h4>
+                            <p>${item.price}</p>
+                        </div>
+                        <button class="cart-item-remove" data-remove-id="${item.id}" title="Remove item">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                `).join('');
+
+                // Add remove event listeners
+                cartItems.querySelectorAll('.cart-item-remove').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const itemId = btn.dataset.removeId;
+                        removeFromCart(itemId);
+                    });
+                });
+            }
+            updateCartCount();
+        };
+
+        const addToCart = (product) => {
+            cartState.items.push(product);
+            renderCart();
+            showCartNotification(product.name);
+        };
+
+        const removeFromCart = (itemId) => {
+            cartState.items = cartState.items.filter(item => item.id != itemId);
+            renderCart();
         };
 
         const formatCartSummary = () => {
             if (!cartState.count) {
                 return defaultWhatsAppMessage;
             }
-            return `Hi Odyssey 4x4, here is my cart (${cartState.count} items): ${cartState.items.join(', ')}. Please confirm payment and delivery details on WhatsApp.`;
+            const itemsList = cartState.items.map((item, index) => 
+                `${index + 1}. ${item.name} (${item.price})`
+            ).join('\\n');
+            
+            return `Hi Odyssey 4x4, I'm interested in the following products:\\n\\n${itemsList}\\n\\nTotal: ${cartState.count} ${cartState.count === 1 ? 'item' : 'items'}\\n\\nPlease confirm availability, pricing, and delivery details on WhatsApp.`;
         };
 
+        const showCartNotification = (productName) => {
+            const notification = document.createElement('div');
+            notification.style.cssText = 'position: fixed; top: 20px; right: 20px; background: var(--primary); color: white; padding: 15px 20px; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 10001; font-family: Montserrat, sans-serif; font-weight: 600; animation: slideIn 0.3s ease;';
+            notification.innerHTML = `<i class="fas fa-check-circle"></i> Added: ${productName}`;
+            document.body.appendChild(notification);
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 2000);
+        };
+
+        const openCart = () => {
+            cartModal.classList.add('active');
+            cartOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        const closeCart = () => {
+            cartModal.classList.remove('active');
+            cartOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        // Add CSS animations for cart notification
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+            .cart-pulse {
+                animation: cartPulse 0.3s ease;
+            }
+            @keyframes cartPulse {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.2); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add to cart buttons
         document.querySelectorAll('.add-to-cart').forEach(button => {
             button.addEventListener('click', (e) => {
                 e.preventDefault();
-                const productName = button.dataset.productName || 'Odyssey 4x4 product';
-                cartState.count += 1;
-                cartState.items.push(productName);
-                updateCartCount();
-                const cartMessage = `Hi Odyssey 4x4, please add ${productName} to my cart. Current cart: ${cartState.items.join(', ')}.`;
-                openWhatsApp(cartMessage);
+                const product = getProductDetails(button);
+                addToCart(product);
             });
         });
 
+        // Cart modal controls
         if (cartTrigger) {
             cartTrigger.addEventListener('click', (e) => {
                 e.preventDefault();
-                openWhatsApp(formatCartSummary());
+                openCart();
             });
         }
 
-        updateCartCount();
+        if (cartClose) {
+            cartClose.addEventListener('click', closeCart);
+        }
+
+        if (cartOverlay) {
+            cartOverlay.addEventListener('click', closeCart);
+        }
+
+        if (cartCheckout) {
+            cartCheckout.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (cartState.count === 0) {
+                    alert('Your cart is empty. Add some products first!');
+                    return;
+                }
+                openWhatsApp(formatCartSummary());
+                closeCart();
+            });
+        }
+
+        // Initialize cart
+        renderCart();
 
         // Search functionality
         const searchInput = document.querySelector('.search-box input');
