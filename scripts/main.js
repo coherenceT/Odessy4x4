@@ -141,14 +141,25 @@ window.filterByBrand = (brandId) => {
 };
 
 /* =========================================
-   6. CART & WISHLIST
+   7. CART ACTIONS
    ========================================= */
 window.addToCart = (id) => {
     const product = products.find(p => p.id === id);
     if (product) {
-        cart.push(product);
+        // Check if product already in cart
+        const existingItem = cart.find(item => item.id === id);
+
+        if (existingItem) {
+            // Increment quantity
+            existingItem.quantity = (existingItem.quantity || 1) + 1;
+        } else {
+            // Add new item with quantity 1
+            cart.push({ ...product, quantity: 1 });
+        }
+
         localStorage.setItem('odyssey_cart', JSON.stringify(cart));
         updateCartCount();
+        showToast(`${product.name} added to cart!`, 'success');
     }
 };
 
@@ -169,7 +180,8 @@ function isInWishlist(id) {
 
 function updateCartCount() {
     if (cartCountElement) {
-        cartCountElement.innerText = cart.length;
+        const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+        cartCountElement.innerText = totalItems;
     }
 }
 
@@ -256,12 +268,19 @@ function renderCart() {
             <div class="cart-item-info">
                 <div class="cart-item-title">${item.name}</div>
                 <div class="cart-item-price">R ${item.price.toLocaleString()}</div>
+                <div class="cart-item-qty">
+                    <button class="qty-btn" onclick="updateQuantity(${index}, -1)">-</button>
+                    <span class="qty-display">${item.quantity || 1}</span>
+                    <button class="qty-btn" onclick="updateQuantity(${index}, 1)">+</button>
+                </div>
             </div>
-            <button class="cart-item-remove" onclick="removeFromCart(${index})">Remove</button>
+            <button class="cart-item-remove" onclick="removeFromCart(${index})">
+                <i class="fas fa-trash"></i>
+            </button>
         </div>
     `).join('');
 
-    const total = cart.reduce((sum, item) => sum + item.price, 0);
+    const total = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
     cartTotalElement.innerText = `R ${total.toLocaleString()}`;
 }
 
@@ -278,8 +297,8 @@ window.checkout = () => {
         return;
     }
 
-    const total = cart.reduce((sum, item) => sum + item.price, 0);
-    const message = `Hi! I'd like to purchase the following items:\n\n${cart.map(item => `- ${item.name} (R ${item.price.toLocaleString()})`).join('\n')}\n\nTotal: R ${total.toLocaleString()}`;
+    const total = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
+    const message = `Hi! I'd like to purchase the following items:\n\n${cart.map(item => `- ${item.name} x${item.quantity || 1} (R ${(item.price * (item.quantity || 1)).toLocaleString()})`).join('\n')}\n\nTotal: R ${total.toLocaleString()}`;
     const whatsappUrl = `https://wa.me/27794030817?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
 };
@@ -372,3 +391,58 @@ function startHeroSlider() {
         slides[currentSlide].style.opacity = '1';
     }, 5000); // Change every 5 seconds
 }
+
+/* =========================================
+   10. TOAST NOTIFICATIONS
+   ========================================= */
+function showToast(message, type = 'success') {
+    // Create toast container if it doesn't exist
+    let toastContainer = document.querySelector('.toast-container');
+    if (!toastContainer) {
+        toastContainer = document.createElement('div');
+        toastContainer.className = 'toast-container';
+        document.body.appendChild(toastContainer);
+    }
+
+    // Create toast element
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+
+    // Add icon based on type
+    const icon = type === 'success' ? '✓' : 'ℹ';
+
+    toast.innerHTML = `
+        <div class="toast-icon">${icon}</div>
+        <div class="toast-message">${message}</div>
+    `;
+
+    // Add to container
+    toastContainer.appendChild(toast);
+
+    // Trigger animation
+    setTimeout(() => toast.classList.add('show'), 10);
+
+    // Remove after 3 seconds
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+}
+
+/* Update quantity in cart */
+window.updateQuantity = (index, change) => {
+    const item = cart[index];
+    if (!item) return;
+
+    const newQuantity = (item.quantity || 1) + change;
+
+    if (newQuantity <= 0) {
+        // Remove item if quantity becomes 0
+        removeFromCart(index);
+    } else {
+        item.quantity = newQuantity;
+        localStorage.setItem('odyssey_cart', JSON.stringify(cart));
+        updateCartCount();
+        renderCart();
+    }
+};
