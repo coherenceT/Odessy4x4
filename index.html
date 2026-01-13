@@ -39,26 +39,7 @@
                 <nav class="nav-menu">
                     <a href="#home" class="nav-link">Home</a>
                     <a href="#products" class="nav-link">Products</a>
-
-                    <!-- BRANDS DROPDOWN -->
-                    <div class="dropdown">
-                        <a href="#brands" class="nav-link">Brands <i class="fas fa-chevron-down"
-                                style="font-size: 0.7em; margin-left: 4px;"></i></a>
-                        <div class="dropdown-menu">
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-car brand-icon"></i> Ford
-                            </a>
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-car brand-icon"></i> Toyota
-                            </a>
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-car brand-icon"></i> Isuzu
-                            </a>
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-car brand-icon"></i> Jeep
-                            </a>
-                        </div>
-                    </div>
+                    <a href="#contact" class="nav-link">Contact Us</a>
                 </nav>
 
                 <!-- Right Side Icons -->
@@ -125,6 +106,146 @@
         </div>
     </section>
 
+    <!-- CONTACT US SECTION -->
+    <section id="contact" class="section-padding" style="background-color: #f8f9fa;">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 15px; font-size: 2.2rem;">CONTACT US</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 50px; font-size: 1.05rem;">
+                Get in touch with us for any inquiries or custom orders
+            </p>
+
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-bottom: 50px;">
+
+                <!-- WhatsApp Form (Green) -->
+                <div
+                    style="background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); padding: 40px; border-radius: 16px; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);">
+                    <div style="text-align: center; margin-bottom: 25px;">
+                        <div
+                            style="width: 70px; height: 70px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
+                            <i class="fab fa-whatsapp" style="color: #25D366; font-size: 2.5rem;"></i>
+                        </div>
+                        <h3 style="color: white; margin-bottom: 5px; font-size: 1.6rem;">Chat on WhatsApp</h3>
+                        <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">Quick response guaranteed</p>
+                    </div>
+
+                    <form id="whatsapp-form">
+                        <div class="form-group">
+                            <label style="color: white; font-weight: 600;">Full Name</label>
+                            <input type="text" class="form-control" placeholder="Enter your full name" required
+                                style="border: 2px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.95);">
+                        </div>
+                        <div class="form-group">
+                            <label style="color: white; font-weight: 600;">Message</label>
+                            <textarea class="form-control" rows="6" placeholder="Tell us about your inquiry..." required
+                                style="border: 2px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.95);"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-block"
+                            style="background: white; color: #25D366; padding: 14px; font-weight: 700; border: none; font-size: 1rem;">
+                            <i class="fab fa-whatsapp" style="margin-right: 8px;"></i>SEND VIA WHATSAPP
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Email Form (Blue) -->
+                <div
+                    style="background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%); padding: 40px; border-radius: 16px; box-shadow: 0 10px 30px rgba(33, 150, 243, 0.3);">
+                    <div style="text-align: center; margin-bottom: 25px;">
+                        <div
+                            style="width: 70px; height: 70px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
+                            <i class="fas fa-envelope" style="color: #2196F3; font-size: 2.2rem;"></i>
+                        </div>
+                        <h3 style="color: white; margin-bottom: 5px; font-size: 1.6rem;">Send us an Email</h3>
+                        <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">We'll respond within 24 hours</p>
+                    </div>
+
+                    <form id="email-form">
+                        <div class="form-group">
+                            <label style="color: white; font-weight: 600;">Full Name</label>
+                            <input type="text" class="form-control" placeholder="Enter your full name" required
+                                style="border: 2px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.95);">
+                        </div>
+                        <div class="form-group">
+                            <label style="color: white; font-weight: 600;">Email Address</label>
+                            <input type="email" class="form-control" placeholder="your.email@example.com" required
+                                style="border: 2px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.95);">
+                        </div>
+                        <div class="form-group">
+                            <label style="color: white; font-weight: 600;">Message</label>
+                            <textarea class="form-control" rows="4" placeholder="Tell us about your inquiry..." required
+                                style="border: 2px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.95);"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-block"
+                            style="background: white; color: #2196F3; padding: 14px; font-weight: 700; border: none; font-size: 1rem;">
+                            <i class="fas fa-envelope" style="margin-right: 8px;"></i>SEND EMAIL
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Contact Information Cards -->
+            <div>
+                <h3 style="margin-bottom: 25px; font-size: 1.5rem;">Get in Touch</h3>
+
+                <div style="display: flex; flex-direction: column; gap: 25px;">
+                    <div style="display: flex; gap: 15px; align-items: start;">
+                        <div
+                            style="width: 50px; height: 50px; background: var(--color-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-phone-alt" style="color: white; font-size: 1.2rem;"></i>
+                        </div>
+                        <div>
+                            <h4 style="margin-bottom: 5px; font-size: 1.1rem;">Phone</h4>
+                            <p style="color: #666; margin: 0;">079 403 0817</p>
+                            <p style="color: #999; font-size: 0.9rem; margin: 5px 0 0 0;">Mon - Fri, 8AM - 5PM</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 15px; align-items: start;">
+                        <div
+                            style="width: 50px; height: 50px; background: var(--color-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-envelope" style="color: white; font-size: 1.2rem;"></i>
+                        </div>
+                        <div>
+                            <h4 style="margin-bottom: 5px; font-size: 1.1rem;">Email</h4>
+                            <p style="color: #666; margin: 0;">sales@odyssey4x4.co.za</p>
+                            <p style="color: #999; font-size: 0.9rem; margin: 5px 0 0 0;">We'll respond within 24
+                                hours</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 15px; align-items: start;">
+                        <div
+                            style="width: 50px; height: 50px; background: var(--color-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-map-marker-alt" style="color: white; font-size: 1.2rem;"></i>
+                        </div>
+                        <div>
+                            <h4 style="margin-bottom: 5px; font-size: 1.1rem;">Location</h4>
+                            <p style="color: #666; margin: 0;">South Africa</p>
+                            <p style="color: #999; font-size: 0.9rem; margin: 5px 0 0 0;">Serving nationwide</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 15px; align-items: start;">
+                        <div
+                            style="width: 50px; height: 50px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fab fa-whatsapp" style="color: white; font-size: 1.4rem;"></i>
+                        </div>
+                        <div>
+                            <h4 style="margin-bottom: 5px; font-size: 1.1rem;">WhatsApp</h4>
+                            <p style="color: #666; margin: 0;">079 403 0817</p>
+                            <a href="https://wa.me/27794030817?text=Hi!%20I%27d%20like%20to%20chat.%20I%20came%20from%20the%20Odyssey%204x4%20website."
+                                target="_blank"
+                                style="color: var(--color-accent); font-size: 0.9rem; margin-top: 5px; display: inline-block;">
+                                Chat with us now →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
     <!-- FOOTER -->
     <footer>
         <div class="container">
@@ -146,7 +267,6 @@
                     <ul class="footer-links">
                         <li><a href="#home">Home</a></li>
                         <li><a href="#products">Products</a></li>
-                        <li><a href="#brands">Brands</a></li>
                         <li><a href="#contact">Contact Us</a></li>
                     </ul>
                 </div>
@@ -165,7 +285,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Odyssey 4x4. All Rights Reserved.</p>
+            <p>&copy; 2026 Odyssey 4x4. All Rights Reserved.</p>
         </div>
     </footer>
 

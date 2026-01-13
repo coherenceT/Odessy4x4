@@ -446,3 +446,46 @@ window.updateQuantity = (index, change) => {
         renderCart();
     }
 };
+
+/* =========================================
+   11. CONTACT FORM HANDLERS
+   ========================================= */
+document.addEventListener('DOMContentLoaded', () => {
+    // WhatsApp Form Handler
+    const whatsappForm = document.getElementById('whatsapp-form');
+    if (whatsappForm) {
+        whatsappForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = whatsappForm.querySelector('input[type="text"]').value;
+            const message = whatsappForm.querySelector('textarea').value;
+
+            const whatsappMessage = `Hi! I'm ${name}\n\nMessage:\n${message}`;
+            const whatsappUrl = `https://wa.me/27794030817?text=${encodeURIComponent(whatsappMessage)}`;
+
+            window.open(whatsappUrl, '_blank');
+            showToast('Opening WhatsApp...', 'success');
+            whatsappForm.reset();
+        });
+    }
+
+    // Email Form Handler
+    const emailForm = document.getElementById('email-form');
+    if (emailForm) {
+        emailForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = emailForm.querySelector('input[type="text"]').value;
+            const email = emailForm.querySelector('input[type="email"]').value;
+            const message = emailForm.querySelector('textarea').value;
+
+            const subject = `Contact Form: Message from ${name}`;
+            const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+            const mailtoUrl = `mailto:sales@odyssey4x4.co.za?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            window.location.href = mailtoUrl;
+            showToast('Opening email client...', 'success');
+            emailForm.reset();
+        });
+    }
+});
