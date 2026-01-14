@@ -1,0 +1,478 @@
+/* =========================================
+   HEADER REDESIGN (Gobi-X Style)
+   ========================================= */
+
+/* 1. Top Bar (Red) */
+.top-bar {
+    background-color: #d32f2f;
+    /* Match the red */
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 8px 0;
+}
+
+.top-bar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-bar-contact {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.top-bar-contact a {
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-transform: uppercase;
+}
+
+.top-bar-contact i {
+    font-size: 1rem;
+}
+
+.top-bar-social {
+    display: flex;
+    gap: 15px;
+}
+
+.top-bar-social a {
+    color: white;
+}
+
+/* 2. Main Header (Dark/Carbon) */
+.main-header {
+    background-color: #111;
+    background-image: linear-gradient(45deg, #1a1a1a 25%, transparent 25%, transparent 75%, #1a1a1a 75%, #1a1a1a),
+        linear-gradient(45deg, #1a1a1a 25%, transparent 25%, transparent 75%, #1a1a1a 75%, #1a1a1a);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    padding: 20px 0;
+    position: relative;
+    border-bottom: 4px solid #d32f2f;
+    /* Optional red line if needed */
+}
+
+.main-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-logo img {
+    height: 60px;
+    /* Adjust as needed */
+    max-width: 200px;
+}
+
+.explore-more-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 3rem;
+    color: #00ff00;
+    /* Bright Green */
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0 #000;
+    letter-spacing: 2px;
+    /* Simulate the grunge/distressed look if possible, otherwise clean bold */
+}
+
+.mobile-menu-btn {
+    background: white;
+    color: #333;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    display: flex;
+    /* Always show if mirroring layout? Or hidden desktop? Img shows it. */
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* 3. Product Nav Bar (White) */
+.product-nav-bar {
+    background-color: white;
+    border-bottom: 2px solid #eee;
+    padding: 0;
+    display: none;
+    /* Hidden on mobile by default, shown on desktop */
+}
+
+@media (min-width: 992px) {
+    .product-nav-bar {
+        display: block;
+    }
+
+    .mobile-menu-btn {
+        display: none;
+        /* Hide hamburger on desktop if we have the full menu? 
+                          Wait, the screenshot HAS a hamburger AND the menu below. 
+                          The hamburger might be for "About", "Contact", etc. 
+                          I will keep it visible. */
+        display: flex;
+    }
+}
+
+.product-nav-list {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+.product-nav-item {
+    position: relative;
+}
+
+.product-nav-link {
+    display: block;
+    padding: 15px 15px;
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+    /* Heading font */
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.2s;
+    border-right: 1px solid #ddd;
+}
+
+.product-nav-item:last-child .product-nav-link {
+    border-right: none;
+}
+
+.product-nav-link:hover {
+    color: #d32f2f;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991px) {
+    .main-header-content {
+        justify-content: space-between;
+    }
+
+    .explore-more-text {
+        display: none;
+        /* Hide on small screens to save space */
+    }
+
+    .top-bar-contact span {
+        display: none;
+        /* Hide text, show icons maybe? */
+    }
+
+    .top-bar .container {
+        justify-content: center;
+    }
+
+    .top-bar-contact {
+        font-size: 0.7rem;
+        gap: 10px;
+    }
+}
+
+/* =========================================
+   SLIDE-OUT MENU
+   ========================================= */
+
+/* Overlay behind the menu */
+.slide-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.slide-menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Slide-out panel */
+.slide-menu {
+    position: fixed;
+    top: 0;
+    right: -320px;
+    width: 300px;
+    height: 100%;
+    background: #1a1a1a;
+    z-index: 1999;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+}
+
+.slide-menu.active {
+    right: 0;
+}
+
+/* Menu Header */
+.slide-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #333;
+    background: #111;
+}
+
+.slide-menu-logo img {
+    height: 40px;
+    width: auto;
+}
+
+.slide-menu-close {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.slide-menu-close:hover {
+    color: #d32f2f;
+    transform: rotate(90deg);
+}
+
+/* Menu Links */
+.slide-menu-links {
+    flex: 1;
+    padding: 20px 0;
+    overflow-y: auto;
+}
+
+.slide-menu-link {
+    display: block;
+    padding: 16px 25px;
+    color: #e0e0e0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 1px solid #2a2a2a;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.slide-menu-link:hover {
+    background: #2a2a2a;
+    color: #d32f2f;
+    padding-left: 35px;
+}
+
+.slide-menu-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background: #d32f2f;
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.slide-menu-link:hover::before {
+    transform: scaleY(1);
+}
+
+/* Menu Footer */
+.slide-menu-footer {
+    padding: 20px;
+    border-top: 1px solid #333;
+    background: #111;
+}
+
+.slide-menu-social {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.slide-menu-social a {
+    color: #999;
+    font-size: 1.3rem;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.slide-menu-social a:hover {
+    color: #d32f2f;
+    transform: scale(1.2);
+}
+
+/* Body state when menu is open */
+body.slide-menu-open {
+    overflow: hidden;
+}
+
+/* =========================================
+   HOMEPAGE REDESIGN (MCC Style)
+   ========================================= */
+
+/* Hero Slider */
+.hero-slider-section {
+    position: relative;
+    height: 70vh;
+    min-height: 500px;
+    overflow: hidden;
+}
+
+.hero-slider-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.hero-slide {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: none;
+}
+
+.hero-slide.active {
+    display: block;
+}
+
+.hero-slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-slide-content {
+    position: absolute;
+    bottom: 80px;
+    left: 80px;
+    color: white;
+    z-index: 2;
+}
+
+.hero-slide-content h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.hero-slide-content p {
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.hero-slider-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 3;
+}
+
+.hero-slider-dots .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hero-slider-dots .dot.active {
+    background: white;
+    width: 40px;
+    border-radius: 6px;
+}
+
+/* Product Category Cards */
+.product-category-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    display: block;
+    text-decoration: none;
+}
+
+.product-category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.product-category-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-category-card:hover img {
+    transform: scale(1.05);
+}
+
+.product-category-card h3 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-slide-content {
+        left: 30px;
+        bottom: 50px;
+    }
+
+    .hero-slide-content h2 {
+        font-size: 2rem;
+    }
+
+    .hero-slide-content p {
+        font-size: 1.2rem;
+    }
+
+    section[style*="grid-template-columns: 1fr 1fr"]>div>div {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+    }
+
+    .product-category-card img {
+        height: 200px;
+    }
+}

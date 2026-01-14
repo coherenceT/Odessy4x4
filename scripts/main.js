@@ -2,59 +2,672 @@
    1. DATA SOURCE
    ========================================= */
 const products = [
+    // FRONT BUMPERS
     {
         id: 1,
         name: "Odyssey Adventure Bumper - Front",
-        category: "bumpers",
+        category: "front-bumpers",
         brand: "ford",
         price: 18500,
         image: "assets/images/Adventure Bumper - Front.jpg",
-        description: "Heavy duty steel front bumper with winch plate."
+        stock: "in-stock",
+        partNumber: "OD-FB-001",
+        description: "Heavy duty steel front bumper with integrated winch plate and LED light mounts.",
+        features: [
+            "3mm steel construction",
+            "Winch plate rated for up to 12,000 lbs",
+            "Integrated LED light mounts",
+            "Powder-coated finish",
+            "Recovery point rated 4.75 ton"
+        ],
+        specifications: {
+            material: "3mm Steel",
+            weight: "45kg",
+            finish: "Black Powder Coat",
+            warranty: "2 Years"
+        }
     },
     {
         id: 2,
         name: "Odyssey Stealth Bumper - Rear",
-        category: "bumpers",
+        category: "stealth-rear-bumpers",
         brand: "toyota",
         price: 16500,
         image: "assets/images/Odyssey Stealth Bumper - Rear.jpg",
-        description: "High clearance rear bumper with swing arm capability."
+        stock: "in-stock",
+        partNumber: "OD-RB-002",
+        description: "High clearance rear bumper with swing arm capability and integrated jerry can holders.",
+        features: [
+            "High departure angle design",
+            "Swing arm compatible",
+            "Dual jerry can holders",
+            "Integrated tow points",
+            "LED light bar ready"
+        ],
+        specifications: {
+            material: "3mm Steel",
+            weight: "52kg",
+            finish: "Black Powder Coat",
+            warranty: "2 Years"
+        }
     },
     {
         id: 3,
-        name: "Expedition Roof Rack",
-        category: "roof-racks",
-        brand: "ford",
-        price: 12000,
-        image: "assets/images/Expedition Roof Rack.jpg",
-        description: "Aluminum low-profile roof rack for maximum storage."
+        name: "Tactical Front Bumper - Hilux",
+        category: "front-bumpers",
+        brand: "toyota",
+        price: 19500,
+        image: "assets/images/bumper-placeholder.jpg",
+        stock: "in-stock",
+        partNumber: "OD-FB-003",
+        description: "Premium front bumper designed specifically for Toyota Hilux with integrated bash plate.",
+        features: [
+            "Vehicle-specific fitment",
+            "Integrated bash plate",
+            "Fog light cut-outs",
+            "Tow hooks included",
+            "Modular design"
+        ],
+        specifications: {
+            material: "3mm Steel",
+            weight: "48kg",
+            finish: "Black Powder Coat",
+            warranty: "2 Years"
+        }
     },
+
+    // TOW BARS
     {
         id: 4,
-        name: "Heavy Duty Rock Sliders",
-        category: "rock-sliders",
-        brand: "isuzu",
-        price: 8500,
-        image: "assets/images/Heavy Duty Rock Sliders.jpg",
-        description: "Protect your sill panels with these robust sliders."
+        name: "Heavy Duty Tow Bar - 3500kg",
+        category: "tow-bars",
+        brand: "universal",
+        price: 4500,
+        image: "assets/images/placeholder.jpg",
+        stock: "in-stock",
+        partNumber: "OD-TB-001",
+        description: "Professional grade tow bar rated for 3500kg towing capacity.",
+        features: [
+            "3500kg towing capacity",
+            "350kg ball weight",
+            "7-pin connector included",
+            "Corrosion resistant coating",
+            "Easy bolt-on installation"
+        ],
+        specifications: {
+            towingCapacity: "3500kg",
+            ballWeight: "350kg",
+            finish: "Galvanized",
+            warranty: "3 Years"
+        }
     },
     {
         id: 5,
+        name: "Commercial Tow Bar - 4000kg",
+        category: "tow-bars",
+        brand: "universal",
+        price: 5500,
+        image: "assets/images/placeholder.jpg",
+        stock: "in-stock",
+        partNumber: "OD-TB-002",
+        description: "Commercial grade heavy duty tow bar for maximum towing performance.",
+        features: [
+            "4000kg towing capacity",
+            "400kg ball weight",
+            "Reinforced construction",
+            "13-pin connector option",
+            "Lifetime structural warranty"
+        ],
+        specifications: {
+            towingCapacity: "4000kg",
+            ballWeight: "400kg",
+            finish: "Black Powder Coat",
+            warranty: "Lifetime"
+        }
+    },
+
+    // ROOF RACKS
+    {
+        id: 6,
+        name: "Expedition Roof Rack",
+        category: "roof-racks",
+        brand: "universal",
+        price: 12000,
+        image: "assets/images/Expedition Roof Rack.jpg",
+        stock: "in-stock",
+        partNumber: "OD-RR-001",
+        description: "Aluminum low-profile roof rack for maximum storage with full-length platform.",
+        features: [
+            "Full-length platform design",
+            "200kg load capacity",
+            "Wind deflector included",
+            "Multiple tie-down points",
+            "LED light bar compatible"
+        ],
+        specifications: {
+            material: "Aluminum",
+            loadCapacity: "200kg",
+            dimensions: "2200mm x 1250mm",
+            warranty: "3 Years"
+        }
+    },
+    {
+        id: 7,
+        name: "Slimline Roof Rack II",
+        category: "roof-racks",
+        brand: "universal",
+        price: 9500,
+        image: "assets/images/product-7.jpg",
+        stock: "in-stock",
+        partNumber: "OD-FB-003",
+        description: "Premium front bumper designed specifically for Toyota Hilux with integrated bash plate.",
+        features: [
+            "Vehicle-specific fitment",
+            "Integrated bash plate",
+            "Fog light cut-outs",
+            "Tow hooks included",
+            "Modular design"
+        ],
+        specifications: {
+            material: "3mm Steel",
+            weight: "48kg",
+            finish: "Black Powder Coat",
+            warranty: "2 Years"
+        }
+    },
+
+    // TOW BARS
+    {
+        id: 4,
+        name: "Heavy Duty Tow Bar - 3500kg",
+        category: "tow-bars",
+        brand: "universal",
+        price: 4500,
+        image: "assets/images/placeholder.jpg",
+        stock: "in-stock",
+        partNumber: "OD-TB-001",
+        description: "Professional grade tow bar rated for 3500kg towing capacity.",
+        features: [
+            "3500kg towing capacity",
+            "350kg ball weight",
+            "7-pin connector included",
+            "Corrosion resistant coating",
+            "Easy bolt-on installation"
+        ],
+        specifications: {
+            towingCapacity: "3500kg",
+            ballWeight: "350kg",
+            finish: "Galvanized",
+            warranty: "3 Years"
+        }
+    },
+    {
+        id: 5,
+        name: "Commercial Tow Bar - 4000kg",
+        category: "tow-bars",
+        brand: "universal",
+        price: 5500,
+        image: "assets/images/placeholder.jpg",
+        stock: "in-stock",
+        partNumber: "OD-TB-002",
+        description: "Commercial grade heavy duty tow bar for maximum towing performance.",
+        features: [
+            "4000kg towing capacity",
+            "400kg ball weight",
+            "Reinforced construction",
+            "13-pin connector option",
+            "Lifetime structural warranty"
+        ],
+        specifications: {
+            towingCapacity: "4000kg",
+            ballWeight: "400kg",
+            finish: "Black Powder Coat",
+            warranty: "Lifetime"
+        }
+    },
+
+    // ROOF RACKS
+    {
+        id: 6,
+        name: "Expedition Roof Rack",
+        category: "roof-racks",
+        brand: "universal",
+        price: 12000,
+        image: "assets/images/Expedition Roof Rack.jpg",
+        stock: "in-stock",
+        partNumber: "OD-RR-001",
+        description: "Aluminum low-profile roof rack for maximum storage with full-length platform.",
+        features: [
+            "Full-length platform design",
+            "200kg load capacity",
+            "Wind deflector included",
+            "Multiple tie-down points",
+            "LED light bar compatible"
+        ],
+        specifications: {
+            material: "Aluminum",
+            loadCapacity: "200kg",
+            dimensions: "2200mm x 1250mm",
+            warranty: "3 Years"
+        }
+    },
+    {
+        id: 7,
+        name: "Slimline Roof Rack II",
+        category: "roof-racks",
+        brand: "universal",
+        price: 9500,
+        image: "assets/images/product-7.jpg",
+        stock: "in-stock",
+        partNumber: "OD-RR-002",
+        description: "Compact slimline design perfect for daily driving with adventure capability.",
+        features: [
+            "Low-profile aerodynamic design",
+            "150kg load capacity",
+            "Quick-release accessories",
+            "Integrated rail system",
+            "Solar panel ready"
+        ],
+        specifications: {
+            material: "Aluminum",
+            loadCapacity: "150kg",
+            dimensions: "1800mm x 1250mm",
+            warranty: "3 Years"
+        }
+    },
+
+    // ROCK SLIDERS
+    {
+        id: 8,
+        name: "Heavy Duty Rock Sliders",
+        category: "rock-sliders",
+        brand: "universal",
+        price: 8500,
+        image: "assets/images/Heavy Duty Rock Sliders.jpg",
+        stock: "in-stock",
+        partNumber: "OD-RS-001",
+        description: "Protect your vehicle's sills with these heavy-duty rock sliders with kick-out step.",
+        features: [
+            "60x60mm tubing",
+            "Kick-out step design",
+            "Chassis mounted",
+            "Powder-coated finish",
+            "Pair included"
+        ],
+        specifications: {
+            material: "Steel Tube",
+            tubeSize: "60x60mm",
+            finish: "Black Powder Coat",
+            warranty: "2 Years"
+        }
+    },
+    {
+        id: 9,
+        name: "Competition Rock Sliders",
+        category: "rock-sliders",
+        brand: "universal",
+        price: 10500,
+        image: "assets/images/product-9.jpg",
+        stock: "in-stock",
+        partNumber: "OD-RS-002",
+        description: "Competition-grade rock sliders for extreme off-road protection.",
+        features: [
+            "75x75mm heavy duty tubing",
+            "Tree bar integration points",
+            "Full underside protection",
+            "Reinforced mounting brackets",
+            "Jack points integrated"
+        ],
+        specifications: {
+            material: "Steel Tube",
+            tubeSize: "75x75mm",
+            finish: "Black Powder Coat",
+            warranty: "3 Years"
+        }
+    },
+
+    // DRAWER SYSTEMS
+    {
+        id: 10,
         name: "Odyssey Drawer System",
         category: "drawer-systems",
         brand: "universal",
         price: 14500,
         image: "assets/images/Odyssey Drawer System.jpg",
-        description: "Secure storage solution with carpeted finish."
+        stock: "in-stock",
+        partNumber: "OD-DS-001",
+        description: "Premium dual drawer storage system with carpeted finish and integrated fridge slide.",
+        features: [
+            "Dual drawer configuration",
+            "Heavy-duty roller slides",
+            "Integrated fridge slide area",
+            "Carpeted top surface",
+            "Lockable drawers"
+        ],
+        specifications: {
+            material: "Marine Ply & Aluminum",
+            drawerLoad: "80kg per drawer",
+            dimensions: "1200mm x 1000mm",
+            warranty: "2 Years"
+        }
     },
     {
-        id: 6,
+        id: 11,
+        name: "Compact Storage System",
+        category: "drawer-systems",
+        brand: "universal",
+        price: 9500,
+        image: "assets/images/product-11.jpg",
+        stock: "in-stock",
+        partNumber: "OD-DS-002",
+        description: "Compact single drawer system ideal for smaller vehicles or weekend adventures.",
+        features: [
+            "Single large drawer",
+            "Modular design",
+            "Easy installation",
+            "Water-resistant construction",
+            "Tie-down points on top"
+        ],
+        specifications: {
+            material: "Marine Ply",
+            drawerLoad: "60kg",
+            dimensions: "900mm x 1000mm",
+            warranty: "2 Years"
+        }
+    },
+
+    // FRIDGE SLIDES
+    {
+        id: 12,
         name: "Fridge Slide - 60L",
         category: "fridge-slides",
         brand: "universal",
         price: 3500,
         image: "assets/images/Fridge Slide - 60L.jpg",
-        description: "Easy access to your fridge with heavy duty slides."
+        stock: "in-stock",
+        partNumber: "OD-FS-001",
+        description: "Heavy duty fridge slide for fridges up to 60L with smooth glide action.",
+        features: [
+            "Suits fridges up to 60L",
+            "100kg load capacity",
+            "Stainless steel runners",
+            "Lockable in position",
+            "Drop-down front option"
+        ],
+        specifications: {
+            capacity: "60L Fridge",
+            loadCapacity: "100kg",
+            extension: "100% extension",
+            warranty: "3 Years"
+        }
+    },
+    {
+        id: 13,
+        name: "Heavy Duty Fridge Slide - 90L",
+        category: "fridge-slides",
+        brand: "universal",
+        price: 4500,
+        image: "assets/images/product-13.jpg",
+        stock: "in-stock",
+        partNumber: "OD-FS-002",
+        description: "Premium fridge slide designed for larger fridges up to 90L.",
+        features: [
+            "Suits fridges up to 90L",
+            "120kg load capacity",
+            "Heavy-duty construction",
+            "Full extension design",
+            "Weatherproof sealed bearings"
+        ],
+        specifications: {
+            capacity: "90L Fridge",
+            loadCapacity: "120kg",
+            extension: "100% extension",
+            warranty: "3 Years"
+        }
+    },
+
+    // WHEELS
+    {
+        id: 14,
+        name: "Odyssey Alloy Wheels - 17\"",
+        category: "wheels",
+        brand: "universal",
+        price: 12000,
+        image: "assets/images/product-14.jpg",
+        stock: "in-stock",
+        partNumber: "OD-WH-001",
+        description: "Rugged 17-inch alloy wheels with aggressive styling and superior strength.",
+        features: [
+            "17x9 inch dimensions",
+            "6x139.7 PCD (Toyota/Isuzu)",
+            "Matte black finish",
+            "Load rated 1250kg",
+            "Set of 4 wheels"
+        ],
+        specifications: {
+            size: "17x9",
+            pcd: "6x139.7",
+            offset: "-12",
+            warranty: "2 Years"
+        }
+    },
+    {
+        id: 15,
+        name: "Odyssey Steel Wheels - 16\"",
+        category: "wheels",
+        brand: "universal",
+        price: 6500,
+        image: "assets/images/product-14.jpg",
+        stock: "in-stock",
+        partNumber: "OD-WH-002",
+        description: "Durable steel wheels perfect for serious off-road adventures.",
+        features: [
+            "16x8 inch dimensions",
+            "5x114.3 PCD (Ford Ranger)",
+            "Black powder coat",
+            "Load rated 1400kg",
+            "Set of 4 wheels"
+        ],
+        specifications: {
+            size: "16x8",
+            pcd: "5x114.3",
+            offset: "0",
+            warranty: "3 Years"
+        }
+    },
+
+    // ACCESSORIES
+    {
+        id: 16,
+        name: "Recovery Kit - Professional",
+        category: "accessories",
+        brand: "universal",
+        price: 3500,
+        image: "assets/images/product-16.jpg",
+        stock: "in-stock",
+        partNumber: "OD-AC-001",
+        description: "Complete recovery kit with snatch strap, shackles, and tree protector.",
+        features: [
+            "9m x 75mm snatch strap (8000kg)",
+            "2x bow shackles (4.75 ton)",
+            "Tree protector strap",
+            "Recovery damper",
+            "Heavy-duty carry bag"
+        ],
+        specifications: {
+            strapRating: "8000kg",
+            shackleRating: "4.75 ton",
+            warranty: "1 Year"
+        }
+    },
+    {
+        id: 17,
+        name: "Awning - 270° Wrap Around",
+        category: "accessories",
+        brand: "universal",
+        price: 15500,
+        image: "assets/images/product-16.jpg",
+        stock: "in-stock",
+        partNumber: "OD-AC-002",
+        description: "Premium 270-degree awning providing maximum shade coverage.",
+        features: [
+            "270° coverage",
+            "2.5m x 2.5m coverage area",
+            "Ripstop canvas (300gsm)",
+            "Quick setup",
+            "Includes mounting brackets"
+        ],
+        specifications: {
+            coverage: "270 degrees",
+            size: "2.5m x 2.5m",
+            material: "Ripstop Canvas",
+            warranty: "2 Years"
+        }
+    },
+    {
+        id: 18,
+        name: "Dual Battery System",
+        category: "accessories",
+        brand: "universal",
+        price: 8500,
+        image: "assets/images/product-16.jpg",
+        stock: "in-stock",
+        partNumber: "OD-AC-003",
+        description: "Complete dual battery system with smart isolator and mounting tray.",
+        features: [
+            "Smart voltage sensing isolator",
+            "100Ah AGM battery included",
+            "Battery tray and hold-down",
+            "Complete wiring kit",
+            "Mounting hardware included"
+        ],
+        specifications: {
+            batteryType: "AGM 100Ah",
+            isolatorType: "Voltage Sensing",
+            warranty: "2 Years"
+        }
+    },
+
+    // LIGHTING
+    {
+        id: 19,
+        name: "LED Light Bar - 32\"",
+        category: "lighting",
+        brand: "universal",
+        price: 4500,
+        image: "assets/images/product-19.jpg",
+        stock: "in-stock",
+        partNumber: "OD-LT-001",
+        description: "High-output 32-inch LED light bar with combo beam pattern.",
+        features: [
+            "180W power output",
+            "Combo beam (spot/flood)",
+            "IP68 waterproof rating",
+            "18,000 lumens",
+            "Wiring harness included"
+        ],
+        specifications: {
+            power: "180W",
+            lumens: "18000",
+            beamPattern: "Combo",
+            warranty: "3 Years"
+        }
+    },
+    {
+        id: 20,
+        name: "LED Spot Lights - Pair",
+        category: "lighting",
+        brand: "universal",
+        price: 3500,
+        image: "assets/images/product-19.jpg",
+        stock: "in-stock",
+        partNumber: "OD-LT-002",
+        description: "Premium LED spot lights for long-distance illumination.",
+        features: [
+            "60W per light (120W total)",
+            "Spot beam pattern",
+            "5000 lumens per light",
+            "Adjustable mounting brackets",
+            "Complete wiring kit"
+        ],
+        specifications: {
+            power: "60W each",
+            lumens: "5000 each",
+            beamPattern: "Spot",
+            warranty: "3 Years"
+        }
+    },
+    {
+        id: 21,
+        name: "Camp Light Kit - LED",
+        category: "lighting",
+        brand: "universal",
+        price: 2500,
+        image: "assets/images/product-19.jpg",
+        stock: "in-stock",
+        partNumber: "OD-LT-003",
+        description: "Versatile LED camp lighting kit with remote control.",
+        features: [
+            "5m LED strip",
+            "Remote control operation",
+            "Dimmable functionality",
+            "Multiple color modes",
+            "12V powered"
+        ],
+        specifications: {
+            length: "5 meters",
+            power: "24W",
+            voltage: "12V DC",
+            warranty: "1 Year"
+        }
+    },
+
+    // ADDITIONAL PRODUCTS
+    {
+        id: 22,
+        name: "Snorkel Kit - Safari",
+        category: "accessories",
+        brand: "toyota",
+        price: 6500,
+        image: "assets/images/product-16.jpg",
+        stock: "in-stock",
+        partNumber: "OD-AC-004",
+        description: "Safari snorkel kit for improved air intake and water crossing capability.",
+        features: [
+            "Raised air intake",
+            "UV-stable polyethylene",
+            "Easy installation",
+            "Pre-cleaner head",
+            "Vehicle specific fitment"
+        ],
+        specifications: {
+            material: "UV-Stable Polyethylene",
+            color: "Black",
+            warranty: "2 Years"
+        }
+    },
+    {
+        id: 23,
+        name: "Differential Breather Kit",
+        category: "accessories",
+        brand: "universal",
+        price: 1500,
+        image: "assets/images/product-16.jpg",
+        stock: "in-stock",
+        partNumber: "OD-AC-005",
+        description: "Extended differential breather kit preventing water ingress during crossings.",
+        features: [
+            "Extended breather lines",
+            "Check valve protection",
+            "Filter included",
+            "Universal fitment",
+            "Easy DIY installation"
+        ],
+        specifications: {
+            lineLength: "2 meters",
+            material: "Reinforced Hose",
+            warranty: "1 Year"
+        }
     }
 ];
 
@@ -97,16 +710,23 @@ function renderProducts(items) {
 
     productGrid.innerHTML = items.map(product => `
         <div class="product-card">
-            <div class="product-image">
-                <img src="${product.image}" alt="${product.name}">
-            </div>
-            <div class="product-info">
-                <span class="product-category">${formatCategory(product.category)}</span>
-                <h3 class="product-title">${product.name}</h3>
-                <p class="product-price">R ${product.price.toLocaleString()}</p>
-                <button class="btn btn-primary btn-block" onclick="addToCart(${product.id})">
-                    ADD TO CART
-                </button>
+            <button class="wishlist-btn ${isInWishlist(product.id) ? 'active' : ''}" onclick="toggleWishlist(${product.id})" aria-label="Add to favorites">
+                <i class="fas fa-heart"></i>
+            </button>
+            <a href="product-${product.id}.html" style="text-decoration: none; color: inherit;">
+                <div class="product-image">
+                    <img src="${product.image}" alt="${product.name}" onerror="this.src='assets/images/placeholder.jpg'">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">${formatCategory(product.category)}</span>
+                    <h3 class="product-title">${product.name}</h3>
+                    <p class="product-price">R ${product.price.toLocaleString()}</p>
+                </div>
+            </a>
+            <div style="padding: 0 var(--spacing-sm) var(--spacing-sm);">
+                <a href="product-${product.id}.html" class="btn btn-primary btn-block" style="display: block; text-align: center; text-decoration: none;">
+                    VIEW DETAILS
+                </a>
             </div>
         </div>
     `).join('');
@@ -164,14 +784,32 @@ window.addToCart = (id) => {
 };
 
 window.toggleWishlist = (id) => {
+    const product = products.find(p => p.id === id);
     const index = wishlist.indexOf(id);
+
     if (index === -1) {
         wishlist.push(id);
+        showToast(`${product.name} added to favorites!`, 'success');
     } else {
         wishlist.splice(index, 1);
+        showToast(`${product.name} removed from favorites`, 'info');
     }
+
     localStorage.setItem('odyssey_wishlist', JSON.stringify(wishlist));
-    renderProducts(products); // Re-render to update heart icon
+
+    // Re-render to update heart icon
+    const currentProducts = productGrid ? Array.from(productGrid.children).length : 0;
+    if (currentProducts > 0) {
+        // Get current filtered products or all products
+        let filtered = products;
+        if (currentCategory !== 'all') {
+            filtered = filtered.filter(p => p.category === currentCategory);
+        }
+        if (currentBrand !== 'all') {
+            filtered = filtered.filter(p => p.brand === currentBrand || p.brand === 'universal');
+        }
+        renderProducts(filtered);
+    }
 };
 
 function isInWishlist(id) {
@@ -201,35 +839,53 @@ document.addEventListener('DOMContentLoaded', () => {
     init();
     startHeroSlider();
 
-    // Mobile Menu Toggle with Animation
+    // Slide-Out Menu Toggle
     const mobileBtn = document.querySelector('.mobile-toggle');
-    const navMenu = document.querySelector('.nav-menu');
+    const slideMenu = document.getElementById('slide-menu');
+    const slideMenuOverlay = document.getElementById('slide-menu-overlay');
+    const slideMenuClose = document.getElementById('slide-menu-close');
 
-    if (mobileBtn && navMenu) {
-        mobileBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            mobileBtn.classList.toggle('active');
-            document.body.classList.toggle('menu-open');
-        });
+    function openSlideMenu() {
+        if (slideMenu && slideMenuOverlay) {
+            slideMenu.classList.add('active');
+            slideMenuOverlay.classList.add('active');
+            document.body.classList.add('slide-menu-open');
+        }
+    }
 
-        // Close menu when clicking on a link
-        navMenu.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                mobileBtn.classList.remove('active');
-                document.body.classList.remove('menu-open');
-            });
-        });
+    function closeSlideMenu() {
+        if (slideMenu && slideMenuOverlay) {
+            slideMenu.classList.remove('active');
+            slideMenuOverlay.classList.remove('active');
+            document.body.classList.remove('slide-menu-open');
+        }
+    }
 
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!navMenu.contains(e.target) && !mobileBtn.contains(e.target) && navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
-                mobileBtn.classList.remove('active');
-                document.body.classList.remove('menu-open');
-            }
+    if (mobileBtn) {
+        mobileBtn.addEventListener('click', openSlideMenu);
+    }
+
+    if (slideMenuClose) {
+        slideMenuClose.addEventListener('click', closeSlideMenu);
+    }
+
+    if (slideMenuOverlay) {
+        slideMenuOverlay.addEventListener('click', closeSlideMenu);
+    }
+
+    // Close menu when clicking a link
+    if (slideMenu) {
+        slideMenu.querySelectorAll('.slide-menu-link').forEach(link => {
+            link.addEventListener('click', closeSlideMenu);
         });
     }
+
+    // Close menu on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && slideMenu && slideMenu.classList.contains('active')) {
+            closeSlideMenu();
+        }
+    });
 
     // Popup Logic - Lead Gen
     setTimeout(() => {
@@ -299,7 +955,7 @@ window.checkout = () => {
 
     const total = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
     const message = `Hi! I'd like to purchase the following items:\n\n${cart.map(item => `- ${item.name} x${item.quantity || 1} (R ${(item.price * (item.quantity || 1)).toLocaleString()})`).join('\n')}\n\nTotal: R ${total.toLocaleString()}`;
-    const whatsappUrl = `https://wa.me/27794030817?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/27219812415?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
 };
 
@@ -461,7 +1117,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const message = whatsappForm.querySelector('textarea').value;
 
             const whatsappMessage = `Hi! I'm ${name}\n\nMessage:\n${message}`;
-            const whatsappUrl = `https://wa.me/27794030817?text=${encodeURIComponent(whatsappMessage)}`;
+            const whatsappUrl = `https://wa.me/27219812415?text=${encodeURIComponent(whatsappMessage)}`;
 
             window.open(whatsappUrl, '_blank');
             showToast('Opening WhatsApp...', 'success');
@@ -481,7 +1137,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const subject = `Contact Form: Message from ${name}`;
             const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
-            const mailtoUrl = `mailto:sales@odyssey4x4.co.za?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            const mailtoUrl = `mailto:info@odysey-x.co.za?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
             window.location.href = mailtoUrl;
             showToast('Opening email client...', 'success');
