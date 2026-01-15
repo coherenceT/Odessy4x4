@@ -54,15 +54,31 @@
                     <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4 Logo" style="border-radius: 4px;">
                 </a>
 
-                <!-- Explore More Text (Center) -->
-                <div class="explore-more-text">
-                    EXPLORE MORE!
+                <!-- Search Bar (Center) -->
+                <div class="header-search-container">
+                    <input type="text" id="search-input" placeholder="Search products..." class="header-search-input">
+                    <i class="fas fa-search header-search-icon"></i>
+                    <div id="search-results" class="search-results"></div>
                 </div>
 
-                <!-- Hamburger Menu (Right) -->
-                <button class="mobile-menu-btn mobile-toggle" aria-label="Toggle menu">
-                    <i class="fas fa-bars"></i>
-                </button>
+                <!-- Header Actions (Right) -->
+                <div class="header-actions">
+                    <a href="favorites.html" class="header-action-btn" title="Favorites">
+                        <i class="fas fa-heart"></i>
+                        <span class="header-action-text">Favorites</span>
+                    </a>
+                    <a href="login.html" class="header-action-btn" title="Login">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span class="header-action-text">Login</span>
+                    </a>
+                    <a href="register.html" class="header-action-btn header-action-btn-primary" title="Create Account">
+                        <i class="fas fa-user-plus"></i>
+                        <span class="header-action-text">Sign Up</span>
+                    </a>
+                    <button class="mobile-menu-btn mobile-toggle" aria-label="Toggle menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -73,15 +89,19 @@
                     <li class="product-nav-item"><a href="index.html" class="product-nav-link">Home</a></li>
                     <li class="product-nav-item"><a href="category-front-bumpers.html" class="product-nav-link">Front
                             Bumpers</a></li>
-                    <li class="product-nav-item"><a href="category-rear-bumpers-carrier.html" class="product-nav-link">Rear Bumpers
+                    <li class="product-nav-item"><a href="category-rear-bumpers-carrier.html"
+                            class="product-nav-link">Rear Bumpers
                             Carrier Compatible</a></li>
-                    <li class="product-nav-item"><a href="category-carrier-options.html" class="product-nav-link">Carrier
+                    <li class="product-nav-item"><a href="category-carrier-options.html"
+                            class="product-nav-link">Carrier
                             Options</a></li>
-                    <li class="product-nav-item"><a href="category-stealth-bumpers.html" class="product-nav-link">Stealth Rear
+                    <li class="product-nav-item"><a href="category-stealth-bumpers.html"
+                            class="product-nav-link">Stealth Rear
                             Bumpers</a></li>
                     <li class="product-nav-item"><a href="category-rock-sliders.html"
                             class="product-nav-link">Rocksliders</a></li>
-                    <li class="product-nav-item"><a href="category-underbody-protection.html" class="product-nav-link">Underbody
+                    <li class="product-nav-item"><a href="category-underbody-protection.html"
+                            class="product-nav-link">Underbody
                             Protection</a></li>
                     <li class="product-nav-item"><a href="category-drawer-systems.html" class="product-nav-link">Storage
                             Solutions</a></li>
@@ -254,11 +274,11 @@
             <h2 style="text-align: center; margin-bottom: 50px; font-size: 2.5rem; color: var(--color-primary);">
                 PRODUCTS</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
-                <a href="category-bumpers.html" class="product-category-card">
+                <a href="category-front-bumpers.html" class="product-category-card">
                     <img src="assets/images/front-bumpers.jpg" alt="Front Bumpers">
                     <h3>Front Bumpers</h3>
                 </a>
-                <a href="category-bumpers.html" class="product-category-card">
+                <a href="category-rear-bumpers-carrier.html" class="product-category-card">
                     <img src="assets/images/rear-bumpers.jpg" alt="Rear Bumpers">
                     <h3>Rear Bumpers</h3>
                 </a>
@@ -266,7 +286,7 @@
                     <img src="assets/images/rocksliders.jpg" alt="Rocksliders">
                     <h3>Rocksliders</h3>
                 </a>
-                <a href="category-accessories.html" class="product-category-card">
+                <a href="category-underbody-protection.html" class="product-category-card">
                     <img src="assets/images/underbody-protection.jpg" alt="Underbody Protection">
                     <h3>Underbody Protection</h3>
                 </a>
@@ -569,11 +589,13 @@
         </div>
     </div>
 
-    <!-- WIDGETS -->
-    <div class="whatsapp-widget">
-        <a href="https://wa.me/27219812415?text=Hi!%20I%27d%20like%20to%20chat.%20I%20came%20from%20the%20Odyssey%204x4%20website."
-            target="_blank" class="pulsating-logo">
-            <i class="fab fa-whatsapp"></i>
+    <!-- CONTACT WIDGET -->
+    <div class="contact-widget">
+        <a href="index.html#contact" class="contact-widget-link">
+            <div class="contact-widget-logo">
+                <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4">
+            </div>
+            <div class="contact-widget-text">Contact Us</div>
         </a>
     </div>
 

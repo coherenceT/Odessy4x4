@@ -1344,3 +1344,229 @@ a {
 .cart-item-remove i {
     font-size: 0.9rem;
 }
+/* =========================================
+   MOBILE OPTIMIZATION ENHANCEMENTS
+   ========================================= */
+
+/* Ensure all sections are mobile-friendly */
+@media (max-width: 768px) {
+    /* Section padding adjustments */
+    .section-padding {
+        padding: 40px 0 !important;
+    }
+
+    /* Container padding */
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* Hero section */
+    .hero-slider-section {
+        height: 50vh;
+        min-height: 400px;
+    }
+
+    .hero-slide-content {
+        left: 30px;
+        bottom: 40px;
+    }
+
+    .hero-slide-content h2 {
+        font-size: 1.8rem !important;
+    }
+
+    .hero-slide-content p {
+        font-size: 1rem !important;
+    }
+
+    /* Grid layouts */
+    .grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    /* Product cards */
+    .product-card {
+        max-width: 100%;
+    }
+
+    /* Forms */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        font-size: 16px !important; /* Prevents zoom on iOS */
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 14px 24px;
+        font-size: 0.95rem;
+    }
+
+    /* Typography */
+    h1 {
+        font-size: 2rem !important;
+    }
+
+    h2 {
+        font-size: 1.75rem !important;
+    }
+
+    h3 {
+        font-size: 1.4rem !important;
+    }
+
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr !important;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .footer-col {
+        text-align: center !important;
+    }
+
+    .footer-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+
+    /* Contact section */
+    section[style*="grid-template-columns"] {
+        display: block !important;
+    }
+
+    section[style*="grid-template-columns"] > div {
+        margin-bottom: 30px;
+    }
+
+    /* About section grids */
+    div[style*="grid-template-columns: 1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Extra small screens */
+    .section-padding {
+        padding: 30px 0 !important;
+    }
+
+    .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    /* Hero */
+    .hero-slider-section {
+        height: 40vh;
+        min-height: 350px;
+    }
+
+    .hero-slide-content h2 {
+        font-size: 1.5rem !important;
+    }
+
+    .hero-slide-content p {
+        font-size: 0.9rem !important;
+    }
+
+    /* Typography */
+    h1 {
+        font-size: 1.75rem !important;
+    }
+
+    h2 {
+        font-size: 1.5rem !important;
+    }
+
+    h3 {
+        font-size: 1.2rem !important;
+    }
+
+    /* Product cards */
+    .product-title {
+        font-size: 1rem;
+    }
+
+    .product-price {
+        font-size: 1.1rem;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+
+    /* Modals */
+    .modal-content {
+        padding: 30px 20px;
+        margin: 20px;
+    }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+    /* Increase tap targets for touch devices */
+    .btn,
+    .header-action-btn,
+    .product-nav-link,
+    .slide-menu-link {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Remove hover effects on touch devices */
+    .product-card:hover {
+        transform: none;
+    }
+
+    .header-action-btn:hover {
+        background: transparent;
+    }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero-slider-section {
+        height: 70vh;
+    }
+
+    .main-header {
+        padding: 10px 0;
+    }
+
+    .header-logo img {
+        height: 45px;
+    }
+}
+
+/* Print styles */
+@media print {
+    .top-bar,
+    .product-nav-bar,
+    .slide-menu,
+    .contact-widget,
+    .header-actions,
+    .mobile-menu-btn,
+    footer {
+        display: none !important;
+    }
+
+    .main-header {
+        position: static !important;
+    }
+}

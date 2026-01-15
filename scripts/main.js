@@ -75,6 +75,150 @@ const products = [
             warranty: "2 Years"
         }
     },
+    {
+        id: 24,
+        name: "Premium Front Bumper - Ranger",
+        category: "front-bumpers",
+        brand: "ford",
+        price: 17500,
+        image: "assets/images/front-bumpers.jpg",
+        stock: "in-stock",
+        partNumber: "OD-FB-004",
+        description: "Rugged front bumper for Ford Ranger with integrated fog lights and recovery points.",
+        features: [
+            "Heavy duty construction",
+            "Integrated fog lights",
+            "Recovery points included",
+            "Winch compatible",
+            "ADR compliant"
+        ],
+        specifications: {
+            material: "3mm Steel",
+            weight: "42kg",
+            finish: "Black Powder Coat",
+            warranty: "2 Years"
+        }
+    },
+    {
+        id: 25,
+        name: "Expedition Front Bumper",
+        category: "front-bumpers",
+        brand: "universal",
+        price: 20500,
+        image: "assets/images/bull-bar-showcase.jpg",
+        stock: "in-stock",
+        partNumber: "OD-FB-005",
+        description: "Ultimate expedition-grade front bumper with maximum protection and functionality.",
+        features: [
+            "Maximum protection design",
+            "Multiple light mounting points",
+            "Heavy duty winch mount",
+            "Integrated bash plate",
+            "Premium finish"
+        ],
+        specifications: {
+            material: "4mm Steel",
+            weight: "55kg",
+            finish: "Black Powder Coat",
+            warranty: "3 Years"
+        }
+    },
+    {
+        id: 26,
+        name: "Rear Bumper with Tire Carrier",
+        category: "rear-bumpers-carrier",
+        brand: "universal",
+        price: 19500,
+        image: "assets/images/rear-bumpers.jpg",
+        stock: "in-stock",
+        partNumber: "OD-RBC-003",
+        description: "Heavy duty rear bumper with integrated tire carrier and jerry can holders.",
+        features: [
+            "Swing-out tire carrier",
+            "Dual jerry can mounts",
+            "LED light bar ready",
+            "Recovery points",
+            "Heavy duty construction"
+        ],
+        specifications: {
+            material: "3mm Steel",
+            weight: "65kg",
+            finish: "Black Powder Coat",
+            warranty: "2 Years"
+        }
+    },
+    {
+        id: 27,
+        name: "Expedition Rear Bumper System",
+        category: "rear-bumpers-carrier",
+        brand: "universal",
+        price: 22500,
+        image: "assets/images/Odyssey Stealth Bumper - Rear.jpg",
+        stock: "in-stock",
+        partNumber: "OD-RBC-004",
+        description: "Complete rear bumper system with carrier, storage, and recovery capabilities.",
+        features: [
+            "Full carrier system",
+            "Multiple storage options",
+            "Integrated recovery points",
+            "Modular design",
+            "Premium construction"
+        ],
+        specifications: {
+            material: "3mm Steel",
+            weight: "70kg",
+            finish: "Black Powder Coat",
+            warranty: "3 Years"
+        }
+    },
+    {
+        id: 28,
+        name: "Pro Series Rock Sliders",
+        category: "rock-sliders",
+        brand: "universal",
+        price: 9500,
+        image: "assets/images/rocksliders.jpg",
+        stock: "in-stock",
+        partNumber: "OD-RS-003",
+        description: "Professional grade rock sliders with integrated step and maximum protection.",
+        features: [
+            "65x65mm tubing",
+            "Integrated step design",
+            "Chassis mounted",
+            "Reinforced construction",
+            "Pair included"
+        ],
+        specifications: {
+            material: "Steel Tube",
+            tubeSize: "65x65mm",
+            finish: "Black Powder Coat",
+            warranty: "2 Years"
+        }
+    },
+    {
+        id: 29,
+        name: "Extreme Rock Sliders - Heavy Duty",
+        category: "rock-sliders",
+        brand: "universal",
+        price: 11500,
+        image: "assets/images/Heavy Duty Rock Sliders.jpg",
+        stock: "in-stock",
+        partNumber: "OD-RS-004",
+        description: "Extreme duty rock sliders for the most demanding off-road conditions.",
+        features: [
+            "80x80mm heavy tubing",
+            "Maximum protection",
+            "Reinforced mounting",
+            "Jack point integration",
+            "Lifetime warranty"
+        ],
+        specifications: {
+            material: "Steel Tube",
+            tubeSize: "80x80mm",
+            finish: "Black Powder Coat",
+            warranty: "Lifetime"
+        }
+    },
 
     // TOW BARS
     {
@@ -667,6 +811,254 @@ const products = [
             lineLength: "2 meters",
             material: "Reinforced Hose",
             warranty: "1 Year"
+        }
+    },
+
+    // UNDERBODY PROTECTION
+    {
+        id: 30,
+        name: "Front Underbody Skid Plate",
+        category: "underbody-protection",
+        brand: "universal",
+        price: 4500,
+        image: "assets/images/underbody-protection.jpg",
+        stock: "in-stock",
+        partNumber: "OD-UP-001",
+        description: "Heavy duty front underbody protection for engine and transmission.",
+        features: [
+            "3mm steel construction",
+            "Engine and gearbox protection",
+            "Easy bolt-on installation",
+            "Powder coated finish",
+            "Drainage holes included"
+        ],
+        specifications: {
+            material: "3mm Steel",
+            coverage: "Engine \u0026 Gearbox",
+            finish: "Black Powder Coat",
+            warranty: "2 Years"
+        }
+    },
+    {
+        id: 31,
+        name: "Differential Guard",
+        category: "underbody-protection",
+        brand: "universal",
+        price: 3500,
+        image: "assets/images/underbody-protection.jpg",
+        stock: "in-stock",
+        partNumber: "OD-UP-002",
+        description: "Protect your differential from rocks and obstacles.",
+        features: [
+            "Heavy duty steel",
+            "Bolt-on design",
+            "Fits front and rear diff",
+            "Reinforced construction",
+            "Black powder coat"
+        ],
+        specifications: {
+            material: "4mm Steel",
+            fitment: "Front/Rear Diff",
+            finish: "Black Powder Coat",
+            warranty: "2 Years"
+        }
+    },
+    {
+        id: 32,
+        name: "Transfer Case Guard",
+        category: "underbody-protection",
+        brand: "universal",
+        price: 2500,
+        image: "assets/images/underbody-protection.jpg",
+        stock: "in-stock",
+        partNumber: "OD-UP-003",
+        description: "Essential protection for your transfer case during off-road adventures.",
+        features: [
+            "3mm steel plate",
+            "Vehicle specific fitment",
+            "Quick installation",
+            "Drain plug access",
+            "Corrosion resistant"
+        ],
+        specifications: {
+            material: "3mm Steel",
+            coverage: "Transfer Case",
+            finish: "Black Powder Coat",
+            warranty: "2 Years"
+        }
+    },
+
+    // STORAGE SOLUTIONS
+    {
+        id: 33,
+        name: "Premium Drawer System",
+        category: "storage-solutions",
+        brand: "universal",
+        price: 14500,
+        image: "assets/images/storage-solutions.jpg",
+        stock: "in-stock",
+        partNumber: "OD-SS-001",
+        description: "Premium dual drawer storage system with carpeted finish.",
+        features: [
+            "Dual drawer configuration",
+            "Heavy-duty roller slides",
+            "Integrated fridge slide area",
+            "Carpeted top surface",
+            "Lockable drawers"
+        ],
+        specifications: {
+            material: "Marine Ply \u0026 Aluminum",
+            drawerLoad: "80kg per drawer",
+            dimensions: "1200mm x 1000mm",
+            warranty: "2 Years"
+        }
+    },
+    {
+        id: 34,
+        name: "Compact Storage Box",
+        category: "storage-solutions",
+        brand: "universal",
+        price: 5500,
+        image: "assets/images/storage-solutions.jpg",
+        stock: "in-stock",
+        partNumber: "OD-SS-002",
+        description: "Compact storage solution perfect for tools and recovery gear.",
+        features: [
+            "Weatherproof construction",
+            "Lockable lid",
+            "Tie-down points",
+            "Removable dividers",
+            "UV resistant"
+        ],
+        specifications: {
+            material: "Heavy Duty Plastic",
+            capacity: "120L",
+            dimensions: "800mm x 600mm x 400mm",
+            warranty: "2 Years"
+        }
+    },
+
+    // STEALTH BUMPERS
+    {
+        id: 35,
+        name: "Stealth Rear Bumper - Standard",
+        category: "stealth-bumpers",
+        brand: "universal",
+        price: 16500,
+        image: "assets/images/Odyssey Stealth Bumper - Rear.jpg",
+        stock: "in-stock",
+        partNumber: "OD-SB-001",
+        description: "High clearance stealth rear bumper with integrated recovery points.",
+        features: [
+            "High departure angle design",
+            "Integrated recovery points",
+            "LED light bar ready",
+            "Powder coated finish",
+            "Modular design"
+        ],
+        specifications: {
+            material: "3mm Steel",
+            weight: "48kg",
+            finish: "Black Powder Coat",
+            warranty: "2 Years"
+        }
+    },
+    {
+        id: 36,
+        name: "Stealth Bumper with Swing Arm",
+        category: "stealth-bumpers",
+        brand: "universal",
+        price: 19500,
+        image: "assets/images/Odyssey Stealth Bumper - Rear.jpg",
+        stock: "in-stock",
+        partNumber: "OD-SB-002",
+        description: "Premium stealth bumper with swing arm capability.",
+        features: [
+            "Swing arm compatible",
+            "Dual jerry can holders",
+            "Integrated tow points",
+            "LED light bar ready",
+            "Heavy duty construction"
+        ],
+        specifications: {
+            material: "3mm Steel",
+            weight: "52kg",
+            finish: "Black Powder Coat",
+            warranty: "2 Years"
+        }
+    },
+
+    // CARRIER OPTIONS
+    {
+        id: 37,
+        name: "Roof Rack System - Full Length",
+        category: "carrier-options",
+        brand: "universal",
+        price: 12000,
+        image: "assets/images/Expedition Roof Rack.jpg",
+        stock: "in-stock",
+        partNumber: "OD-CO-001",
+        description: "Full-length roof rack system for maximum storage capacity.",
+        features: [
+            "Full-length platform design",
+            "200kg load capacity",
+            "Wind deflector included",
+            "Multiple tie-down points",
+            "LED light bar compatible"
+        ],
+        specifications: {
+            material: "Aluminum",
+            loadCapacity: "200kg",
+            dimensions: "2200mm x 1250mm",
+            warranty: "3 Years"
+        }
+    },
+    {
+        id: 38,
+        name: "Slimline Roof Rack",
+        category: "carrier-options",
+        brand: "universal",
+        price: 9500,
+        image: "assets/images/Expedition Roof Rack.jpg",
+        stock: "in-stock",
+        partNumber: "OD-CO-002",
+        description: "Compact slimline design perfect for daily driving.",
+        features: [
+            "Low-profile aerodynamic design",
+            "150kg load capacity",
+            "Quick-release accessories",
+            "Integrated rail system",
+            "Solar panel ready"
+        ],
+        specifications: {
+            material: "Aluminum",
+            loadCapacity: "150kg",
+            dimensions: "1800mm x 1250mm",
+            warranty: "3 Years"
+        }
+    },
+    {
+        id: 39,
+        name: "Tire Carrier System",
+        category: "carrier-options",
+        brand: "universal",
+        price: 8500,
+        image: "assets/images/rear-bumpers.jpg",
+        stock: "in-stock",
+        partNumber: "OD-CO-003",
+        description: "Heavy duty tire carrier for spare tire storage.",
+        features: [
+            "Swing-out design",
+            "Fits up to 35-inch tires",
+            "Integrated jerry can mounts",
+            "Lockable mechanism",
+            "Heavy duty hinges"
+        ],
+        specifications: {
+            material: "Steel",
+            tireCapacity: "Up to 35 inches",
+            finish: "Black Powder Coat",
+            warranty: "2 Years"
         }
     }
 ];

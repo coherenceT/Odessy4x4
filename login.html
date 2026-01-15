@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Odyssey 4x4</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/header-redesign.css">
+</head>
+
+<body>
+    <div
+        style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); padding: 20px;">
+        <div
+            style="background: white; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); max-width: 450px; width: 100%; padding: 50px 40px;">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4"
+                    style="height: 80px; border-radius: 8px; margin-bottom: 20px;">
+                <h1 style="font-size: 2rem; margin-bottom: 10px; color: #1a1a1a;">Welcome Back</h1>
+                <p style="color: #666;">Login to your Odyssey 4x4 account</p>
+            </div>
+
+            <form id="login-form" style="display: flex; flex-direction: column; gap: 20px;">
+                <div>
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #333;">Email
+                        Address</label>
+                    <input type="email" required placeholder="your.email@example.com"
+                        style="width: 100%; padding: 14px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; transition: border 0.3s;">
+                </div>
+
+                <div>
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #333;">Password</label>
+                    <input type="password" required placeholder="Enter your password"
+                        style="width: 100%; padding: 14px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; transition: border 0.3s;">
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                        <input type="checkbox" style="width: 18px; height: 18px;">
+                        <span style="color: #666; font-size: 0.9rem;">Remember me</span>
+                    </label>
+                    <a href="#"
+                        style="color: #d32f2f; text-decoration: none; font-size: 0.9rem; font-weight: 600;">Forgot
+                        Password?</a>
+                </div>
+
+                <button type="submit"
+                    style="width: 100%; padding: 16px; background: #d32f2f; color: white; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: background 0.3s;">
+                    LOGIN
+                </button>
+
+                <div style="text-align: center; margin-top: 20px;">
+                    <p style="color: #666;">Don't have an account? <a href="register.html"
+                            style="color: #d32f2f; text-decoration: none; font-weight: 600;">Sign Up</a></p>
+                </div>
+
+                <div style="text-align: center; margin-top: 10px;">
+                    <a href="index.html" style="color: #999; text-decoration: none; font-size: 0.9rem;">
+                        <i class="fas fa-arrow-left"></i> Back to Homepage
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Login functionality will be implemented with backend integration.');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+
+</html>
