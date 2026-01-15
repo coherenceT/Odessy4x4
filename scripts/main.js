@@ -220,105 +220,6 @@ const products = [
         }
     },
 
-    // TOW BARS
-    {
-        id: 4,
-        name: "Heavy Duty Tow Bar - 3500kg",
-        category: "tow-bars",
-        brand: "universal",
-        price: 4500,
-        image: "assets/images/placeholder.jpg",
-        stock: "in-stock",
-        partNumber: "OD-TB-001",
-        description: "Professional grade tow bar rated for 3500kg towing capacity.",
-        features: [
-            "3500kg towing capacity",
-            "350kg ball weight",
-            "7-pin connector included",
-            "Corrosion resistant coating",
-            "Easy bolt-on installation"
-        ],
-        specifications: {
-            towingCapacity: "3500kg",
-            ballWeight: "350kg",
-            finish: "Galvanized",
-            warranty: "3 Years"
-        }
-    },
-    {
-        id: 5,
-        name: "Commercial Tow Bar - 4000kg",
-        category: "tow-bars",
-        brand: "universal",
-        price: 5500,
-        image: "assets/images/placeholder.jpg",
-        stock: "in-stock",
-        partNumber: "OD-TB-002",
-        description: "Commercial grade heavy duty tow bar for maximum towing performance.",
-        features: [
-            "4000kg towing capacity",
-            "400kg ball weight",
-            "Reinforced construction",
-            "13-pin connector option",
-            "Lifetime structural warranty"
-        ],
-        specifications: {
-            towingCapacity: "4000kg",
-            ballWeight: "400kg",
-            finish: "Black Powder Coat",
-            warranty: "Lifetime"
-        }
-    },
-
-    // ROOF RACKS
-    {
-        id: 6,
-        name: "Expedition Roof Rack",
-        category: "roof-racks",
-        brand: "universal",
-        price: 12000,
-        image: "assets/images/Expedition Roof Rack.jpg",
-        stock: "in-stock",
-        partNumber: "OD-RR-001",
-        description: "Aluminum low-profile roof rack for maximum storage with full-length platform.",
-        features: [
-            "Full-length platform design",
-            "200kg load capacity",
-            "Wind deflector included",
-            "Multiple tie-down points",
-            "LED light bar compatible"
-        ],
-        specifications: {
-            material: "Aluminum",
-            loadCapacity: "200kg",
-            dimensions: "2200mm x 1250mm",
-            warranty: "3 Years"
-        }
-    },
-    {
-        id: 7,
-        name: "Slimline Roof Rack II",
-        category: "roof-racks",
-        brand: "universal",
-        price: 9500,
-        image: "assets/images/product-7.jpg",
-        stock: "in-stock",
-        partNumber: "OD-FB-003",
-        description: "Premium front bumper designed specifically for Toyota Hilux with integrated bash plate.",
-        features: [
-            "Vehicle-specific fitment",
-            "Integrated bash plate",
-            "Fog light cut-outs",
-            "Tow hooks included",
-            "Modular design"
-        ],
-        specifications: {
-            material: "3mm Steel",
-            weight: "48kg",
-            finish: "Black Powder Coat",
-            warranty: "2 Years"
-        }
-    },
 
     // TOW BARS
     {
@@ -1156,6 +1057,9 @@ window.filterByBrand = (brandId) => {
    7. CART ACTIONS
    ========================================= */
 window.addToCart = (id) => {
+    // Reload cart from localStorage to ensure we have latest data
+    cart = JSON.parse(localStorage.getItem('odyssey_cart')) || [];
+
     const product = products.find(p => p.id === id);
     if (product) {
         // Check if product already in cart
@@ -1172,6 +1076,8 @@ window.addToCart = (id) => {
         localStorage.setItem('odyssey_cart', JSON.stringify(cart));
         updateCartCount();
         showToast(`${product.name} added to cart!`, 'success');
+
+        console.log('Cart updated:', cart); // Debug log
     }
 };
 
@@ -1209,9 +1115,14 @@ function isInWishlist(id) {
 }
 
 function updateCartCount() {
-    if (cartCountElement) {
-        const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
-        cartCountElement.innerText = totalItems;
+    // Always try to find the cart count element (in case it wasn't loaded initially)
+    const cartBadge = document.getElementById('cart-count');
+    if (cartBadge) {
+        // Reload cart from localStorage to ensure we have latest data
+        const currentCart = JSON.parse(localStorage.getItem('odyssey_cart')) || [];
+        const totalItems = currentCart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+        cartBadge.innerText = totalItems;
+        console.log('Cart count updated:', totalItems); // Debug log
     }
 }
 
@@ -1340,14 +1251,34 @@ window.removeFromCart = (index) => {
 };
 
 window.checkout = () => {
-    if (cart.length === 0) {
-        alert('Your cart is empty!');
+    // Reload cart for latest data
+    const currentCart = JSON.parse(localStorage.getItem('odyssey_cart')) || [];
+
+    if (currentCart.length === 0) {
+        showToast('Your cart is empty!', 'error');
         return;
     }
 
-    const total = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
-    const message = `Hi! I'd like to purchase the following items:\n\n${cart.map(item => `- ${item.name} x${item.quantity || 1} (R ${(item.price * (item.quantity || 1)).toLocaleString()})`).join('\n')}\n\nTotal: R ${total.toLocaleString()}`;
-    const whatsappUrl = `https://wa.me/27219812415?text=${encodeURIComponent(message)}`;
+    const total = currentCart.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
+
+    let messageParts = ["Hi! I'd like to place an order for the following items:\n"];
+
+    currentCart.forEach(item => {
+        const qty = item.quantity || 1;
+        const lineTotal = item.price * qty;
+        messageParts.push(`*${item.name}*`);
+        if (item.partNumber) messageParts.push(`Part #: ${item.partNumber}`);
+        messageParts.push(`Price: R ${item.price.toLocaleString()} x ${qty} = R ${lineTotal.toLocaleString()}`);
+        messageParts.push(''); // Empty line for spacing
+    });
+
+    messageParts.push(`----------------`);
+    messageParts.push(`*TOTAL ORDER VALUE: R ${total.toLocaleString()}*`);
+    messageParts.push(`----------------`);
+    messageParts.push(`\nPlease let me know the shipping costs and payment details.`);
+
+    const message = messageParts.join('\n');
+    const whatsappUrl = `https://wa.me/27722573089?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
 };
 
@@ -1536,4 +1467,7 @@ document.addEventListener('DOMContentLoaded', () => {
             emailForm.reset();
         });
     }
+
+    // Update cart count on all pages
+    updateCartCount();
 });

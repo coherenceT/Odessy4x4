@@ -662,6 +662,21 @@ body.slide-menu-open {
     color: white;
 }
 
+.cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #d32f2f;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 10px;
+    min-width: 18px;
+    text-align: center;
+    display: block;
+}
+
 /* Mobile Menu Button */
 .mobile-menu-btn {
     background: white;

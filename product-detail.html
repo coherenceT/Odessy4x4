@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Product Details | Odyssey 4x4</title>
+    <meta name="description" content="View detailed product information">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/header-redesign.css">
+    <style>
+        @media (max-width: 768px) {
+            .container>div[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+                gap: 30px !important;
+            }
+
+            #product-name {
+                font-size: 1.8rem !important;
+            }
+
+            #product-price {
+                font-size: 1.5rem !important;
+            }
+
+            .container>div[style*="display: flex"] button,
+            .container>div[style*="display: flex"] a {
+                font-size: 0.95rem !important;
+                padding: 14px !important;
+            }
+
+            #product-specifications {
+                grid-template-columns: 1fr !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header style="position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-contact">
+                    <a href="tel:+27722573089"><i class="fas fa-phone-alt"></i> +27 72 257 3089</a>
+                    <a href="mailto:info@gobi-x.co.za"><i class="fas fa-envelope"></i> INFO@GOBI-X.CO.ZA</a>
+                    <a href="https://maps.app.goo.gl/GCa8BxySwBRAyS4Y6" target="_blank"><i
+                            class="fas fa-map-marker-alt"></i> 41 GEMINI ST, BRACKENFELL SOUTH, CAPE TOWN, 7560</a>
+                </div>
+                <div class="top-bar-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-header">
+            <div class="container main-header-content">
+                <a href="index.html" class="header-logo">
+                    <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4 Logo" style="border-radius: 4px;">
+                </a>
+                <div class="header-search-container">
+                    <input type="text" id="search-input" placeholder="Search products..." class="header-search-input">
+                    <i class="fas fa-search header-search-icon"></i>
+                    <div id="search-results" class="search-results"></div>
+                </div>
+                <div class="header-actions">
+                    <a href="favorites.html" class="header-action-btn" title="Favorites">
+                        <i class="fas fa-heart"></i>
+                        <span class="header-action-text">Favorites</span>
+                    </a>
+                    <a href="cart.html" class="header-action-btn" title="Shopping Cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="header-action-text">Cart</span>
+                        <span id="cart-count" class="cart-badge">0</span>
+                    </a>
+                    <a href="login.html" class="header-action-btn" title="Login">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span class="header-action-text">Login</span>
+                    </a>
+                    <a href="register.html" class="header-action-btn header-action-btn-primary" title="Create Account">
+                        <i class="fas fa-user-plus"></i>
+                        <span class="header-action-text">Sign Up</span>
+                    </a>
+                    <button class="mobile-menu-btn mobile-toggle" aria-label="Toggle menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-nav-bar">
+            <div class="container">
+                <ul class="product-nav-list">
+                    <li class="product-nav-item"><a href="index.html" class="product-nav-link">Home</a></li>
+                    <li class="product-nav-item"><a href="category-front-bumpers.html" class="product-nav-link">Front
+                            Bumpers</a></li>
+                    <li class="product-nav-item"><a href="category-rear-bumpers-carrier.html"
+                            class="product-nav-link">Rear Bumpers Carrier Compatible</a></li>
+                    <li class="product-nav-item"><a href="category-carrier-options.html"
+                            class="product-nav-link">Carrier Options</a></li>
+                    <li class="product-nav-item"><a href="category-stealth-bumpers.html"
+                            class="product-nav-link">Stealth Rear Bumpers</a></li>
+                    <li class="product-nav-item"><a href="category-rock-sliders.html"
+                            class="product-nav-link">Rocksliders</a></li>
+                    <li class="product-nav-item"><a href="category-underbody-protection.html"
+                            class="product-nav-link">Underbody Protection</a></li>
+                    <li class="product-nav-item"><a href="category-drawer-systems.html" class="product-nav-link">Storage
+                            Solutions</a></li>
+                    <li class="product-nav-item"><a href="category-accessories.html" class="product-nav-link">Vehicle
+                            Accessories</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide-menu-overlay" id="slide-menu-overlay"></div>
+        <div class="slide-menu" id="slide-menu">
+            <div class="slide-menu-header">
+                <a href="index.html" class="slide-menu-logo">
+                    <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4 Logo">
+                </a>
+                <button class="slide-menu-close" id="slide-menu-close" aria-label="Close menu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="slide-menu-links">
+                <a href="index.html" class="slide-menu-link">Home</a>
+                <a href="about.html" class="slide-menu-link">About Us</a>
+                <a href="index.html#products" class="slide-menu-link">Products</a>
+                <a href="favorites.html" class="slide-menu-link">My Favorites</a>
+                <a href="index.html#contact" class="slide-menu-link">Contact Us</a>
+                <a href="privacy-policy.html" class="slide-menu-link">Privacy Policy</a>
+            </div>
+            <div class="slide-menu-footer">
+                <div class="slide-menu-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- BREADCRUMB -->
+    <section style="background-color: #f8f9fa; padding: 20px 0;">
+        <div class="container">
+            <div id="breadcrumb" style="display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: #666;">
+                <a href="index.html" style="color: var(--color-accent);">Home</a>
+                <i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i>
+                <span id="breadcrumb-category">Products</span>
+                <i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i>
+                <span id="breadcrumb-product">Product</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT DETAILS -->
+    <section class="section-padding" style="background-color: #fff;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-bottom: 60px;">
+                <!-- Product Image -->
+                <div>
+                    <div
+                        style="position: relative; background: #f8f9fa; border-radius: 12px; overflow: hidden; aspect-ratio: 1/1;">
+                        <img id="product-image" src="" alt="Product"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                        <button id="wishlist-btn" class="wishlist-btn"
+                            style="position: absolute; top: 20px; right: 20px; font-size: 1.5rem;"
+                            aria-label="Add to favorites">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div>
+                    <div style="margin-bottom: 20px;">
+                        <span id="product-category"
+                            style="color: var(--color-accent); font-weight: 600; text-transform: uppercase; font-size: 0.9rem;"></span>
+                        <h1 id="product-name" style="font-size: 2.5rem; margin: 10px 0 20px; line-height: 1.2;"></h1>
+                        <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 20px;">
+                            <p id="product-price"
+                                style="font-size: 2rem; font-weight: 700; color: var(--color-accent); margin: 0;"></p>
+                            <span id="product-stock" class="badge"
+                                style="background: #28a745; color: white; padding: 6px 12px; border-radius: 4px; font-size: 0.85rem;"></span>
+                        </div>
+                        <p id="product-part-number" style="color: #666; font-size: 0.9rem; margin-bottom: 20px;"></p>
+                    </div>
+
+                    <div
+                        style="border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 30px 0; margin-bottom: 30px;">
+                        <h3 style="margin-bottom: 15px;">Description</h3>
+                        <p id="product-description" style="color: #666; line-height: 1.8;"></p>
+                    </div>
+
+                    <div style="margin-bottom: 30px;">
+                        <h3 style="margin-bottom: 15px;">Key Features</h3>
+                        <ul id="product-features" style="list-style: none; padding: 0;">
+                            <!-- Features will be added here -->
+                        </ul>
+                    </div>
+
+                    <div style="display: flex; gap: 15px;">
+                        <button onclick="handleAddToCart()" class="btn btn-primary"
+                            style="flex: 1; padding: 16px; font-size: 1.1rem;">
+                            <i class="fas fa-shopping-cart"></i> ADD TO CART
+                        </button>
+                        <a href="index.html#contact" class="btn"
+                            style="flex: 1; padding: 16px; font-size: 1.1rem; text-align: center; text-decoration: none; background: #333; color: white;">
+                            <i class="fas fa-phone"></i> ENQUIRE NOW
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Specifications -->
+            <div style="background: #f8f9fa; padding: 40px; border-radius: 12px;">
+                <h2 style="margin-bottom: 30px;">Technical Specifications</h2>
+                <div id="product-specifications"
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                    <!-- Specifications will be added here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>Products</h4>
+                    <ul class="footer-links">
+                        <li><a href="category-front-bumpers.html">Front Bumpers</a></li>
+                        <li><a href="category-rear-bumpers-carrier.html">Rear Bumpers</a></li>
+                        <li><a href="category-rock-sliders.html">Rocksliders</a></li>
+                        <li><a href="category-accessories.html">Accessories</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4
+                        style="font-size: 1.8rem; line-height: 1.3; color: white; text-transform: none; font-weight: 800;">
+                        Built for Adventure.<br>
+                        <span style="color: var(--color-accent);">Engineered for Excellence.</span>
+                    </h4>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Homepage</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="index.html#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get In Touch</h4>
+                    <ul class="footer-links">
+                        <li><strong>Email:</strong> <a href="mailto:info@odysey-x.co.za">info@odysey-x.co.za</a></li>
+                        <li><strong>Phone:</strong> <a href="tel:+27722573089">+27 72 257 3089</a></li>
+                    </ul>
+                    <div class="social-icons" style="margin-top: 20px;">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; All Rights Reserved. Designed by odysey-X Expedition Gear.</p>
+        </div>
+    </footer>
+
+    <!-- CONTACT WIDGET -->
+    <div class="contact-widget">
+        <a href="index.html#contact" class="contact-widget-link">
+            <div class="contact-widget-logo">
+                <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4">
+            </div>
+            <div class="contact-widget-text">Contact Us</div>
+        </a>
+    </div>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/search.js"></script>
+    <script>
+        // Get product ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = parseInt(urlParams.get('id')) || parseInt(window.location.pathname.match(/product-(\d+)/)?.[1]);
+
+        // Find product
+        const product = products.find(p => p.id === productId);
+
+        if (product) {
+            // Update page title
+            document.getElementById('page-title').textContent = `${product.name} | Odyssey 4x4`;
+
+            // Update breadcrumb
+            document.getElementById('breadcrumb-category').textContent = formatCategory(product.category);
+            document.getElementById('breadcrumb-product').textContent = product.name;
+
+            // Update product details
+            document.getElementById('product-image').src = product.image;
+            document.getElementById('product-image').alt = product.name;
+            document.getElementById('product-category').textContent = formatCategory(product.category);
+            document.getElementById('product-name').textContent = product.name;
+            document.getElementById('product-price').textContent = `R ${product.price.toLocaleString()}`;
+            document.getElementById('product-stock').textContent = product.stock === 'in-stock' ? 'In Stock' : 'Out of Stock';
+            document.getElementById('product-part-number').textContent = `Part Number: ${product.partNumber}`;
+            document.getElementById('product-description').textContent = product.description;
+
+            // Add features
+            const featuresList = document.getElementById('product-features');
+            product.features.forEach(feature => {
+                const li = document.createElement('li');
+                li.innerHTML = `<i class="fas fa-check-circle" style="color: var(--color-accent); margin-right: 10px;"></i>${feature}`;
+                li.style.marginBottom = '10px';
+                li.style.color = '#666';
+                featuresList.appendChild(li);
+            });
+
+            // Add specifications
+            const specsContainer = document.getElementById('product-specifications');
+            Object.entries(product.specifications).forEach(([key, value]) => {
+                const specDiv = document.createElement('div');
+                specDiv.style.padding = '20px';
+                specDiv.style.background = 'white';
+                specDiv.style.borderRadius = '8px';
+                specDiv.innerHTML = `
+                    <div style="font-weight: 600; text-transform: capitalize; margin-bottom: 8px; color: #333;">${key.replace(/([A-Z])/g, ' $1').trim()}</div>
+                    <div style="color: #666;">${value}</div>
+                `;
+                specsContainer.appendChild(specDiv);
+            });
+
+            // Wishlist button
+            const wishlistBtn = document.getElementById('wishlist-btn');
+            const wishlist = JSON.parse(localStorage.getItem('odyssey_wishlist')) || [];
+            if (wishlist.includes(productId)) {
+                wishlistBtn.classList.add('active');
+                wishlistBtn.querySelector('i').classList.remove('far');
+                wishlistBtn.querySelector('i').classList.add('fas');
+            }
+
+            wishlistBtn.addEventListener('click', () => {
+                toggleWishlist(productId);
+                location.reload();
+            });
+        } else {
+            document.querySelector('.container').innerHTML = `
+                <div style="text-align: center; padding: 100px 20px;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 4rem; color: #999; margin-bottom: 20px;"></i>
+                    <h2>Product Not Found</h2>
+                    <p style="color: #666; margin-bottom: 30px;">The product you're looking for doesn't exist.</p>
+                    <a href="index.html" class="btn btn-primary">Back to Homepage</a>
+                </div>
+            `;
+        }
+
+        function formatCategory(cat) {
+            return cat.replace(/-/g, ' ').toUpperCase();
+        }
+
+        function handleAddToCart() {
+            if (product) {
+                window.addToCart(product.id);
+            }
+        }
+    </script>
+</body>
+
+</html>

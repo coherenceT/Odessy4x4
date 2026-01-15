@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Test | Odyssey 4x4</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/header-redesign.css">
+</head>
+
+<body style="padding: 50px;">
+    <h1>Cart Functionality Test</h1>
+
+    <div style="background: white; padding: 30px; border-radius: 8px; margin: 20px 0;">
+        <h2>Test Adding to Cart</h2>
+        <p>Cart Count: <span id="cart-count"
+                style="background: red; color: white; padding: 5px 10px; border-radius: 10px;">0</span></p>
+
+        <button onclick="testAddToCart()"
+            style="background: #d32f2f; color: white; padding: 15px 30px; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem; margin: 10px 5px;">
+            Add Product #1 to Cart
+        </button>
+
+        <button onclick="testAddToCart2()"
+            style="background: #d32f2f; color: white; padding: 15px 30px; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem; margin: 10px 5px;">
+            Add Product #2 to Cart
+        </button>
+
+        <button onclick="viewCart()"
+            style="background: #333; color: white; padding: 15px 30px; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem; margin: 10px 5px;">
+            View Cart
+        </button>
+
+        <button onclick="clearCart()"
+            style="background: #999; color: white; padding: 15px 30px; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem; margin: 10px 5px;">
+            Clear Cart
+        </button>
+    </div>
+
+    <div id="debug-info" style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+        <h3>Debug Information:</h3>
+        <pre id="cart-data"
+            style="background: white; padding: 15px; border-radius: 4px; overflow: auto;">No cart data</pre>
+    </div>
+
+    <script src="scripts/main.js"></script>
+    <script>
+        function testAddToCart() {
+            console.log('Testing addToCart with product ID 1');
+            window.addToCart(1);
+            updateDebugInfo();
+        }
+
+        function testAddToCart2() {
+            console.log('Testing addToCart with product ID 2');
+            window.addToCart(2);
+            updateDebugInfo();
+        }
+
+        function viewCart() {
+            window.location.href = 'cart.html';
+        }
+
+        function clearCart() {
+            localStorage.removeItem('odyssey_cart');
+            updateCartCount();
+            updateDebugInfo();
+            alert('Cart cleared!');
+        }
+
+        function updateDebugInfo() {
+            const cart = JSON.parse(localStorage.getItem('odyssey_cart')) || [];
+            document.getElementById('cart-data').textContent = JSON.stringify(cart, null, 2);
+        }
+
+        // Initial update
+        updateCartCount();
+        updateDebugInfo();
+
+        // Update debug info every second
+        setInterval(updateDebugInfo, 1000);
+    </script>
+</body>
+
+</html>
