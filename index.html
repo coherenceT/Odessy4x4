@@ -7,602 +7,163 @@
     <title>Odyssey 4x4 | Engineered for Adventure</title>
 
     <!-- Meta SEO -->
-    <meta name="description"
-        content="Premium 4x4 accessories including Bumpers, Roof Racks, and more. Engineered for Adventure.">
+    <meta name="description" content="Premium 4x4 accessories including Bumpers, Roof Racks, and more. Engineered for Adventure.">
 
     <!-- Fonts: Montserrat & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- Icons: FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/header-redesign.css">
 </head>
 
 <body>
 
-    <!-- HEADER & NAVIGATION -->
-    <!-- HEADER & NAVIGATION -->
-    <header style="position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-        <!-- 1. Top Bar (Red channel) -->
-        <div class="top-bar">
-            <div class="container">
-                <div class="top-bar-contact">
-                    <a href="tel:+27722573089"><i class="fas fa-phone-alt"></i> +27 72 257 3089</a>
-                    <a href="mailto:info@gobi-x.co.za"><i class="fas fa-envelope"></i> INFO@GOBI-X.CO.ZA</a>
-                    <a href="https://maps.app.goo.gl/GCa8BxySwBRAyS4Y6" target="_blank"><i
-                            class="fas fa-map-marker-alt"></i> 41 GEMINI ST, BRACKENFELL SOUTH, CAPE TOWN, 7560</a>
-                </div>
-                <div class="top-bar-social">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-        </div>
-
-        <!-- 2. Main Header (Carbon/Dark) -->
+    <!-- HEADER -->
+    <header>
         <div class="main-header">
             <div class="container main-header-content">
                 <!-- Logo -->
                 <a href="index.html" class="header-logo">
-                    <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4 Logo" style="border-radius: 4px;">
+                    <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4 Logo">
                 </a>
 
-                <!-- Search Bar (Center) -->
+                <!-- Search Bar -->
                 <div class="header-search-container">
-                    <input type="text" id="search-input" placeholder="Search products..." class="header-search-input">
-                    <i class="fas fa-search header-search-icon"></i>
+                    <input type="text" id="search-input" placeholder="Search products, vehicles, parts..." class="header-search-input">
                     <div id="search-results" class="search-results"></div>
                 </div>
 
-                <!-- Header Actions (Right) -->
-                <div class="header-actions">
-                    <a href="favorites.html" class="header-action-btn" title="Favorites">
-                        <i class="fas fa-heart"></i>
-                        <span class="header-action-text">Favorites</span>
-                    </a>
-                    <a href="cart.html" class="header-action-btn" title="Shopping Cart">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="header-action-text">Cart</span>
-                        <span id="cart-count" class="cart-badge">0</span>
-                    </a>
-                    <a href="login.html" class="header-action-btn" title="Login">
-                        <i class="fas fa-sign-in-alt"></i>
-                        <span class="header-action-text">Login</span>
-                    </a>
-                    <a href="register.html" class="header-action-btn header-action-btn-primary" title="Create Account">
-                        <i class="fas fa-user-plus"></i>
-                        <span class="header-action-text">Sign Up</span>
-                    </a>
-                    <button class="mobile-menu-btn mobile-toggle" aria-label="Toggle menu">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- 3. Product Nav Bar (White) -->
-        <div class="product-nav-bar">
-            <div class="container">
-                <ul class="product-nav-list">
-                    <li class="product-nav-item"><a href="index.html" class="product-nav-link">Home</a></li>
-                    <li class="product-nav-item"><a href="category-front-bumpers.html" class="product-nav-link">Front
-                            Bumpers</a></li>
-                    <li class="product-nav-item"><a href="category-rear-bumpers-carrier.html"
-                            class="product-nav-link">Rear Bumpers
-                            Carrier Compatible</a></li>
-                    <li class="product-nav-item"><a href="category-carrier-options.html"
-                            class="product-nav-link">Carrier
-                            Options</a></li>
-                    <li class="product-nav-item"><a href="category-stealth-bumpers.html"
-                            class="product-nav-link">Stealth Rear
-                            Bumpers</a></li>
-                    <li class="product-nav-item"><a href="category-rock-sliders.html"
-                            class="product-nav-link">Rocksliders</a></li>
-                    <li class="product-nav-item"><a href="category-underbody-protection.html"
-                            class="product-nav-link">Underbody
-                            Protection</a></li>
-                    <li class="product-nav-item"><a href="category-drawer-systems.html" class="product-nav-link">Storage
-                            Solutions</a></li>
-                    <li class="product-nav-item"><a href="category-accessories.html" class="product-nav-link">Vehicle
-                            Accessories</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Slide-Out Menu Overlay -->
-        <div class="slide-menu-overlay" id="slide-menu-overlay"></div>
-
-        <!-- Slide-Out Menu -->
-        <div class="slide-menu" id="slide-menu">
-            <div class="slide-menu-header">
-                <a href="index.html" class="slide-menu-logo">
-                    <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4 Logo">
-                </a>
-                <button class="slide-menu-close" id="slide-menu-close" aria-label="Close menu">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="slide-menu-links">
-                <a href="index.html" class="slide-menu-link">Home</a>
-                <a href="about.html" class="slide-menu-link">About Us</a>
-                <a href="index.html#products" class="slide-menu-link">Products</a>
-                <a href="index.html#contact" class="slide-menu-link">Contact Us</a>
-                <a href="privacy-policy.html" class="slide-menu-link">Privacy Policy</a>
-            </div>
-            <div class="slide-menu-footer">
-                <div class="slide-menu-social">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                <!-- Hamburger -->
+                <div class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- HERO SLIDER SECTION -->
-    <section id="home" class="hero-slider-section">
-        <div class="hero-slider-wrapper">
-            <div class="hero-slide active" style="background-image: url('assets/images/hero-slide-1.jpg');">
-                <div class="hero-slide-overlay"></div>
-                <div class="hero-slide-content">
-                    <h2>JERRY CAN HOLDER OPTION</h2>
-                    <p>ALSO AVAILABLE</p>
-                </div>
-            </div>
+    <!-- SLIDE-OUT MENU -->
+    <div class="slide-menu-overlay" id="slide-menu-overlay"></div>
+    <div class="slide-menu" id="slide-menu">
+        <div class="slide-menu-header">
+            <button class="slide-menu-close" id="slide-menu-close">&times;</button>
         </div>
-        <div class="hero-slider-dots">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
+        <!-- Search in Burger Menu (User Feedback) -->
+        <div style="padding: 20px;">
+            <input type="text" placeholder="Quick Search..." class="header-search-input" style="width: 100%;">
+        </div>
+        <div class="slide-menu-links">
+            <a href="index.html">Home</a>
+            <a href="#products">Products</a>
+            <a href="#contact">Contact Us</a>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero bushveld-section">
+        <div class="bushveld-overlay"></div>
+        <div class="container bushveld-content" style="text-align: center; padding: 100px 0;">
+            <h1 style="font-size: 4rem; color: white; margin-bottom: 20px;">Odyssey 4x4</h1>
+            <p style="font-size: 1.5rem; color: var(--color-accent); font-weight: 700;">ENGINEERED FOR ADVENTURE</p>
         </div>
     </section>
 
-    <!-- ABOUT SECTION -->
-    <section id="about" class="section-padding" style="background-color: white;">
+    <!-- TWO-WAY FILTERING SECTION -->
+    <section class="filter-section">
         <div class="container">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
-                <div>
-                    <img src="assets/images/company-story.jpg" alt="4x4 Adventure"
-                        style="width: 100%; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            <!-- Filter by Vehicle -->
+            <div class="filter-group">
+                <h4><i class="fas fa-car"></i> FIND BY VEHICLE</h4>
+                <div id="brand-filter-grid" class="filter-grid">
+                    <!-- Injected by main.js -->
                 </div>
-                <div>
-                    <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: var(--color-primary);">
-                        <span style="color: var(--color-accent);">|</span> Gobi-X
-                    </h2>
-                    <h3 style="font-size: 1.3rem; margin-bottom: 25px; font-weight: 600;">
-                        HAS BEEN A MAJOR 4WD ACCESSORIES MANUFACTURER AND DISTRIBUTOR SINCE 1999.
-                    </h3>
-                    <p style="color: #666; line-height: 1.8; margin-bottom: 20px;">
-                        Gobi-X's 4WD products are renowned, loved and operated by 4WD enthusiasts globally.
-                        Gobi-X offers a comprehensive range of accessories and equipment to suit almost every 4x4
-                        vehicles.
-                        Our wide product range offers customers the choice of accessories such as Front Bull Bar, Rear
-                        Bar,
-                        Rear Carrier Bar, Side Steps, Roof Rack, Drawer system etc.
-                    </p>
-                    <p style="color: #666; line-height: 1.8;">
-                        Our experience and technical expertise in manufacturing 4WD accessories enable us to supply our
-                        customers with a wide variety of products which will improve the vehicle's appearance,
-                        performance
-                        and functionality.
-                    </p>
+            </div>
+
+            <div style="text-align: center; margin: 30px 0; color: var(--color-border);">OR</div>
+
+            <!-- Filter by Category -->
+            <div class="filter-group">
+                <h4><i class="fas fa-toolbox"></i> FIND BY PRODUCT TYPE</h4>
+                <div id="category-filter-grid" class="filter-grid">
+                    <!-- Injected by main.js -->
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PRODUCT HIGHLIGHTS SECTION -->
-    <section class="section-padding" style="background-color: #f8f9fa;">
+    <!-- PRODUCTS GRID -->
+    <section id="products" class="section-padding">
         <div class="container">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
-                <div>
-                    <h2 style="font-size: 2.2rem; margin-bottom: 25px; color: var(--color-primary);">
-                        GOBI-X BULL BARS
-                    </h2>
-                    <p style="color: #666; line-height: 1.8; margin-bottom: 25px;">
-                        Designed to complement the contour lines of the vehicle, providing stylish frontal protection,
-                        whilst improving the vehicles approach angle. All Bull Bars are fully ADR and Airbag compliant
-                        and are carefully crafted from premium grade materials and components, to ensure class leading
-                        strength and the highest resistance to rust.
-                    </p>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 30px;">
-                        <div>
-                            <h4 style="font-size: 1rem; margin-bottom: 10px; color: var(--color-accent);">Features:</h4>
-                            <ul style="list-style: none; padding: 0; color: #666; line-height: 2;">
-                                <li>✓ LED Fog lamps / Daytime running lamps</li>
-                                <li>✓ LED Parker / Indicator lamps</li>
-                                <li>✓ Premium airflow grill ventilation</li>
-                                <li>✓ 4 x Aerial mounts/ LED lamp mounts</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <ul style="list-style: none; padding: 0; color: #666; line-height: 2; margin-top: 34px;">
-                                <li>✓ Larger over rider protection</li>
-                                <li>✓ Black powder coat finish</li>
-                                <li>✓ 3 pieces under bar protection plate</li>
-                                <li>✓ ADR approved for airbag and winch</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <img src="assets/images/bull-bar-showcase.jpg" alt="Bull Bar"
-                        style="width: 100%; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px;">
+                <h2 style="font-size: 2.5rem;">EXPLORE GEAR</h2>
+                <button onclick="resetFilters()" style="background: none; border: 1px solid var(--color-accent); color: var(--color-accent); padding: 8px 15px; border-radius: 4px; font-weight: 700; cursor: pointer;">RESET ALL FILTERS</button>
+            </div>
+            <div class="grid">
+                <!-- Products injected by main.js -->
             </div>
         </div>
     </section>
 
-    <!-- SECOND PRODUCT HIGHLIGHT -->
-    <section class="section-padding" style="background-color: white;">
-        <div class="container">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
-                <div>
-                    <img src="assets/images/falcon-bar-ford-ranger.jpg" alt="Falcon Bar"
-                        style="width: 100%; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                </div>
-                <div>
-                    <h2 style="font-size: 2.2rem; margin-bottom: 25px; color: var(--color-primary);">
-                        FALCON BAR - FORD RANGER
-                    </h2>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                        <ul style="list-style: none; padding: 0; color: #666; line-height: 2;">
-                            <li>✓ Airbag and winch compatible bracket</li>
-                            <li>✓ Dual aerial mounts</li>
-                            <li>✓ Dual hi-lift jacking points</li>
-                            <li>✓ Driving lights mounts</li>
-                        </ul>
-                        <ul style="list-style: none; padding: 0; color: #666; line-height: 2;">
-                            <li>✓ Parker and indicator lights</li>
-                            <li>✓ Over rider protection</li>
-                            <li>✓ High quality 3mm thick steel plates</li>
-                            <li>✓ Black powder coat finish</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+    <!-- BUSHVELD SHOWCASE -->
+    <section class="section-padding bushveld-section">
+        <div class="bushveld-overlay"></div>
+        <div class="container bushveld-content" style="text-align: center;">
+            <h2 style="color: white; font-size: 3rem; margin-bottom: 20px;">Built for the Wild</h2>
+            <p style="max-width: 800px; margin: 0 auto; color: #ccc;">Our accessories are tested in the harshest South African conditions to ensure they never fail you when it matters most.</p>
         </div>
     </section>
 
-    <!-- PRODUCTS GRID SECTION -->
-    <section id="products" class="section-padding" style="background-color: #f8f9fa;">
+    <!-- SALES INQUIRIES (CONTACT) -->
+    <section id="contact" class="section-padding">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 50px; font-size: 2.5rem; color: var(--color-primary);">
-                PRODUCTS</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
-                <a href="category-front-bumpers.html" class="product-category-card">
-                    <img src="assets/images/front-bumpers.jpg" alt="Front Bumpers">
-                    <h3>Front Bumpers</h3>
-                </a>
-                <a href="category-rear-bumpers-carrier.html" class="product-category-card">
-                    <img src="assets/images/rear-bumpers.jpg" alt="Rear Bumpers">
-                    <h3>Rear Bumpers</h3>
-                </a>
-                <a href="category-rock-sliders.html" class="product-category-card">
-                    <img src="assets/images/rocksliders.jpg" alt="Rocksliders">
-                    <h3>Rocksliders</h3>
-                </a>
-                <a href="category-underbody-protection.html" class="product-category-card">
-                    <img src="assets/images/underbody-protection.jpg" alt="Underbody Protection">
-                    <h3>Underbody Protection</h3>
-                </a>
-                <a href="category-drawer-systems.html" class="product-category-card">
-                    <img src="assets/images/storage-solutions.jpg" alt="Storage Solutions">
-                    <h3>Storage Solutions</h3>
-                </a>
-                <a href="category-accessories.html" class="product-category-card">
-                    <img src="assets/images/vehicle-accessories.jpg" alt="Vehicle Accessories">
-                    <h3>Vehicle Accessories</h3>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT US SECTION -->
-    <section id="contact" class="section-padding" style="background-color: #f8f9fa;">
-        <div class="container">
-            <h2 style="text-align: center; margin-bottom: 15px; font-size: 2.2rem;">CONTACT US</h2>
-            <p style="text-align: center; color: #666; margin-bottom: 50px; font-size: 1.05rem;">
-                Get in touch with us for any inquiries or custom orders
-            </p>
-
-            <div
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-bottom: 50px;">
-
-                <!-- WhatsApp Form (Green) -->
-                <div
-                    style="background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); padding: 40px; border-radius: 16px; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);">
-                    <div style="text-align: center; margin-bottom: 25px;">
-                        <div
-                            style="width: 70px; height: 70px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
-                            <i class="fab fa-whatsapp" style="color: #25D366; font-size: 2.5rem;"></i>
-                        </div>
-                        <h3 style="color: white; margin-bottom: 5px; font-size: 1.6rem;">Chat on WhatsApp</h3>
-                        <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">Quick response guaranteed</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px;">
+                <div>
+                    <h2 style="font-size: 2.2rem; margin-bottom: 30px;">Direct Enquiries</h2>
+                    <p style="margin-bottom: 40px; color: var(--color-text-muted);">Ready to upgrade your rig? Send us a message via WhatsApp or use the form below for a custom quote.</p>
+                    
+                    <div style="margin-bottom: 30px;">
+                        <h4 style="color: var(--color-accent); margin-bottom: 10px;">Visit Our Workshop</h4>
+                        <p>41 Gemini St, Brackenfell South, Cape Town, 7560</p>
                     </div>
 
+                    <div style="margin-bottom: 30px;">
+                        <h4 style="color: var(--color-accent); margin-bottom: 10px;">Call Us</h4>
+                        <p>+27 72 257 3089</p>
+                    </div>
+                </div>
+
+                <div style="background: var(--color-dark-grey); padding: 40px; border-radius: 12px; border: 1px solid var(--color-border);">
                     <form id="whatsapp-form">
-                        <div class="form-group">
-                            <label style="color: white; font-weight: 600;">Full Name</label>
-                            <input type="text" class="form-control" placeholder="Enter your full name" required
-                                style="border: 2px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.95);">
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; margin-bottom: 10px; font-weight: 600;">Full Name</label>
+                            <input type="text" class="header-search-input" style="width: 100%;" required>
                         </div>
-                        <div class="form-group">
-                            <label style="color: white; font-weight: 600;">Message</label>
-                            <textarea class="form-control" rows="6" placeholder="Tell us about your inquiry..." required
-                                style="border: 2px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.95);"></textarea>
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; margin-bottom: 10px; font-weight: 600;">Message</label>
+                            <textarea class="header-search-input" style="width: 100%; height: 150px; resize: none;" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-block"
-                            style="background: white; color: #25D366; padding: 14px; font-weight: 700; border: none; font-size: 1rem;">
-                            <i class="fab fa-whatsapp" style="margin-right: 8px;"></i>SEND VIA WHATSAPP
-                        </button>
-                    </form>
-                </div>
-
-                <!-- Email Form (Blue) -->
-                <div
-                    style="background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%); padding: 40px; border-radius: 16px; box-shadow: 0 10px 30px rgba(33, 150, 243, 0.3);">
-                    <div style="text-align: center; margin-bottom: 25px;">
-                        <div
-                            style="width: 70px; height: 70px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
-                            <i class="fas fa-envelope" style="color: #2196F3; font-size: 2.2rem;"></i>
-                        </div>
-                        <h3 style="color: white; margin-bottom: 5px; font-size: 1.6rem;">Send us an Email</h3>
-                        <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">We'll respond within 24 hours</p>
-                    </div>
-
-                    <form id="email-form">
-                        <div class="form-group">
-                            <label style="color: white; font-weight: 600;">Full Name</label>
-                            <input type="text" class="form-control" placeholder="Enter your full name" required
-                                style="border: 2px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.95);">
-                        </div>
-                        <div class="form-group">
-                            <label style="color: white; font-weight: 600;">Email Address</label>
-                            <input type="email" class="form-control" placeholder="your.email@example.com" required
-                                style="border: 2px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.95);">
-                        </div>
-                        <div class="form-group">
-                            <label style="color: white; font-weight: 600;">Message</label>
-                            <textarea class="form-control" rows="4" placeholder="Tell us about your inquiry..." required
-                                style="border: 2px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.95);"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-block"
-                            style="background: white; color: #2196F3; padding: 14px; font-weight: 700; border: none; font-size: 1rem;">
-                            <i class="fas fa-envelope" style="margin-right: 8px;"></i>SEND EMAIL
+                        <button type="submit" class="btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i> SEND SALES INQUIRY
                         </button>
                     </form>
                 </div>
             </div>
-
-            <!-- Contact Information Cards -->
-            <div>
-                <h3 style="margin-bottom: 25px; font-size: 1.5rem;">Get in Touch</h3>
-
-                <div style="display: flex; flex-direction: column; gap: 25px;">
-                    <div style="display: flex; gap: 15px; align-items: start;">
-                        <div
-                            style="width: 50px; height: 50px; background: var(--color-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                            <i class="fas fa-phone-alt" style="color: white; font-size: 1.2rem;"></i>
-                        </div>
-                        <div>
-                            <h4 style="margin-bottom: 5px; font-size: 1.1rem;">Phone</h4>
-                            <p style="color: #666; margin: 0;">+27 72 257 3089</p>
-                            <p style="color: #999; font-size: 0.9rem; margin: 5px 0 0 0;">Mon - Fri, 8AM - 5PM</p>
-                        </div>
-                    </div>
-
-                    <div style="display: flex; gap: 15px; align-items: start;">
-                        <div
-                            style="width: 50px; height: 50px; background: var(--color-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                            <i class="fas fa-envelope" style="color: white; font-size: 1.2rem;"></i>
-                        </div>
-                        <div>
-                            <h4 style="margin-bottom: 5px; font-size: 1.1rem;">Email</h4>
-                            <p style="color: #666; margin: 0;">info@odysey-x.co.za</p>
-                            <p style="color: #999; font-size: 0.9rem; margin: 5px 0 0 0;">We'll respond within 24
-                                hours</p>
-                        </div>
-                    </div>
-
-                    <div style="display: flex; gap: 15px; align-items: start;">
-                        <div
-                            style="width: 50px; height: 50px; background: var(--color-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                            <i class="fas fa-map-marker-alt" style="color: white; font-size: 1.2rem;"></i>
-                        </div>
-                        <div>
-                            <h4 style="margin-bottom: 5px; font-size: 1.1rem;">Location</h4>
-                            <p style="color: #666; margin: 0;">41 Gemini St, Brackenfell South, Cape Town, 7560</p>
-                            <p style="color: #999; font-size: 0.9rem; margin: 5px 0 0 0;">Serving nationwide</p>
-                        </div>
-                    </div>
-
-                    <div style="display: flex; gap: 15px; align-items: start;">
-                        <div
-                            style="width: 50px; height: 50px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                            <i class="fab fa-whatsapp" style="color: white; font-size: 1.4rem;"></i>
-                        </div>
-                        <div>
-                            <h4 style="margin-bottom: 5px; font-size: 1.1rem;">WhatsApp</h4>
-                            <p style="color: #666; margin: 0;">+27 72 257 3089</p>
-                            <a href="https://wa.me/27722573089?text=Hi!%20I%27d%20like%20to%20chat.%20I%20came%20from%20the%20Odyssey%204x4%20website."
-                                target="_blank"
-                                style="color: var(--color-accent); font-size: 0.9rem; margin-top: 5px; display: inline-block;">
-                                Chat with us now →
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer>
+    <footer style="background: #000; padding: 60px 0; border-top: 1px solid var(--color-border);">
         <div class="container">
-            <div class="footer-content" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-                <!-- Column 1: Product Categories -->
-                <div class="footer-col">
-                    <h4 style="margin-bottom: 20px;">Products</h4>
-                    <ul class="footer-links">
-                        <li><a href="category-bumpers.html">Front Bumpers</a></li>
-                        <li><a href="category-bumpers.html">Rear Bumpers Carrier Compatible</a></li>
-                        <li><a href="category-accessories.html">Carrier Options</a></li>
-                        <li><a href="category-bumpers.html">Stealth Rear Bumpers</a></li>
-                        <li><a href="category-rock-sliders.html">Rocksliders</a></li>
-                        <li><a href="category-accessories.html">Underbody Protection</a></li>
-                        <li><a href="category-drawer-systems.html">Storage Solutions</a></li>
-                        <li><a href="category-accessories.html">Vehicle Accessories</a></li>
-                    </ul>
-                </div>
-
-                <!-- Column 2: Tagline -->
-                <div class="footer-col"
-                    style="display: flex; flex-direction: column; justify-content: center; text-align: left;">
-                    <h4
-                        style="font-size: 1.8rem; line-height: 1.3; color: white; text-transform: none; font-weight: 800;">
-                        Built for Adventure.<br>
-                        <span style="color: var(--color-accent);">Engineered for Excellence.</span>
-                    </h4>
-                </div>
-
-                <!-- Column 3: Quick Links -->
-                <div class="footer-col">
-                    <h4 style="margin-bottom: 20px;">Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Homepage</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="qr-instructions.html">QR Codes – Bumper Instructions</a></li>
-                        <li><a href="index.html#contact">Contact Us</a></li>
-                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                    </ul>
-                </div>
-
-                <!-- Column 4: Get In Touch -->
-                <div class="footer-col">
-                    <h4 style="margin-bottom: 20px;">Get In Touch</h4>
-                    <ul class="footer-links">
-                        <li style="margin-bottom: 15px;">
-                            <strong style="display: block; color: white;">Email:</strong>
-                            <a href="mailto:info@odysey-x.co.za">info@odysey-x.co.za</a>
-                        </li>
-                        <li style="margin-bottom: 15px;">
-                            <strong style="display: block; color: white;">Phone:</strong>
-                            <a href="tel:+27722573089">+27 72 257 3089</a>
-                        </li>
-                    </ul>
-                    <div class="social-icons" style="margin-top: 20px;">
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
-                    </div>
-                </div>
+            <div style="text-align: center;">
+                <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4" style="height: 60px; margin: 0 auto 30px; filter: grayscale(1);">
+                <p style="color: var(--color-text-muted);">&copy; 2026 Odyssey 4x4 Expedition Gear. Built for Adventure.</p>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; All Rights Reserved. Designed by odysey-X Expedition Gear.</p>
         </div>
     </footer>
-
-    <!-- MODALS -->
-    <!-- Registration Modal -->
-    <div id="register-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('register-modal')">&times;</span>
-            <h2 style="margin-bottom: 10px; font-size: 1.8rem; color: var(--color-primary); text-align: center;">JOIN
-                THE FAMILY</h2>
-            <p style="margin-bottom: 30px; color: #666; font-size: 0.95rem; text-align: center;">Register to complete
-                your purchase and get exclusive updates.</p>
-            <form id="registration-form">
-                <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" class="form-control" placeholder="Enter your full name" required>
-                </div>
-                <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" class="form-control" placeholder="your.email@example.com" required>
-                </div>
-                <div class="form-group">
-                    <label>Contact Number</label>
-                    <input type="tel" class="form-control" placeholder="e.g. 079 123 4567" required>
-                </div>
-                <div class="form-group">
-                    <label>Vehicle Make / Model</label>
-                    <input type="text" class="form-control" placeholder="e.g. Ford Ranger T6" required>
-                </div>
-                <button type="submit" class="btn btn-primary btn-block"
-                    style="margin-top: 10px; padding: 14px;">REGISTER</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Lead Gen Popup (Same structure, different ID) -->
-    <div id="lead-modal" class="modal">
-        <div class="modal-content"
-            style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: white; border: 2px solid var(--color-accent);">
-            <span class="close-modal" onclick="closeModal('lead-modal')" style="color: white;">&times;</span>
-            <h2 style="color: var(--color-accent); margin-bottom: 10px; font-size: 1.8rem; text-align: center;">UNLOCK
-                ADVENTURE</h2>
-            <p style="margin-bottom: 30px; color: #ddd; font-size: 0.95rem; text-align: center;">Join the Odyssey 4x4
-                family for special prices and new product alerts!</p>
-            <form id="lead-form">
-                <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label>Vehicle Model</label>
-                    <input type="text" class="form-control" required>
-                </div>
-                <button type="submit" class="btn btn-primary btn-block" style="margin-top: 10px; padding: 14px;">GET
-                    OFFERS</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- CART MODAL -->
-    <div id="cart-modal" class="modal">
-        <div class="modal-content" style="max-width: 600px;">
-            <span class="close-modal" onclick="closeCart()">&times;</span>
-            <h2 style="margin-bottom: 30px; font-size: 1.8rem; text-align: center;">Shopping Cart</h2>
-
-            <div id="cart-items" style="max-height: 400px; overflow-y: auto; margin-bottom: 20px;">
-                <!-- Cart items will be rendered here -->
-            </div>
-
-            <div style="border-top: 2px solid #e0e0e0; padding-top: 20px; margin-top: 20px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                    <h3 style="font-size: 1.3rem;">Total:</h3>
-                    <h3 id="cart-total" style="font-size: 1.5rem; color: var(--color-accent);">R 0</h3>
-                </div>
-                <button class="btn btn-primary btn-block" onclick="checkout()" style="padding: 14px;">PROCEED TO
-                    CHECKOUT</button>
-                <button class="btn btn-outline btn-block" onclick="closeCart()"
-                    style="margin-top: 10px; padding: 14px;">CONTINUE SHOPPING</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- CONTACT WIDGET -->
-    <div class="contact-widget">
-        <a href="index.html#contact" class="contact-widget-link">
-            <div class="contact-widget-logo">
-                <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4">
-            </div>
-            <div class="contact-widget-text">Contact Us</div>
-        </a>
-    </div>
 
     <!-- SCRIPTS -->
     <script src="scripts/main.js"></script>

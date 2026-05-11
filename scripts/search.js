@@ -36,7 +36,8 @@ function performSearch(query) {
     const results = products.filter(product => {
         return product.name.toLowerCase().includes(query) ||
             product.category.toLowerCase().includes(query) ||
-            product.description.toLowerCase().includes(query);
+            product.description.toLowerCase().includes(query) ||
+            product.brand.toLowerCase().includes(query);
     });
 
     if (results.length === 0) {
@@ -51,15 +52,15 @@ function performSearch(query) {
     }
 
     searchResults.innerHTML = results.slice(0, 5).map(product => `
-        <a href="product-${product.id}.html" class="search-result-item">
+        <div class="search-result-item" onclick="applyFilter('category', '${product.category}')">
             <img src="${product.image}" alt="${product.name}" class="search-result-img" 
                  onerror="this.src='assets/images/placeholder.jpg'">
             <div class="search-result-info">
                 <div class="search-result-name">${product.name}</div>
-                <div class="search-result-category">${formatCategory(product.category)}</div>
+                <div class="search-result-category">${product.brand.toUpperCase()} | ${formatCategory(product.category)}</div>
             </div>
             <div class="search-result-price">R ${product.price.toLocaleString()}</div>
-        </a>
+        </div>
     `).join('');
 
     searchResults.classList.add('active');
