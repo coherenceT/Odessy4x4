@@ -176,25 +176,26 @@ const products = [
 ];
 
 const brands = [
-    { name: "Toyota", id: "toyota", logo: "fa-car" },
+    { name: "Chevrolet", id: "chevrolet", logo: "fa-car" },
     { name: "Ford", id: "ford", logo: "fa-car" },
+    { name: "Ford Everest", id: "ford-everest", logo: "fa-car" },
+    { name: "Ford Ranger", id: "ford-ranger", logo: "fa-car" },
+    { name: "Ford Ranger Raptor", id: "ford-ranger-raptor", logo: "fa-car" },
     { name: "Isuzu", id: "isuzu", logo: "fa-car" },
-    { name: "Jeep", id: "jeep", logo: "fa-car" },
-    { name: "Nissan", id: "nissan", logo: "fa-car" },
+    { name: "Land Rover", id: "land-rover", logo: "fa-car" },
+    { name: "Mazda", id: "mazda", logo: "fa-car" },
     { name: "Mitsubishi", id: "mitsubishi", logo: "fa-car" },
-    { name: "Suzuki", id: "suzuki", logo: "fa-car" },
-    { name: "Land Rover", id: "land-rover", logo: "fa-car" }
+    { name: "Mercedes-Benz", id: "mercedes-benz", logo: "fa-car" },
+    { name: "Nissan", id: "nissan", logo: "fa-car" }
 ];
 
 const categories = [
     { name: "Front Bumpers", id: "front-bumpers", icon: "fa-truck-front" },
     { name: "Rear Bumpers", id: "rear-bumpers-carrier", icon: "fa-truck-monster" },
     { name: "Rock Sliders", id: "rock-sliders", icon: "fa-grip-lines" },
-    { name: "Underbody", id: "underbody-protection", icon: "fa-shield-halved" },
-    { name: "Storage", id: "drawer-systems", icon: "fa-box-open" },
-    { name: "Roof Racks", id: "roof-racks", icon: "fa-bars" },
-    { name: "Accessories", id: "accessories", icon: "fa-toolbox" },
-    { name: "Lighting", id: "lighting", icon: "fa-lightbulb" }
+    { name: "Fridge Slides", id: "accessories", icon: "fa-temperature-low" },
+    { name: "Storage Systems", id: "drawer-systems", icon: "fa-box-open" },
+    { name: "Underbody", id: "underbody-protection", icon: "fa-shield-halved" }
 ];
 
 /* =========================================
@@ -215,6 +216,7 @@ function init() {
     renderFilterUI();
     renderProducts();
     setupMenu();
+    setupHeroSlider();
     checkLocation();
 }
 
@@ -391,11 +393,57 @@ function setupMenu() {
         slideMenuOverlay.classList.add('active');
     });
 
-    if (slideMenuClose) slideMenuClose.addEventListener('click', closeMenu);
-    if (slideMenuOverlay) slideMenuOverlay.addEventListener('click', closeMenu);
+    if (slideMenuClose) slideMenuClose.addEventListener('click', window.closeMenu);
+    if (slideMenuOverlay) slideMenuOverlay.addEventListener('click', window.closeMenu);
 
-    function closeMenu() {
-        slideMenu.classList.remove('active');
-        slideMenuOverlay.classList.remove('active');
+    // Mobile Accordion Logic
+    const accordionToggles = document.querySelectorAll('.accordion-toggle');
+    accordionToggles.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const content = btn.nextElementSibling;
+            const isExpanded = content.classList.contains('expanded');
+            // Collapse all first
+            document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('expanded'));
+            document.querySelectorAll('.accordion-toggle i').forEach(i => i.style.transform = '');
+            // Then expand the clicked one if it was collapsed
+            if (!isExpanded) {
+                content.classList.add('expanded');
+                btn.querySelector('i').style.transform = 'rotate(180deg)';
+            }
+        });
+    });
+}
+
+// Expose closeMenu globally so inline onclick attributes in HTML can call it
+window.closeMenu = function() {
+    const slideMenu = document.getElementById('slide-menu');
+    const slideMenuOverlay = document.getElementById('slide-menu-overlay');
+    if (slideMenu) slideMenu.classList.remove('active');
+    if (slideMenuOverlay) slideMenuOverlay.classList.remove('active');
+};
+
+/* =========================================
+   9. HERO SLIDER
+   ========================================= */
+function setupHeroSlider() {
+    const wrapper = document.querySelector('.slider-wrapper');
+    const slides = document.querySelectorAll('.slide');
+    if (!wrapper || slides.length <= 1) return;
+
+    let current = 0;
+    const total = slides.length;
+
+    function goToSlide(index) {
+        if (index < 0) index = total - 1;
+        if (index >= total) index = 0;
+        current = index;
+        wrapper.style.transform = `translateX(-${current * 100}%)`;
     }
+
+    // Auto-play every 5 seconds
+    let autoPlay = setInterval(() => goToSlide(current + 1), 5000);
+
+    // Expose prev/next globally for potential button controls
+    window.sliderNext = () => { clearInterval(autoPlay); goToSlide(current + 1); autoPlay = setInterval(() => goToSlide(current + 1), 5000); };
+    window.sliderPrev = () => { clearInterval(autoPlay); goToSlide(current - 1); autoPlay = setInterval(() => goToSlide(current + 1), 5000); };
 }

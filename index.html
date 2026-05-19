@@ -32,11 +32,40 @@
                     <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4 Logo">
                 </a>
 
-                <!-- Search Bar -->
-                <div class="header-search-container">
-                    <input type="text" id="search-input" placeholder="Search products, vehicles, parts..." class="header-search-input">
-                    <div id="search-results" class="search-results"></div>
-                </div>
+                <!-- Desktop Navigation -->
+                <nav class="desktop-nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li class="has-dropdown">
+                            <a href="#products">Products <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
+                            <ul class="dropdown">
+                                <li><a href="#products" onclick="applyFilter('category', 'front-bumpers')">Front Replacement Bumpers</a></li>
+                                <li><a href="#products" onclick="applyFilter('category', 'rear-bumpers-carrier')">Rear Replacement Bumpers</a></li>
+                                <li><a href="#products" onclick="applyFilter('category', 'rock-sliders')">Rock Sliders</a></li>
+                                <li><a href="#products" onclick="applyFilter('category', 'accessories')">Fridge Slides</a></li>
+                                <li><a href="#products" onclick="applyFilter('category', 'drawer-systems')">Storage & Drawer Systems</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-dropdown">
+                            <a href="#products">Vehicles <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
+                            <ul class="dropdown">
+                                <li><a href="#products" onclick="applyFilter('brand', 'chevrolet')">Chevrolet</a></li>
+                                <li><a href="#products" onclick="applyFilter('brand', 'ford')">Ford</a></li>
+                                <li><a href="#products" onclick="applyFilter('brand', 'ford-everest')">Ford Everest</a></li>
+                                <li><a href="#products" onclick="applyFilter('brand', 'ford-ranger')">Ford Ranger</a></li>
+                                <li><a href="#products" onclick="applyFilter('brand', 'ford-ranger-raptor')">Ford Ranger Raptor</a></li>
+                                <li><a href="#products" onclick="applyFilter('brand', 'isuzu')">Isuzu</a></li>
+                                <li><a href="#products" onclick="applyFilter('brand', 'land-rover')">Land Rover</a></li>
+                                <li><a href="#products" onclick="applyFilter('brand', 'mazda')">Mazda</a></li>
+                                <li><a href="#products" onclick="applyFilter('brand', 'mitsubishi')">Mitsubishi</a></li>
+                                <li><a href="#products" onclick="applyFilter('brand', 'mercedes-benz')">Mercedes-Benz</a></li>
+                                <li><a href="#products" onclick="applyFilter('brand', 'nissan')">Nissan</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </nav>
 
                 <!-- Hamburger -->
                 <div class="mobile-toggle">
@@ -52,23 +81,125 @@
         <div class="slide-menu-header">
             <button class="slide-menu-close" id="slide-menu-close">&times;</button>
         </div>
-        <!-- Search in Burger Menu (User Feedback) -->
-        <div style="padding: 20px;">
-            <input type="text" placeholder="Quick Search..." class="header-search-input" style="width: 100%;">
-        </div>
         <div class="slide-menu-links">
-            <a href="index.html">Home</a>
-            <a href="#products">Products</a>
-            <a href="#contact">Contact Us</a>
+            <a href="index.html" class="mobile-link">Home</a>
+            <a href="#about" class="mobile-link" onclick="closeMenu()">About Us</a>
+            
+            <div class="mobile-accordion">
+                <button class="accordion-toggle">Products <i class="fas fa-chevron-down"></i></button>
+                <div class="accordion-content">
+                    <a href="#products" onclick="applyFilter('category', 'front-bumpers'); closeMenu()">Front Replacement Bumpers</a>
+                    <a href="#products" onclick="applyFilter('category', 'rear-bumpers-carrier'); closeMenu()">Rear Replacement Bumpers</a>
+                    <a href="#products" onclick="applyFilter('category', 'rock-sliders'); closeMenu()">Rock Sliders</a>
+                    <a href="#products" onclick="applyFilter('category', 'accessories'); closeMenu()">Fridge Slides</a>
+                    <a href="#products" onclick="applyFilter('category', 'drawer-systems'); closeMenu()">Storage & Drawer Systems</a>
+                </div>
+            </div>
+
+            <div class="mobile-accordion">
+                <button class="accordion-toggle">Vehicles <i class="fas fa-chevron-down"></i></button>
+                <div class="accordion-content">
+                    <a href="#products" onclick="applyFilter('brand', 'chevrolet'); closeMenu()">Chevrolet</a>
+                    <a href="#products" onclick="applyFilter('brand', 'ford'); closeMenu()">Ford</a>
+                    <a href="#products" onclick="applyFilter('brand', 'ford-everest'); closeMenu()">Ford Everest</a>
+                    <a href="#products" onclick="applyFilter('brand', 'ford-ranger'); closeMenu()">Ford Ranger</a>
+                    <a href="#products" onclick="applyFilter('brand', 'ford-ranger-raptor'); closeMenu()">Ford Ranger Raptor</a>
+                    <a href="#products" onclick="applyFilter('brand', 'isuzu'); closeMenu()">Isuzu</a>
+                    <a href="#products" onclick="applyFilter('brand', 'land-rover'); closeMenu()">Land Rover</a>
+                    <a href="#products" onclick="applyFilter('brand', 'mazda'); closeMenu()">Mazda</a>
+                    <a href="#products" onclick="applyFilter('brand', 'mitsubishi'); closeMenu()">Mitsubishi</a>
+                    <a href="#products" onclick="applyFilter('brand', 'mercedes-benz'); closeMenu()">Mercedes-Benz</a>
+                    <a href="#products" onclick="applyFilter('brand', 'nissan'); closeMenu()">Nissan</a>
+                </div>
+            </div>
+
+            <a href="#contact" class="mobile-link" onclick="closeMenu()">Contact Us</a>
         </div>
     </div>
 
-    <!-- HERO SECTION -->
-    <section class="hero bushveld-section">
-        <div class="bushveld-overlay"></div>
-        <div class="container bushveld-content" style="text-align: center; padding: 100px 0;">
-            <h1 style="font-size: 4rem; color: white; margin-bottom: 20px;">Odyssey 4x4</h1>
-            <p style="font-size: 1.5rem; color: var(--color-accent); font-weight: 700;">ENGINEERED FOR ADVENTURE</p>
+    <!-- HERO SLIDER SECTION -->
+    <section class="hero-slider-section">
+        <div class="hero-slider" id="main-hero-slider">
+            <div class="slider-wrapper">
+                <!-- Slide 1 -->
+                <div class="slide active">
+                    <img src="assets/images/mainphoto.jpg" alt="Odyssey 4x4 Main Slider Image" class="slide-bg">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content container">
+                        <h1>Odyssey 4x4</h1>
+                        <p>ENGINEERED FOR ADVENTURE</p>
+                        <a href="#products" class="btn-primary" style="display: inline-block; margin-top: 20px; padding: 15px 30px; background: var(--color-accent); color: white; font-weight: 700; border-radius: 4px; font-size: 1.1rem; text-transform: uppercase;">EXPLORE GEAR</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED CATEGORIES SECTION -->
+    <section class="featured-categories section-padding">
+        <div class="container">
+            <h2 class="section-title" style="font-size: 2.5rem; margin-bottom: 40px; text-align: center;">SHOP BY CATEGORY</h2>
+            <div class="category-grid">
+                <a href="#products" class="category-card-lg" onclick="applyFilter('category', 'front-bumpers')">
+                    <img src="assets/images/front-bumpers.jpg" onerror="this.src='assets/images/placeholder.jpg'" alt="Front Bumpers">
+                    <div class="cat-overlay">
+                        <h3>Front Bumpers</h3>
+                        <p>Heavy duty protection for the front of your vehicle.</p>
+                        <span class="cat-link">View Products <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="#products" class="category-card-lg" onclick="applyFilter('category', 'rear-bumpers-carrier')">
+                    <img src="assets/images/rear-bumpers.jpg" onerror="this.src='assets/images/placeholder.jpg'" alt="Rear Bumpers">
+                    <div class="cat-overlay">
+                        <h3>Rear Bumpers</h3>
+                        <p>High clearance, swing-arm ready rear protection.</p>
+                        <span class="cat-link">View Products <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="#products" class="category-card-lg" onclick="applyFilter('category', 'rock-sliders')">
+                    <img src="assets/images/rocksliders.jpg" onerror="this.src='assets/images/placeholder.jpg'" alt="Rock Sliders">
+                    <div class="cat-overlay">
+                        <h3>Rock Sliders</h3>
+                        <p>Maximum sill protection and step access.</p>
+                        <span class="cat-link">View Products <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="#products" class="category-card-lg" onclick="applyFilter('category', 'accessories')">
+                    <img src="assets/images/placeholder.jpg" alt="Fridge Slides">
+                    <div class="cat-overlay">
+                        <h3>Fridge Slides</h3>
+                        <p>Secure and accessible fridge mounting solutions.</p>
+                        <span class="cat-link">View Products <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="#products" class="category-card-lg" onclick="applyFilter('category', 'drawer-systems')">
+                    <img src="assets/images/Odyssey Drawer System.jpg" onerror="this.src='assets/images/placeholder.jpg'" alt="Storage">
+                    <div class="cat-overlay">
+                        <h3>Storage Systems</h3>
+                        <p>Premium drawer systems for organized overlanding.</p>
+                        <span class="cat-link">View Products <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT / HISTORY SECTION -->
+    <section id="about" class="about-section section-padding" style="background: var(--color-dark-grey); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+        <div class="container">
+            <div class="about-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+                <div class="about-content">
+                    <h2 class="section-title" style="font-size: 2.5rem; margin-bottom: 30px;">OUR HISTORY</h2>
+                    <p style="margin-bottom: 20px; font-size: 1.1rem; color: var(--color-text-muted);">Odyssey 4x4 was born from a passion for exploring the unforgiving African landscape. For years, we have been designing and manufacturing premium 4x4 accessories that withstand the toughest conditions.</p>
+                    <p style="margin-bottom: 30px; font-size: 1.1rem; color: var(--color-text-muted);">Our commitment is to quality, durability, and a rugged aesthetic that transforms your vehicle into the ultimate expedition machine.</p>
+                    
+                    <h3 style="font-size: 1.8rem; color: var(--color-accent); margin-bottom: 15px; font-family: var(--font-heading); text-transform: uppercase;">Manufacturing Process</h3>
+                    <p style="font-size: 1.1rem; color: var(--color-text-muted);">Every Odyssey product is precision-engineered using 3D CAD modeling and CNC laser cutting. We use high-grade steel and aluminum, finished with a heavy-duty powder coat to ensure longevity and maximum protection.</p>
+                </div>
+                <div class="about-image">
+                    <img src="assets/images/bull-bar-showcase.jpg" onerror="this.src='assets/images/placeholder.jpg'" alt="Odyssey 4x4 Manufacturing" style="border-radius: 12px; box-shadow: var(--shadow-premium);">
+                </div>
+            </div>
         </div>
     </section>
 
