@@ -41,12 +41,21 @@
     box-sizing: border-box;
 }
 
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     font-family: var(--font-body);
     background-color: var(--color-primary);
     color: var(--color-text-main);
     line-height: 1.6;
-    overflow-x: hidden;
+}
+
+/* Force 16px font size on inputs to prevent iOS Safari auto-zoom issues */
+input, select, textarea, .header-search-input {
+    font-size: 16px !important;
 }
 
 h1, h2, h3, h4 {
@@ -399,7 +408,7 @@ header {
     background: var(--color-primary);
     z-index: 1999;
     transition: var(--transition-smooth);
-    padding: 40px 20px;
+    padding: 40px 20px 0;
     border-left: 2px solid var(--color-accent);
     display: flex;
     flex-direction: column;
@@ -440,10 +449,11 @@ header {
 .red-ribbon {
     background-color: var(--color-accent);
     height: 15px;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    width: calc(100% + 40px);
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-top: auto;
+    flex-shrink: 0;
     z-index: 10;
 }
 
@@ -481,7 +491,7 @@ header {
         width: 100vw;
         right: -100vw;
         border-left: none;
-        padding: 80px 30px 40px; /* Space for close button and bottom ribbon */
+        padding: 80px 30px 0; /* Space for close button and bottom ribbon */
         background: #ffffff; /* White background */
         align-items: center;
         text-align: center;
@@ -500,6 +510,12 @@ header {
         width: calc(100% - 40px);
         margin-bottom: 0;
         border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .red-ribbon {
+        width: calc(100% + 60px);
+        margin-left: -30px;
+        margin-right: -30px;
     }
 
     .slide-menu-close {
@@ -709,6 +725,9 @@ header {
 .accordion-toggle:hover {
     color: var(--color-accent);
 }
+.accordion-toggle i:last-child {
+    transition: transform 0.3s ease;
+}
 .accordion-content {
     max-height: 0;
     overflow: hidden;
@@ -718,7 +737,7 @@ header {
     padding-left: 15px;
 }
 .accordion-content.expanded {
-    max-height: 500px; /* Arbitrary large height */
+    max-height: 1000px; /* Arbitrary large height to fit all links */
     margin-top: 15px;
 }
 .accordion-content a {

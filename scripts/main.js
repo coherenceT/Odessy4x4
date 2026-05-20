@@ -217,7 +217,6 @@ function init() {
     renderProducts();
     setupMenu();
     setupHeroSlider();
-    checkLocation();
 }
 
 /* =========================================
@@ -344,40 +343,7 @@ window.enquireWhatsApp = (id) => {
 /* =========================================
    7. LOCATION TRACKING
    ========================================= */
-function checkLocation() {
-    if (!userLocation) {
-        // Show a subtle prompt after 5 seconds
-        setTimeout(() => {
-            showLocationPrompt();
-        }, 5000);
-    }
-}
 
-function showLocationPrompt() {
-    // Create a simple location selector toast or overlay
-    const prompt = document.createElement('div');
-    prompt.className = 'location-prompt';
-    prompt.innerHTML = `
-        <div class="location-prompt-content">
-            <p>Select your area for local fitment options:</p>
-            <div class="location-buttons">
-                <button onclick="setLocation('Joburg')">Joburg</button>
-                <button onclick="setLocation('KZN')">KZN</button>
-                <button onclick="setLocation('Cape Town')">Cape Town</button>
-                <button onclick="setLocation('Other')">Other</button>
-            </div>
-            <button class="close-prompt" onclick="this.parentElement.parentElement.remove()">&times;</button>
-        </div>
-    `;
-    document.body.appendChild(prompt);
-}
-
-window.setLocation = (loc) => {
-    userLocation = loc;
-    localStorage.setItem('odyssey_location', loc);
-    const prompt = document.querySelector('.location-prompt');
-    if (prompt) prompt.remove();
-};
 
 /* =========================================
    8. MENU & UI
@@ -404,11 +370,12 @@ function setupMenu() {
             const isExpanded = content.classList.contains('expanded');
             // Collapse all first
             document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('expanded'));
-            document.querySelectorAll('.accordion-toggle i').forEach(i => i.style.transform = '');
+            document.querySelectorAll('.accordion-toggle i:last-child').forEach(i => i.style.transform = '');
             // Then expand the clicked one if it was collapsed
             if (!isExpanded) {
                 content.classList.add('expanded');
-                btn.querySelector('i').style.transform = 'rotate(180deg)';
+                const chevron = btn.querySelector('i:last-child');
+                if (chevron) chevron.style.transform = 'rotate(180deg)';
             }
         });
     });
