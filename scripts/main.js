@@ -432,18 +432,43 @@ function setupHeroSlider() {
 
     let current = 0;
     const total = slides.length;
+    let slideTimeout;
 
     function goToSlide(index) {
         if (index < 0) index = total - 1;
         if (index >= total) index = 0;
+        
+        // Update active class
+        slides.forEach(slide => slide.classList.remove('active'));
+        slides[index].classList.add('active');
+        
         current = index;
         wrapper.style.transform = `translateX(-${current * 100}%)`;
+        
+        // Reset timer for the next transition
+        resetAutoPlay();
     }
 
-    // Auto-play every 5 seconds
-    let autoPlay = setInterval(() => goToSlide(current + 1), 5000);
+    function resetAutoPlay() {
+        if (slideTimeout) clearTimeout(slideTimeout);
+        
+        // First slide (index 0) stays for 7 seconds, others for 3.5 seconds
+        const duration = (current === 0) ? 7000 : 3500;
+        
+        slideTimeout = setTimeout(() => {
+            goToSlide(current + 1);
+        }, duration);
+    }
 
-    // Expose prev/next globally for potential button controls
-    window.sliderNext = () => { clearInterval(autoPlay); goToSlide(current + 1); autoPlay = setInterval(() => goToSlide(current + 1), 5000); };
-    window.sliderPrev = () => { clearInterval(autoPlay); goToSlide(current - 1); autoPlay = setInterval(() => goToSlide(current + 1), 5000); };
+    // Initialize auto-play
+    resetAutoPlay();
+
+    // Expose prev/next globally for manual arrow buttons
+    window.sliderNext = () => {
+        goToSlide(current + 1);
+    };
+    window.sliderPrev = () => {
+        goToSlide(current - 1);
+    };
 }
+
