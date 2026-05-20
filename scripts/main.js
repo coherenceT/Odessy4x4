@@ -217,7 +217,7 @@ function init() {
     renderProducts();
     setupMenu();
     setupHeroSlider();
-    checkLocation();
+    // checkLocation(); // Disabled center prompt message
 }
 
 /* =========================================
@@ -389,8 +389,14 @@ function setupMenu() {
     const slideMenuClose = document.getElementById('slide-menu-close');
 
     if (mobileBtn) mobileBtn.addEventListener('click', () => {
-        slideMenu.classList.add('active');
-        slideMenuOverlay.classList.add('active');
+        const isActive = slideMenu.classList.contains('active');
+        if (isActive) {
+            window.closeMenu();
+        } else {
+            slideMenu.classList.add('active');
+            slideMenuOverlay.classList.add('active');
+            document.body.classList.add('menu-open');
+        }
     });
 
     if (slideMenuClose) slideMenuClose.addEventListener('click', window.closeMenu);
@@ -420,6 +426,7 @@ window.closeMenu = function() {
     const slideMenuOverlay = document.getElementById('slide-menu-overlay');
     if (slideMenu) slideMenu.classList.remove('active');
     if (slideMenuOverlay) slideMenuOverlay.classList.remove('active');
+    document.body.classList.remove('menu-open');
 };
 
 /* =========================================
@@ -432,18 +439,67 @@ function setupHeroSlider() {
 
     let current = 0;
     const total = slides.length;
+    let timer = null;
+
+    function getDuration(index) {
+        const slide = slides[index];
+        if (slide) {
+            const durAttr = slide.getAttribute('data-duration');
+            if (durAttr) return parseInt(durAttr, 10);
+        }
+        return 4000; // Default fallback
+    }
 
     function goToSlide(index) {
         if (index < 0) index = total - 1;
         if (index >= total) index = 0;
+
+        // Update active class
+        slides.forEach(s => s.classList.remove('active'));
+        slides[index].classList.add('active');
+
         current = index;
         wrapper.style.transform = `translateX(-${current * 100}%)`;
+
+        resetTimer();
     }
 
-    // Auto-play every 5 seconds
-    let autoPlay = setInterval(() => goToSlide(current + 1), 5000);
+    function resetTimer() {
+        if (timer) clearTimeout(timer);
+        const duration = getDuration(current);
+        timer = setTimeout(() => {
+            goToSlide(current + 1);
+        }, duration);
+    }
 
-    // Expose prev/next globally for potential button controls
-    window.sliderNext = () => { clearInterval(autoPlay); goToSlide(current + 1); autoPlay = setInterval(() => goToSlide(current + 1), 5000); };
-    window.sliderPrev = () => { clearInterval(autoPlay); goToSlide(current - 1); autoPlay = setInterval(() => goToSlide(current + 1), 5000); };
+    // Expose controls globally for buttons
+    window.sliderNext = () => {
+        goToSlide(current + 1);
+    };
+    window.sliderPrev = () => {
+        goToSlide(current - 1);
+    };
+
+    // Swipe support for touch screens (optimized for phone viewing)
+    let startX = 0;
+    let endX = 0;
+
+    wrapper.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+    }, { passive: true });
+
+    wrapper.addEventListener('touchend', (e) => {
+        endX = e.changedTouches[0].clientX;
+        const diffX = startX - endX;
+        if (Math.abs(diffX) > 50) { // Threshold of 50px
+            if (diffX > 0) {
+                window.sliderNext();
+            } else {
+                window.sliderPrev();
+            }
+        }
+    }, { passive: true });
+
+    // Initialize first slide transition schedule
+    resetTimer();
 }

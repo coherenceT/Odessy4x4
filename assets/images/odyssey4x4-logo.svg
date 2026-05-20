@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 60" width="100%" height="100%">
+    <!-- Rugged mountain emblem on the left -->
+    <g transform="translate(10, 8)">
+        <!-- Back peak -->
+        <polygon points="12,32 25,12 38,32" fill="#555555" opacity="0.6"/>
+        <!-- Front Left peak -->
+        <polygon points="2,38 18,16 32,38" fill="#1a1a1a" />
+        <!-- Front Right Accent peak (Red) -->
+        <polygon points="22,38 34,22 46,38" fill="#d32f2f" />
+        <!-- Underline decoration -->
+        <line x1="0" y1="42" x2="48" y2="42" stroke="#d32f2f" stroke-width="2.5" />
+    </g>
+    <!-- Brand Typography -->
+    <text x="72" y="32" font-family="'Montserrat', 'Inter', sans-serif" font-weight="900" font-size="21" letter-spacing="1" fill="#1a1a1a">ODYSSEY</text>
+    <text x="188" y="32" font-family="'Montserrat', 'Inter', sans-serif" font-weight="900" font-size="21" letter-spacing="1" fill="#d32f2f">4X4</text>
+    <text x="72" y="45" font-family="'Inter', sans-serif" font-weight="700" font-size="8" letter-spacing="3.5" fill="#777777">EXPEDITION GEAR</text>
+</svg>

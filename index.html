@@ -29,7 +29,7 @@
             <div class="container main-header-content">
                 <!-- Logo -->
                 <a href="index.html" class="header-logo">
-                    <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4 Logo">
+                    <img src="assets/images/odyssey4x4-logo.svg" alt="Odyssey 4x4 Logo">
                 </a>
 
                 <!-- Desktop Navigation -->
@@ -68,9 +68,11 @@
                 </nav>
 
                 <!-- Hamburger -->
-                <div class="mobile-toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
+                <button class="mobile-toggle" aria-label="Toggle menu">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </button>
             </div>
         </div>
     </header>
@@ -79,6 +81,9 @@
     <div class="slide-menu-overlay" id="slide-menu-overlay"></div>
     <div class="slide-menu" id="slide-menu">
         <div class="slide-menu-header">
+            <a href="index.html" class="slide-menu-logo">
+                <img src="assets/images/odyssey4x4-logo.svg" alt="Odyssey 4x4 Logo" style="filter: brightness(0) invert(1); height: 45px;">
+            </a>
             <button class="slide-menu-close" id="slide-menu-close">&times;</button>
         </div>
         <div class="slide-menu-links">
@@ -115,14 +120,17 @@
 
             <a href="#contact" class="mobile-link" onclick="closeMenu()">Contact Us</a>
         </div>
+        <div class="slide-menu-ribbon">
+            ENGINEERED FOR ADVENTURE
+        </div>
     </div>
 
     <!-- HERO SLIDER SECTION -->
     <section class="hero-slider-section">
         <div class="hero-slider" id="main-hero-slider">
             <div class="slider-wrapper">
-                <!-- Slide 1 -->
-                <div class="slide active">
+                <!-- Slide 1 (Main Slide - 8s) -->
+                <div class="slide active" data-duration="8000">
                     <img src="assets/images/mainphoto.jpg" alt="Odyssey 4x4 Main Slider Image" class="slide-bg">
                     <div class="slide-overlay"></div>
                     <div class="slide-content container">
@@ -131,7 +139,59 @@
                         <a href="#products" class="btn-primary">EXPLORE GEAR</a>
                     </div>
                 </div>
+                <!-- Slide 2 (4s) -->
+                <div class="slide" data-duration="4000">
+                    <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=1600" alt="Rugged Offroad Trails" class="slide-bg">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content container">
+                        <h2>Rugged Protection</h2>
+                        <p>PREMIUM FRONT & REAR BUMPERS</p>
+                        <a href="#products" class="btn-primary" onclick="applyFilter('category', 'front-bumpers')">EXPLORE BUMPERS</a>
+                    </div>
+                </div>
+                <!-- Slide 3 (4s) -->
+                <div class="slide" data-duration="4000">
+                    <img src="https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?auto=format&fit=crop&q=80&w=1600" alt="Mountain Expedition" class="slide-bg">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content container">
+                        <h2>Built for Wilderness</h2>
+                        <p>HEAVY DUTY ROCK SLIDERS & SKID PLATES</p>
+                        <a href="#products" class="btn-primary" onclick="applyFilter('category', 'rock-sliders')">VIEW ARMOUR</a>
+                    </div>
+                </div>
+                <!-- Slide 4 (4s) -->
+                <div class="slide" data-duration="4000">
+                    <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&q=80&w=1600" alt="Overland Camping" class="slide-bg">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content container">
+                        <h2>Rig Organization</h2>
+                        <p>MODULAR DRAWER SYSTEMS & ACCESSORIES</p>
+                        <a href="#products" class="btn-primary" onclick="applyFilter('category', 'drawer-systems')">SHOP STORAGE</a>
+                    </div>
+                </div>
+                <!-- Slide 5 (4s) -->
+                <div class="slide" data-duration="4000">
+                    <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&q=80&w=1600" alt="Sunset Trail" class="slide-bg">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content container">
+                        <h2>Explore Uncharted</h2>
+                        <p>LOW PROFILE ROOF RACKS</p>
+                        <a href="#products" class="btn-primary" onclick="applyFilter('category', 'roof-racks')">EXPLORE ROOF RACKS</a>
+                    </div>
+                </div>
             </div>
+            
+            <!-- Slider Navigation Controls -->
+            <button class="slider-arrow prev" onclick="sliderPrev()" aria-label="Previous Slide">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor"/>
+                </svg>
+            </button>
+            <button class="slider-arrow next" onclick="sliderNext()" aria-label="Next Slide">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="currentColor"/>
+                </svg>
+            </button>
         </div>
     </section>
 
@@ -290,7 +350,7 @@
     <footer style="background: #000; padding: 60px 0; border-top: 1px solid var(--color-border);">
         <div class="container">
             <div style="text-align: center;">
-                <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4" style="height: 60px; margin: 0 auto 30px; filter: grayscale(1);">
+                <img src="assets/images/odyssey4x4-logo.svg" alt="Odyssey 4x4" style="height: 60px; margin: 0 auto 30px; filter: grayscale(1);">
                 <p style="color: var(--color-text-muted);">&copy; 2026 Odyssey 4x4 Expedition Gear. Built for Adventure.</p>
             </div>
         </div>
