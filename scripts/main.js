@@ -1,8 +1,8 @@
 /* =========================================
-   1. DATA SOURCE
+   1. DATA SOURCE (PREMIUM LIGHT THEME REDESIGN)
    ========================================= */
 const products = [
-    // FRONT BUMPERS
+    // --- FRONT BUMPERS ---
     {
         id: 1,
         name: "Odyssey Adventure Bumper - Front",
@@ -11,23 +11,10 @@ const products = [
         price: 18500,
         image: "assets/images/Adventure Bumper - Front.jpg",
         status: "in-stock",
-        partNumber: "OD-FB-001",
-        description: "Heavy duty steel front bumper with integrated winch plate and LED light mounts.",
-        features: ["3mm steel construction", "Winch plate rated for up to 12,000 lbs", "Integrated LED light mounts", "Powder-coated finish", "Recovery point rated 4.75 ton"],
-        specifications: { material: "3mm Steel", weight: "45kg", finish: "Black Powder Coat", warranty: "2 Years" }
-    },
-    {
-        id: 2,
-        name: "Odyssey Stealth Bumper - Rear",
-        category: "stealth-rear-bumpers",
-        brand: "toyota",
-        price: 16500,
-        image: "assets/images/Odyssey Stealth Bumper - Rear.jpg",
-        status: "in-stock",
-        partNumber: "OD-RB-002",
-        description: "High clearance rear bumper with swing arm capability and integrated jerry can holders.",
-        features: ["High departure angle design", "Swing arm compatible", "Dual jerry can holders", "Integrated tow points", "LED light bar ready"],
-        specifications: { material: "3mm Steel", weight: "52kg", finish: "Black Powder Coat", warranty: "2 Years" }
+        partNumber: "OD-FB-FD01",
+        description: "Heavy duty steel front replacement bumper with integrated winch plate and LED light mounts for Ford Ranger.",
+        features: ["3mm steel construction", "Winch plate rated for up to 12,000 lbs", "Integrated LED light mounts", "Textured black powder-coated finish", "Recovery points rated at 4.75 tons"],
+        specifications: { material: "3mm Steel", weight: "45kg", finish: "Textured Powder Coat", warranty: "2 Years" }
     },
     {
         id: 3,
@@ -38,9 +25,9 @@ const products = [
         image: "assets/images/placeholder.jpg",
         fitmentImage: "assets/images/Adventure Bumper - Front.jpg",
         status: "waiting-for-design",
-        partNumber: "OD-FB-003",
-        description: "Premium front bumper designed specifically for Toyota Hilux with integrated bash plate.",
-        features: ["Vehicle-specific fitment", "Integrated bash plate", "Fog light cut-outs", "Tow hooks included", "Modular design"],
+        partNumber: "OD-FB-TY03",
+        description: "Premium front bumper designed specifically for Toyota Hilux with integrated heavy duty bash plate.",
+        features: ["Vehicle-specific fitment", "Integrated bash plate", "Fog light cut-outs", "High clearance wings", "Modular light mounting bars"],
         specifications: { material: "3mm Steel", weight: "48kg", finish: "Black Powder Coat", warranty: "2 Years" }
     },
     {
@@ -51,9 +38,9 @@ const products = [
         price: 17500,
         image: "assets/images/front-bumpers.jpg",
         status: "in-stock",
-        partNumber: "OD-FB-004",
-        description: "Rugged front bumper for Ford Ranger with integrated fog lights and recovery points.",
-        features: ["Heavy duty construction", "Integrated fog lights", "Recovery points included", "Winch compatible", "ADR compliant"],
+        partNumber: "OD-FB-FD24",
+        description: "Rugged front bumper for Ford Ranger with integrated high-output fog lights and recovery points.",
+        features: ["Heavy duty construction", "Integrated fog lights", "Recovery points included", "Winch compatible", "Airbag and ADR compliant"],
         specifications: { material: "3mm Steel", weight: "42kg", finish: "Black Powder Coat", warranty: "2 Years" }
     },
     {
@@ -64,37 +51,110 @@ const products = [
         price: 20500,
         image: "assets/images/bull-bar-showcase.jpg",
         status: "in-stock",
-        partNumber: "OD-FB-005",
-        description: "Ultimate expedition-grade front bumper with maximum protection and functionality.",
-        features: ["Maximum protection design", "Multiple light mounting points", "Heavy duty winch mount", "Integrated bash plate", "Premium finish"],
+        partNumber: "OD-FB-UN25",
+        description: "Ultimate expedition-grade front bumper with maximum protection and functionality across double-cab platforms.",
+        features: ["Maximum protection wrap-around bars", "Multiple auxiliary light mounting points", "Heavy duty winch mount", "Integrated skid plate", "Premium scratch-resistant finish"],
         specifications: { material: "4mm Steel", weight: "55kg", finish: "Black Powder Coat", warranty: "3 Years" }
+    },
+    {
+        id: 11,
+        name: "Frontier Replacement Bumper - Nissan",
+        category: "front-bumpers",
+        brand: "nissan",
+        price: 18900,
+        image: "assets/images/placeholder.jpg",
+        fitmentImage: "assets/images/Adventure Bumper - Front.jpg",
+        status: "in-stock",
+        partNumber: "OD-FB-NS11",
+        description: "Premium heavy-duty front replacement bumper engineered for Nissan Navara / Frontier rigs.",
+        features: ["Precision CNC laser cut", "Winch mount pre-installed", "Dual aerial tabs", "Textured matte powder coat", "Full recovery hook integration"],
+        specifications: { material: "3mm High Tensile Steel", weight: "46kg", finish: "Matte Powder Coat", warranty: "2 Years" }
+    },
+    {
+        id: 13,
+        name: "Odyssey D-Max Bumper - Isuzu",
+        category: "front-bumpers",
+        brand: "isuzu",
+        price: 19200,
+        image: "assets/images/placeholder.jpg",
+        fitmentImage: "assets/images/Adventure Bumper - Front.jpg",
+        status: "in-stock",
+        partNumber: "OD-FB-IZ13",
+        description: "Rugged front replacement bumper styled specifically for the Isuzu D-Max for tough bush terrains.",
+        features: ["Chassis-mounted structural strength", "High departure approach angle wings", "Winch ready cradle", "Split pan design for airflow", "Integrated fog lamps"],
+        specifications: { material: "3mm & 4mm Steel", weight: "47kg", finish: "Black Ripple Powder Coat", warranty: "2 Years" }
+    },
+    {
+        id: 15,
+        name: "BT-50 Extreme Bumper - Mazda",
+        category: "front-bumpers",
+        brand: "mazda",
+        price: 18700,
+        image: "assets/images/placeholder.jpg",
+        fitmentImage: "assets/images/Adventure Bumper - Front.jpg",
+        status: "in-stock",
+        partNumber: "OD-FB-MZ15",
+        description: "Extreme off-road front replacement bumper carefully designed for the Mazda BT-50 layout.",
+        features: ["Compact high clearance fitment", "Heavy duty dual aerial tabs", "LED light bar slot in center pan", "Shackle mount options", "Under-run protection plate included"],
+        specifications: { material: "3mm Steel", weight: "44kg", finish: "Black Powder Coat", warranty: "2 Years" }
+    },
+
+    // --- REAR BUMPERS ---
+    {
+        id: 2,
+        name: "Odyssey Stealth Bumper - Rear",
+        category: "rear-bumpers",
+        brand: "toyota",
+        price: 16500,
+        image: "assets/images/Odyssey Stealth Bumper - Rear.jpg",
+        status: "in-stock",
+        partNumber: "OD-RB-TY02",
+        description: "High clearance rear replacement bumper with swing arm compatibility and integrated jerry can holder brackets.",
+        features: ["High departure angle design", "Dual swing-out ready spindle system", "Jerry can mounts included", "Integrated dual tow points", "LED step light inserts"],
+        specifications: { material: "3mm Steel", weight: "52kg", finish: "Black Powder Coat", warranty: "2 Years" }
     },
     {
         id: 26,
         name: "Rear Bumper with Tire Carrier",
-        category: "rear-bumpers-carrier",
+        category: "rear-bumpers",
         brand: "universal",
         price: 19500,
         image: "assets/images/rear-bumpers.jpg",
         status: "in-stock",
-        partNumber: "OD-RBC-003",
-        description: "Heavy duty rear bumper with integrated tire carrier and jerry can holders.",
-        features: ["Swing-out tire carrier", "Dual jerry can mounts", "LED light bar ready", "Recovery points", "Heavy duty construction"],
+        partNumber: "OD-RB-UN26",
+        description: "Heavy duty modular rear replacement bumper with integrated spare tire carrier and jerry can hooks.",
+        features: ["Locking swing-out tire carrier", "Dual jerry can mounts", "LED light bar ready", "Reinforced recovery hooks", "Premium structural steel construction"],
         specifications: { material: "3mm Steel", weight: "65kg", finish: "Black Powder Coat", warranty: "2 Years" }
     },
     {
         id: 27,
         name: "Expedition Rear Bumper System",
-        category: "rear-bumpers-carrier",
+        category: "rear-bumpers",
         brand: "universal",
         price: 22500,
         image: "assets/images/Odyssey Stealth Bumper - Rear.jpg",
         status: "in-stock",
-        partNumber: "OD-RBC-004",
-        description: "Complete rear bumper system with carrier, storage, and recovery capabilities.",
-        features: ["Full carrier system", "Multiple storage options", "Integrated recovery points", "Modular design", "Premium construction"],
+        partNumber: "OD-RB-UN27",
+        description: "Complete expedition rear bumper system with heavy tire carrier, modular storage, and recovery gear points.",
+        features: ["Heavy dual locking swing carriers", "Modular gear panel integration", "Integrated recovery shackle brackets", "Hi-lift jack points", "Anti-rattle toggle latches"],
         specifications: { material: "3mm Steel", weight: "70kg", finish: "Black Powder Coat", warranty: "3 Years" }
     },
+    {
+        id: 14,
+        name: "Pro Carrier Bumper - Isuzu",
+        category: "rear-bumpers",
+        brand: "isuzu",
+        price: 21500,
+        image: "assets/images/placeholder.jpg",
+        fitmentImage: "assets/images/Odyssey Stealth Bumper - Rear.jpg",
+        status: "in-stock",
+        partNumber: "OD-RB-IZ14",
+        description: "Multi-carrier premium rear replacement bumper system engineered specifically for Isuzu D-Max.",
+        features: ["Anti-corrosive primer coating", "Lockable heavy-duty swing spindle", "Includes spare tire mount arm", "Integrated step platform", "Heavy duty tow bar rated"],
+        specifications: { material: "3mm Steel", weight: "63kg", finish: "Powder Coated Black", warranty: "2 Years" }
+    },
+
+    // --- ROCK SLIDERS ---
     {
         id: 28,
         name: "Pro Series Rock Sliders",
@@ -103,9 +163,9 @@ const products = [
         price: 9500,
         image: "assets/images/rocksliders.jpg",
         status: "in-stock",
-        partNumber: "OD-RS-003",
-        description: "Professional grade rock sliders with integrated step and maximum protection.",
-        features: ["65x65mm tubing", "Integrated step design", "Chassis mounted", "Reinforced construction", "Pair included"],
+        partNumber: "OD-RS-UN28",
+        description: "Professional grade rock sliders with integrated dimpled tread steps and maximum chassis-mounted protection.",
+        features: ["65x65mm heavy wall tubing", "Integrated dimpled step plates", "Robust chassis mounting brackets", "High clearance design", "Left and Right side pair included"],
         specifications: { material: "Steel Tube", tubeSize: "65x65mm", finish: "Black Powder Coat", warranty: "2 Years" }
     },
     {
@@ -116,86 +176,85 @@ const products = [
         price: 11500,
         image: "assets/images/Heavy Duty Rock Sliders.jpg",
         status: "out-of-stock",
-        partNumber: "OD-RS-004",
-        description: "Extreme duty rock sliders for the most demanding off-road conditions.",
-        features: ["80x80mm heavy tubing", "Maximum protection", "Reinforced mounting", "Jack point integration", "Lifetime warranty"],
+        partNumber: "OD-RS-UN29",
+        description: "Extreme duty heavy wall rock sliders designed for the most demanding technical rock crawling terrains.",
+        features: ["80x80mm heavy wall tube construction", "Chassis-wrapped brackets", "Dimpled step plates for grip", "Integrated high-lift jack points", "Heavy-duty anti-slip plates"],
         specifications: { material: "Steel Tube", tubeSize: "80x80mm", finish: "Black Powder Coat", warranty: "Lifetime" }
     },
     {
-        id: 4,
-        name: "Heavy Duty Tow Bar - 3500kg",
-        category: "tow-bars",
-        brand: "universal",
-        price: 4500,
+        id: 12,
+        name: "Odyssey Stealth Slider - Nissan",
+        category: "rock-sliders",
+        brand: "nissan",
+        price: 9800,
         image: "assets/images/placeholder.jpg",
+        fitmentImage: "assets/images/Heavy Duty Rock Sliders.jpg",
         status: "in-stock",
-        partNumber: "OD-TB-001",
-        description: "Professional grade tow bar rated for 3500kg towing capacity.",
-        features: ["3500kg towing capacity", "350kg ball weight", "7-pin connector included", "Corrosion resistant coating", "Easy bolt-on installation"],
-        specifications: { towingCapacity: "3500kg", ballWeight: "350kg", finish: "Galvanized", warranty: "3 Years" }
+        partNumber: "OD-RS-NS12",
+        description: "Rugged chassis-mounted heavy-duty rock sliders designed with beautiful laser-cut steps for Nissan Navara.",
+        features: ["Laser-cut dimple tread steps", "Dual tube frame reinforcement", "Fully bolted chassis installation", "Corrosion resistant coating", "Heavy duty trail slider"],
+        specifications: { material: "Steel Tube", tubeSize: "60x60mm", finish: "Matte Powder Coat", warranty: "2 Years" }
     },
     {
-        id: 6,
-        name: "Expedition Roof Rack",
-        category: "roof-racks",
-        brand: "universal",
-        price: 12000,
-        image: "assets/images/Expedition Roof Rack.jpg",
+        id: 16,
+        name: "Tactical Rock Sliders - Mazda",
+        category: "rock-sliders",
+        brand: "mazda",
+        price: 9600,
+        image: "assets/images/placeholder.jpg",
+        fitmentImage: "assets/images/Heavy Duty Rock Sliders.jpg",
         status: "in-stock",
-        partNumber: "OD-RR-001",
-        description: "Aluminum low-profile roof rack for maximum storage with full-length platform.",
-        features: ["Full-length platform design", "200kg load capacity", "Wind deflector included", "Multiple tie-down points", "LED light bar compatible"],
-        specifications: { material: "Aluminum", loadCapacity: "200kg", dimensions: "2200mm x 1250mm", warranty: "3 Years" }
+        partNumber: "OD-RS-MZ16",
+        description: "Tactical series high-departure rock sliders offering complete sill and door guard safety for Mazda BT-50.",
+        features: ["High clearance wrap profile", "Dual structural tube design", "Integrated recovery jack points", "Laser cut steel tread step", "Tough industrial coating"],
+        specifications: { material: "Heavy Duty Steel Tube", tubeSize: "60x60mm", finish: "Black Ripple Coat", warranty: "2 Years" }
     },
+
+    // --- FRIDGE SLIDES ---
+    {
+        id: 31,
+        name: "Premium Odyssey Fridge Slide - 60L",
+        category: "fridge-slides",
+        brand: "universal",
+        price: 3800,
+        image: "assets/images/Fridge Slide - 60L.jpg",
+        status: "in-stock",
+        partNumber: "OD-FS-UN31",
+        description: "Heavy-duty lock-in lock-out dual runner fridge slide rated up to 120kg, perfect for 60L and larger camping fridges.",
+        features: ["Heavy duty lock-in and lock-out slides", "Premium sealed bearing rollers", "Tie-down strap slots", "Rigid folded sheet design", "120kg capacity load rating"],
+        specifications: { material: "3mm CNC Aluminum / Steel", capacity: "120kg", lockType: "Dual Lever Lock", warranty: "2 Years" }
+    },
+
+    // --- DRAWER SYSTEMS ---
     {
         id: 10,
-        name: "Odyssey Drawer System",
+        name: "Odyssey Premium Drawer System",
         category: "drawer-systems",
         brand: "universal",
         price: 14500,
         image: "assets/images/Odyssey Drawer System.jpg",
         status: "in-stock",
-        partNumber: "OD-DS-001",
-        description: "Premium dual drawer storage system with carpeted finish and integrated fridge slide.",
-        features: ["Dual drawer configuration", "Heavy-duty roller slides", "Integrated fridge slide area", "Carpeted top surface", "Lockable drawers"],
-        specifications: { material: "Marine Ply & Aluminum", drawerLoad: "80kg per drawer", dimensions: "1200mm x 1000mm", warranty: "2 Years" }
-    },
-    {
-        id: 30,
-        name: "Front Underbody Skid Plate",
-        category: "underbody-protection",
-        brand: "universal",
-        price: 4500,
-        image: "assets/images/underbody-protection.jpg",
-        status: "in-stock",
-        partNumber: "OD-UP-001",
-        description: "Heavy duty front underbody protection for engine and transmission.",
-        features: ["3mm steel construction", "Engine and gearbox protection", "Easy bolt-on installation", "Powder coated finish", "Drainage holes included"],
-        specifications: { material: "3mm Steel", coverage: "Engine & Gearbox", finish: "Black Powder Coat", warranty: "2 Years" }
+        partNumber: "OD-DS-UN10",
+        description: "Premium dual drawer storage system with marine ply carcass, fully carpeted deck, and lockable heavy-duty slides.",
+        features: ["Dual lockable drawer configuration", "Premium heavy-duty roller bearings", "Marine ply deck with premium carpet", "Flush-mount tie-down loops", "Side filler panel ready for perfect fit"],
+        specifications: { material: "Marine Ply & Galvanized Steel", drawerLoad: "80kg per drawer", dimensions: "1200mm x 1000mm", warranty: "2 Years" }
     }
 ];
 
 const brands = [
-    { name: "Chevrolet", id: "chevrolet", logo: "fa-car" },
     { name: "Ford", id: "ford", logo: "fa-car" },
-    { name: "Ford Everest", id: "ford-everest", logo: "fa-car" },
-    { name: "Ford Ranger", id: "ford-ranger", logo: "fa-car" },
-    { name: "Ford Ranger Raptor", id: "ford-ranger-raptor", logo: "fa-car" },
+    { name: "Toyota", id: "toyota", logo: "fa-car" },
+    { name: "Nissan", id: "nissan", logo: "fa-car" },
     { name: "Isuzu", id: "isuzu", logo: "fa-car" },
-    { name: "Land Rover", id: "land-rover", logo: "fa-car" },
-    { name: "Mazda", id: "mazda", logo: "fa-car" },
-    { name: "Mitsubishi", id: "mitsubishi", logo: "fa-car" },
-    { name: "Mercedes-Benz", id: "mercedes-benz", logo: "fa-car" },
-    { name: "Nissan", id: "nissan", logo: "fa-car" }
+    { name: "Mazda", id: "mazda", logo: "fa-car" }
 ];
 
 const categories = [
     { name: "Front Bumpers", id: "front-bumpers", icon: "fa-truck-front" },
-    { name: "Rear Bumpers", id: "rear-bumpers-carrier", icon: "fa-truck-monster" },
+    { name: "Rear Bumpers", id: "rear-bumpers", icon: "fa-truck-monster" },
     { name: "Rock Sliders", id: "rock-sliders", icon: "fa-grip-lines" },
-    { name: "Fridge Slides", id: "accessories", icon: "fa-temperature-low" },
-    { name: "Storage Systems", id: "drawer-systems", icon: "fa-box-open" },
-    { name: "Underbody", id: "underbody-protection", icon: "fa-shield-halved" }
+    { name: "Fridge Slides", id: "fridge-slides", icon: "fa-temperature-low" },
+    { name: "Drawer Systems", id: "drawer-systems", icon: "fa-box-open" }
 ];
 
 /* =========================================
@@ -203,7 +262,6 @@ const categories = [
    ========================================= */
 let currentFilterType = 'all'; // 'brand', 'category', or 'all'
 let currentFilterValue = 'all';
-let userLocation = localStorage.getItem('odyssey_location') || null;
 
 /* =========================================
    3. INITIALIZATION
@@ -217,6 +275,7 @@ function init() {
     renderProducts();
     setupMenu();
     setupHeroSlider();
+    setupWhatsAppWidgets();
 }
 
 /* =========================================
@@ -259,7 +318,7 @@ function renderProducts() {
     }
 
     if (filtered.length === 0) {
-        productGrid.innerHTML = `<div class="no-results">No products found for this selection.</div>`;
+        productGrid.innerHTML = `<div class="no-results" style="grid-column: 1/-1; text-align: center; padding: 50px 0; color: var(--color-text-muted);">No products found for this selection.</div>`;
         return;
     }
 
@@ -271,18 +330,20 @@ function renderProducts() {
         return `
             <div class="product-card">
                 <div class="status-badge ${product.status}">${statusLabel}</div>
-                <div class="product-image">
-                    <img src="${displayImage}" alt="${product.name}" onerror="this.src='assets/images/placeholder.jpg'">
-                    ${isPlaceholder ? '<div class="design-ref-label">Design Reference - Vehicle specific fitment photo coming soon.</div>' : ''}
-                </div>
+                <a href="product-detail.html?id=${product.id}" style="display: block; color: inherit;">
+                    <div class="product-image">
+                        <img src="${displayImage}" alt="${product.name}" onerror="this.src='assets/images/placeholder.jpg'">
+                        ${isPlaceholder ? '<div class="design-ref-label">Design Reference - Fitment photo coming soon.</div>' : ''}
+                    </div>
+                </a>
                 <div class="product-info">
                     <span class="product-category">${formatCategory(product.category)}</span>
-                    <h3 class="product-title">${product.name}</h3>
+                    <h3 class="product-title" style="margin: 8px 0;"><a href="product-detail.html?id=${product.id}">${product.name}</a></h3>
                     <p class="product-price">R ${product.price.toLocaleString()}</p>
                 </div>
-                <div class="product-actions">
-                    <button class="btn btn-whatsapp btn-block" onclick="enquireWhatsApp(${product.id})">
-                        <i class="fab fa-whatsapp"></i> ENQUIRE VIA WHATSAPP
+                <div class="product-actions" style="padding: var(--spacing-sm); background: #fafafa; border-top: 1px solid var(--color-border);">
+                    <button class="btn btn-whatsapp btn-block" onclick="enquireWhatsApp(${product.id})" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                        <i class="fab fa-whatsapp"></i> INQUIRE VIA WHATSAPP
                     </button>
                 </div>
             </div>
@@ -297,8 +358,8 @@ function formatCategory(cat) {
 function formatStatus(status) {
     switch(status) {
         case 'in-stock': return 'In Stock';
-        case 'out-of-stock': return 'Out of Stock';
-        case 'waiting-for-design': return 'Waiting for New Design';
+        case 'out-of-stock': return 'Sold Out'; // Changed from Out of Stock to Sold Out
+        case 'waiting-for-design': return 'New Design Coming';
         default: return '';
     }
 }
@@ -327,26 +388,62 @@ window.resetFilters = () => {
 };
 
 /* =========================================
-   6. WHATSAPP SYSTEM
+   6. WHATSAPP ENQUIRY SYSTEM
    ========================================= */
 window.enquireWhatsApp = (id) => {
     const product = products.find(p => p.id === id);
     if (!product) return;
 
-    const locationStr = userLocation ? ` My location is ${userLocation}.` : '';
-    const message = `Hi, I am interested in ${product.name} - ${product.partNumber} for my vehicle.${locationStr}`;
+    // Strict inquiry-only text as requested
+    const message = `Hi Odyssey 4x4, I am interested in the ${product.name} - ${product.partNumber} for my vehicle.`;
     const whatsappUrl = `https://wa.me/27722573089?text=${encodeURIComponent(message)}`;
     
     window.open(whatsappUrl, '_blank');
 };
 
 /* =========================================
-   7. LOCATION TRACKING
+   7. WIDGETS & EVENTS
    ========================================= */
+function setupWhatsAppWidgets() {
+    // Floating WhatsApp Menu toggles
+    const waTrigger = document.querySelector('.whatsapp-float-trigger');
+    const waMenu = document.querySelector('.whatsapp-popup-menu');
+    
+    if (waTrigger && waMenu) {
+        waTrigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            waTrigger.classList.toggle('active');
+            waMenu.classList.toggle('show');
+        });
+        
+        document.addEventListener('click', () => {
+            waTrigger.classList.remove('active');
+            waMenu.classList.remove('show');
+        });
+        
+        waMenu.addEventListener('click', (e) => {
+            e.stopPropagation(); // Avoid closing when clicking inside
+        });
+    }
 
+    // Connect Contact form to WhatsApp prefilled text
+    const waForm = document.getElementById('whatsapp-form');
+    if (waForm) {
+        waForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nameInput = waForm.querySelector('input[required]');
+            const msgInput = waForm.querySelector('textarea[required]');
+            if (nameInput && msgInput) {
+                const message = `Hi Odyssey 4x4, I am ${nameInput.value}. Here is my custom enquiry:\n\n${msgInput.value}`;
+                const whatsappUrl = `https://wa.me/27722573089?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, '_blank');
+            }
+        });
+    }
+}
 
 /* =========================================
-   8. MENU & UI
+   8. MENU & MOBILE LAYOUTS
    ========================================= */
 function setupMenu() {
     const mobileBtn = document.querySelector('.mobile-toggle');
@@ -354,10 +451,12 @@ function setupMenu() {
     const slideMenuOverlay = document.getElementById('slide-menu-overlay');
     const slideMenuClose = document.getElementById('slide-menu-close');
 
-    if (mobileBtn) mobileBtn.addEventListener('click', () => {
-        slideMenu.classList.add('active');
-        slideMenuOverlay.classList.add('active');
-    });
+    if (mobileBtn) {
+        mobileBtn.addEventListener('click', () => {
+            if (slideMenu) slideMenu.classList.add('active');
+            if (slideMenuOverlay) slideMenuOverlay.classList.add('active');
+        });
+    }
 
     if (slideMenuClose) slideMenuClose.addEventListener('click', window.closeMenu);
     if (slideMenuOverlay) slideMenuOverlay.addEventListener('click', window.closeMenu);
@@ -381,7 +480,7 @@ function setupMenu() {
     });
 }
 
-// Expose closeMenu globally so inline onclick attributes in HTML can call it
+// Expose closeMenu globally
 window.closeMenu = function() {
     const slideMenu = document.getElementById('slide-menu');
     const slideMenuOverlay = document.getElementById('slide-menu-overlay');
@@ -430,7 +529,7 @@ function setupHeroSlider() {
     // Initialize auto-play
     resetAutoPlay();
 
-    // Expose prev/next globally for manual arrow buttons
+    // Expose prev/next globally
     window.sliderNext = () => {
         goToSlide(current + 1);
     };
@@ -438,4 +537,3 @@ function setupHeroSlider() {
         goToSlide(current - 1);
     };
 }
-

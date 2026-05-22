@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Front Bumpers | Odyssey 4x4</title>
-    <meta name="description" content="Premium Front replacement bumpers engineered to protect your vehicle in the wildest terrains. Winch compatible and precision-engineered.">
+    <title>Nissan Gear | Odyssey 4x4</title>
+    <meta name="description" content="CNC laser-cut front bars, high-clearance sliders, and accessory mounts custom-tailored for Nissan Navara / Patrol rigs.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -121,7 +121,7 @@
             <div style="display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: #666;">
                 <a href="index.html" style="color: var(--color-accent);">Home</a>
                 <i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i>
-                <span style="font-weight: 600;">Front Bumpers</span>
+                <span style="font-weight: 600;">Nissan Gear</span>
             </div>
         </div>
     </section>
@@ -129,8 +129,8 @@
     <!-- SECTION TITLE -->
     <section class="section-padding" style="background-color: #ffffff; padding-top: 50px; padding-bottom: 20px; border-bottom: 1px solid var(--color-border);">
         <div class="container">
-            <h1 style="font-size: 2.6rem; color: var(--color-secondary); margin-bottom: 15px;">Front Bumpers</h1>
-            <p style="color: var(--color-text-muted); font-size: 1.05rem; max-width: 800px; line-height: 1.7; font-weight: 600;">Premium Front replacement bumpers engineered to protect your vehicle in the wildest terrains. Winch compatible and precision-engineered.</p>
+            <h1 style="font-size: 2.6rem; color: var(--color-secondary); margin-bottom: 15px;">Nissan Gear</h1>
+            <p style="color: var(--color-text-muted); font-size: 1.05rem; max-width: 800px; line-height: 1.7; font-weight: 600;">CNC laser-cut front bars, high-clearance sliders, and accessory mounts custom-tailored for Nissan Navara / Patrol rigs.</p>
         </div>
     </section>
 
@@ -222,11 +222,12 @@
             const productGrid = document.querySelector('.grid');
             if (!productGrid) return;
             
-            const catId = "front-bumpers";
-            const filtered = products.filter(p => p.category === catId);
+            const brandId = "nissan";
+            // Filter by vehicle brand OR show universal accessories
+            const filtered = products.filter(p => p.brand === brandId || p.brand === 'universal');
             
             if (filtered.length === 0) {
-                productGrid.innerHTML = `<div class="no-results" style="grid-column: 1/-1; text-align: center; padding: 50px 0; color: var(--color-text-muted); font-weight: 600;">No products found in this category.</div>`;
+                productGrid.innerHTML = `<div class="no-results" style="grid-column: 1/-1; text-align: center; padding: 50px 0; color: var(--color-text-muted); font-weight: 600;">No compatible products found for this vehicle.</div>`;
                 return;
             }
             

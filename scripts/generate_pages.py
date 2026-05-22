@@ -1,22 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
+#!/usr/bin/env python3
+import os
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Front Bumpers | Odyssey 4x4</title>
-    <meta name="description" content="Premium Front replacement bumpers engineered to protect your vehicle in the wildest terrains. Winch compatible and precision-engineered.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/header-redesign.css">
-</head>
+# Define categories
+categories = [
+    {
+        "id": "front-bumpers",
+        "filename": "category-front-bumpers.html",
+        "title": "Front Bumpers",
+        "subtitle": "Premium Front replacement bumpers engineered to protect your vehicle in the wildest terrains. Winch compatible and precision-engineered."
+    },
+    {
+        "id": "rear-bumpers",
+        "filename": "category-rear-bumpers.html",
+        "title": "Rear Bumpers",
+        "subtitle": "High departure clearance rear bumpers, including carrier systems and stealth designs. Built for extreme recovery and utility."
+    },
+    {
+        "id": "rock-sliders",
+        "filename": "category-rock-sliders.html",
+        "title": "Rock Sliders",
+        "subtitle": "Heavy-duty sill guards with integrated dimpled step treads. Hand-welded and chassis-mounted for ultimate side impact safety."
+    },
+    {
+        "id": "fridge-slides",
+        "filename": "category-fridge-slides.html",
+        "title": "Fridge Slides",
+        "subtitle": "Premium lock-in lock-out bearing runner fridge slides. Smooth and heavy-duty, designed to support massive cargo capacities."
+    },
+    {
+        "id": "drawer-systems",
+        "filename": "category-drawer-systems.html",
+        "title": "Drawer Systems",
+        "subtitle": "High-end storage and double-drawer setups. Custom lockable slides, flush tie-down points, and a full-carpet premium finish."
+    }
+]
 
-<body>
+# Define vehicles
+vehicles = [
+    {
+        "id": "ford",
+        "filename": "vehicle-ford.html",
+        "title": "Ford Gear",
+        "subtitle": "Explore our full catalog of premium steel front bumpers, rear carrier systems, and accessories customized specifically for Ford Ranger, Raptor, and Everest."
+    },
+    {
+        "id": "toyota",
+        "filename": "vehicle-toyota.html",
+        "title": "Toyota Gear",
+        "subtitle": "Rugged front replacement bars, heavy-duty rock sliders, and drawer setups custom engineered to fit Toyota Land Cruiser, Hilux, and Fortuner."
+    },
+    {
+        "id": "nissan",
+        "filename": "vehicle-nissan.html",
+        "title": "Nissan Gear",
+        "subtitle": "CNC laser-cut front bars, high-clearance sliders, and accessory mounts custom-tailored for Nissan Navara / Patrol rigs."
+    },
+    {
+        "id": "isuzu",
+        "filename": "vehicle-isuzu.html",
+        "title": "Isuzu Gear",
+        "subtitle": "Explore chassis-mounted front bumpers, modular multi-carrier rear systems, and slides custom engineered to protect the Isuzu D-Max."
+    },
+    {
+        "id": "mazda",
+        "filename": "vehicle-mazda.html",
+        "title": "Mazda Gear",
+        "subtitle": "High-departure wrap-around front bumper systems and heavy-duty sill rock sliders engineered specifically for the Mazda BT-50 double cab."
+    }
+]
 
-    <!-- RED STICKY TOP RIBBON -->
+# Shared header html
+header_html = """    <!-- RED STICKY TOP RIBBON -->
     <div class="top-bar">
         <div class="container">
             <div class="top-bar-contact">
@@ -113,37 +167,10 @@
             <a href="index.html#contact" class="mobile-link" onclick="closeMenu()"><i class="fas fa-envelope"></i> Contact Us</a>
         </div>
         <div class="red-ribbon"></div>
-    </div>
+    </div>"""
 
-    <!-- BREADCRUMB -->
-    <section style="background-color: #f8f9fa; padding: 20px 0;">
-        <div class="container">
-            <div style="display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: #666;">
-                <a href="index.html" style="color: var(--color-accent);">Home</a>
-                <i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i>
-                <span style="font-weight: 600;">Front Bumpers</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION TITLE -->
-    <section class="section-padding" style="background-color: #ffffff; padding-top: 50px; padding-bottom: 20px; border-bottom: 1px solid var(--color-border);">
-        <div class="container">
-            <h1 style="font-size: 2.6rem; color: var(--color-secondary); margin-bottom: 15px;">Front Bumpers</h1>
-            <p style="color: var(--color-text-muted); font-size: 1.05rem; max-width: 800px; line-height: 1.7; font-weight: 600;">Premium Front replacement bumpers engineered to protect your vehicle in the wildest terrains. Winch compatible and precision-engineered.</p>
-        </div>
-    </section>
-
-    <!-- DYNAMIC PRODUCTS GRID -->
-    <section class="section-padding" style="background-color: #fafafa;">
-        <div class="container">
-            <div class="grid">
-                <!-- Injected dynamically by inline JS script -->
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
+# Shared footer html
+footer_html = """    <!-- FOOTER -->
     <footer style="background: #111111; padding: 60px 0; border-top: 1px solid var(--color-border); color: #ffffff;">
         <div class="container">
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-bottom: 50px;">
@@ -213,7 +240,60 @@
                 <i class="fas fa-envelope"></i> General Inquiry
             </a>
         </div>
-    </div>
+    </div>"""
+
+def generate_pages():
+    workspace_dir = "c:\\Users\\repen\\Documents\\GitHub\\Odessy4x4"
+    
+    category_template = """<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{CAT_TITLE}} | Odyssey 4x4</title>
+    <meta name="description" content="{{CAT_SUBTITLE}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/header-redesign.css">
+</head>
+
+<body>
+
+{{HEADER_HTML}}
+
+    <!-- BREADCRUMB -->
+    <section style="background-color: #f8f9fa; padding: 20px 0;">
+        <div class="container">
+            <div style="display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: #666;">
+                <a href="index.html" style="color: var(--color-accent);">Home</a>
+                <i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i>
+                <span style="font-weight: 600;">{{CAT_TITLE}}</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION TITLE -->
+    <section class="section-padding" style="background-color: #ffffff; padding-top: 50px; padding-bottom: 20px; border-bottom: 1px solid var(--color-border);">
+        <div class="container">
+            <h1 style="font-size: 2.6rem; color: var(--color-secondary); margin-bottom: 15px;">{{CAT_TITLE}}</h1>
+            <p style="color: var(--color-text-muted); font-size: 1.05rem; max-width: 800px; line-height: 1.7; font-weight: 600;">{{CAT_SUBTITLE}}</p>
+        </div>
+    </section>
+
+    <!-- DYNAMIC PRODUCTS GRID -->
+    <section class="section-padding" style="background-color: #fafafa;">
+        <div class="container">
+            <div class="grid">
+                <!-- Injected dynamically by inline JS script -->
+            </div>
+        </div>
+    </section>
+
+{{FOOTER_HTML}}
 
     <!-- SCRIPTS -->
     <script src="scripts/main.js"></script>
@@ -222,7 +302,7 @@
             const productGrid = document.querySelector('.grid');
             if (!productGrid) return;
             
-            const catId = "front-bumpers";
+            const catId = "{{CAT_ID}}";
             const filtered = products.filter(p => p.category === catId);
             
             if (filtered.length === 0) {
@@ -264,4 +344,137 @@
     </script>
 </body>
 
-</html>
+</html>"""
+
+    vehicle_template = """<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{VEHICLE_TITLE}} | Odyssey 4x4</title>
+    <meta name="description" content="{{VEHICLE_SUBTITLE}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/header-redesign.css">
+</head>
+
+<body>
+
+{{HEADER_HTML}}
+
+    <!-- BREADCRUMB -->
+    <section style="background-color: #f8f9fa; padding: 20px 0;">
+        <div class="container">
+            <div style="display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: #666;">
+                <a href="index.html" style="color: var(--color-accent);">Home</a>
+                <i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i>
+                <span style="font-weight: 600;">{{VEHICLE_TITLE}}</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION TITLE -->
+    <section class="section-padding" style="background-color: #ffffff; padding-top: 50px; padding-bottom: 20px; border-bottom: 1px solid var(--color-border);">
+        <div class="container">
+            <h1 style="font-size: 2.6rem; color: var(--color-secondary); margin-bottom: 15px;">{{VEHICLE_TITLE}}</h1>
+            <p style="color: var(--color-text-muted); font-size: 1.05rem; max-width: 800px; line-height: 1.7; font-weight: 600;">{{VEHICLE_SUBTITLE}}</p>
+        </div>
+    </section>
+
+    <!-- DYNAMIC PRODUCTS GRID -->
+    <section class="section-padding" style="background-color: #fafafa;">
+        <div class="container">
+            <div class="grid">
+                <!-- Injected dynamically by inline JS script -->
+            </div>
+        </div>
+    </section>
+
+{{FOOTER_HTML}}
+
+    <!-- SCRIPTS -->
+    <script src="scripts/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const productGrid = document.querySelector('.grid');
+            if (!productGrid) return;
+            
+            const brandId = "{{VEHICLE_ID}}";
+            // Filter by vehicle brand OR show universal accessories
+            const filtered = products.filter(p => p.brand === brandId || p.brand === 'universal');
+            
+            if (filtered.length === 0) {
+                productGrid.innerHTML = `<div class="no-results" style="grid-column: 1/-1; text-align: center; padding: 50px 0; color: var(--color-text-muted); font-weight: 600;">No compatible products found for this vehicle.</div>`;
+                return;
+            }
+            
+            productGrid.innerHTML = filtered.map(product => {
+                const isPlaceholder = product.image.includes('placeholder');
+                const displayImage = isPlaceholder && product.fitmentImage ? product.fitmentImage : product.image;
+                
+                let statusLabel = 'In Stock';
+                if (product.status === 'out-of-stock') statusLabel = 'Sold Out';
+                else if (product.status === 'waiting-for-design') statusLabel = 'New Design Coming';
+                
+                return `
+                    <div class="product-card">
+                        <div class="status-badge ${product.status}">${statusLabel}</div>
+                        <a href="product-detail.html?id=${product.id}" style="display: block; color: inherit;">
+                            <div class="product-image">
+                                <img src="${displayImage}" alt="${product.name}" onerror="this.src='assets/images/placeholder.jpg'">
+                                ${isPlaceholder ? '<div class="design-ref-label">Design Reference - Fitment photo coming soon.</div>' : ''}
+                            </div>
+                        </a>
+                        <div class="product-info">
+                            <span class="product-category">${product.category.replace('-', ' ').toUpperCase()}</span>
+                            <h3 class="product-title" style="margin: 8px 0;"><a href="product-detail.html?id=${product.id}">${product.name}</a></h3>
+                            <p class="product-price">R ${product.price.toLocaleString()}</p>
+                        </div>
+                        <div class="product-actions" style="padding: var(--spacing-sm); background: #fafafa; border-top: 1px solid var(--color-border);">
+                            <button class="btn btn-whatsapp btn-block" onclick="enquireWhatsApp(${product.id})" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                                <i class="fab fa-whatsapp"></i> INQUIRE VIA WHATSAPP
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        });
+    </script>
+</body>
+
+</html>"""
+
+    # 1. Create Category Pages
+    for cat in categories:
+        filepath = os.path.join(workspace_dir, cat["filename"])
+        content = category_template
+        content = content.replace("{{CAT_TITLE}}", cat["title"])
+        content = content.replace("{{CAT_SUBTITLE}}", cat["subtitle"])
+        content = content.replace("{{CAT_ID}}", cat["id"])
+        content = content.replace("{{HEADER_HTML}}", header_html)
+        content = content.replace("{{FOOTER_HTML}}", footer_html)
+        with open(filepath, 'w', encoding='utf-8') as f:
+            f.write(content)
+        print(f"Generated category page: {cat['filename']}")
+
+    # 2. Create Vehicle Pages
+    for v in vehicles:
+        filepath = os.path.join(workspace_dir, v["filename"])
+        content = vehicle_template
+        content = content.replace("{{VEHICLE_TITLE}}", v["title"])
+        content = content.replace("{{VEHICLE_SUBTITLE}}", v["subtitle"])
+        content = content.replace("{{VEHICLE_ID}}", v["id"])
+        content = content.replace("{{HEADER_HTML}}", header_html)
+        content = content.replace("{{FOOTER_HTML}}", footer_html)
+        with open(filepath, 'w', encoding='utf-8') as f:
+            f.write(content)
+        print(f"Generated vehicle page: {v['filename']}")
+
+    print("\n[SUCCESS] Successfully generated all category and vehicle dynamic pages!")
+
+if __name__ == "__main__":
+    generate_pages()

@@ -1,14 +1,26 @@
 /* =========================================
-   HEADER REDESIGN STYLES
+   HEADER REDESIGN STYLES (PREMIUM WHITE THEME)
    ========================================= */
 
-/* 1. Top Bar */
+/* Override parent header container to NOT be sticky, allowing only top-bar to stick */
+header {
+    position: static !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
+/* 1. Top Bar (Only Sticky Element) */
 .top-bar {
     background-color: var(--color-accent, #d32f2f);
     color: white;
     font-size: 0.8rem;
     padding: 8px 0;
     font-weight: 600;
+    position: sticky;
+    top: 0;
+    z-index: 1001; /* Floats above everything */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
 
 .top-bar .container {
@@ -50,11 +62,12 @@
     opacity: 0.8;
 }
 
-/* 2. Main Header */
+/* 2. Main Header (White Theme) */
 .main-header {
-    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+    background: #ffffff !important;
     padding: 15px 0;
-    border-bottom: 1px solid var(--color-border, #2a2a2a);
+    border-bottom: 1px solid var(--color-border, #e8e8e8) !important;
+    box-shadow: var(--shadow-premium, 0 12px 35px rgba(0, 0, 0, 0.08)) !important;
 }
 
 .main-header-content {
@@ -70,20 +83,35 @@
 }
 
 .header-logo img {
-    height: 60px;
+    height: 75px !important; /* Scaled slightly larger as requested */
     display: block;
     transition: transform 0.3s ease;
+    filter: none !important; /* No brightness filters since background is white */
 }
 
 .header-logo img:hover {
     transform: scale(1.02);
 }
 
-/* Hamburger toggle */
+/* Hamburger toggle for mobile */
+.mobile-toggle {
+    color: #1a1a1a !important; /* Dark charcoal color on white background */
+    font-size: 1.6rem !important;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+}
+
+.mobile-toggle:hover {
+    color: var(--color-accent, #d32f2f) !important;
+}
+
 .mobile-menu-btn {
     background: none;
     border: none;
-    color: white;
+    color: #1a1a1a;
     font-size: 1.8rem;
     cursor: pointer;
     padding: 5px;
@@ -97,11 +125,41 @@
     color: var(--color-accent, #d32f2f);
 }
 
-/* 3. Product Nav Bar */
+/* 3. Desktop Navigation Override */
+.desktop-nav a {
+    color: #1a1a1a !important; /* Charcoal color */
+    font-weight: 700 !important;
+    letter-spacing: 0.5px;
+}
+
+.desktop-nav a:hover {
+    color: var(--color-accent, #d32f2f) !important;
+}
+
+/* Dropdown styling updates for light background */
+.desktop-nav .dropdown {
+    background: #ffffff !important;
+    border: 1px solid var(--color-border, #e8e8e8) !important;
+    border-top: 3px solid var(--color-accent, #d32f2f) !important;
+}
+
+.desktop-nav .dropdown a {
+    color: #333333 !important;
+    font-weight: 600 !important;
+    border-bottom: 1px solid #f2f2f2 !important;
+}
+
+.desktop-nav .dropdown a:hover {
+    background: #f9f9f9 !important;
+    color: var(--color-accent, #d32f2f) !important;
+    padding-left: 25px !important;
+}
+
+/* 4. Product Nav Bar (Secondary page category sub-headers) */
 .product-nav-bar {
-    background-color: white;
+    background-color: #ffffff;
     border-bottom: 2px solid var(--color-accent, #d32f2f);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
 }
 
 .product-nav-list {
@@ -134,7 +192,7 @@
     background-color: rgba(211, 47, 47, 0.05);
 }
 
-/* Mobile responsive styles for the redesign header */
+/* Mobile responsive styles */
 @media (max-width: 991px) {
     .top-bar-contact {
         gap: 15px;
@@ -156,7 +214,7 @@
     }
     
     .header-logo img {
-        height: 45px;
+        height: 50px !important;
     }
     
     /* Horizontal scrolling for product-nav-bar on mobile */

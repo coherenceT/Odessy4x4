@@ -5,180 +5,123 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Product Details | Odyssey 4x4</title>
-    <meta name="description" content="View detailed product information">
 
+    <!-- Meta SEO -->
+    <meta name="description" id="page-description" content="Premium 4x4 accessories. Engineered for Adventure.">
+
+    <!-- Fonts: Montserrat & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Icons: FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/header-redesign.css">
-    <style>
-        @media (max-width: 768px) {
-            .container>div[style*="grid-template-columns: 1fr 1fr"] {
-                grid-template-columns: 1fr !important;
-                gap: 30px !important;
-            }
-
-            #product-name {
-                font-size: 1.8rem !important;
-            }
-
-            #product-price {
-                font-size: 1.5rem !important;
-            }
-
-            .container>div[style*="display: flex"] button,
-            .container>div[style*="display: flex"] a {
-                font-size: 0.95rem !important;
-                padding: 14px !important;
-            }
-
-            #product-specifications {
-                grid-template-columns: 1fr !important;
-            }
-        }
-    </style>
 </head>
 
 <body>
-    <!-- HEADER -->
-    <header style="position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-        <div class="top-bar">
-            <div class="container">
-                <div class="top-bar-contact">
-                    <a href="tel:+27722573089"><i class="fas fa-phone-alt"></i> +27 72 257 3089</a>
-                    <a href="mailto:info@gobi-x.co.za"><i class="fas fa-envelope"></i> INFO@GOBI-X.CO.ZA</a>
-                    <a href="https://maps.app.goo.gl/GCa8BxySwBRAyS4Y6" target="_blank"><i
-                            class="fas fa-map-marker-alt"></i> 41 GEMINI ST, BRACKENFELL SOUTH, CAPE TOWN, 7560</a>
-                </div>
-                <div class="top-bar-social">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
+
+    <!-- RED STICKY TOP RIBBON -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-contact">
+                <a href="tel:+27722573089"><i class="fas fa-phone"></i> +27 72 257 3089</a>
+                <a href="mailto:info@odyssey4x4.co.za"><i class="fas fa-envelope"></i> info@odyssey4x4.co.za</a>
+            </div>
+            <div class="top-bar-social">
+                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/27722573089" target="_blank"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
+    </div>
 
+    <!-- HEADER (WHITE THEME) -->
+    <header>
         <div class="main-header">
             <div class="container main-header-content">
+                <!-- Logo -->
                 <a href="index.html" class="header-logo">
-                    <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4 Logo" style="border-radius: 4px;">
+                    <img src="assets/images/odyssey4x4-logo-dark.svg" alt="Odyssey 4x4 Logo">
                 </a>
-                <div class="header-search-container">
-                    <input type="text" id="search-input" placeholder="Search products..." class="header-search-input">
-                    <i class="fas fa-search header-search-icon"></i>
-                    <div id="search-results" class="search-results"></div>
-                </div>
-                <div class="header-actions">
-                    <a href="favorites.html" class="header-action-btn" title="Favorites">
-                        <i class="fas fa-heart"></i>
-                        <span class="header-action-text">Favorites</span>
-                    </a>
-                    <a href="cart.html" class="header-action-btn" title="Shopping Cart">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="header-action-text">Cart</span>
-                        <span id="cart-count" class="cart-badge">0</span>
-                    </a>
-                    <a href="login.html" class="header-action-btn" title="Login">
-                        <i class="fas fa-sign-in-alt"></i>
-                        <span class="header-action-text">Login</span>
-                    </a>
-                    <a href="register.html" class="header-action-btn header-action-btn-primary" title="Create Account">
-                        <i class="fas fa-user-plus"></i>
-                        <span class="header-action-text">Sign Up</span>
-                    </a>
-                    <button class="mobile-menu-btn mobile-toggle" aria-label="Toggle menu">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
 
-        <div class="product-nav-bar">
-            <div class="container">
-                <ul class="product-nav-list">
-                    <li class="product-nav-item"><a href="index.html" class="product-nav-link">Home</a></li>
-                    <li class="product-nav-item"><a href="category-front-bumpers.html" class="product-nav-link">Front
-                            Bumpers</a></li>
-                    <li class="product-nav-item"><a href="category-rear-bumpers-carrier.html"
-                            class="product-nav-link">Rear Bumpers Carrier Compatible</a></li>
-                    <li class="product-nav-item"><a href="category-carrier-options.html"
-                            class="product-nav-link">Carrier Options</a></li>
-                    <li class="product-nav-item"><a href="category-stealth-bumpers.html"
-                            class="product-nav-link">Stealth Rear Bumpers</a></li>
-                    <li class="product-nav-item"><a href="category-rock-sliders.html"
-                            class="product-nav-link">Rocksliders</a></li>
-                    <li class="product-nav-item"><a href="category-underbody-protection.html"
-                            class="product-nav-link">Underbody Protection</a></li>
-                    <li class="product-nav-item"><a href="category-drawer-systems.html" class="product-nav-link">Storage
-                            Solutions</a></li>
-                    <li class="product-nav-item"><a href="category-accessories.html" class="product-nav-link">Vehicle
-                            Accessories</a></li>
-                </ul>
-            </div>
-        </div>
+                <!-- Desktop Navigation -->
+                <nav class="desktop-nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li class="has-dropdown">
+                            <a href="index.html#products">Products <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
+                            <ul class="dropdown">
+                                <li><a href="category-front-bumpers.html">Front Bumpers</a></li>
+                                <li><a href="category-rear-bumpers.html">Rear Bumpers</a></li>
+                                <li><a href="category-rock-sliders.html">Rock Sliders</a></li>
+                                <li><a href="category-fridge-slides.html">Fridge Slides</a></li>
+                                <li><a href="category-drawer-systems.html">Drawer Systems</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-dropdown">
+                            <a href="index.html#products">Vehicles <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
+                            <ul class="dropdown">
+                                <li><a href="vehicle-ford.html">Ford</a></li>
+                                <li><a href="vehicle-toyota.html">Toyota</a></li>
+                                <li><a href="vehicle-nissan.html">Nissan</a></li>
+                                <li><a href="vehicle-isuzu.html">Isuzu</a></li>
+                                <li><a href="vehicle-mazda.html">Mazda</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
 
-        <div class="slide-menu-overlay" id="slide-menu-overlay"></div>
-        <div class="slide-menu" id="slide-menu">
-            <div class="slide-menu-header">
-                <a href="index.html" class="slide-menu-logo">
-                    <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4 Logo">
-                </a>
-                <button class="slide-menu-close" id="slide-menu-close" aria-label="Close menu">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="slide-menu-links">
-                <a href="index.html" class="mobile-link"><i class="fas fa-home"></i> Home</a>
-                
-                <div class="mobile-accordion">
-                    <button class="accordion-toggle"><i class="fas fa-cogs"></i> Product Categories <i class="fas fa-chevron-down"></i></button>
-                    <div class="accordion-content">
-                        <a href="category-front-bumpers.html"><i class="fas fa-chevron-right"></i> Front Bumpers</a>
-                        <a href="category-rear-bumpers-carrier.html"><i class="fas fa-chevron-right"></i> Rear Bumpers Carrier Compatible</a>
-                        <a href="category-stealth-bumpers.html"><i class="fas fa-chevron-right"></i> Stealth Rear Bumpers</a>
-                        <a href="category-carrier-options.html"><i class="fas fa-chevron-right"></i> Carrier Options</a>
-                        <a href="category-rock-sliders.html"><i class="fas fa-chevron-right"></i> Rocksliders</a>
-                        <a href="category-underbody-protection.html"><i class="fas fa-chevron-right"></i> Underbody Protection</a>
-                        <a href="category-drawer-systems.html"><i class="fas fa-chevron-right"></i> Storage Solutions</a>
-                        <a href="category-accessories.html"><i class="fas fa-chevron-right"></i> Vehicle Accessories</a>
-                        <a href="category-tow-bars.html"><i class="fas fa-chevron-right"></i> Tow Bars</a>
-                    </div>
-                </div>
-
-                <div class="mobile-accordion">
-                    <button class="accordion-toggle"><i class="fas fa-car"></i> Filter By Vehicle <i class="fas fa-chevron-down"></i></button>
-                    <div class="accordion-content">
-                        <a href="index.html#products" onclick="applyFilter('brand', 'chevrolet'); closeMenu()"><i class="fas fa-chevron-right"></i> Chevrolet</a>
-                        <a href="index.html#products" onclick="applyFilter('brand', 'ford'); closeMenu()"><i class="fas fa-chevron-right"></i> Ford</a>
-                        <a href="index.html#products" onclick="applyFilter('brand', 'ford-everest'); closeMenu()"><i class="fas fa-chevron-right"></i> Ford Everest</a>
-                        <a href="index.html#products" onclick="applyFilter('brand', 'ford-ranger'); closeMenu()"><i class="fas fa-chevron-right"></i> Ford Ranger</a>
-                        <a href="index.html#products" onclick="applyFilter('brand', 'ford-ranger-raptor'); closeMenu()"><i class="fas fa-chevron-right"></i> Ford Ranger Raptor</a>
-                        <a href="index.html#products" onclick="applyFilter('brand', 'isuzu'); closeMenu()"><i class="fas fa-chevron-right"></i> Isuzu</a>
-                        <a href="index.html#products" onclick="applyFilter('brand', 'land-rover'); closeMenu()"><i class="fas fa-chevron-right"></i> Land Rover</a>
-                        <a href="index.html#products" onclick="applyFilter('brand', 'mazda'); closeMenu()"><i class="fas fa-chevron-right"></i> Mazda</a>
-                        <a href="index.html#products" onclick="applyFilter('brand', 'mitsubishi'); closeMenu()"><i class="fas fa-chevron-right"></i> Mitsubishi</a>
-                        <a href="index.html#products" onclick="applyFilter('brand', 'mercedes-benz'); closeMenu()"><i class="fas fa-chevron-right"></i> Mercedes-Benz</a>
-                        <a href="index.html#products" onclick="applyFilter('brand', 'nissan'); closeMenu()"><i class="fas fa-chevron-right"></i> Nissan</a>
-                    </div>
-                </div>
-
-                <a href="index.html#contact" class="mobile-link" onclick="closeMenu()"><i class="fas fa-envelope"></i> Contact Us</a>
-                <a href="https://catalogue.gobi-x.co.za/gobi-x-catalogue-2025-2026" target="_blank" class="mobile-link"><i class="fas fa-book-open"></i> Catalogue</a>
-            </div>
-            <div class="slide-menu-footer">
-                <div class="slide-menu-social">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                <!-- Hamburger Trigger for Mobile -->
+                <div class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
                 </div>
             </div>
-            <div class="red-ribbon"></div>
         </div>
     </header>
+
+    <!-- MOBILE SLIDE-OUT MENU -->
+    <div class="slide-menu-overlay" id="slide-menu-overlay"></div>
+    <div class="slide-menu" id="slide-menu">
+        <div class="slide-menu-header">
+            <a href="index.html" class="slide-menu-logo">
+                <img src="assets/images/odyssey4x4-logo-dark.svg" alt="Odyssey 4x4 Logo">
+            </a>
+            <button class="slide-menu-close" id="slide-menu-close">&times;</button>
+        </div>
+        <div class="slide-menu-links">
+            <a href="index.html" class="mobile-link"><i class="fas fa-home"></i> Home</a>
+            
+            <div class="mobile-accordion">
+                <button class="accordion-toggle"><i class="fas fa-cogs"></i> Product Categories <i class="fas fa-chevron-down"></i></button>
+                <div class="accordion-content">
+                    <a href="category-front-bumpers.html"><i class="fas fa-chevron-right"></i> Front Bumpers</a>
+                    <a href="category-rear-bumpers.html"><i class="fas fa-chevron-right"></i> Rear Bumpers</a>
+                    <a href="category-rock-sliders.html"><i class="fas fa-chevron-right"></i> Rock Sliders</a>
+                    <a href="category-fridge-slides.html"><i class="fas fa-chevron-right"></i> Fridge Slides</a>
+                    <a href="category-drawer-systems.html"><i class="fas fa-chevron-right"></i> Drawer Systems</a>
+                </div>
+            </div>
+
+            <div class="mobile-accordion">
+                <button class="accordion-toggle"><i class="fas fa-car"></i> Filter By Vehicle <i class="fas fa-chevron-down"></i></button>
+                <div class="accordion-content">
+                    <a href="vehicle-ford.html"><i class="fas fa-chevron-right"></i> Ford</a>
+                    <a href="vehicle-toyota.html"><i class="fas fa-chevron-right"></i> Toyota</a>
+                    <a href="vehicle-nissan.html"><i class="fas fa-chevron-right"></i> Nissan</a>
+                    <a href="vehicle-isuzu.html"><i class="fas fa-chevron-right"></i> Isuzu</a>
+                    <a href="vehicle-mazda.html"><i class="fas fa-chevron-right"></i> Mazda</a>
+                </div>
+            </div>
+
+            <a href="index.html#contact" class="mobile-link" onclick="closeMenu()"><i class="fas fa-envelope"></i> Contact Us</a>
+        </div>
+        <div class="red-ribbon"></div>
+    </div>
 
     <!-- BREADCRUMB -->
     <section style="background-color: #f8f9fa; padding: 20px 0;">
@@ -188,75 +131,65 @@
                 <i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i>
                 <span id="breadcrumb-category">Products</span>
                 <i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i>
-                <span id="breadcrumb-product">Product</span>
+                <span id="breadcrumb-product" style="font-weight: 600;">Product</span>
             </div>
         </div>
     </section>
 
     <!-- PRODUCT DETAILS -->
-    <section class="section-padding" style="background-color: #fff;">
+    <section class="section-padding" style="background-color: #ffffff;">
         <div class="container">
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-bottom: 60px;">
                 <!-- Product Image -->
                 <div>
-                    <div
-                        style="position: relative; background: #f8f9fa; border-radius: 12px; overflow: hidden; aspect-ratio: 1/1;">
-                        <img id="product-image" src="" alt="Product"
-                            style="width: 100%; height: 100%; object-fit: cover;">
-                        <button id="wishlist-btn" class="wishlist-btn"
-                            style="position: absolute; top: 20px; right: 20px; font-size: 1.5rem;"
-                            aria-label="Add to favorites">
-                            <i class="far fa-heart"></i>
-                        </button>
+                    <div style="position: relative; background: #fafafa; border: 1px solid var(--color-border); border-radius: 12px; overflow: hidden; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-premium);">
+                        <img id="product-image" src="" alt="Product" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div id="placeholder-banner" class="design-ref-label" style="display: none; position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.7); color: white; text-align: center; padding: 10px; font-size: 0.8rem; font-weight: 600;">
+                            Design Reference - Fitment photo coming soon.
+                        </div>
                     </div>
                 </div>
 
                 <!-- Product Info -->
                 <div>
-                    <div style="margin-bottom: 20px;">
-                        <span id="product-category"
-                            style="color: var(--color-accent); font-weight: 600; text-transform: uppercase; font-size: 0.9rem;"></span>
-                        <h1 id="product-name" style="font-size: 2.5rem; margin: 10px 0 20px; line-height: 1.2;"></h1>
-                        <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 20px;">
-                            <p id="product-price"
-                                style="font-size: 2rem; font-weight: 700; color: var(--color-accent); margin: 0;"></p>
-                            <span id="product-stock" class="badge"
-                                style="background: #28a745; color: white; padding: 6px 12px; border-radius: 4px; font-size: 0.85rem;"></span>
+                    <div style="margin-bottom: 25px;">
+                        <span id="product-category" style="color: var(--color-accent); font-weight: 700; text-transform: uppercase; font-size: 0.95rem; letter-spacing: 1px;"></span>
+                        <h1 id="product-name" style="font-size: 2.6rem; margin: 10px 0 15px; line-height: 1.2; color: var(--color-secondary);"></h1>
+                        <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 15px;">
+                            <p id="product-price" style="font-size: 2.2rem; font-weight: 800; color: var(--color-secondary); margin: 0;"></p>
+                            <span id="product-stock" class="badge" style="color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase;"></span>
                         </div>
-                        <p id="product-part-number" style="color: #666; font-size: 0.9rem; margin-bottom: 20px;"></p>
+                        <p id="product-part-number" style="color: var(--color-text-muted); font-size: 0.95rem; font-weight: 600;"></p>
                     </div>
 
-                    <div
-                        style="border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 30px 0; margin-bottom: 30px;">
-                        <h3 style="margin-bottom: 15px;">Description</h3>
-                        <p id="product-description" style="color: #666; line-height: 1.8;"></p>
+                    <div style="border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); padding: 25px 0; margin-bottom: 25px;">
+                        <h3 style="margin-bottom: 12px; font-size: 1.1rem; color: var(--color-secondary);">Description</h3>
+                        <p id="product-description" style="color: var(--color-text-main); line-height: 1.8; font-size: 0.95rem;"></p>
                     </div>
 
                     <div style="margin-bottom: 30px;">
-                        <h3 style="margin-bottom: 15px;">Key Features</h3>
+                        <h3 style="margin-bottom: 15px; font-size: 1.1rem; color: var(--color-secondary);">Key Features</h3>
                         <ul id="product-features" style="list-style: none; padding: 0;">
                             <!-- Features will be added here -->
                         </ul>
                     </div>
 
-                    <div style="display: flex; gap: 15px;">
-                        <button onclick="handleAddToCart()" class="btn btn-primary"
-                            style="flex: 1; padding: 16px; font-size: 1.1rem;">
-                            <i class="fas fa-shopping-cart"></i> ADD TO CART
+                    <!-- CTA Buttons (Pure Inquiry WhatsApp Only) -->
+                    <div style="display: flex; flex-direction: column; gap: 15px;">
+                        <button id="whatsapp-inquire-btn" class="btn btn-whatsapp btn-block" style="padding: 18px; font-size: 1.15rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; border-radius: 8px;">
+                            <i class="fab fa-whatsapp" style="font-size: 1.4rem;"></i> INQUIRE VIA WHATSAPP
                         </button>
-                        <a href="index.html#contact" class="btn"
-                            style="flex: 1; padding: 16px; font-size: 1.1rem; text-align: center; text-decoration: none; background: #333; color: white;">
-                            <i class="fas fa-phone"></i> ENQUIRE NOW
-                        </a>
+                        <p style="font-size: 0.8rem; color: var(--color-text-muted); text-align: center; font-weight: 600; margin: 0;">
+                            <i class="fas fa-info-circle"></i> Custom sizing and vehicle-specific variations can be engineered upon request.
+                        </p>
                     </div>
                 </div>
             </div>
 
-            <!-- Specifications -->
-            <div style="background: #f8f9fa; padding: 40px; border-radius: 12px;">
-                <h2 style="margin-bottom: 30px;">Technical Specifications</h2>
-                <div id="product-specifications"
-                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <!-- Technical Specifications -->
+            <div style="background: var(--color-light-grey); padding: 40px; border-radius: 12px; border: 1px solid var(--color-border);">
+                <h2 style="margin-bottom: 25px; font-size: 1.5rem; color: var(--color-secondary); letter-spacing: 0.5px;">Technical Specifications</h2>
+                <div id="product-specifications" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
                     <!-- Specifications will be added here -->
                 </div>
             </div>
@@ -264,66 +197,81 @@
     </section>
 
     <!-- FOOTER -->
-    <footer>
+    <footer style="background: #111111; padding: 60px 0; border-top: 1px solid var(--color-border); color: #ffffff;">
         <div class="container">
-            <div class="footer-content">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-bottom: 50px;">
                 <div class="footer-col">
-                    <h4>Products</h4>
-                    <ul class="footer-links">
-                        <li><a href="category-front-bumpers.html">Front Bumpers</a></li>
-                        <li><a href="category-rear-bumpers-carrier.html">Rear Bumpers</a></li>
-                        <li><a href="category-rock-sliders.html">Rocksliders</a></li>
-                        <li><a href="category-accessories.html">Accessories</a></li>
+                    <h4 style="margin-bottom: 20px; font-size: 1rem; color: white; letter-spacing: 1px;">Products</h4>
+                    <ul class="footer-links" style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px;"><a href="category-front-bumpers.html" style="color: #aaaaaa; transition: color 0.3s;">Front Bumpers</a></li>
+                        <li style="margin-bottom: 10px;"><a href="category-rear-bumpers.html" style="color: #aaaaaa; transition: color 0.3s;">Rear Bumpers</a></li>
+                        <li style="margin-bottom: 10px;"><a href="category-rock-sliders.html" style="color: #aaaaaa; transition: color 0.3s;">Rock Sliders</a></li>
+                        <li style="margin-bottom: 10px;"><a href="category-fridge-slides.html" style="color: #aaaaaa; transition: color 0.3s;">Fridge Slides</a></li>
+                        <li style="margin-bottom: 10px;"><a href="category-drawer-systems.html" style="color: #aaaaaa; transition: color 0.3s;">Drawer Systems</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h4
-                        style="font-size: 1.8rem; line-height: 1.3; color: white; text-transform: none; font-weight: 800;">
+                <div class="footer-col" style="display: flex; flex-direction: column; justify-content: center;">
+                    <h4 style="font-size: 1.8rem; line-height: 1.3; color: white; text-transform: none; font-weight: 900; margin: 0 0 10px;">
                         Built for Adventure.<br>
-                        <span style="color: var(--color-accent);">Engineered for Excellence.</span>
+                        <span style="color: var(--color-accent);">Engineered to Last.</span>
                     </h4>
                 </div>
                 <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Homepage</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="index.html#contact">Contact Us</a></li>
+                    <h4 style="margin-bottom: 20px; font-size: 1rem; color: white; letter-spacing: 1px;">Quick Links</h4>
+                    <ul class="footer-links" style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px;"><a href="index.html" style="color: #aaaaaa; transition: color 0.3s;">Homepage</a></li>
+                        <li style="margin-bottom: 10px;"><a href="index.html#about" style="color: #aaaaaa; transition: color 0.3s;">About Us</a></li>
+                        <li style="margin-bottom: 10px;"><a href="index.html#contact" style="color: #aaaaaa; transition: color 0.3s;">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Get In Touch</h4>
-                    <ul class="footer-links">
-                        <li><strong>Email:</strong> <a href="mailto:info@odysey-x.co.za">info@odysey-x.co.za</a></li>
-                        <li><strong>Phone:</strong> <a href="tel:+27722573089">+27 72 257 3089</a></li>
+                    <h4 style="margin-bottom: 20px; font-size: 1rem; color: white; letter-spacing: 1px;">Get In Touch</h4>
+                    <ul class="footer-links" style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 15px; color: #aaaaaa;">
+                            <strong style="display: block; color: white; margin-bottom: 3px;">Email:</strong>
+                            <a href="mailto:info@odyssey4x4.co.za" style="color: #aaaaaa; transition: color 0.3s;">info@odyssey4x4.co.za</a>
+                        </li>
+                        <li style="margin-bottom: 15px; color: #aaaaaa;">
+                            <strong style="display: block; color: white; margin-bottom: 3px;">Phone:</strong>
+                            <a href="tel:+27722573089" style="color: #aaaaaa; transition: color 0.3s;">+27 72 257 3089</a>
+                        </li>
                     </ul>
-                    <div class="social-icons" style="margin-top: 20px;">
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-                    </div>
                 </div>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; All Rights Reserved. Designed by odysey-X Expedition Gear.</p>
+            <div style="border-top: 1px solid #222; padding-top: 30px; text-align: center; color: #777; font-size: 0.85rem; font-weight: 600;">
+                <p>&copy; 2026 Odyssey 4x4 Expedition Gear. All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
 
-    <!-- CONTACT WIDGET -->
-    <div class="contact-widget">
-        <a href="index.html#contact" class="contact-widget-link">
-            <div class="contact-widget-logo">
-                <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4">
+    <!-- PULSATING FLOATING WHATSAPP SYSTEM -->
+    <div class="whatsapp-float-container">
+        <button class="whatsapp-float-trigger" aria-label="Open WhatsApp Menu">
+            <i class="fab fa-whatsapp"></i>
+        </button>
+        <div class="whatsapp-popup-menu">
+            <div class="whatsapp-menu-header">
+                <h4>Inquire Directly</h4>
             </div>
-            <div class="contact-widget-text">Contact Us</div>
-        </a>
+            <a href="https://wa.me/27722573089?text=Hi%20Odyssey%204x4%2C%20I%20would%20like%20to%20inquire%20about%20Front%20Bumpers." target="_blank" class="whatsapp-menu-item">
+                <i class="fas fa-truck-front"></i> Front Bumpers
+            </a>
+            <a href="https://wa.me/27722573089?text=Hi%20Odyssey%204x4%2C%20I%20would%20like%20to%20inquire%20about%20Rear%20Bumpers." target="_blank" class="whatsapp-menu-item">
+                <i class="fas fa-truck-monster"></i> Rear Bumpers
+            </a>
+            <a href="https://wa.me/27722573089?text=Hi%20Odyssey%204x4%2C%20I%20would%20like%20to%20inquire%20about%20Rock%20Sliders." target="_blank" class="whatsapp-menu-item">
+                <i class="fas fa-grip-lines"></i> Rock Sliders
+            </a>
+            <a href="https://wa.me/27722573089?text=Hi%20Odyssey%204x4%2C%20I%20have%20a%20general%20question%20about%20your%20off-road%20gear." target="_blank" class="whatsapp-menu-item">
+                <i class="fas fa-envelope"></i> General Inquiry
+            </a>
+        </div>
     </div>
 
+    <!-- SCRIPTS -->
     <script src="scripts/main.js"></script>
-    <script src="scripts/search.js"></script>
     <script>
-        // Get product ID from URL
+        // Get product ID from URL query
         const urlParams = new URLSearchParams(window.location.search);
         const productId = parseInt(urlParams.get('id')) || parseInt(window.location.pathname.match(/product-(\d+)/)?.[1]);
 
@@ -331,79 +279,99 @@
         const product = products.find(p => p.id === productId);
 
         if (product) {
-            // Update page title
+            // Update page titles & description
             document.getElementById('page-title').textContent = `${product.name} | Odyssey 4x4`;
+            document.getElementById('page-description').setAttribute('content', product.description);
 
             // Update breadcrumb
-            document.getElementById('breadcrumb-category').textContent = formatCategory(product.category);
+            document.getElementById('breadcrumb-category').innerHTML = `<a href="index.html#products" onclick="applyFilter('category', '${product.category}')" style="color: var(--color-accent);">${formatCategory(product.category)}</a>`;
             document.getElementById('breadcrumb-product').textContent = product.name;
 
-            // Update product details
-            document.getElementById('product-image').src = product.image;
+            // Update details
+            const isPlaceholder = product.image.includes('placeholder');
+            const displayImage = isPlaceholder && product.fitmentImage ? product.fitmentImage : product.image;
+            
+            document.getElementById('product-image').src = displayImage;
             document.getElementById('product-image').alt = product.name;
+            document.getElementById('product-image').onerror = function () { this.src = 'assets/images/placeholder.jpg'; };
+
+            if (isPlaceholder) {
+                document.getElementById('placeholder-banner').style.display = 'block';
+            }
+
             document.getElementById('product-category').textContent = formatCategory(product.category);
             document.getElementById('product-name').textContent = product.name;
             document.getElementById('product-price').textContent = `R ${product.price.toLocaleString()}`;
-            document.getElementById('product-stock').textContent = product.stock === 'in-stock' ? 'In Stock' : 'Out of Stock';
-            document.getElementById('product-part-number').textContent = `Part Number: ${product.partNumber}`;
+            document.getElementById('product-part-number').textContent = `PART NUMBER: ${product.partNumber}`;
+
+            // Status / stock badge config
+            const stockBadge = document.getElementById('product-stock');
+            if (product.status === 'out-of-stock') {
+                stockBadge.textContent = 'SOLD OUT';
+                stockBadge.style.background = '#c62828'; // Red for sold out
+            } else if (product.status === 'waiting-for-design') {
+                stockBadge.textContent = 'NEW DESIGN COMING';
+                stockBadge.style.background = '#f9a825'; // Gold
+                stockBadge.style.color = '#000';
+            } else {
+                stockBadge.textContent = 'IN STOCK';
+                stockBadge.style.background = '#2e7d32'; // Green
+            }
+
             document.getElementById('product-description').textContent = product.description;
 
-            // Add features
+            // Features list
             const featuresList = document.getElementById('product-features');
+            featuresList.innerHTML = '';
             product.features.forEach(feature => {
                 const li = document.createElement('li');
-                li.innerHTML = `<i class="fas fa-check-circle" style="color: var(--color-accent); margin-right: 10px;"></i>${feature}`;
-                li.style.marginBottom = '10px';
-                li.style.color = '#666';
+                li.style.display = 'flex';
+                li.style.alignItems = 'center';
+                li.style.gap = '10px';
+                li.style.marginBottom = '12px';
+                li.style.color = 'var(--color-text-main)';
+                li.style.fontWeight = '600';
+                li.style.fontSize = '0.95rem';
+                li.innerHTML = `<i class="fas fa-check-circle" style="color: var(--color-accent); font-size: 1.1rem;"></i> <span>${feature}</span>`;
                 featuresList.appendChild(li);
             });
 
-            // Add specifications
+            // Specifications cards
             const specsContainer = document.getElementById('product-specifications');
+            specsContainer.innerHTML = '';
             Object.entries(product.specifications).forEach(([key, value]) => {
-                const specDiv = document.createElement('div');
-                specDiv.style.padding = '20px';
-                specDiv.style.background = 'white';
-                specDiv.style.borderRadius = '8px';
-                specDiv.innerHTML = `
-                    <div style="font-weight: 600; text-transform: capitalize; margin-bottom: 8px; color: #333;">${key.replace(/([A-Z])/g, ' $1').trim()}</div>
-                    <div style="color: #666;">${value}</div>
+                const specCard = document.createElement('div');
+                specCard.style.padding = '20px';
+                specCard.style.background = '#ffffff';
+                specCard.style.borderRadius = '8px';
+                specCard.style.border = '1px solid var(--color-border)';
+                specCard.style.boxShadow = '0 2px 8px rgba(0,0,0,0.02)';
+                specCard.innerHTML = `
+                    <div style="font-weight: 700; text-transform: uppercase; margin-bottom: 8px; color: var(--color-secondary); font-size: 0.85rem; letter-spacing: 0.5px;">${key.replace(/([A-Z])/g, ' $1').trim()}</div>
+                    <div style="color: var(--color-text-muted); font-size: 0.95rem; font-weight: 600;">${value}</div>
                 `;
-                specsContainer.appendChild(specDiv);
+                specsContainer.appendChild(specCard);
             });
 
-            // Wishlist button
-            const wishlistBtn = document.getElementById('wishlist-btn');
-            const wishlist = JSON.parse(localStorage.getItem('odyssey_wishlist')) || [];
-            if (wishlist.includes(productId)) {
-                wishlistBtn.classList.add('active');
-                wishlistBtn.querySelector('i').classList.remove('far');
-                wishlistBtn.querySelector('i').classList.add('fas');
-            }
-
-            wishlistBtn.addEventListener('click', () => {
-                toggleWishlist(productId);
-                location.reload();
+            // Hook up WhatsApp inquiry button
+            document.getElementById('whatsapp-inquire-btn').addEventListener('click', () => {
+                window.enquireWhatsApp(product.id);
             });
+
         } else {
-            document.querySelector('.container').innerHTML = `
-                <div style="text-align: center; padding: 100px 20px;">
-                    <i class="fas fa-exclamation-triangle" style="font-size: 4rem; color: #999; margin-bottom: 20px;"></i>
-                    <h2>Product Not Found</h2>
-                    <p style="color: #666; margin-bottom: 30px;">The product you're looking for doesn't exist.</p>
-                    <a href="index.html" class="btn btn-primary">Back to Homepage</a>
+            // Not found view
+            document.querySelector('section').innerHTML = `
+                <div class="container" style="text-align: center; padding: 100px 20px;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 4rem; color: var(--color-accent); margin-bottom: 20px;"></i>
+                    <h2 style="font-size: 2rem; color: var(--color-secondary); margin-bottom: 10px;">PRODUCT NOT FOUND</h2>
+                    <p style="color: var(--color-text-muted); margin-bottom: 30px; font-weight: 600;">The premium gear you are looking for does not exist in our catalog.</p>
+                    <a href="index.html" class="btn btn-whatsapp" style="display: inline-block; padding: 12px 30px; border-radius: 4px; text-decoration: none; font-weight: 700;">BACK TO HOMEPAGE</a>
                 </div>
             `;
         }
 
         function formatCategory(cat) {
             return cat.replace(/-/g, ' ').toUpperCase();
-        }
-
-        function handleAddToCart() {
-            if (product) {
-                window.addToCart(product.id);
-            }
         }
     </script>
 </body>
