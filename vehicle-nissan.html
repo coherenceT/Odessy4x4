@@ -81,26 +81,16 @@
     <div class="slide-menu" id="slide-menu">
         <div class="slide-menu-header">
             <a href="index.html" class="slide-menu-logo">
-                <img src="assets/images/odyssey4x4-logo-dark.svg" alt="Odyssey 4x4 Logo">
+                <img src="assets/images/odyssey4x4-logo-dark.svg" alt="Odyssey 4x4 Logo" onerror="this.src='assets/images/odyssey4x4-logo.jpg'">
             </a>
-            <button class="slide-menu-close" id="slide-menu-close">&times;</button>
+            <button class="slide-menu-close" id="slide-menu-close" aria-label="Close menu">&times;</button>
         </div>
         <div class="slide-menu-links">
-            <a href="index.html" class="mobile-link"><i class="fas fa-home"></i> Home</a>
+            <!-- Main Navigation Links -->
+            <a href="index.html" class="mobile-link">Home</a>
             
             <div class="mobile-accordion">
-                <button class="accordion-toggle"><i class="fas fa-cogs"></i> Product Categories <i class="fas fa-chevron-down"></i></button>
-                <div class="accordion-content">
-                    <a href="category-front-bumpers.html"><i class="fas fa-chevron-right"></i> Front Bumpers</a>
-                    <a href="category-rear-bumpers.html"><i class="fas fa-chevron-right"></i> Rear Bumpers</a>
-                    <a href="category-rock-sliders.html"><i class="fas fa-chevron-right"></i> Rock Sliders</a>
-                    <a href="category-fridge-slides.html"><i class="fas fa-chevron-right"></i> Fridge Slides</a>
-                    <a href="category-drawer-systems.html"><i class="fas fa-chevron-right"></i> Drawer Systems</a>
-                </div>
-            </div>
-
-            <div class="mobile-accordion">
-                <button class="accordion-toggle"><i class="fas fa-car"></i> Filter By Vehicle <i class="fas fa-chevron-down"></i></button>
+                <button class="accordion-toggle"><i class="fas fa-car"></i> Vehicles <i class="fas fa-chevron-down"></i></button>
                 <div class="accordion-content">
                     <a href="vehicle-ford.html"><i class="fas fa-chevron-right"></i> Ford</a>
                     <a href="vehicle-toyota.html"><i class="fas fa-chevron-right"></i> Toyota</a>
@@ -109,8 +99,96 @@
                     <a href="vehicle-mazda.html"><i class="fas fa-chevron-right"></i> Mazda</a>
                 </div>
             </div>
+            
+            <a href="category-drawer-systems.html" class="mobile-link">DECKED</a>
+            <a href="category-accessories.html" class="mobile-link">Strands</a>
+            <a href="index.html#products" class="mobile-link" onclick="closeMenu()">Rhino 4×4 Products</a>
+            <a href="index.html#products" class="mobile-link" onclick="closeMenu()">Warehouse Sale</a>
+            
+            <div class="mobile-accordion">
+                <button class="accordion-toggle"><i class="fas fa-mountain"></i> 4×4 & Overland Gear <i class="fas fa-chevron-down"></i></button>
+                <div class="accordion-content">
+                    <a href="https://wa.me/27722573089?text=Hi%20Odyssey%204x4%2C%20I%20would%20like%20to%20inquire%20about%20Winches." target="_blank"><i class="fas fa-chevron-right"></i> Winches</a>
+                    <a href="https://wa.me/27722573089?text=Hi%20Odyssey%204x4%2C%20I%20would%20like%20to%20inquire%20about%20Snorkels." target="_blank"><i class="fas fa-chevron-right"></i> Snorkels</a>
+                    <a href="category-drawer-systems.html"><i class="fas fa-chevron-right"></i> DECKED Drawer System</a>
+                    <a href="https://wa.me/27722573089?text=Hi%20Odyssey%204x4%2C%20I%20would%20like%20to%20inquire%20about%20Suspensions." target="_blank"><i class="fas fa-chevron-right"></i> Suspensions</a>
+                    <a href="https://wa.me/27722573089?text=Hi%20Odyssey%204x4%2C%20I%20would%20like%20to%20inquire%20about%20Strands%20Lighting." target="_blank"><i class="fas fa-chevron-right"></i> Strands Lighting</a>
+                    <a href="https://wa.me/27722573089?text=Hi%20Odyssey%204x4%2C%20I%20would%20like%20to%20inquire%20about%20Dual%20Battery%20Systems." target="_blank"><i class="fas fa-chevron-right"></i> Dual Battery Systems</a>
+                </div>
+            </div>
+            
+            <a href="index.html#products" class="mobile-link" onclick="closeMenu()">Find my Vehicle</a>
+            <a href="index.html#contact" class="mobile-link" onclick="closeMenu()">Contact</a>
 
-            <a href="index.html#contact" class="mobile-link" onclick="closeMenu()"><i class="fas fa-envelope"></i> Contact Us</a>
+            <!-- Promo Banners Section -->
+            <div class="menu-promo-container">
+                <!-- Banner 1: Drawer Systems -->
+                <a href="category-drawer-systems.html" class="menu-promo-card promo-drawer" onclick="closeMenu()">
+                    <span class="promo-badge">BUILT FOR ORDER</span>
+                    <h4>Shop Drawer Systems</h4>
+                    <p>Offroad Vehicle Accessories</p>
+                </a>
+                
+                <!-- Banner 2: Lighting Systems -->
+                <a href="https://wa.me/27722573089?text=Hi%20Odyssey%204x4%2C%20I%20would%20like%20to%20inquire%20about%20Lighting%20Systems." target="_blank" class="menu-promo-card promo-lighting">
+                    <span class="promo-badge">FEEL THE PASSION</span>
+                    <h4>Shop Lighting Systems</h4>
+                    <p>Premium LED Solutions</p>
+                </a>
+                
+                <!-- Banner 3: Find my Vehicle -->
+                <a href="index.html#brand-filter-grid" class="menu-promo-card promo-vehicle" onclick="closeMenu()">
+                    <span class="promo-badge">TOUGH Never Looked this good!</span>
+                    <h4>Find My Vehicle</h4>
+                    <p>Select Brand & Model</p>
+                </a>
+            </div>
+
+            <!-- RSA Trust Badges Section -->
+            <div class="menu-trust-container">
+                <div class="menu-trust-badge">
+                    <div class="menu-trust-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <span>Made for RSA conditions</span>
+                </div>
+                <div class="menu-trust-badge">
+                    <div class="menu-trust-icon">
+                        <i class="fas fa-cubes"></i>
+                    </div>
+                    <span>Modular Design</span>
+                </div>
+                <div class="menu-trust-badge">
+                    <div class="menu-trust-icon">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <span>Airbag compatible</span>
+                </div>
+            </div>
+
+            <!-- Shop Categories Accordion -->
+            <div class="mobile-accordion">
+                <button class="accordion-toggle"><i class="fas fa-toolbox"></i> Shop Accessories & Drawers <i class="fas fa-chevron-down"></i></button>
+                <div class="accordion-content">
+                    <a href="category-front-bumpers.html"><i class="fas fa-chevron-right"></i> Evolution Front Bumpers</a>
+                    <a href="category-rear-bumpers.html"><i class="fas fa-chevron-right"></i> Evolution Rear Bumpers</a>
+                    <a href="category-rock-sliders.html"><i class="fas fa-chevron-right"></i> Rock Sliders</a>
+                    <a href="category-accessories.html"><i class="fas fa-chevron-right"></i> Adventure roll Bar</a>
+                    <a href="https://wa.me/27722573089?text=Hi%20Odyssey%204x4%2C%20I%20would%20like%20to%20inquire%20about%20Rhino%204x4%20Lights." target="_blank"><i class="fas fa-chevron-right"></i> RHINO 4X4 LIGHTS</a>
+                </div>
+            </div>
+
+            <!-- Shop by Brand Accordion -->
+            <div class="mobile-accordion">
+                <button class="accordion-toggle"><i class="fas fa-tags"></i> Shop by Brand <i class="fas fa-chevron-down"></i></button>
+                <div class="accordion-content">
+                    <a href="vehicle-ford.html"><i class="fas fa-chevron-right"></i> Ford</a>
+                    <a href="vehicle-toyota.html"><i class="fas fa-chevron-right"></i> Toyota</a>
+                    <a href="vehicle-nissan.html"><i class="fas fa-chevron-right"></i> Nissan</a>
+                    <a href="vehicle-isuzu.html"><i class="fas fa-chevron-right"></i> Isuzu</a>
+                    <a href="vehicle-mazda.html"><i class="fas fa-chevron-right"></i> Mazda</a>
+                </div>
+            </div>
         </div>
         <div class="red-ribbon"></div>
     </div>

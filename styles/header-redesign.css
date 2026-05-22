@@ -243,3 +243,309 @@ header {
         font-size: 0.8rem;
     }
 }
+
+/* =========================================
+   MOBILE SLIDE-OUT MEGAMENU REDESIGN
+   ========================================= */
+.slide-menu {
+    overflow-y: auto !important;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(211, 47, 47, 0.4) transparent;
+}
+
+.slide-menu::-webkit-scrollbar {
+    width: 6px;
+}
+
+.slide-menu::-webkit-scrollbar-thumb {
+    background: rgba(211, 47, 47, 0.4);
+    border-radius: 10px;
+}
+
+/* Elegant spacing for menu logo & close trigger */
+.slide-menu-header {
+    border-bottom: 2px solid #f2f2f2 !important;
+    padding-bottom: 20px !important;
+    margin-bottom: 20px !important;
+}
+
+.slide-menu-logo img {
+    height: 52px !important;
+    object-fit: contain;
+}
+
+/* Redesigned mobile slide-out links list */
+.slide-menu-links {
+    margin-top: 15px !important;
+    gap: 0 !important;
+    width: 100%;
+}
+
+.slide-menu-links .mobile-link,
+.slide-menu-links a.mobile-link {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 0.95rem !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.8px !important;
+    color: #1a1a1a !important;
+    padding: 15px 5px !important;
+    border-bottom: 1px solid #eeeeee !important;
+    transition: all 0.3s ease !important;
+    text-decoration: none !important;
+}
+
+.slide-menu-links .mobile-link::after,
+.slide-menu-links a.mobile-link::after {
+    content: '\f054';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 0.75rem;
+    color: var(--color-accent);
+    opacity: 0.7;
+    transition: transform 0.3s;
+}
+
+.slide-menu-links .mobile-link:hover,
+.slide-menu-links a.mobile-link:hover {
+    color: var(--color-accent) !important;
+    padding-left: 10px !important;
+    border-bottom-color: var(--color-accent) !important;
+}
+
+.slide-menu-links .mobile-link:hover::after,
+.slide-menu-links a.mobile-link:hover::after {
+    transform: translateX(3px);
+    opacity: 1;
+}
+
+/* Visual Promotion Cards inside Slide Menu */
+.menu-promo-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 25px 0;
+    width: 100%;
+}
+
+.menu-promo-card {
+    position: relative;
+    border-radius: 12px;
+    padding: 22px 20px;
+    overflow: hidden;
+    color: white !important;
+    text-decoration: none !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 125px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.menu-promo-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    transition: opacity 0.3s;
+}
+
+/* Banners gradients and backgrounds */
+.promo-drawer::before {
+    background: linear-gradient(135deg, rgba(26,26,26,0.95) 0%, rgba(211,47,47,0.85) 100%);
+}
+.promo-lighting::before {
+    background: linear-gradient(135deg, rgba(17,17,17,0.95) 0%, rgba(245,158,11,0.8) 100%);
+}
+.promo-vehicle::before {
+    background: linear-gradient(135deg, rgba(26,26,26,0.95) 0%, rgba(51,51,51,0.95) 100%);
+}
+
+.menu-promo-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(211,47,47,0.25);
+}
+
+.menu-promo-card:hover::before {
+    opacity: 0.9;
+}
+
+.promo-badge {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 50px;
+    letter-spacing: 1px;
+}
+
+.menu-promo-card h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 900;
+    margin: 5px 0 2px;
+    color: white !important;
+    text-transform: uppercase;
+    z-index: 2;
+    letter-spacing: 0.5px;
+    text-align: left;
+}
+
+.menu-promo-card p {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.85);
+    margin: 0;
+    z-index: 2;
+    font-weight: 600;
+    text-align: left;
+}
+
+/* Trust Badges pillars */
+.menu-trust-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin: 15px 0 25px;
+    padding: 15px 8px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border: 1px solid #eeeeee;
+    width: 100%;
+}
+
+.menu-trust-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.menu-trust-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: white;
+    border: 1.5px solid var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    color: var(--color-accent);
+    margin-bottom: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.menu-trust-badge span {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: #444444;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+/* Mobile Accordions override for professional look */
+.mobile-accordion {
+    width: 100% !important;
+    border-bottom: 1px solid #eeeeee !important;
+    margin-bottom: 0 !important;
+}
+
+.accordion-toggle {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 0.95rem !important;
+    font-weight: 800 !important;
+    color: #1a1a1a !important;
+    padding: 15px 5px !important;
+    border: none !important;
+    border-bottom: none !important;
+    background: none !important;
+    width: 100% !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.8px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+.accordion-toggle:hover {
+    color: var(--color-accent) !important;
+}
+
+.accordion-toggle i:first-child {
+    margin-right: 10px;
+    font-size: 1rem;
+    color: var(--color-accent);
+}
+
+.accordion-toggle i:last-child {
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+    opacity: 0.7;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px !important;
+    background: #fafafa !important;
+    border-radius: 0 !important;
+}
+
+.accordion-content.expanded {
+    max-height: 800px;
+    padding: 10px 15px 15px !important;
+    border-left: 2px solid var(--color-accent);
+}
+
+.accordion-content a {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    color: #444444 !important;
+    padding: 10px 0 !important;
+    border-bottom: 1px solid #f2f2f2 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    text-transform: none !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+}
+
+.accordion-content a:last-child {
+    border-bottom: none !important;
+}
+
+.accordion-content a i {
+    font-size: 0.65rem;
+    color: var(--color-accent);
+    transition: transform 0.2s;
+}
+
+.accordion-content a:hover {
+    color: var(--color-accent) !important;
+    padding-left: 5px !important;
+}
+
+.accordion-content a:hover i {
+    transform: translateX(2px);
+}
+
