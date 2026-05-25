@@ -409,6 +409,19 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function init() {
+    // Parse URL parameters for filters
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryParam = urlParams.get('category');
+    const brandParam = urlParams.get('brand');
+
+    if (categoryParam) {
+        currentFilterType = 'category';
+        currentFilterValue = categoryParam;
+    } else if (brandParam) {
+        currentFilterType = 'brand';
+        currentFilterValue = brandParam;
+    }
+
     renderFilterUI();
     renderProducts();
     setupMenu();

@@ -135,7 +135,7 @@ header_html = """    <!-- RED STICKY TOP RIBBON -->
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li class="has-dropdown">
-                            <a href="index.html#products">Products <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
+                            <a href="explore-gear.html">Products <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
                             <ul class="dropdown">
                                 <li><a href="category-front-bumpers.html">Front Bumpers</a></li>
                                 <li><a href="category-rear-bumpers.html">Rear Bumpers</a></li>
@@ -151,7 +151,7 @@ header_html = """    <!-- RED STICKY TOP RIBBON -->
                             </ul>
                         </li>
                         <li class="has-dropdown">
-                            <a href="index.html#products">Vehicles <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
+                            <a href="explore-gear.html#brand-filter-grid">Vehicles <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
                             <ul class="dropdown">
                                 <li><a href="vehicle-ford.html">Ford</a></li>
                                 <li><a href="vehicle-toyota.html">Toyota</a></li>
@@ -198,8 +198,8 @@ header_html = """    <!-- RED STICKY TOP RIBBON -->
             
             <a href="category-drawer-systems.html" class="mobile-link">DECKED</a>
             <a href="category-accessories.html" class="mobile-link">Strands</a>
-            <a href="index.html#products" class="mobile-link" onclick="closeMenu()">Rhino 4×4 Products</a>
-            <a href="index.html#products" class="mobile-link" onclick="closeMenu()">Warehouse Sale</a>
+            <a href="explore-gear.html" class="mobile-link" onclick="closeMenu()">Rhino 4×4 Products</a>
+            <a href="explore-gear.html" class="mobile-link" onclick="closeMenu()">Warehouse Sale</a>
             
             <div class="mobile-accordion">
                 <button class="accordion-toggle"><i class="fas fa-mountain"></i> 4×4 & Overland Gear <i class="fas fa-chevron-down"></i></button>
@@ -213,7 +213,7 @@ header_html = """    <!-- RED STICKY TOP RIBBON -->
                 </div>
             </div>
             
-            <a href="index.html#products" class="mobile-link" onclick="closeMenu()">Find my Vehicle</a>
+            <a href="explore-gear.html#brand-filter-grid" class="mobile-link" onclick="closeMenu()">Find my Vehicle</a>
             <a href="index.html#contact" class="mobile-link" onclick="closeMenu()">Contact</a>
 
             <!-- Promo Banners Section -->
@@ -233,7 +233,7 @@ header_html = """    <!-- RED STICKY TOP RIBBON -->
                 </a>
                 
                 <!-- Banner 3: Find my Vehicle -->
-                <a href="index.html#brand-filter-grid" class="menu-promo-card promo-vehicle" onclick="closeMenu()">
+                <a href="explore-gear.html#brand-filter-grid" class="menu-promo-card promo-vehicle" onclick="closeMenu()">
                     <span class="promo-badge">TOUGH Never Looked this good!</span>
                     <h4>Find My Vehicle</h4>
                     <p>Select Brand & Model</p>
