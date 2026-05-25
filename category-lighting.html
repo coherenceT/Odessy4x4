@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nissan Gear | Odyssey 4x4</title>
-    <meta name="description" content="CNC laser-cut front bars, high-clearance sliders, and accessory mounts custom-tailored for Nissan Navara / Patrol rigs.">
+    <title>Strands Lighting | Odyssey 4x4</title>
+    <meta name="description" content="Illuminate dark trails with Odyssey premium Strands LED light bars, driving spotlights, and amber backlights.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -205,7 +205,7 @@
             <div style="display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: #666;">
                 <a href="index.html" style="color: var(--color-accent);">Home</a>
                 <i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i>
-                <span style="font-weight: 600;">Nissan Gear</span>
+                <span style="font-weight: 600;">Strands Lighting</span>
             </div>
         </div>
     </section>
@@ -213,26 +213,16 @@
     <!-- SECTION TITLE -->
     <section class="section-padding" style="background-color: #ffffff; padding-top: 50px; padding-bottom: 20px; border-bottom: 1px solid var(--color-border);">
         <div class="container">
-            <h1 style="font-size: 2.6rem; color: var(--color-secondary); margin-bottom: 15px;">Nissan Gear</h1>
-            <p style="color: var(--color-text-muted); font-size: 1.05rem; max-width: 800px; line-height: 1.7; font-weight: 600;">CNC laser-cut front bars, high-clearance sliders, and accessory mounts custom-tailored for Nissan Navara / Patrol rigs.</p>
+            <h1 style="font-size: 2.6rem; color: var(--color-secondary); margin-bottom: 15px;">Strands Lighting</h1>
+            <p style="color: var(--color-text-muted); font-size: 1.05rem; max-width: 800px; line-height: 1.7; font-weight: 600;">Illuminate dark trails with Odyssey premium Strands LED light bars, driving spotlights, and amber backlights.</p>
         </div>
     </section>
 
-    <!-- DYNAMIC PRODUCTS SECTION -->
+    <!-- DYNAMIC PRODUCTS GRID -->
     <section class="section-padding" style="background-color: #fafafa;">
         <div class="container">
-            <div id="bumpers-container">
-                <h2 style="font-size: 1.8rem; font-weight: 800; color: var(--color-secondary); margin-bottom: 30px; border-bottom: 2px solid var(--color-accent); padding-bottom: 10px; display: inline-block;">REPLACEMENT BUMPERS</h2>
-                <div class="grid" id="bumpers-grid" style="margin-bottom: 50px;">
-                    <!-- Bumpers injected dynamically -->
-                </div>
-            </div>
-            
-            <div id="accessories-container">
-                <h2 style="font-size: 1.8rem; font-weight: 800; color: var(--color-secondary); margin-bottom: 30px; border-bottom: 2px solid var(--color-accent); padding-bottom: 10px; display: inline-block;">COMPATIBLE ACCESSORIES & GEAR</h2>
-                <div class="grid" id="accessories-grid">
-                    <!-- Accessories injected dynamically -->
-                </div>
+            <div class="grid">
+                <!-- Injected dynamically by inline JS script -->
             </div>
         </div>
     </section>
@@ -313,76 +303,47 @@
     <script src="scripts/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const bumpersGrid = document.getElementById('bumpers-grid');
-            const accessoriesGrid = document.getElementById('accessories-grid');
-            const bumpersContainer = document.getElementById('bumpers-container');
-            const accessoriesContainer = document.getElementById('accessories-container');
+            const productGrid = document.querySelector('.grid');
+            if (!productGrid) return;
             
-            if (!bumpersGrid || !accessoriesGrid) return;
+            const catId = "lighting";
+            const filtered = products.filter(p => p.category === catId);
             
-            const brandId = "nissan";
+            if (filtered.length === 0) {
+                productGrid.innerHTML = `<div class="no-results" style="grid-column: 1/-1; text-align: center; padding: 50px 0; color: var(--color-text-muted); font-weight: 600;">No products found in this category.</div>`;
+                return;
+            }
             
-            // Filter bumpers (brand-specific + universal)
-            const bumpers = products.filter(p => 
-                (p.brand === brandId || p.brand === 'universal') && 
-                (p.category === 'front-bumpers' || p.category === 'rear-bumpers')
-            );
-            
-            // Filter other accessories (brand-specific + universal)
-            const accessories = products.filter(p => 
-                (p.brand === brandId || p.brand === 'universal') && 
-                (p.category !== 'front-bumpers' && p.category !== 'rear-bumpers')
-            );
-            
-            const renderGrid = (grid, items) => {
-                grid.innerHTML = items.map(product => {
-                    const isPlaceholder = product.image.includes('placeholder');
-                    const displayImage = isPlaceholder && product.fitmentImage ? product.fitmentImage : product.image;
-                    
-                    let statusLabel = 'In Stock';
-                    if (product.status === 'out-of-stock') statusLabel = 'Sold Out';
-                    else if (product.status === 'waiting-for-design') statusLabel = 'New Design Coming';
-                    
-                    return `
-                        <div class="product-card">
-                            <div class="status-badge ${product.status}">${statusLabel}</div>
-                            <a href="product-detail.html?id=${product.id}" style="display: block; color: inherit;">
-                                <div class="product-image">
-                                    <img src="${displayImage}" alt="${product.name}" onerror="this.src='assets/images/placeholder.jpg'">
-                                    ${isPlaceholder ? '<div class="design-ref-label">Design Reference - Fitment photo coming soon.</div>' : ''}
-                                </div>
-                            </a>
-                            <div class="product-info">
-                                <span class="product-category">${product.category.replace('-', ' ').toUpperCase()}</span>
-                                <h3 class="product-title" style="margin: 8px 0;"><a href="product-detail.html?id=${product.id}">${product.name}</a></h3>
-                                <p class="product-price">R ${product.price.toLocaleString()}</p>
+            productGrid.innerHTML = filtered.map(product => {
+                const isPlaceholder = product.image.includes('placeholder');
+                const displayImage = isPlaceholder && product.fitmentImage ? product.fitmentImage : product.image;
+                
+                let statusLabel = 'In Stock';
+                if (product.status === 'out-of-stock') statusLabel = 'Sold Out';
+                else if (product.status === 'waiting-for-design') statusLabel = 'New Design Coming';
+                
+                return `
+                    <div class="product-card">
+                        <div class="status-badge ${product.status}">${statusLabel}</div>
+                        <a href="product-detail.html?id=${product.id}" style="display: block; color: inherit;">
+                            <div class="product-image">
+                                <img src="${displayImage}" alt="${product.name}" onerror="this.src='assets/images/placeholder.jpg'">
+                                ${isPlaceholder ? '<div class="design-ref-label">Design Reference - Fitment photo coming soon.</div>' : ''}
                             </div>
-                            <div class="product-actions" style="padding: var(--spacing-sm); background: #fafafa; border-top: 1px solid var(--color-border);">
-                                <button class="btn btn-whatsapp btn-block" onclick="enquireWhatsApp(${product.id})" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;">
-                                    <i class="fab fa-whatsapp"></i> INQUIRE VIA WHATSAPP
-                                </button>
-                            </div>
+                        </a>
+                        <div class="product-info">
+                            <span class="product-category">${product.category.replace('-', ' ').toUpperCase()}</span>
+                            <h3 class="product-title" style="margin: 8px 0;"><a href="product-detail.html?id=${product.id}">${product.name}</a></h3>
+                            <p class="product-price">R ${product.price.toLocaleString()}</p>
                         </div>
-                    `;
-                }).join('');
-            };
-            
-            if (bumpers.length === 0) {
-                bumpersContainer.style.display = 'none';
-            } else {
-                renderGrid(bumpersGrid, bumpers);
-            }
-            
-            if (accessories.length === 0) {
-                accessoriesContainer.style.display = 'none';
-            } else {
-                renderGrid(accessoriesGrid, accessories);
-            }
-            
-            if (bumpers.length === 0 && accessories.length === 0) {
-                const mainContainer = bumpersContainer.parentElement;
-                mainContainer.innerHTML = `<div class="no-results" style="text-align: center; padding: 80px 0; color: var(--color-text-muted); font-weight: 600; font-size: 1.2rem;">No products found for this vehicle.</div>`;
-            }
+                        <div class="product-actions" style="padding: var(--spacing-sm); background: #fafafa; border-top: 1px solid var(--color-border);">
+                            <button class="btn btn-whatsapp btn-block" onclick="enquireWhatsApp(${product.id})" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                                <i class="fab fa-whatsapp"></i> INQUIRE VIA WHATSAPP
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
         });
     </script>
 </body>

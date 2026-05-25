@@ -52,6 +52,12 @@
                                 <li><a href="category-rock-sliders.html">Rock Sliders</a></li>
                                 <li><a href="category-fridge-slides.html">Fridge Slides</a></li>
                                 <li><a href="category-drawer-systems.html">Drawer Systems</a></li>
+                                <li><a href="category-accessories.html">Roll Bars</a></li>
+                                <li><a href="category-winches.html">Winches</a></li>
+                                <li><a href="category-snorkels.html">Snorkels</a></li>
+                                <li><a href="category-suspensions.html">Suspensions</a></li>
+                                <li><a href="category-lighting.html">Strands Lighting</a></li>
+                                <li><a href="category-battery.html">Battery Systems</a></li>
                             </ul>
                         </li>
                         <li class="has-dropdown">
@@ -108,12 +114,12 @@
             <div class="mobile-accordion">
                 <button class="accordion-toggle"><i class="fas fa-mountain"></i> 4×4 & Overland Gear <i class="fas fa-chevron-down"></i></button>
                 <div class="accordion-content">
-                    <a href="https://wa.me/27722573089?text=Hi%20Odyssey%204x4%2C%20I%20would%20like%20to%20inquire%20about%20Winches." target="_blank"><i class="fas fa-chevron-right"></i> Winches</a>
-                    <a href="https://wa.me/27722573089?text=Hi%20Odyssey%204x4%2C%20I%20would%20like%20to%20inquire%20about%20Snorkels." target="_blank"><i class="fas fa-chevron-right"></i> Snorkels</a>
+                    <a href="category-winches.html"><i class="fas fa-chevron-right"></i> Winches</a>
+                    <a href="category-snorkels.html"><i class="fas fa-chevron-right"></i> Snorkels</a>
                     <a href="category-drawer-systems.html"><i class="fas fa-chevron-right"></i> DECKED Drawer System</a>
-                    <a href="https://wa.me/27722573089?text=Hi%20Odyssey%204x4%2C%20I%20would%20like%20to%20inquire%20about%20Suspensions." target="_blank"><i class="fas fa-chevron-right"></i> Suspensions</a>
-                    <a href="https://wa.me/27722573089?text=Hi%20Odyssey%204x4%2C%20I%20would%20like%20to%20inquire%20about%20Strands%20Lighting." target="_blank"><i class="fas fa-chevron-right"></i> Strands Lighting</a>
-                    <a href="https://wa.me/27722573089?text=Hi%20Odyssey%204x4%2C%20I%20would%20like%20to%20inquire%20about%20Dual%20Battery%20Systems." target="_blank"><i class="fas fa-chevron-right"></i> Dual Battery Systems</a>
+                    <a href="category-suspensions.html"><i class="fas fa-chevron-right"></i> Suspensions</a>
+                    <a href="category-lighting.html"><i class="fas fa-chevron-right"></i> Strands Lighting</a>
+                    <a href="category-battery.html"><i class="fas fa-chevron-right"></i> Dual Battery Systems</a>
                 </div>
             </div>
             
@@ -174,7 +180,7 @@
                     <a href="category-rear-bumpers.html"><i class="fas fa-chevron-right"></i> Evolution Rear Bumpers</a>
                     <a href="category-rock-sliders.html"><i class="fas fa-chevron-right"></i> Rock Sliders</a>
                     <a href="category-accessories.html"><i class="fas fa-chevron-right"></i> Adventure roll Bar</a>
-                    <a href="https://wa.me/27722573089?text=Hi%20Odyssey%204x4%2C%20I%20would%20like%20to%20inquire%20about%20Rhino%204x4%20Lights." target="_blank"><i class="fas fa-chevron-right"></i> RHINO 4X4 LIGHTS</a>
+                    <a href="category-lighting.html"><i class="fas fa-chevron-right"></i> Strands Lighting</a>
                 </div>
             </div>
 
@@ -212,11 +218,21 @@
         </div>
     </section>
 
-    <!-- DYNAMIC PRODUCTS GRID -->
+    <!-- DYNAMIC PRODUCTS SECTION -->
     <section class="section-padding" style="background-color: #fafafa;">
         <div class="container">
-            <div class="grid">
-                <!-- Injected dynamically by inline JS script -->
+            <div id="bumpers-container">
+                <h2 style="font-size: 1.8rem; font-weight: 800; color: var(--color-secondary); margin-bottom: 30px; border-bottom: 2px solid var(--color-accent); padding-bottom: 10px; display: inline-block;">REPLACEMENT BUMPERS</h2>
+                <div class="grid" id="bumpers-grid" style="margin-bottom: 50px;">
+                    <!-- Bumpers injected dynamically -->
+                </div>
+            </div>
+            
+            <div id="accessories-container">
+                <h2 style="font-size: 1.8rem; font-weight: 800; color: var(--color-secondary); margin-bottom: 30px; border-bottom: 2px solid var(--color-accent); padding-bottom: 10px; display: inline-block;">COMPATIBLE ACCESSORIES & GEAR</h2>
+                <div class="grid" id="accessories-grid">
+                    <!-- Accessories injected dynamically -->
+                </div>
             </div>
         </div>
     </section>
@@ -297,48 +313,76 @@
     <script src="scripts/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const productGrid = document.querySelector('.grid');
-            if (!productGrid) return;
+            const bumpersGrid = document.getElementById('bumpers-grid');
+            const accessoriesGrid = document.getElementById('accessories-grid');
+            const bumpersContainer = document.getElementById('bumpers-container');
+            const accessoriesContainer = document.getElementById('accessories-container');
+            
+            if (!bumpersGrid || !accessoriesGrid) return;
             
             const brandId = "mazda";
-            // Filter by vehicle brand OR show universal accessories
-            const filtered = products.filter(p => p.brand === brandId || p.brand === 'universal');
             
-            if (filtered.length === 0) {
-                productGrid.innerHTML = `<div class="no-results" style="grid-column: 1/-1; text-align: center; padding: 50px 0; color: var(--color-text-muted); font-weight: 600;">No compatible products found for this vehicle.</div>`;
-                return;
+            // Filter bumpers (brand-specific + universal)
+            const bumpers = products.filter(p => 
+                (p.brand === brandId || p.brand === 'universal') && 
+                (p.category === 'front-bumpers' || p.category === 'rear-bumpers')
+            );
+            
+            // Filter other accessories (brand-specific + universal)
+            const accessories = products.filter(p => 
+                (p.brand === brandId || p.brand === 'universal') && 
+                (p.category !== 'front-bumpers' && p.category !== 'rear-bumpers')
+            );
+            
+            const renderGrid = (grid, items) => {
+                grid.innerHTML = items.map(product => {
+                    const isPlaceholder = product.image.includes('placeholder');
+                    const displayImage = isPlaceholder && product.fitmentImage ? product.fitmentImage : product.image;
+                    
+                    let statusLabel = 'In Stock';
+                    if (product.status === 'out-of-stock') statusLabel = 'Sold Out';
+                    else if (product.status === 'waiting-for-design') statusLabel = 'New Design Coming';
+                    
+                    return `
+                        <div class="product-card">
+                            <div class="status-badge ${product.status}">${statusLabel}</div>
+                            <a href="product-detail.html?id=${product.id}" style="display: block; color: inherit;">
+                                <div class="product-image">
+                                    <img src="${displayImage}" alt="${product.name}" onerror="this.src='assets/images/placeholder.jpg'">
+                                    ${isPlaceholder ? '<div class="design-ref-label">Design Reference - Fitment photo coming soon.</div>' : ''}
+                                </div>
+                            </a>
+                            <div class="product-info">
+                                <span class="product-category">${product.category.replace('-', ' ').toUpperCase()}</span>
+                                <h3 class="product-title" style="margin: 8px 0;"><a href="product-detail.html?id=${product.id}">${product.name}</a></h3>
+                                <p class="product-price">R ${product.price.toLocaleString()}</p>
+                            </div>
+                            <div class="product-actions" style="padding: var(--spacing-sm); background: #fafafa; border-top: 1px solid var(--color-border);">
+                                <button class="btn btn-whatsapp btn-block" onclick="enquireWhatsApp(${product.id})" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                                    <i class="fab fa-whatsapp"></i> INQUIRE VIA WHATSAPP
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            };
+            
+            if (bumpers.length === 0) {
+                bumpersContainer.style.display = 'none';
+            } else {
+                renderGrid(bumpersGrid, bumpers);
             }
             
-            productGrid.innerHTML = filtered.map(product => {
-                const isPlaceholder = product.image.includes('placeholder');
-                const displayImage = isPlaceholder && product.fitmentImage ? product.fitmentImage : product.image;
-                
-                let statusLabel = 'In Stock';
-                if (product.status === 'out-of-stock') statusLabel = 'Sold Out';
-                else if (product.status === 'waiting-for-design') statusLabel = 'New Design Coming';
-                
-                return `
-                    <div class="product-card">
-                        <div class="status-badge ${product.status}">${statusLabel}</div>
-                        <a href="product-detail.html?id=${product.id}" style="display: block; color: inherit;">
-                            <div class="product-image">
-                                <img src="${displayImage}" alt="${product.name}" onerror="this.src='assets/images/placeholder.jpg'">
-                                ${isPlaceholder ? '<div class="design-ref-label">Design Reference - Fitment photo coming soon.</div>' : ''}
-                            </div>
-                        </a>
-                        <div class="product-info">
-                            <span class="product-category">${product.category.replace('-', ' ').toUpperCase()}</span>
-                            <h3 class="product-title" style="margin: 8px 0;"><a href="product-detail.html?id=${product.id}">${product.name}</a></h3>
-                            <p class="product-price">R ${product.price.toLocaleString()}</p>
-                        </div>
-                        <div class="product-actions" style="padding: var(--spacing-sm); background: #fafafa; border-top: 1px solid var(--color-border);">
-                            <button class="btn btn-whatsapp btn-block" onclick="enquireWhatsApp(${product.id})" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;">
-                                <i class="fab fa-whatsapp"></i> INQUIRE VIA WHATSAPP
-                            </button>
-                        </div>
-                    </div>
-                `;
-            }).join('');
+            if (accessories.length === 0) {
+                accessoriesContainer.style.display = 'none';
+            } else {
+                renderGrid(accessoriesGrid, accessories);
+            }
+            
+            if (bumpers.length === 0 && accessories.length === 0) {
+                const mainContainer = bumpersContainer.parentElement;
+                mainContainer.innerHTML = `<div class="no-results" style="text-align: center; padding: 80px 0; color: var(--color-text-muted); font-weight: 600; font-size: 1.2rem;">No products found for this vehicle.</div>`;
+            }
         });
     </script>
 </body>

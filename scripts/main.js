@@ -238,23 +238,161 @@ const products = [
         description: "Premium dual drawer storage system with marine ply carcass, fully carpeted deck, and lockable heavy-duty slides.",
         features: ["Dual lockable drawer configuration", "Premium heavy-duty roller bearings", "Marine ply deck with premium carpet", "Flush-mount tie-down loops", "Side filler panel ready for perfect fit"],
         specifications: { material: "Marine Ply & Galvanized Steel", drawerLoad: "80kg per drawer", dimensions: "1200mm x 1000mm", warranty: "2 Years" }
+    },
+
+    // --- OFFROAD ACCESSORIES & GEAR NEW PRODUCTS ---
+    {
+        id: 40,
+        name: "Odyssey Adventure Roll Bar",
+        category: "accessories",
+        brand: "universal",
+        price: 11500,
+        image: "offroad_accessories/Adventure Roll Bar.png",
+        status: "in-stock",
+        partNumber: "OD-RB-UN40",
+        description: "Heavy duty steel roll bar designed to secure gear and add structural integrity to your load bed.",
+        features: ["Premium quality carbon steel", "Dual utility light mount brackets", "Modular bolt-on design", "Textured matte powder-coated finish", "Chassis-integrated load support points"],
+        specifications: { material: "Carbon Steel", weight: "24kg", finish: "Textured Powder Coat", warranty: "2 Years" }
+    },
+    {
+        id: 41,
+        name: "Odyssey Decked Drawer System",
+        category: "drawer-systems",
+        brand: "universal",
+        price: 16500,
+        image: "offroad_accessories/Decked Drawer System.png",
+        status: "in-stock",
+        partNumber: "OD-DS-UN41",
+        description: "Ergonomic drawer system that fits your truck bed, keeping tool and overlanding gear dry and organized.",
+        features: ["Weatherproof storage boxes", "Heavy-duty HDPE materials", "Heavy capacity loads up to 900kg on top deck", "Steel frame sub-assembly", "Lockable storage protection"],
+        specifications: { material: "HDPE & Steel", weight: "95kg", loadCapacity: "900kg", warranty: "3 Years" }
+    },
+    {
+        id: 42,
+        name: "Odyssey Dual Battery System",
+        category: "battery",
+        brand: "universal",
+        price: 8500,
+        image: "offroad_accessories/Dual Battery Systems.png",
+        status: "in-stock",
+        partNumber: "OD-DB-UN42",
+        description: "Smart battery charger system to manage auxiliary battery charging and keep electronics running.",
+        features: ["In-vehicle multi-stage DCDC charger", "Automatic battery isolation", "Smart alternator compatibility", "Overload protection safety", "Auxiliary power socket hub"],
+        specifications: { material: "Anodized Aluminum casing", chargerRating: "25A DCDC", protection: "IP67 Waterproof", warranty: "2 Years" }
+    },
+    {
+        id: 43,
+        name: "Odyssey Evolution Front Bumper",
+        category: "front-bumpers",
+        brand: "universal",
+        price: 19500,
+        image: "offroad_accessories/Evolution Front Bumpers.png",
+        status: "in-stock",
+        partNumber: "OD-FB-UN43",
+        description: "The ultimate front bumper with dynamic approach angle clearance and extreme frontal security.",
+        features: ["Heavy duty 3mm plate shell", "Airbag compatibility checked", "Integrated light bays for spotlights", "Tough powder-coat finish", "Chassis mount brackets included"],
+        specifications: { material: "3mm High Tensile Steel", weight: "52kg", finish: "Powder Coat", warranty: "2 Years" }
+    },
+    {
+        id: 44,
+        name: "Odyssey Evolution Rear Bumper",
+        category: "rear-bumpers",
+        brand: "universal",
+        price: 18500,
+        image: "offroad_accessories/Evolution Rear Bumpers.png",
+        status: "in-stock",
+        partNumber: "OD-RB-UN44",
+        description: "High-clearance premium replacement rear bumper offering heavy-duty protection and integrated recovery points.",
+        features: ["High clearance wrap-around style", "Winch-ready heavy support plates", "Dual recovery shackle tabs", "Anti-slip steel step-plate", "Integrated trailer plug socket bracket"],
+        specifications: { material: "3mm Steel", weight: "48kg", finish: "Powder Coat", warranty: "2 Years" }
+    },
+    {
+        id: 45,
+        name: "Odyssey Rock Sliders",
+        category: "rock-sliders",
+        brand: "universal",
+        price: 9500,
+        image: "offroad_accessories/Rock Sliders.png",
+        status: "in-stock",
+        partNumber: "OD-RS-UN45",
+        description: "Heavy duty offroad side steps and sliders designed for maximum sill protection on any trail.",
+        features: ["Heavy gauge steel tube structure", "Chassis-rail mounted brackets", "Non-slip top plate steps", "Scratch-resistant powder coating", "Pair of left and right sliders"],
+        specifications: { material: "Heavy Duty Steel Tube", tubeSize: "60mm", finish: "Powder Coat", warranty: "2 Years" }
+    },
+    {
+        id: 46,
+        name: "Odyssey Snorkel",
+        category: "snorkels",
+        brand: "universal",
+        price: 4500,
+        image: "offroad_accessories/Snorkels.png",
+        status: "in-stock",
+        partNumber: "OD-SN-UN46",
+        description: "Premium raised air intake designed to relocate engine intake to a cleaner and safer position.",
+        features: ["UV stable polyethylene plastic", "High airflow intake head", "Watertight plumbing seal", "Template guides for perfect installation", "Impact resistant material casing"],
+        specifications: { material: "UV Resistant LLDPE", weight: "5kg", fitmentType: "Raised Intake", warranty: "2 Years" }
+    },
+    {
+        id: 47,
+        name: "Odyssey Strands Lighting",
+        category: "lighting",
+        brand: "universal",
+        price: 6800,
+        image: "offroad_accessories/Strands Lighting.png",
+        status: "in-stock",
+        partNumber: "OD-LT-UN47",
+        description: "Ultra-bright premium LED light bar with high lumen output for crystal clear night vision.",
+        features: ["OSRAM high-output LED chips", "Premium reflector cup geometry", "IP69K water-tight rating", "Adjustable bracket mounting blocks", "Dual color amber or white backlights"],
+        specifications: { material: "Diecast Aluminum", lumenOutput: "12,000 LM", waterproofRating: "IP69K", warranty: "3 Years" }
+    },
+    {
+        id: 48,
+        name: "Odyssey Suspension System",
+        category: "suspensions",
+        brand: "universal",
+        price: 22000,
+        image: "offroad_accessories/Suspensions.png",
+        status: "in-stock",
+        partNumber: "OD-SU-UN48",
+        description: "Upgraded shocks and leaf springs package designed for increased load handling and lift capacity.",
+        features: ["Nitrogen gas-charged shock dampers", "Heavy capacity load leaf spring packs", "Polyurethane suspension bushes", "2-inch ride height lift lift", "Greasable shackle pins kit"],
+        specifications: { material: "Alloy Steel Springs", liftHeight: "50mm / 2 inch", shanks: "Nitrogen Charged", warranty: "3 Years" }
+    },
+    {
+        id: 49,
+        name: "Odyssey Winch",
+        category: "winches",
+        brand: "universal",
+        price: 12500,
+        image: "offroad_accessories/Winches.png",
+        status: "in-stock",
+        partNumber: "OD-WN-UN49",
+        description: "Heavy duty 12,000 lbs electric recovery winch with premium synthetic rope and wireless remote controller.",
+        features: ["12,000 lbs single line pull rating", "Synthetic rope length 26m", "Powerful series wound electric motor", "Wireless and wired remote control", "Aluminium fairlead guide block"],
+        specifications: { material: "Synthetic Rope & Cast Iron", ropeRating: "15,000 lbs", powerSupply: "12V DC", warranty: "2 Years" }
     }
 ];
 
 const brands = [
-    { name: "Ford", id: "ford", logo: "fa-car" },
-    { name: "Toyota", id: "toyota", logo: "fa-car" },
-    { name: "Nissan", id: "nissan", logo: "fa-car" },
-    { name: "Isuzu", id: "isuzu", logo: "fa-car" },
-    { name: "Mazda", id: "mazda", logo: "fa-car" }
+    { name: "Ford", id: "ford", logo: "vehicle_logos/ford_logo.png" },
+    { name: "Toyota", id: "toyota", logo: "vehicle_logos/toyota_logo.png" },
+    { name: "Nissan", id: "nissan", logo: "vehicle_logos/nissan_logo.png" },
+    { name: "Isuzu", id: "isuzu", logo: "vehicle_logos/isuzu_logo.png" },
+    { name: "Mazda", id: "mazda", logo: "vehicle_logos/mazda_logo.png" }
 ];
 
 const categories = [
-    { name: "Front Bumpers", id: "front-bumpers", icon: "fa-truck-front" },
-    { name: "Rear Bumpers", id: "rear-bumpers", icon: "fa-truck-monster" },
+    { name: "Front Bumpers", id: "front-bumpers", icon: "fa-shield-halved" },
+    { name: "Rear Bumpers", id: "rear-bumpers", icon: "fa-truck-pickup" },
     { name: "Rock Sliders", id: "rock-sliders", icon: "fa-grip-lines" },
     { name: "Fridge Slides", id: "fridge-slides", icon: "fa-temperature-low" },
-    { name: "Drawer Systems", id: "drawer-systems", icon: "fa-box-open" }
+    { name: "Drawer Systems", id: "drawer-systems", icon: "fa-box-open" },
+    { name: "Roll Bars", id: "accessories", icon: "fa-circle-notch" },
+    { name: "Winches", id: "winches", icon: "fa-toolbox" },
+    { name: "Snorkels", id: "snorkels", icon: "fa-wind" },
+    { name: "Suspensions", id: "suspensions", icon: "fa-up-down" },
+    { name: "Lighting", id: "lighting", icon: "fa-lightbulb" },
+    { name: "Battery Systems", id: "battery", icon: "fa-battery-full" }
 ];
 
 /* =========================================
@@ -289,7 +427,7 @@ function renderFilterUI() {
         brandGrid.innerHTML = brands.map(brand => `
             <div class="filter-card brand-card ${currentFilterType === 'brand' && currentFilterValue === brand.id ? 'active' : ''}" 
                  onclick="applyFilter('brand', '${brand.id}')">
-                <i class="fas ${brand.logo}"></i>
+                <img src="${brand.logo}" alt="${brand.name}" class="filter-brand-logo" style="height: 18px; width: auto; object-fit: contain; margin-right: 8px;">
                 <span>${brand.name}</span>
             </div>
         `).join('');
