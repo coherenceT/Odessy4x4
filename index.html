@@ -454,6 +454,125 @@
             letter-spacing: 3px;
             color: var(--color-border);
         }
+
+        /* Process Image Slideshow */
+        .process-slideshow-section { background: #111; }
+        .process-slideshow-header {
+            background: #ffffff;
+            padding: 60px 0 30px;
+            text-align: center;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .process-slideshow-wrap {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            min-height: 420px;
+            overflow: hidden;
+        }
+        .proc-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.9s ease;
+        }
+        .proc-slide.active { opacity: 1; }
+        .proc-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .proc-slide-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.25) 55%, transparent 100%);
+        }
+        .proc-slide-content {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 40px 50px;
+            color: white;
+        }
+        .proc-step-label {
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: 10px;
+        }
+        .proc-slide-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin: 0 0 12px;
+            line-height: 1.2;
+        }
+        .proc-slide-desc {
+            font-size: 1rem;
+            line-height: 1.65;
+            color: rgba(255,255,255,0.82);
+            max-width: 560px;
+            margin: 0;
+        }
+        .proc-arrow {
+            position: absolute;
+            top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,0.12);
+            border: 1.5px solid rgba(255,255,255,0.2);
+            color: white;
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; z-index: 10;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
+        }
+        .proc-arrow:hover { background: var(--color-accent); border-color: var(--color-accent); }
+        .proc-arrow.prev { left: 25px; }
+        .proc-arrow.next { right: 25px; }
+        .proc-dots {
+            position: absolute;
+            bottom: 25px; right: 50px;
+            display: flex; gap: 8px; z-index: 10; align-items: center;
+        }
+        .proc-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none; padding: 0;
+        }
+        .proc-dot.active { background: var(--color-accent); width: 24px; border-radius: 4px; }
+        @media (max-width: 768px) {
+            .proc-slide-content { padding: 25px 20px 40px; }
+            .proc-slide-title { font-size: 1.45rem; }
+            .proc-slide-desc { font-size: 0.88rem; }
+            .proc-dots { right: 20px; bottom: 15px; }
+            .proc-arrow { width: 38px; height: 38px; font-size: 0.85rem; }
+            .proc-arrow.prev { left: 12px; }
+            .proc-arrow.next { right: 12px; }
+            .process-slideshow-wrap { height: 58vh; min-height: 360px; }
+        }
+
+        /* Footer responsive */
+        .footer-main-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        @media (max-width: 640px) {
+            .footer-main-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 28px;
+            }
+            .footer-brand-col {
+                grid-column: 1 / -1;
+                text-align: center;
+            }
+            .footer-brand-col img { margin: 0 auto 12px; }
+        }
+        @media (max-width: 380px) {
+            .footer-main-grid { grid-template-columns: 1fr; }
+            .footer-brand-col { grid-column: auto; }
+        }
     </style>
 </head>
 
@@ -480,7 +599,7 @@
             <div class="container main-header-content">
                 <!-- Logo -->
                 <a href="index.html" class="header-logo">
-                    <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4 Logo">
+                    <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4 Logo" style="height:50px;width:auto;object-fit:contain;">
                 </a>
 
                 <!-- Desktop Navigation -->
@@ -530,7 +649,7 @@
     <div class="slide-menu" id="slide-menu">
         <div class="slide-menu-header">
             <a href="index.html" class="slide-menu-logo">
-                <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4 Logo">
+                <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4 Logo" style="height:44px;width:auto;object-fit:contain;">
             </a>
             <button class="slide-menu-close" id="slide-menu-close" aria-label="Close menu">&times;</button>
         </div>
@@ -555,7 +674,7 @@
             <a href="explore-gear.html" class="mobile-link" onclick="closeMenu()">Warehouse Sale</a>
             
             <div class="mobile-accordion">
-                <button class="accordion-toggle"><i class="fas fa-mountain"></i> 4×4 & Overland Gear <i class="fas fa-chevron-down"></i></button>
+                <button class="accordion-toggle"><i class="fas fa-mountain"></i> 4×4 &amp; Overland Gear <i class="fas fa-chevron-down"></i></button>
                 <div class="accordion-content">
                     <a href="category-winches.html"><i class="fas fa-chevron-right"></i> Winches</a>
                     <a href="category-snorkels.html"><i class="fas fa-chevron-right"></i> Snorkels</a>
@@ -565,87 +684,15 @@
                     <a href="category-battery.html"><i class="fas fa-chevron-right"></i> Dual Battery Systems</a>
                 </div>
             </div>
-            
+
             <a href="explore-gear.html#brand-filter-grid" class="mobile-link" onclick="closeMenu()">Find my Vehicle</a>
-            <a href="index.html#contact" class="mobile-link" onclick="closeMenu()">Contact</a>
-
-            <!-- Promo Banners Section -->
-            <div class="menu-promo-container">
-                <!-- Banner 1: Drawer Systems -->
-                <a href="category-drawer-systems.html" class="menu-promo-card promo-drawer" onclick="closeMenu()">
-                    <span class="promo-badge">BUILT FOR ORDER</span>
-                    <h4>Shop Drawer Systems</h4>
-                    <p>Offroad Vehicle Accessories</p>
-                </a>
-                
-                <!-- Banner 2: Lighting Systems -->
-                <a href="https://wa.me/27722573089?text=Hi%20Odyssey%204x4%2C%20I%20would%20like%20to%20inquire%20about%20Lighting%20Systems." target="_blank" class="menu-promo-card promo-lighting">
-                    <span class="promo-badge">FEEL THE PASSION</span>
-                    <h4>Shop Lighting Systems</h4>
-                    <p>Premium LED Solutions</p>
-                </a>
-                
-                <!-- Banner 3: Find my Vehicle -->
-                <a href="explore-gear.html#brand-filter-grid" class="menu-promo-card promo-vehicle" onclick="closeMenu()">
-                    <span class="promo-badge">TOUGH Never Looked this good!</span>
-                    <h4>Find My Vehicle</h4>
-                    <p>Select Brand & Model</p>
-                </a>
-            </div>
-
-            <!-- RSA Trust Badges Section -->
-            <div class="menu-trust-container">
-                <div class="menu-trust-badge">
-                    <div class="menu-trust-icon">
-                        <i class="fas fa-sun"></i>
-                    </div>
-                    <span>Made for RSA conditions</span>
-                </div>
-                <div class="menu-trust-badge">
-                    <div class="menu-trust-icon">
-                        <i class="fas fa-cubes"></i>
-                    </div>
-                    <span>Modular Design</span>
-                </div>
-                <div class="menu-trust-badge">
-                    <div class="menu-trust-icon">
-                        <i class="fas fa-shield-halved"></i>
-                    </div>
-                    <span>Airbag compatible</span>
-                </div>
-            </div>
-
-            <!-- Shop Categories Accordion -->
-            <div class="mobile-accordion">
-                <button class="accordion-toggle"><i class="fas fa-toolbox"></i> Shop Accessories & Drawers <i class="fas fa-chevron-down"></i></button>
-                <div class="accordion-content">
-                    <a href="category-front-bumpers.html"><i class="fas fa-chevron-right"></i> Evolution Front Bumpers</a>
-                    <a href="category-rear-bumpers.html"><i class="fas fa-chevron-right"></i> Evolution Rear Bumpers</a>
-                    <a href="category-rock-sliders.html"><i class="fas fa-chevron-right"></i> Rock Sliders</a>
-                    <a href="category-accessories.html"><i class="fas fa-chevron-right"></i> Adventure roll Bar</a>
-                    <a href="category-lighting.html"><i class="fas fa-chevron-right"></i> Strands Lighting</a>
-                </div>
-            </div>
-
-            <!-- Shop by Brand Accordion -->
-            <div class="mobile-accordion">
-                <button class="accordion-toggle"><i class="fas fa-tags"></i> Shop by Brand <i class="fas fa-chevron-down"></i></button>
-                <div class="accordion-content">
-                    <a href="vehicle-ford.html"><i class="fas fa-chevron-right"></i> Ford</a>
-                    <a href="vehicle-toyota.html"><i class="fas fa-chevron-right"></i> Toyota</a>
-                    <a href="vehicle-nissan.html"><i class="fas fa-chevron-right"></i> Nissan</a>
-                    <a href="vehicle-isuzu.html"><i class="fas fa-chevron-right"></i> Isuzu</a>
-                    <a href="vehicle-mazda.html"><i class="fas fa-chevron-right"></i> Mazda</a>
-                </div>
-            </div>
+            <a href="#contact" class="mobile-link" onclick="closeMenu()">Contact</a>
         </div>
-        <div class="red-ribbon"></div>
     </div>
 
     <!-- HERO SLIDER SECTION -->
     <section class="hero-slider-section">
         <div class="hero-slider" id="main-hero-slider">
-            <!-- Left and Right Tap Arrows -->
             <button class="slider-arrow prev-arrow" onclick="sliderPrev()" aria-label="Previous slide">
                 <i class="fas fa-chevron-left"></i>
             </button>
@@ -654,7 +701,6 @@
             </button>
 
             <div class="slider-wrapper">
-                <!-- Slide 1 -->
                 <div class="slide active">
                     <img src="assets/images/mainphoto.jpg" alt="Odyssey 4x4 Main Slider Image" class="slide-bg">
                     <div class="slide-overlay"></div>
@@ -665,7 +711,6 @@
                     </div>
                 </div>
 
-                <!-- Slide 2 -->
                 <div class="slide">
                     <img src="assets/images/hero-slide-1.jpg" alt="Odyssey 4x4 Replacement Bumpers" class="slide-bg" onerror="this.src='assets/images/mainphoto.jpg'">
                     <div class="slide-overlay"></div>
@@ -676,7 +721,6 @@
                     </div>
                 </div>
 
-                <!-- Slide 3 -->
                 <div class="slide">
                     <img src="assets/images/hero-slide-2.jpg" alt="Odyssey 4x4 Rock Sliders" class="slide-bg" onerror="this.src='assets/images/mainphoto.jpg'">
                     <div class="slide-overlay"></div>
@@ -687,7 +731,6 @@
                     </div>
                 </div>
 
-                <!-- Slide 4 -->
                 <div class="slide">
                     <img src="assets/images/hero-slide-3.jpg" alt="Odyssey 4x4 Expedition Gear" class="slide-bg" onerror="this.src='assets/images/mainphoto.jpg'">
                     <div class="slide-overlay"></div>
@@ -698,7 +741,6 @@
                     </div>
                 </div>
 
-                <!-- Slide 5 -->
                 <div class="slide">
                     <img src="assets/images/hero-slide-4.jpg" alt="Odyssey 4x4 Drawer Systems" class="slide-bg" onerror="this.src='assets/images/mainphoto.jpg'">
                     <div class="slide-overlay"></div>
@@ -809,8 +851,6 @@
         </div>
     </section>
 
-    <!-- Relocated to homepage top; removed duplication here -->
-
     <!-- ABOUT / HISTORY SECTION -->
     <section id="about" class="about-section section-padding" style="background: #ffffff;">
         <div class="container">
@@ -840,58 +880,6 @@
             </div>
         </div>
     </section>
-
-    <!-- MANUFACTURING PROCESS TIMELINE -->
-    <section class="process-section">
-        <div class="container">
-            <h2 class="section-title text-center">HOW WE BUILD IT</h2>
-            <p class="section-subtitle text-center" style="max-width: 600px; margin: 0 auto 10px;">Every Odyssey product goes through a rigorous 5-step engineering process.</p>
-            <div class="process-grid">
-                <div class="process-step">
-                    <div class="process-icon">
-                        <span class="process-step-number">01</span>
-                        ⚡
-                    </div>
-                    <h4>3D Design & CAD</h4>
-                    <p>Every product starts as a precision 3D CAD model, engineered for exact vehicle fitment.</p>
-                </div>
-                <div class="process-step">
-                    <div class="process-icon">
-                        <span class="process-step-number">02</span>
-                        🔆
-                    </div>
-                    <h4>CNC Laser Cutting</h4>
-                    <p>High-grade steel is laser cut to micron accuracy, ensuring perfect edges every time.</p>
-                </div>
-                <div class="process-step">
-                    <div class="process-icon">
-                        <span class="process-step-number">03</span>
-                        🔥
-                    </div>
-                    <h4>Expert Welding</h4>
-                    <p>Hand-MIG and TIG welded by our experienced team for maximum structural integrity.</p>
-                </div>
-                <div class="process-step">
-                    <div class="process-icon">
-                        <span class="process-step-number">04</span>
-                        🎨
-                    </div>
-                    <h4>Powder Coating</h4>
-                    <p>Heavy-duty premium powder coat applied for superior corrosion and chip resistance.</p>
-                </div>
-                <div class="process-step">
-                    <div class="process-icon">
-                        <span class="process-step-number">05</span>
-                        🏁
-                    </div>
-                    <h4>QA & Dispatch</h4>
-                    <p>Rigorous quality inspection and fitment checks before your gear leaves our workshop.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Catalog relocated to dedicated explore-gear.html page -->
 
     <!-- TESTIMONIALS SECTION -->
     <section class="testimonials-section">
@@ -1014,10 +1002,68 @@
         </div>
     </section>
 
+    <!-- HOW WE BUILD IT IMAGE SLIDESHOW -->
+    <section class="process-slideshow-section">
+        <div class="process-slideshow-header">
+            <h2 class="section-title">HOW WE BUILD IT</h2>
+            <p class="section-subtitle" style="max-width: 620px; margin: 0 auto;">Every Odyssey product goes through a rigorous 5-step engineering process.</p>
+        </div>
+        <div class="process-slideshow-wrap">
+            <div class="proc-slide active">
+                <img src="odyssey_engineering_process/01 3D Design &amp; CAD.png" alt="3D Design and CAD">
+                <div class="proc-slide-overlay"></div>
+                <div class="proc-slide-content">
+                    <div class="proc-step-label">Step 01</div>
+                    <h3 class="proc-slide-title">3D Design &amp; CAD</h3>
+                    <p class="proc-slide-desc">Every product starts as a precision 3D CAD model, engineered for exact vehicle fitment.</p>
+                </div>
+            </div>
+            <div class="proc-slide">
+                <img src="odyssey_engineering_process/02 CNC Laser Cutting.png" alt="CNC Laser Cutting">
+                <div class="proc-slide-overlay"></div>
+                <div class="proc-slide-content">
+                    <div class="proc-step-label">Step 02</div>
+                    <h3 class="proc-slide-title">CNC Laser Cutting</h3>
+                    <p class="proc-slide-desc">High-grade steel is laser cut to micron accuracy, ensuring perfect edges every time.</p>
+                </div>
+            </div>
+            <div class="proc-slide">
+                <img src="odyssey_engineering_process/03 Expert Welding.png" alt="Expert Welding">
+                <div class="proc-slide-overlay"></div>
+                <div class="proc-slide-content">
+                    <div class="proc-step-label">Step 03</div>
+                    <h3 class="proc-slide-title">Expert Welding</h3>
+                    <p class="proc-slide-desc">Hand-MIG and TIG welded by our experienced team for maximum structural integrity.</p>
+                </div>
+            </div>
+            <div class="proc-slide">
+                <img src="odyssey_engineering_process/04 Powder Coating.png" alt="Powder Coating">
+                <div class="proc-slide-overlay"></div>
+                <div class="proc-slide-content">
+                    <div class="proc-step-label">Step 04</div>
+                    <h3 class="proc-slide-title">Powder Coating</h3>
+                    <p class="proc-slide-desc">Heavy-duty premium powder coat applied for superior corrosion and chip resistance.</p>
+                </div>
+            </div>
+            <div class="proc-slide">
+                <img src="odyssey_engineering_process/05 QA &amp; Dispatch.png" alt="QA and Dispatch">
+                <div class="proc-slide-overlay"></div>
+                <div class="proc-slide-content">
+                    <div class="proc-step-label">Step 05</div>
+                    <h3 class="proc-slide-title">QA &amp; Dispatch</h3>
+                    <p class="proc-slide-desc">Rigorous quality inspection and fitment checks before your gear leaves our workshop.</p>
+                </div>
+            </div>
+            <button class="proc-arrow prev" onclick="procPrev()" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
+            <button class="proc-arrow next" onclick="procNext()" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
+            <div class="proc-dots" id="proc-dots"></div>
+        </div>
+    </section>
+
     <!-- FOOTER -->
-    <footer style="background: #111111; padding: 60px 0; border-top: 1px solid var(--color-border); color: #ffffff;">
+    <footer style="background: #111111; padding: 60px 0 40px; border-top: 1px solid var(--color-border); color: #ffffff;">
         <div class="container">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-bottom: 50px;">
+            <div class="footer-main-grid">
                 <div class="footer-col">
                     <h4 style="margin-bottom: 20px; font-size: 1rem; color: white; letter-spacing: 1px;">Products</h4>
                     <ul class="footer-links" style="list-style: none; padding: 0;">
@@ -1028,7 +1074,7 @@
                         <li style="margin-bottom: 10px;"><a href="category-drawer-systems.html" style="color: #aaaaaa; transition: color 0.3s;">Drawer Systems</a></li>
                     </ul>
                 </div>
-                <div class="footer-col" style="display: flex; flex-direction: column; justify-content: center;">
+                <div class="footer-col footer-brand-col" style="display: flex; flex-direction: column; justify-content: center;">
                     <img src="assets/images/odyssey4x4-logo-dark.svg" alt="Odyssey 4x4" style="height: 55px; margin-bottom: 18px; filter: invert(1) brightness(2);" onerror="this.style.display='none'">
                     <h4 style="font-size: 1.5rem; line-height: 1.3; color: white; text-transform: none; font-weight: 900; margin: 0 0 10px;">
                         Built for Adventure.<br>
@@ -1108,6 +1154,45 @@
                 window.open(`https://wa.me/27722573089?text=${encodeURIComponent(text)}`, '_blank');
             });
         }
+    </script>
+    <script>
+        // HOW WE BUILD IT Process Slideshow
+        (function() {
+            let procIdx = 0;
+            const slides = document.querySelectorAll('.proc-slide');
+            const dotsContainer = document.getElementById('proc-dots');
+            let procTimer;
+
+            function procGoTo(n) {
+                slides[procIdx].classList.remove('active');
+                procIdx = (n + slides.length) % slides.length;
+                slides[procIdx].classList.add('active');
+                if (dotsContainer) {
+                    dotsContainer.querySelectorAll('.proc-dot').forEach(function(d, i) {
+                        d.classList.toggle('active', i === procIdx);
+                    });
+                }
+            }
+
+            window.procNext = function() { procGoTo(procIdx + 1); resetProcTimer(); };
+            window.procPrev = function() { procGoTo(procIdx - 1); resetProcTimer(); };
+
+            function resetProcTimer() {
+                clearInterval(procTimer);
+                procTimer = setInterval(function() { procGoTo(procIdx + 1); }, 4500);
+            }
+
+            if (slides.length && dotsContainer) {
+                slides.forEach(function(_, i) {
+                    var dot = document.createElement('button');
+                    dot.className = 'proc-dot' + (i === 0 ? ' active' : '');
+                    dot.setAttribute('aria-label', 'Go to step ' + (i + 1));
+                    dot.addEventListener('click', function() { procGoTo(i); resetProcTimer(); });
+                    dotsContainer.appendChild(dot);
+                });
+                resetProcTimer();
+            }
+        })();
     </script>
 </body>
 
