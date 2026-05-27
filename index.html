@@ -578,20 +578,7 @@
 
 <body>
 
-    <!-- RED STICKY TOP RIBBON -->
-    <div class="top-bar">
-        <div class="container">
-            <div class="top-bar-contact">
-                <a href="tel:+27722573089"><i class="fas fa-phone"></i> +27 72 257 3089</a>
-                <a href="mailto:info@odyssey4x4.co.za"><i class="fas fa-envelope"></i> info@odyssey4x4.co.za</a>
-            </div>
-            <div class="top-bar-social">
-                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/27722573089" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            </div>
-        </div>
-    </div>
+
 
     <!-- HEADER (WHITE THEME) -->
     <header>
@@ -599,13 +586,12 @@
             <div class="container main-header-content">
                 <!-- Logo -->
                 <a href="index.html" class="header-logo">
-                    <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4 Logo" style="height:50px;width:auto;object-fit:contain;">
+                    <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4 Logo" style="display:block;background:#ffffff;border-radius:4px;">
                 </a>
 
                 <!-- Desktop Navigation -->
                 <nav class="desktop-nav">
                     <ul>
-                        <li><a href="index.html">Home</a></li>
                         <li class="has-dropdown">
                             <a href="explore-gear.html">Products <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
                             <ul class="dropdown">
@@ -615,11 +601,6 @@
                                 <li><a href="category-fridge-slides.html">Fridge Slides</a></li>
                                 <li><a href="category-drawer-systems.html">Drawer Systems</a></li>
                                 <li><a href="category-accessories.html">Roll Bars</a></li>
-                                <li><a href="category-winches.html">Winches</a></li>
-                                <li><a href="category-snorkels.html">Snorkels</a></li>
-                                <li><a href="category-suspensions.html">Suspensions</a></li>
-                                <li><a href="category-lighting.html">Strands Lighting</a></li>
-                                <li><a href="category-battery.html">Battery Systems</a></li>
                             </ul>
                         </li>
                         <li class="has-dropdown">
@@ -649,14 +630,12 @@
     <div class="slide-menu" id="slide-menu">
         <div class="slide-menu-header">
             <a href="index.html" class="slide-menu-logo">
-                <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4 Logo" style="height:44px;width:auto;object-fit:contain;">
+                <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4 Logo" style="height:44px;width:auto;object-fit:contain;background:#ffffff;border-radius:4px;">
             </a>
             <button class="slide-menu-close" id="slide-menu-close" aria-label="Close menu">&times;</button>
         </div>
         <div class="slide-menu-links">
             <!-- Main Navigation Links -->
-            <a href="index.html" class="mobile-link">Home</a>
-            
             <div class="mobile-accordion">
                 <button class="accordion-toggle"><i class="fas fa-car"></i> Vehicles <i class="fas fa-chevron-down"></i></button>
                 <div class="accordion-content">
@@ -668,26 +647,71 @@
                 </div>
             </div>
             
-            <a href="category-drawer-systems.html" class="mobile-link">DECKED</a>
-            <a href="category-accessories.html" class="mobile-link">Strands</a>
-            <a href="explore-gear.html" class="mobile-link" onclick="closeMenu()">Rhino 4×4 Products</a>
-            <a href="explore-gear.html" class="mobile-link" onclick="closeMenu()">Warehouse Sale</a>
-            
-            <div class="mobile-accordion">
-                <button class="accordion-toggle"><i class="fas fa-mountain"></i> 4×4 &amp; Overland Gear <i class="fas fa-chevron-down"></i></button>
-                <div class="accordion-content">
-                    <a href="category-winches.html"><i class="fas fa-chevron-right"></i> Winches</a>
-                    <a href="category-snorkels.html"><i class="fas fa-chevron-right"></i> Snorkels</a>
-                    <a href="category-drawer-systems.html"><i class="fas fa-chevron-right"></i> DECKED Drawer System</a>
-                    <a href="category-suspensions.html"><i class="fas fa-chevron-right"></i> Suspensions</a>
-                    <a href="category-lighting.html"><i class="fas fa-chevron-right"></i> Strands Lighting</a>
-                    <a href="category-battery.html"><i class="fas fa-chevron-right"></i> Dual Battery Systems</a>
+            <a href="explore-gear.html#brand-filter-grid" class="mobile-link" onclick="closeMenu()">Find my Vehicle</a>
+            <a href="#contact" class="mobile-link" onclick="closeMenu()">Contact</a>
+
+            <!-- Promo Banners Section -->
+            <div class="menu-promo-container">
+                <a href="category-drawer-systems.html" class="menu-promo-card promo-drawer" onclick="closeMenu()">
+                    <span class="promo-badge">BUILT FOR ORDER</span>
+                    <h4>Shop Drawer Systems</h4>
+                    <p>Offroad Vehicle Accessories</p>
+                </a>
+                <a href="explore-gear.html#brand-filter-grid" class="menu-promo-card promo-vehicle" onclick="closeMenu()">
+                    <span class="promo-badge">TOUGH Never Looked this good!</span>
+                    <h4>Find My Vehicle</h4>
+                    <p>Select Brand &amp; Model</p>
+                </a>
+            </div>
+
+            <!-- RSA Trust Badges Section -->
+            <div class="menu-trust-container">
+                <div class="menu-trust-badge">
+                    <div class="menu-trust-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <span>Made for RSA conditions</span>
+                </div>
+                <div class="menu-trust-badge">
+                    <div class="menu-trust-icon">
+                        <i class="fas fa-cubes"></i>
+                    </div>
+                    <span>Modular Design</span>
+                </div>
+                <div class="menu-trust-badge">
+                    <div class="menu-trust-icon">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <span>Airbag compatible</span>
                 </div>
             </div>
 
-            <a href="explore-gear.html#brand-filter-grid" class="mobile-link" onclick="closeMenu()">Find my Vehicle</a>
-            <a href="#contact" class="mobile-link" onclick="closeMenu()">Contact</a>
+            <!-- Shop Categories Accordion -->
+            <div class="mobile-accordion">
+                <button class="accordion-toggle"><i class="fas fa-toolbox"></i> Shop Products <i class="fas fa-chevron-down"></i></button>
+                <div class="accordion-content">
+                    <a href="category-front-bumpers.html"><i class="fas fa-chevron-right"></i> Front Bumpers</a>
+                    <a href="category-rear-bumpers.html"><i class="fas fa-chevron-right"></i> Rear Bumpers</a>
+                    <a href="category-rock-sliders.html"><i class="fas fa-chevron-right"></i> Rock Sliders</a>
+                    <a href="category-fridge-slides.html"><i class="fas fa-chevron-right"></i> Fridge Slides</a>
+                    <a href="category-drawer-systems.html"><i class="fas fa-chevron-right"></i> Drawer Systems</a>
+                    <a href="category-accessories.html"><i class="fas fa-chevron-right"></i> Roll Bars</a>
+                </div>
+            </div>
+
+            <!-- Shop by Brand Accordion -->
+            <div class="mobile-accordion">
+                <button class="accordion-toggle"><i class="fas fa-tags"></i> Shop by Brand <i class="fas fa-chevron-down"></i></button>
+                <div class="accordion-content">
+                    <a href="vehicle-ford.html"><i class="fas fa-chevron-right"></i> Ford</a>
+                    <a href="vehicle-toyota.html"><i class="fas fa-chevron-right"></i> Toyota</a>
+                    <a href="vehicle-nissan.html"><i class="fas fa-chevron-right"></i> Nissan</a>
+                    <a href="vehicle-isuzu.html"><i class="fas fa-chevron-right"></i> Isuzu</a>
+                    <a href="vehicle-mazda.html"><i class="fas fa-chevron-right"></i> Mazda</a>
+                </div>
+            </div>
         </div>
+        <div class="red-ribbon"></div>
     </div>
 
     <!-- HERO SLIDER SECTION -->
@@ -703,56 +727,48 @@
             <div class="slider-wrapper">
                 <div class="slide active">
                     <img src="assets/images/mainphoto.jpg" alt="Odyssey 4x4 Main Slider Image" class="slide-bg">
-                    <div class="slide-overlay"></div>
-                    <div class="slide-content container">
-                        <h1>Odyssey 4x4</h1>
-                        <p>ENGINEERED FOR ADVENTURE</p>
-                        <a href="explore-gear.html" class="hero-cta">EXPLORE GEAR <i class="fas fa-arrow-right"></i></a>
-                    </div>
                 </div>
 
                 <div class="slide">
                     <img src="assets/images/hero-slide-1.jpg" alt="Odyssey 4x4 Replacement Bumpers" class="slide-bg" onerror="this.src='assets/images/mainphoto.jpg'">
-                    <div class="slide-overlay"></div>
-                    <div class="slide-content container">
-                        <h1>Ultimate Protection</h1>
-                        <p>HEAVY DUTY REPLACEMENT BUMPERS</p>
-                        <a href="category-front-bumpers.html" class="hero-cta">VIEW BUMPERS <i class="fas fa-arrow-right"></i></a>
-                    </div>
                 </div>
 
                 <div class="slide">
                     <img src="assets/images/hero-slide-2.jpg" alt="Odyssey 4x4 Rock Sliders" class="slide-bg" onerror="this.src='assets/images/mainphoto.jpg'">
-                    <div class="slide-overlay"></div>
-                    <div class="slide-content container">
-                        <h1>Built for the Wild</h1>
-                        <p>ROCK SLIDERS &amp; SIDE STEPS</p>
-                        <a href="category-rock-sliders.html" class="hero-cta">VIEW SLIDERS <i class="fas fa-arrow-right"></i></a>
-                    </div>
                 </div>
 
                 <div class="slide">
                     <img src="assets/images/hero-slide-3.jpg" alt="Odyssey 4x4 Expedition Gear" class="slide-bg" onerror="this.src='assets/images/mainphoto.jpg'">
-                    <div class="slide-overlay"></div>
-                    <div class="slide-content container">
-                        <h1>Go Anywhere</h1>
-                        <p>PREMIUM EXPEDITION &amp; OFF-ROAD GEAR</p>
-                        <a href="explore-gear.html" class="hero-cta">SHOP NOW <i class="fas fa-arrow-right"></i></a>
-                    </div>
                 </div>
 
                 <div class="slide">
                     <img src="assets/images/hero-slide-4.jpg" alt="Odyssey 4x4 Drawer Systems" class="slide-bg" onerror="this.src='assets/images/mainphoto.jpg'">
-                    <div class="slide-overlay"></div>
-                    <div class="slide-content container">
-                        <h1>Stay Organized</h1>
-                        <p>MODULAR DRAWER SYSTEMS &amp; SLIDES</p>
-                        <a href="category-drawer-systems.html" class="hero-cta">VIEW DRAWERS <i class="fas fa-arrow-right"></i></a>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- BOTTOM RED RIBBON - PROUDLY SOUTH AFRICAN -->
+    <div class="feature-ribbon">
+        <div class="container">
+            <div class="feature-ribbon-inner">
+                <div class="ribbon-item">
+                    <i class="fas fa-flag-checkered"></i>
+                    <span>Proudly South African Product</span>
+                </div>
+                <div class="ribbon-divider"></div>
+                <div class="ribbon-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Airbag Compatible</span>
+                </div>
+                <div class="ribbon-divider"></div>
+                <div class="ribbon-item">
+                    <i class="fas fa-cogs"></i>
+                    <span>Precision Engineered</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- OFFROAD ACCESSORIES & GEAR CATALOG SECTION -->
     <section class="offroad-accessories-catalog section-padding" style="background: #ffffff;">
@@ -762,13 +778,13 @@
             
             <div class="accessories-showcase-grid">
                 <a href="category-front-bumpers.html" class="accessory-showcase-card">
-                    <img src="offroad_accessories/Evolution Front Bumpers.png" alt="Evolution Front Bumpers" class="accessory-showcase-img">
-                    <h3>Evolution Front Bumpers</h3>
+                    <img src="assets/images/newbumperimage.jpeg" alt="Front Bumpers" class="accessory-showcase-img">
+                    <h3>Front Bumpers</h3>
                     <span>Shop Bumpers <i class="fas fa-arrow-right"></i></span>
                 </a>
                 <a href="category-rear-bumpers.html" class="accessory-showcase-card">
-                    <img src="offroad_accessories/Evolution Rear Bumpers.png" alt="Evolution Rear Bumpers" class="accessory-showcase-img">
-                    <h3>Evolution Rear Bumpers</h3>
+                    <img src="offroad_accessories/Evolution Rear Bumpers.png" alt="Rear Bumpers" class="accessory-showcase-img">
+                    <h3>Rear Bumpers</h3>
                     <span>Shop Bumpers <i class="fas fa-arrow-right"></i></span>
                 </a>
                 <a href="category-rock-sliders.html" class="accessory-showcase-card">
@@ -776,40 +792,20 @@
                     <h3>Rock Sliders</h3>
                     <span>Shop Sliders <i class="fas fa-arrow-right"></i></span>
                 </a>
+                <a href="category-fridge-slides.html" class="accessory-showcase-card">
+                    <img src="assets/images/Fridge Slide - 60L.jpg" alt="Fridge Slides" class="accessory-showcase-img">
+                    <h3>Fridge Slides</h3>
+                    <span>Shop Slides <i class="fas fa-arrow-right"></i></span>
+                </a>
                 <a href="category-drawer-systems.html" class="accessory-showcase-card">
-                    <img src="offroad_accessories/Decked Drawer System.png" alt="Decked Drawer System" class="accessory-showcase-img">
-                    <h3>Decked Drawer System</h3>
+                    <img src="offroad_accessories/Decked Drawer System.png" alt="Drawer Systems" class="accessory-showcase-img">
+                    <h3>Drawer Systems</h3>
                     <span>Shop Systems <i class="fas fa-arrow-right"></i></span>
                 </a>
                 <a href="category-accessories.html" class="accessory-showcase-card">
-                    <img src="offroad_accessories/Adventure Roll Bar.png" alt="Adventure Roll Bar" class="accessory-showcase-img">
-                    <h3>Adventure Roll Bar</h3>
+                    <img src="offroad_accessories/Adventure Roll Bar.png" alt="Roll Bars" class="accessory-showcase-img">
+                    <h3>Roll Bars</h3>
                     <span>Shop Roll Bars <i class="fas fa-arrow-right"></i></span>
-                </a>
-                <a href="category-winches.html" class="accessory-showcase-card">
-                    <img src="offroad_accessories/Winches.png" alt="Winches" class="accessory-showcase-img">
-                    <h3>Winches</h3>
-                    <span>Shop Winches <i class="fas fa-arrow-right"></i></span>
-                </a>
-                <a href="category-snorkels.html" class="accessory-showcase-card">
-                    <img src="offroad_accessories/Snorkels.png" alt="Snorkels" class="accessory-showcase-img">
-                    <h3>Snorkels</h3>
-                    <span>Shop Snorkels <i class="fas fa-arrow-right"></i></span>
-                </a>
-                <a href="category-suspensions.html" class="accessory-showcase-card">
-                    <img src="offroad_accessories/Suspensions.png" alt="Suspensions" class="accessory-showcase-img">
-                    <h3>Suspensions</h3>
-                    <span>Shop Suspensions <i class="fas fa-arrow-right"></i></span>
-                </a>
-                <a href="category-lighting.html" class="accessory-showcase-card">
-                    <img src="offroad_accessories/Strands Lighting.png" alt="Strands Lighting" class="accessory-showcase-img">
-                    <h3>Strands Lighting</h3>
-                    <span>Shop Lighting <i class="fas fa-arrow-right"></i></span>
-                </a>
-                <a href="category-battery.html" class="accessory-showcase-card">
-                    <img src="offroad_accessories/Dual Battery Systems.png" alt="Dual Battery Systems" class="accessory-showcase-img">
-                    <h3>Dual Battery Systems</h3>
-                    <span>Shop Battery <i class="fas fa-arrow-right"></i></span>
                 </a>
             </div>
         </div>
@@ -1074,9 +1070,9 @@
                         <li style="margin-bottom: 10px;"><a href="category-drawer-systems.html" style="color: #aaaaaa; transition: color 0.3s;">Drawer Systems</a></li>
                     </ul>
                 </div>
-                <div class="footer-col footer-brand-col" style="display: flex; flex-direction: column; justify-content: center;">
-                    <img src="assets/images/odyssey4x4-logo-dark.svg" alt="Odyssey 4x4" style="height: 55px; margin-bottom: 18px; filter: invert(1) brightness(2);" onerror="this.style.display='none'">
-                    <h4 style="font-size: 1.5rem; line-height: 1.3; color: white; text-transform: none; font-weight: 900; margin: 0 0 10px;">
+                <div class="footer-col footer-brand-col" style="display: flex; flex-direction: column; justify-content: center; grid-column: span 2;">
+                    <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4" style="height: 75px; margin-bottom: 16px; background:#ffffff; padding:8px 12px; border-radius:6px; display:inline-block; width:auto; object-fit:contain;">
+                    <h4 style="font-size: 1.8rem; line-height: 1.3; color: white; text-transform: none; font-weight: 900; margin: 0 0 10px;">
                         Built for Adventure.<br>
                         <span style="color: var(--color-accent);">Engineered to Last.</span>
                     </h4>

@@ -243,7 +243,7 @@ const products = [
     // --- OFFROAD ACCESSORIES & GEAR NEW PRODUCTS ---
     {
         id: 40,
-        name: "Odyssey Adventure Roll Bar",
+        name: "Odyssey Roll Bar",
         category: "accessories",
         brand: "universal",
         price: 11500,
@@ -256,7 +256,7 @@ const products = [
     },
     {
         id: 41,
-        name: "Odyssey Decked Drawer System",
+        name: "Odyssey Drawer System",
         category: "drawer-systems",
         brand: "universal",
         price: 16500,
@@ -268,25 +268,12 @@ const products = [
         specifications: { material: "HDPE & Steel", weight: "95kg", loadCapacity: "900kg", warranty: "3 Years" }
     },
     {
-        id: 42,
-        name: "Odyssey Dual Battery System",
-        category: "battery",
-        brand: "universal",
-        price: 8500,
-        image: "offroad_accessories/Dual Battery Systems.png",
-        status: "in-stock",
-        partNumber: "OD-DB-UN42",
-        description: "Smart battery charger system to manage auxiliary battery charging and keep electronics running.",
-        features: ["In-vehicle multi-stage DCDC charger", "Automatic battery isolation", "Smart alternator compatibility", "Overload protection safety", "Auxiliary power socket hub"],
-        specifications: { material: "Anodized Aluminum casing", chargerRating: "25A DCDC", protection: "IP67 Waterproof", warranty: "2 Years" }
-    },
-    {
         id: 43,
-        name: "Odyssey Evolution Front Bumper",
+        name: "Odyssey Front Bumper",
         category: "front-bumpers",
         brand: "universal",
         price: 19500,
-        image: "offroad_accessories/Evolution Front Bumpers.png",
+        image: "assets/images/newbumperimage.jpeg",
         status: "in-stock",
         partNumber: "OD-FB-UN43",
         description: "The ultimate front bumper with dynamic approach angle clearance and extreme frontal security.",
@@ -295,7 +282,7 @@ const products = [
     },
     {
         id: 44,
-        name: "Odyssey Evolution Rear Bumper",
+        name: "Odyssey Rear Bumper",
         category: "rear-bumpers",
         brand: "universal",
         price: 18500,
@@ -319,58 +306,7 @@ const products = [
         features: ["Heavy gauge steel tube structure", "Chassis-rail mounted brackets", "Non-slip top plate steps", "Scratch-resistant powder coating", "Pair of left and right sliders"],
         specifications: { material: "Heavy Duty Steel Tube", tubeSize: "60mm", finish: "Powder Coat", warranty: "2 Years" }
     },
-    {
-        id: 46,
-        name: "Odyssey Snorkel",
-        category: "snorkels",
-        brand: "universal",
-        price: 4500,
-        image: "offroad_accessories/Snorkels.png",
-        status: "in-stock",
-        partNumber: "OD-SN-UN46",
-        description: "Premium raised air intake designed to relocate engine intake to a cleaner and safer position.",
-        features: ["UV stable polyethylene plastic", "High airflow intake head", "Watertight plumbing seal", "Template guides for perfect installation", "Impact resistant material casing"],
-        specifications: { material: "UV Resistant LLDPE", weight: "5kg", fitmentType: "Raised Intake", warranty: "2 Years" }
-    },
-    {
-        id: 47,
-        name: "Odyssey Strands Lighting",
-        category: "lighting",
-        brand: "universal",
-        price: 6800,
-        image: "offroad_accessories/Strands Lighting.png",
-        status: "in-stock",
-        partNumber: "OD-LT-UN47",
-        description: "Ultra-bright premium LED light bar with high lumen output for crystal clear night vision.",
-        features: ["OSRAM high-output LED chips", "Premium reflector cup geometry", "IP69K water-tight rating", "Adjustable bracket mounting blocks", "Dual color amber or white backlights"],
-        specifications: { material: "Diecast Aluminum", lumenOutput: "12,000 LM", waterproofRating: "IP69K", warranty: "3 Years" }
-    },
-    {
-        id: 48,
-        name: "Odyssey Suspension System",
-        category: "suspensions",
-        brand: "universal",
-        price: 22000,
-        image: "offroad_accessories/Suspensions.png",
-        status: "in-stock",
-        partNumber: "OD-SU-UN48",
-        description: "Upgraded shocks and leaf springs package designed for increased load handling and lift capacity.",
-        features: ["Nitrogen gas-charged shock dampers", "Heavy capacity load leaf spring packs", "Polyurethane suspension bushes", "2-inch ride height lift lift", "Greasable shackle pins kit"],
-        specifications: { material: "Alloy Steel Springs", liftHeight: "50mm / 2 inch", shanks: "Nitrogen Charged", warranty: "3 Years" }
-    },
-    {
-        id: 49,
-        name: "Odyssey Winch",
-        category: "winches",
-        brand: "universal",
-        price: 12500,
-        image: "offroad_accessories/Winches.png",
-        status: "in-stock",
-        partNumber: "OD-WN-UN49",
-        description: "Heavy duty 12,000 lbs electric recovery winch with premium synthetic rope and wireless remote controller.",
-        features: ["12,000 lbs single line pull rating", "Synthetic rope length 26m", "Powerful series wound electric motor", "Wireless and wired remote control", "Aluminium fairlead guide block"],
-        specifications: { material: "Synthetic Rope & Cast Iron", ropeRating: "15,000 lbs", powerSupply: "12V DC", warranty: "2 Years" }
-    }
+    // (Removed: Dual Battery, Snorkels, Lighting, Suspensions, Winches - per user request)
 ];
 
 const brands = [
@@ -387,12 +323,7 @@ const categories = [
     { name: "Rock Sliders", id: "rock-sliders", icon: "fa-grip-lines" },
     { name: "Fridge Slides", id: "fridge-slides", icon: "fa-temperature-low" },
     { name: "Drawer Systems", id: "drawer-systems", icon: "fa-box-open" },
-    { name: "Roll Bars", id: "accessories", icon: "fa-circle-notch" },
-    { name: "Winches", id: "winches", icon: "fa-toolbox" },
-    { name: "Snorkels", id: "snorkels", icon: "fa-wind" },
-    { name: "Suspensions", id: "suspensions", icon: "fa-up-down" },
-    { name: "Lighting", id: "lighting", icon: "fa-lightbulb" },
-    { name: "Battery Systems", id: "battery", icon: "fa-battery-full" }
+    { name: "Roll Bars", id: "accessories", icon: "fa-circle-notch" }
 ];
 
 /* =========================================

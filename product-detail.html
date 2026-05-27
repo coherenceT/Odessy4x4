@@ -24,28 +24,13 @@
 
 <body>
 
-    <!-- RED STICKY TOP RIBBON -->
-    <div class="top-bar">
-        <div class="container">
-            <div class="top-bar-contact">
-                <a href="tel:+27722573089"><i class="fas fa-phone"></i> +27 72 257 3089</a>
-                <a href="mailto:info@odyssey4x4.co.za"><i class="fas fa-envelope"></i> info@odyssey4x4.co.za</a>
-            </div>
-            <div class="top-bar-social">
-                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/27722573089" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            </div>
-        </div>
-    </div>
-
     <!-- HEADER (WHITE THEME) -->
     <header>
         <div class="main-header">
             <div class="container main-header-content">
                 <!-- Logo -->
                 <a href="index.html" class="header-logo">
-                    <img src="assets/images/odyssey4x4-logo-dark.svg" alt="Odyssey 4x4 Logo">
+                    <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4 Logo" style="display:block;background:#ffffff;border-radius:4px;">
                 </a>
 
                 <!-- Desktop Navigation -->
@@ -60,6 +45,7 @@
                                 <li><a href="category-rock-sliders.html">Rock Sliders</a></li>
                                 <li><a href="category-fridge-slides.html">Fridge Slides</a></li>
                                 <li><a href="category-drawer-systems.html">Drawer Systems</a></li>
+                                <li><a href="category-accessories.html">Roll Bars</a></li>
                             </ul>
                         </li>
                         <li class="has-dropdown">
@@ -89,7 +75,7 @@
     <div class="slide-menu" id="slide-menu">
         <div class="slide-menu-header">
             <a href="index.html" class="slide-menu-logo">
-                <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4 Logo">
+                <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4 Logo" style="background:#ffffff;border-radius:4px;">
             </a>
             <button class="slide-menu-close" id="slide-menu-close" aria-label="Close menu">&times;</button>
         </div>
@@ -108,23 +94,6 @@
                 </div>
             </div>
             
-            <a href="category-drawer-systems.html" class="mobile-link">DECKED</a>
-            <a href="category-accessories.html" class="mobile-link">Strands</a>
-            <a href="explore-gear.html" class="mobile-link" onclick="closeMenu()">Rhino 4×4 Products</a>
-            <a href="explore-gear.html" class="mobile-link" onclick="closeMenu()">Warehouse Sale</a>
-            
-            <div class="mobile-accordion">
-                <button class="accordion-toggle"><i class="fas fa-mountain"></i> 4×4 & Overland Gear <i class="fas fa-chevron-down"></i></button>
-                <div class="accordion-content">
-                    <a href="https://wa.me/27722573089?text=Hi%20Odyssey%204x4%2C%20I%20would%20like%20to%20inquire%20about%20Winches." target="_blank"><i class="fas fa-chevron-right"></i> Winches</a>
-                    <a href="https://wa.me/27722573089?text=Hi%20Odyssey%204x4%2C%20I%20would%20like%20to%20inquire%20about%20Snorkels." target="_blank"><i class="fas fa-chevron-right"></i> Snorkels</a>
-                    <a href="category-drawer-systems.html"><i class="fas fa-chevron-right"></i> DECKED Drawer System</a>
-                    <a href="https://wa.me/27722573089?text=Hi%20Odyssey%204x4%2C%20I%20would%20like%20to%20inquire%20about%20Suspensions." target="_blank"><i class="fas fa-chevron-right"></i> Suspensions</a>
-                    <a href="https://wa.me/27722573089?text=Hi%20Odyssey%204x4%2C%20I%20would%20like%20to%20inquire%20about%20Strands%20Lighting." target="_blank"><i class="fas fa-chevron-right"></i> Strands Lighting</a>
-                    <a href="https://wa.me/27722573089?text=Hi%20Odyssey%204x4%2C%20I%20would%20like%20to%20inquire%20about%20Dual%20Battery%20Systems." target="_blank"><i class="fas fa-chevron-right"></i> Dual Battery Systems</a>
-                </div>
-            </div>
-            
             <a href="explore-gear.html#brand-filter-grid" class="mobile-link" onclick="closeMenu()">Find my Vehicle</a>
             <a href="index.html#contact" class="mobile-link" onclick="closeMenu()">Contact</a>
 
@@ -137,14 +106,7 @@
                     <p>Offroad Vehicle Accessories</p>
                 </a>
                 
-                <!-- Banner 2: Lighting Systems -->
-                <a href="https://wa.me/27722573089?text=Hi%20Odyssey%204x4%2C%20I%20would%20like%20to%20inquire%20about%20Lighting%20Systems." target="_blank" class="menu-promo-card promo-lighting">
-                    <span class="promo-badge">FEEL THE PASSION</span>
-                    <h4>Shop Lighting Systems</h4>
-                    <p>Premium LED Solutions</p>
-                </a>
-                
-                <!-- Banner 3: Find my Vehicle -->
+                <!-- Banner 2: Find my Vehicle -->
                 <a href="explore-gear.html#brand-filter-grid" class="menu-promo-card promo-vehicle" onclick="closeMenu()">
                     <span class="promo-badge">TOUGH Never Looked this good!</span>
                     <h4>Find My Vehicle</h4>
@@ -176,13 +138,14 @@
 
             <!-- Shop Categories Accordion -->
             <div class="mobile-accordion">
-                <button class="accordion-toggle"><i class="fas fa-toolbox"></i> Shop Accessories & Drawers <i class="fas fa-chevron-down"></i></button>
+                <button class="accordion-toggle"><i class="fas fa-toolbox"></i> Shop Products <i class="fas fa-chevron-down"></i></button>
                 <div class="accordion-content">
-                    <a href="category-front-bumpers.html"><i class="fas fa-chevron-right"></i> Evolution Front Bumpers</a>
-                    <a href="category-rear-bumpers.html"><i class="fas fa-chevron-right"></i> Evolution Rear Bumpers</a>
+                    <a href="category-front-bumpers.html"><i class="fas fa-chevron-right"></i> Front Bumpers</a>
+                    <a href="category-rear-bumpers.html"><i class="fas fa-chevron-right"></i> Rear Bumpers</a>
                     <a href="category-rock-sliders.html"><i class="fas fa-chevron-right"></i> Rock Sliders</a>
-                    <a href="category-accessories.html"><i class="fas fa-chevron-right"></i> Adventure roll Bar</a>
-                    <a href="https://wa.me/27722573089?text=Hi%20Odyssey%204x4%2C%20I%20would%20like%20to%20inquire%20about%20Rhino%204x4%20Lights." target="_blank"><i class="fas fa-chevron-right"></i> RHINO 4X4 LIGHTS</a>
+                    <a href="category-fridge-slides.html"><i class="fas fa-chevron-right"></i> Fridge Slides</a>
+                    <a href="category-drawer-systems.html"><i class="fas fa-chevron-right"></i> Drawer Systems</a>
+                    <a href="category-accessories.html"><i class="fas fa-chevron-right"></i> Roll Bars</a>
                 </div>
             </div>
 
