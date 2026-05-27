@@ -895,6 +895,15 @@ header {
     }
 }
 
+@media (min-width: 769px) {
+    .hero-slider-section .hero-slider {
+        max-height: 95vh;
+    }
+    .slide-bg {
+        object-position: center 30%;
+    }
+}
+
 
 /* =========================================
    12. FEATURED CATEGORIES
