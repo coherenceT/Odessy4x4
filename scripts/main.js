@@ -314,7 +314,8 @@ const brands = [
     { name: "Toyota", id: "toyota", logo: "vehicle_logos/toyota_logo.png" },
     { name: "Nissan", id: "nissan", logo: "vehicle_logos/nissan_logo.png" },
     { name: "Isuzu", id: "isuzu", logo: "vehicle_logos/isuzu_logo.png" },
-    { name: "Mazda", id: "mazda", logo: "vehicle_logos/mazda_logo.png" }
+    { name: "Mazda", id: "mazda", logo: "vehicle_logos/mazda_logo.png" },
+    { name: "Suzuki", id: "suzuki", logo: "vehicle_logos/suzuki_logo.png" }
 ];
 
 const categories = [

@@ -611,6 +611,7 @@
                                 <li><a href="vehicle-nissan.html">Nissan</a></li>
                                 <li><a href="vehicle-isuzu.html">Isuzu</a></li>
                                 <li><a href="vehicle-mazda.html">Mazda</a></li>
+                                <li><a href="vehicle-suzuki.html">Suzuki</a></li>
                             </ul>
                         </li>
                         <li><a href="#contact">Contact</a></li>
@@ -633,9 +634,10 @@
                 <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4 Logo" style="height:44px;width:auto;object-fit:contain;background:#ffffff;border-radius:4px;">
             </a>
             <button class="slide-menu-close" id="slide-menu-close" aria-label="Close menu">&times;</button>
-        </div>
-        <div class="slide-menu-links">
+        </div>            <div class="slide-menu-links">
             <!-- Main Navigation Links -->
+            <a href="index.html" class="mobile-link">Home</a>
+            
             <div class="mobile-accordion">
                 <button class="accordion-toggle"><i class="fas fa-car"></i> Vehicles <i class="fas fa-chevron-down"></i></button>
                 <div class="accordion-content">
@@ -644,51 +646,12 @@
                     <a href="vehicle-nissan.html"><i class="fas fa-chevron-right"></i> Nissan</a>
                     <a href="vehicle-isuzu.html"><i class="fas fa-chevron-right"></i> Isuzu</a>
                     <a href="vehicle-mazda.html"><i class="fas fa-chevron-right"></i> Mazda</a>
+                    <a href="vehicle-suzuki.html"><i class="fas fa-chevron-right"></i> Suzuki</a>
                 </div>
             </div>
             
-            <a href="explore-gear.html#brand-filter-grid" class="mobile-link" onclick="closeMenu()">Find my Vehicle</a>
-            <a href="#contact" class="mobile-link" onclick="closeMenu()">Contact</a>
-
-            <!-- Promo Banners Section -->
-            <div class="menu-promo-container">
-                <a href="category-drawer-systems.html" class="menu-promo-card promo-drawer" onclick="closeMenu()">
-                    <span class="promo-badge">BUILT FOR ORDER</span>
-                    <h4>Shop Drawer Systems</h4>
-                    <p>Offroad Vehicle Accessories</p>
-                </a>
-                <a href="explore-gear.html#brand-filter-grid" class="menu-promo-card promo-vehicle" onclick="closeMenu()">
-                    <span class="promo-badge">TOUGH Never Looked this good!</span>
-                    <h4>Find My Vehicle</h4>
-                    <p>Select Brand &amp; Model</p>
-                </a>
-            </div>
-
-            <!-- RSA Trust Badges Section -->
-            <div class="menu-trust-container">
-                <div class="menu-trust-badge">
-                    <div class="menu-trust-icon">
-                        <i class="fas fa-sun"></i>
-                    </div>
-                    <span>Made for RSA conditions</span>
-                </div>
-                <div class="menu-trust-badge">
-                    <div class="menu-trust-icon">
-                        <i class="fas fa-cubes"></i>
-                    </div>
-                    <span>Modular Design</span>
-                </div>
-                <div class="menu-trust-badge">
-                    <div class="menu-trust-icon">
-                        <i class="fas fa-shield-halved"></i>
-                    </div>
-                    <span>Airbag compatible</span>
-                </div>
-            </div>
-
-            <!-- Shop Categories Accordion -->
             <div class="mobile-accordion">
-                <button class="accordion-toggle"><i class="fas fa-toolbox"></i> Shop Products <i class="fas fa-chevron-down"></i></button>
+                <button class="accordion-toggle"><i class="fas fa-toolbox"></i> Products <i class="fas fa-chevron-down"></i></button>
                 <div class="accordion-content">
                     <a href="category-front-bumpers.html"><i class="fas fa-chevron-right"></i> Front Bumpers</a>
                     <a href="category-rear-bumpers.html"><i class="fas fa-chevron-right"></i> Rear Bumpers</a>
@@ -698,18 +661,8 @@
                     <a href="category-accessories.html"><i class="fas fa-chevron-right"></i> Roll Bars</a>
                 </div>
             </div>
-
-            <!-- Shop by Brand Accordion -->
-            <div class="mobile-accordion">
-                <button class="accordion-toggle"><i class="fas fa-tags"></i> Shop by Brand <i class="fas fa-chevron-down"></i></button>
-                <div class="accordion-content">
-                    <a href="vehicle-ford.html"><i class="fas fa-chevron-right"></i> Ford</a>
-                    <a href="vehicle-toyota.html"><i class="fas fa-chevron-right"></i> Toyota</a>
-                    <a href="vehicle-nissan.html"><i class="fas fa-chevron-right"></i> Nissan</a>
-                    <a href="vehicle-isuzu.html"><i class="fas fa-chevron-right"></i> Isuzu</a>
-                    <a href="vehicle-mazda.html"><i class="fas fa-chevron-right"></i> Mazda</a>
-                </div>
-            </div>
+            
+            <a href="#contact" class="mobile-link" onclick="closeMenu()">Contact</a>
         </div>
         <div class="red-ribbon"></div>
     </div>
@@ -753,17 +706,17 @@
         <div class="container">
             <div class="feature-ribbon-inner">
                 <div class="ribbon-item">
-                    <i class="fas fa-flag-checkered"></i>
+                    <img src="icons/south_africa_flag.png" alt="South Africa" class="ribbon-icon-img">
                     <span>Proudly South African Product</span>
                 </div>
                 <div class="ribbon-divider"></div>
                 <div class="ribbon-item">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>Airbag Compatible</span>
+                    <img src="icons/airbag_icon.png" alt="Airbag Compatible" class="ribbon-icon-img">
+                    <span>Airbag &amp; PDC Compatible</span>
                 </div>
                 <div class="ribbon-divider"></div>
                 <div class="ribbon-item">
-                    <i class="fas fa-cogs"></i>
+                    <img src="icons/precision_engineered.png" alt="Precision Engineered" class="ribbon-icon-img">
                     <span>Precision Engineered</span>
                 </div>
             </div>
@@ -841,6 +794,11 @@
                 <a href="vehicle-mazda.html" class="brand-card">
                     <img src="vehicle_logos/mazda_logo.png" alt="Mazda Logo" class="brand-logo-img">
                     <h3>Mazda</h3>
+                    <span>View Gear <i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="vehicle-suzuki.html" class="brand-card">
+                    <img src="vehicle_logos/suzuki_logo.png" alt="Suzuki Logo" class="brand-logo-img">
+                    <h3>Suzuki</h3>
                     <span>View Gear <i class="fas fa-arrow-right"></i></span>
                 </a>
             </div>
