@@ -826,6 +826,28 @@ header {
     object-position: center;
     z-index: 1;
 }
+
+/* Dark overlay on second slide for better text contrast */
+.slide-second .slide-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.1) 50%, transparent 100%);
+    z-index: 2;
+}
+
+/* Specific positioning for secondimageslide (wider aspect ratio) */
+.slide-second .slide-bg {
+    object-position: center 35%;
+}
+
+@media (max-width: 768px) {
+    /* On mobile, show the full second image without cropping (letterboxed on dark bg) */
+    .slide-second .slide-bg {
+        object-fit: contain;
+        object-position: center;
+        background: #000;
+    }
+}
 .slide-content {
     position: relative;
     z-index: 3;
@@ -1484,7 +1506,6 @@ header {
     height: 1.1em;
     width: auto;
     object-fit: contain;
-    filter: brightness(0) invert(1); /* Make icon white on red background */
 }
 
 .ribbon-divider {
@@ -1496,43 +1517,52 @@ header {
 
 @media (max-width: 768px) {
     .feature-ribbon {
-        padding: 12px 0;
+        padding: 14px 0;
     }
     .feature-ribbon-inner {
-        flex-direction: row;
-        gap: 16px;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
+        gap: 10px 20px;
         justify-content: center;
-        padding: 0 10px;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-    }
-    .feature-ribbon-inner::-webkit-scrollbar {
-        display: none;
+        padding: 0 12px;
     }
     .ribbon-item {
         white-space: nowrap;
-        font-size: 0.65rem;
+        font-size: 0.7rem;
         gap: 6px;
-        width: auto;
-        text-align: left;
-        justify-content: flex-start;
         letter-spacing: 0.3px;
-        flex-shrink: 0;
     }
     .ribbon-item i,
     .ribbon-item .ribbon-icon,
     .ribbon-icon-img {
-        font-size: 0.7rem;
+        font-size: 0.75rem;
     }
     
     .ribbon-icon-img {
-        height: 0.7rem;
+        height: 0.85rem;
         width: auto;
     }
     .ribbon-divider {
         display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .feature-ribbon {
+        padding: 16px 0;
+    }
+    .feature-ribbon-inner {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+    .ribbon-item {
+        font-size: 0.75rem;
+        white-space: normal;
+        text-align: center;
+    }
+    .ribbon-icon-img {
+        height: 1rem;
+        width: auto;
     }
 }
 
