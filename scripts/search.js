@@ -54,7 +54,7 @@ function performSearch(query) {
     searchResults.innerHTML = results.slice(0, 5).map(product => `
         <div class="search-result-item" onclick="applyFilter('category', '${product.category}')">
             <img src="${product.image}" alt="${product.name}" class="search-result-img" 
-                 onerror="this.src='assets/images/placeholder.jpg'">
+                 onerror="this.src='assets/images/placeholder.webp'">
             <div class="search-result-info">
                 <div class="search-result-name">${product.name}</div>
                 <div class="search-result-category">${product.brand.toUpperCase()} | ${formatCategory(product.category)}</div>

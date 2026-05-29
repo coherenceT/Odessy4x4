@@ -12,13 +12,13 @@ def process_file(filepath):
     # 1. Replace logo images back to the original JPG logo
     content = re.sub(
         r'(class="header-logo"[^>]*>\s*<img\s+src=")[^"]*(")',
-        r'\1assets/images/odyssey4x4-logo.jpg\2',
+        r'\1assets/images/odyssey4x4-logo.webp\2',
         content,
         flags=re.IGNORECASE
     )
     content = re.sub(
         r'(class="slide-menu-logo"[^>]*>\s*<img\s+src=")[^"]*(")',
-        r'\1assets/images/odyssey4x4-logo.jpg\2',
+        r'\1assets/images/odyssey4x4-logo.webp\2',
         content,
         flags=re.IGNORECASE
     )
@@ -46,7 +46,7 @@ def process_file(filepath):
     slide_menu_replacement = """<div class="slide-menu" id="slide-menu">
             <div class="slide-menu-header">
                 <a href="index.html" class="slide-menu-logo">
-                    <img src="assets/images/odyssey4x4-logo.jpg" alt="Odyssey 4x4 Logo">
+                    <img src="assets/images/odyssey4x4-logo.webp" alt="Odyssey 4x4 Logo">
                 </a>
                 <button class="slide-menu-close" id="slide-menu-close" aria-label="Close menu">
                     <i class="fas fa-times"></i>
