@@ -650,6 +650,45 @@
             .footer-main-grid { grid-template-columns: 1fr; }
             .footer-brand-col { grid-column: auto; }
         }
+
+        /* Odyssey Community Section - Mobile */
+        @media (max-width: 768px) {
+            .community-section {
+                padding: 50px 0 !important;
+            }
+            .community-grid {
+                grid-template-columns: 1fr !important;
+                gap: 40px !important;
+            }
+            .community-heading {
+                font-size: 2rem !important;
+            }
+            .community-text {
+                max-width: 100% !important;
+            }
+            .community-buttons {
+                flex-direction: column !important;
+                gap: 12px !important;
+            }
+            .community-buttons a {
+                width: 100% !important;
+                justify-content: center !important;
+            }
+            .community-image {
+                height: 280px !important;
+            }
+        }
+        @media (max-width: 480px) {
+            .community-section {
+                padding: 40px 0 !important;
+            }
+            .community-heading {
+                font-size: 1.7rem !important;
+            }
+            .community-image {
+                height: 220px !important;
+            }
+        }
     </style>
 </head>
 
@@ -974,19 +1013,19 @@
     </section>
 
     <!-- THE ODYSSEY COMMUNITY -->
-    <section class="section-padding" style="background: #ffffff; padding: 80px 0;">
+    <section class="section-padding community-section" style="background: #ffffff; padding: 80px 0;">
         <div class="container">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+            <div class="community-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
                 <!-- Left: Text Content -->
                 <div>
-                    <h2 style="font-size: 2.8rem; font-weight: 900; color: var(--color-secondary); margin-bottom: 10px; letter-spacing: -0.5px;">
+                    <h2 class="community-heading" style="font-size: 2.8rem; font-weight: 900; color: var(--color-secondary); margin-bottom: 10px; letter-spacing: -0.5px;">
                         THE ODYSSEY<br>
                         <span style="color: var(--color-accent);">COMMUNITY</span>
                     </h2>
-                    <p style="font-size: 1.1rem; line-height: 1.8; color: #555; margin-bottom: 30px; max-width: 520px;">
+                    <p class="community-text" style="font-size: 1.1rem; line-height: 1.8; color: #555; margin-bottom: 30px; max-width: 520px;">
                         Sign up and receive early access to new products, exclusive offers, promotions &amp; Stories from the road less travelled.
                     </p>
-                    <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+                    <div class="community-buttons" style="display: flex; gap: 14px; flex-wrap: wrap;">
                         <a href="odyssey-community.html" style="display: inline-flex; align-items: center; gap: 12px; background: var(--color-accent); color: white; padding: 16px 40px; border-radius: 50px; font-weight: 800; font-size: 1rem; text-decoration: none; transition: all 0.3s ease; letter-spacing: 1px; box-shadow: 0 6px 25px rgba(211,47,47,0.3);" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 35px rgba(211,47,47,0.4)';" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 6px 25px rgba(211,47,47,0.3)';">
                             <i class="fas fa-user-plus" style="font-size: 1.2rem;"></i> SIGN UP
                         </a>
@@ -997,7 +1036,7 @@
                 </div>
                 <!-- Right: Image -->
                 <div style="position: relative;">
-                    <img src="assets/images/sign.jpg" alt="Join the Odyssey Community" style="width: 100%; height: 450px; object-fit: cover; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.12); display: block;">
+                    <img src="assets/images/sign.jpg" alt="Join the Odyssey Community" class="community-image" style="width: 100%; height: 450px; object-fit: cover; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.12); display: block;">
                     <div style="position: absolute; bottom: 20px; left: 20px; right: 20px; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); padding: 16px 22px; border-radius: 12px; color: white; font-size: 0.85rem; font-weight: 600; text-align: center; letter-spacing: 0.5px;">
                         <i class="fas fa-campground" style="margin-right: 8px; color: var(--color-accent);"></i> 
                         Join fellow adventurers on the road less travelled
@@ -1043,6 +1082,19 @@
                         <div>
                             <h4 style="color: var(--color-secondary); margin-bottom: 5px; font-weight: 700;">WhatsApp</h4>
                             <a href="https://wa.me/27722573089" target="_blank" style="color: var(--color-text-muted);">+27 72 257 3089</a>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: flex-start; gap: 15px; margin-top: 25px;">
+                        <div style="width: 44px; height: 44px; border-radius: 50%; background: rgba(211,47,47,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fas fa-store" style="color: var(--color-accent);"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--color-secondary); margin-bottom: 5px; font-weight: 700;">Find a Nearby Dealer</h4>
+                            <p style="color: var(--color-text-muted);">Browse our network of authorized dealers across South Africa.</p>
+                            <a href="find-a-dealer.html" style="color: var(--color-accent); font-weight: 700; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
+                                View Dealers Page <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i>
+                            </a>
                         </div>
                     </div>
 

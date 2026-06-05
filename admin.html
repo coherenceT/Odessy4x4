@@ -666,22 +666,22 @@
                             </div>
                         </div>
                         <div class="dealer-card">
-                            <div class="dealer-icon"><i class="fas fa-phone-alt"></i></div>
-                            <div>
-                                <h4>Call Us</h4>
-                                <p>+27 72 257 3089</p>
-                                <a href="tel:+27722573089" class="dealer-link">
-                                    <i class="fas fa-phone"></i> Call Now
-                                </a>
-                            </div>
-                        </div>
-                        <div class="dealer-card">
                             <div class="dealer-icon"><i class="fab fa-whatsapp"></i></div>
                             <div>
                                 <h4>WhatsApp</h4>
                                 <p>Quick inquiries via WhatsApp</p>
                                 <a href="https://wa.me/27722573089" target="_blank" class="dealer-link">
                                     <i class="fab fa-whatsapp"></i> Send Message
+                                </a>
+                            </div>
+                        </div>
+                        <div class="dealer-card">
+                            <div class="dealer-icon"><i class="fas fa-store"></i></div>
+                            <div>
+                                <h4>Find a Dealer</h4>
+                                <p>Browse our network of authorized dealers across South Africa.</p>
+                                <a href="find-a-dealer.html" class="dealer-link">
+                                    <i class="fas fa-arrow-right"></i> View Dealers Page
                                 </a>
                             </div>
                         </div>
@@ -695,16 +695,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="dealer-card" style="grid-column: 1 / -1;">
-                            <div class="dealer-icon"><i class="fas fa-store"></i></div>
-                            <div>
-                                <h4>Find a Nearby Dealer</h4>
-                                <p>Browse our network of authorized dealers across South Africa.</p>
-                                <a href="find-a-dealer.html" class="dealer-link">
-                                    <i class="fas fa-arrow-right"></i> View Dealers Page
-                                </a>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -866,9 +857,7 @@
 
         function logout() {
             sessionStorage.removeItem('odyssey_admin_logged_in');
-            document.getElementById('adminWrapper').classList.remove('active');
-            document.getElementById('loginOverlay').classList.add('show');
-            tapCount = 0;
+            window.location.href = 'index.html';
         }
 
         /* =========================================
