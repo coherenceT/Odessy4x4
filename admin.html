@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Portal | Odyssey 4x4</title>
+    <meta name="description" content="Odyssey 4x4 Manager Portal and Customer Dashboard">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/header-redesign.css">
+
+    <style>
+        /* ===== ADMIN PORTAL STYLES ===== */
+        * { box-sizing: border-box; }
+
+        body {
+            background: #f0f2f5;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* ===== LOGIN OVERLAY ===== */
+        .login-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(12px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+        .login-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .login-box {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 50px 44px 40px;
+            width: 400px;
+            max-width: 90vw;
+            text-align: center;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .login-overlay.show .login-box {
+            transform: scale(1) translateY(0);
+        }
+
+        .login-box .login-logo {
+            width: 90px;
+            height: auto;
+            margin-bottom: 16px;
+        }
+        .login-box h2 {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--color-secondary);
+            margin-bottom: 4px;
+        }
+        .login-box p {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 28px;
+        }
+        .login-box .field-group {
+            margin-bottom: 16px;
+            text-align: left;
+        }
+        .login-box .field-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--color-secondary);
+            margin-bottom: 6px;
+        }
+        .login-box .field-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1.5px solid var(--color-border);
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: border-color 0.3s;
+        }
+        .login-box .field-group input:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px rgba(211,47,47,0.1);
+        }
+        .login-box .login-error {
+            color: var(--color-accent);
+            font-size: 0.82rem;
+            margin-top: 10px;
+            display: none;
+        }
+        .login-box .btn-login {
+            width: 100%;
+            padding: 14px;
+            background: var(--color-accent);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            margin-top: 8px;
+        }
+        .login-box .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(211,47,47,0.3);
+        }
+        /* ===== ADMIN LAYOUT ===== */
+        .admin-wrapper {
+            display: none;
+            min-height: 100vh;
+        }
+        .admin-wrapper.active {
+            display: block;
+        }
+
+        /* Top Bar */
+        .admin-topbar {
+            background: #ffffff;
+            border-bottom: 1px solid #e8e8e8;
+            padding: 0 32px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .admin-topbar .topbar-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .admin-topbar .topbar-left .mini-logo {
+            height: 36px;
+            width: auto;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .admin-topbar .topbar-left .mini-logo:active {
+            transform: scale(0.92);
+        }
+        .admin-topbar .topbar-left h1 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--color-secondary);
+        }
+        .admin-topbar .topbar-left h1 span {
+            color: var(--color-accent);
+        }
+        .admin-topbar .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .admin-topbar .topbar-right .admin-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #555;
+            background: #f5f5f5;
+            padding: 8px 16px;
+            border-radius: 50px;
+        }
+        .admin-topbar .topbar-right .admin-badge i {
+            color: var(--color-accent);
+        }
+        .btn-logout {
+            background: none;
+            border: 1.5px solid #e0e0e0;
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+        .btn-logout:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+            background: #fff5f5;
+        }
+
+        /* Dashboard Content */
+        .admin-content {
+            padding: 32px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+        .stat-card {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 24px;
+            border: 1px solid #e8e8e8;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+        }
+        .stat-card .stat-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 14px;
+        }
+        .stat-card .stat-icon.red { background: #fff0f0; color: var(--color-accent); }
+        .stat-card .stat-icon.green { background: #f0fdf0; color: #22c55e; }
+        .stat-card .stat-icon.blue { background: #f0f4ff; color: #3b82f6; }
+        .stat-card .stat-icon.purple { background: #f5f0ff; color: #8b5cf6; }
+        .stat-card .stat-icon.amber { background: #fff8f0; color: #f59e0b; }
+        .stat-card .stat-icon.teal { background: #f0fffa; color: #14b8a6; }
+
+        .stat-card .stat-number {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--color-secondary);
+            line-height: 1.2;
+        }
+        .stat-card .stat-label {
+            font-size: 0.82rem;
+            color: #888;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        /* Dashboard Sections Grid */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        .dashboard-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .dash-card {
+            background: #ffffff;
+            border-radius: 14px;
+            border: 1px solid #e8e8e8;
+            padding: 24px;
+        }
+        .dash-card h3 {
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--color-secondary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .dash-card h3 i { color: var(--color-accent); }
+        .dash-card h3 .badge {
+            margin-left: auto;
+            font-size: 0.7rem;
+            font-weight: 700;
+            background: #f0f0f0;
+            color: #666;
+            padding: 3px 10px;
+            border-radius: 50px;
+        }
+
+        /* Table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+        .data-table thead th {
+            text-align: left;
+            padding: 10px 12px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #999;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .data-table tbody td {
+            padding: 12px;
+            border-bottom: 1px solid #f5f5f5;
+            color: #444;
+        }
+        .data-table tbody tr:hover {
+            background: #fafafa;
+        }
+        .data-table .type-badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+        .type-badge.community { background: #e8f4fd; color: #0a6fc2; }
+        .type-badge.discount { background: #fef3e2; color: #d97706; }
+
+        .table-empty {
+            text-align: center;
+            padding: 40px;
+            color: #aaa;
+        }
+        .table-empty i {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        /* Bar Chart */
+        .bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .bar-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .bar-label {
+            width: 100px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #555;
+            text-align: right;
+            flex-shrink: 0;
+        }
+        .bar-track {
+            flex: 1;
+            height: 28px;
+            background: #f0f0f0;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+        .bar-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: white;
+            min-width: 24px;
+        }
+        .bar-fill.red { background: linear-gradient(90deg, #ef4444, #dc2626); }
+        .bar-fill.blue { background: linear-gradient(90deg, #3b82f6, #2563eb); }
+        .bar-fill.green { background: linear-gradient(90deg, #22c55e, #16a34a); }
+        .bar-fill.amber { background: linear-gradient(90deg, #f59e0b, #d97706); }
+        .bar-fill.purple { background: linear-gradient(90deg, #8b5cf6, #7c3aed); }
+        .bar-fill.teal { background: linear-gradient(90deg, #14b8a6, #0d9488); }
+        .bar-fill.pink { background: linear-gradient(90deg, #ec4899, #db2777); }
+        .bar-fill.gray { background: linear-gradient(90deg, #6b7280, #4b5563); }
+
+        /* Region list */
+        .region-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .region-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 12px;
+            background: #fafafa;
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+        .region-item .region-name {
+            font-weight: 600;
+            color: var(--color-secondary);
+        }
+        .region-item .region-count {
+            font-weight: 800;
+            color: var(--color-accent);
+        }
+
+        /* Brand Pie (CSS pie chart replacement) */
+        .brand-pie-visual {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .brand-bar-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .brand-bar-row .bb-label {
+            width: 60px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #555;
+            flex-shrink: 0;
+        }
+        .brand-bar-row .bb-track {
+            flex: 1;
+            height: 22px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .brand-bar-row .bb-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+        .brand-bar-row .bb-count {
+            width: 30px;
+            text-align: right;
+            font-size: 0.78rem;
+            font-weight: 800;
+            color: var(--color-secondary);
+        }
+
+        /* Dealer Section */
+        .dealer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .dealer-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 16px;
+            background: #fafafa;
+            border-radius: 12px;
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+        .dealer-card:hover {
+            border-color: var(--color-accent);
+            background: #fff5f5;
+        }
+        .dealer-card .dealer-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: #fff0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-accent);
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .dealer-card h4 {
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--color-secondary);
+            margin-bottom: 2px;
+        }
+        .dealer-card p {
+            font-size: 0.78rem;
+            color: #777;
+            margin: 0;
+            line-height: 1.4;
+        }
+        .dealer-card .dealer-link {
+            color: var(--color-accent);
+            font-weight: 700;
+            font-size: 0.78rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 4px;
+        }
+        .dealer-card .dealer-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Export button */
+        .btn-export {
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.82rem;
+            cursor: pointer;
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        .btn-export:hover {
+            background: var(--color-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(211,47,47,0.25);
+        }
+
+        @media (max-width: 1200px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .dashboard-grid { grid-template-columns: 1fr; }
+            .dashboard-grid-2 { grid-template-columns: 1fr; }
+            .dealer-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .admin-content { padding: 16px; }
+            .stats-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .admin-topbar { padding: 0 16px; }
+            .admin-topbar .topbar-left h1 { font-size: 1rem; }
+            .data-table { font-size: 0.75rem; }
+            .bar-label { width: 70px; font-size: 0.7rem; }
+        }
+        @media (max-width: 480px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .login-box { padding: 30px 20px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== LOGIN OVERLAY ===== -->
+    <div class="login-overlay" id="loginOverlay">
+        <div class="login-box">
+            <img src="assets/images/odyssey4x4-logo.webp" alt="Odyssey 4x4" class="login-logo">
+            <h2>Manager Portal</h2>
+            <p>Enter your credentials to access the dashboard.</p>
+            <div class="field-group">
+                <label for="login-username">Username</label>
+                <input type="text" id="login-username" placeholder="Enter username" autocomplete="off">
+            </div>
+            <div class="field-group">
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" placeholder="Enter password" onkeydown="if(event.key==='Enter') attemptLogin()">
+            </div>
+            <div class="login-error" id="loginError">Incorrect username or password. Please try again.</div>
+            <button class="btn-login" onclick="attemptLogin()">
+                <i class="fas fa-lock"></i> SIGN IN
+            </button>
+            <p style="margin-top: 16px; font-size: 0.75rem; color: #bbb;">Tap the logo 4 times to access this portal</p>
+        </div>
+    </div>
+
+    <!-- ===== ADMIN DASHBOARD ===== -->
+    <div class="admin-wrapper" id="adminWrapper">
+
+        <!-- Top Bar -->
+        <div class="admin-topbar">
+            <div class="topbar-left">
+                <img src="assets/images/odyssey4x4-logo.webp" alt="Logo" class="mini-logo" id="adminLogo" title="Tap 4 times to lock">
+                <h1>ODYSSEY <span>PORTAL</span></h1>
+            </div>
+            <div class="topbar-right">
+                <div class="admin-badge">
+                    <i class="fas fa-shield-alt"></i> Admin
+                </div>
+                <button class="btn-logout" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> LOG OUT
+                </button>
+            </div>
+        </div>
+
+        <!-- Dashboard Content -->
+        <div class="admin-content">
+
+            <!-- Stats -->
+            <div class="stats-grid" id="statsGrid">
+                <div class="stat-card">
+                    <div class="stat-icon red"><i class="fas fa-users"></i></div>
+                    <div class="stat-number" id="totalSignups">0</div>
+                    <div class="stat-label">Total Signups</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon blue"><i class="fas fa-user-plus"></i></div>
+                    <div class="stat-number" id="communitySignups">0</div>
+                    <div class="stat-label">Community Members</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green"><i class="fas fa-tag"></i></div>
+                    <div class="stat-number" id="discountSignups">0</div>
+                    <div class="stat-label">Discount Claims</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon purple"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="stat-number" id="uniqueRegions">0</div>
+                    <div class="stat-label">Regions Reached</div>
+                </div>
+            </div>
+
+            <!-- Main Grid -->
+            <div class="dashboard-grid">
+                <!-- Products Interest Chart -->
+                <div class="dash-card">
+                    <h3><i class="fas fa-chart-bar"></i> Products of Interest</h3>
+                    <div class="bar-chart" id="productsChart"></div>
+                </div>
+
+                <!-- Brand Distribution -->
+                <div class="dash-card">
+                    <h3><i class="fas fa-chart-pie"></i> Vehicle Brands</h3>
+                    <div class="brand-pie-visual" id="brandChart"></div>
+                </div>
+            </div>
+
+            <!-- Second Row -->
+            <div class="dashboard-grid-2">
+                <!-- Regions -->
+                <div class="dash-card">
+                    <h3><i class="fas fa-globe-africa"></i> Regions <span class="badge" id="regionCount">0</span></h3>
+                    <div class="region-list" id="regionList"></div>
+                </div>
+
+                <!-- Direct Enquiries / Find a Dealer -->
+                <div class="dash-card">
+                    <h3><i class="fas fa-store"></i> Direct Enquiries &amp; Find a Dealer</h3>
+                    <div class="dealer-grid">
+                        <div class="dealer-card">
+                            <div class="dealer-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>
+                                <h4>Visit Our Workshop</h4>
+                                <p>41 Gemini St, Brackenfell South, Cape Town, 7560</p>
+                                <a href="https://maps.google.com/?q=41+Gemini+St+Brackenfell+South+Cape+Town" target="_blank" class="dealer-link">
+                                    <i class="fas fa-directions"></i> Open in Maps
+                                </a>
+                            </div>
+                        </div>
+                        <div class="dealer-card">
+                            <div class="dealer-icon"><i class="fas fa-phone-alt"></i></div>
+                            <div>
+                                <h4>Call Us</h4>
+                                <p>+27 72 257 3089</p>
+                                <a href="tel:+27722573089" class="dealer-link">
+                                    <i class="fas fa-phone"></i> Call Now
+                                </a>
+                            </div>
+                        </div>
+                        <div class="dealer-card">
+                            <div class="dealer-icon"><i class="fab fa-whatsapp"></i></div>
+                            <div>
+                                <h4>WhatsApp</h4>
+                                <p>Quick inquiries via WhatsApp</p>
+                                <a href="https://wa.me/27722573089" target="_blank" class="dealer-link">
+                                    <i class="fab fa-whatsapp"></i> Send Message
+                                </a>
+                            </div>
+                        </div>
+                        <div class="dealer-card">
+                            <div class="dealer-icon"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>info@odyssey4x4.co.za</p>
+                                <a href="mailto:info@odyssey4x4.co.za" class="dealer-link">
+                                    <i class="fas fa-envelope"></i> Send Email
+                                </a>
+                            </div>
+                        </div>
+                        <div class="dealer-card" style="grid-column: 1 / -1;">
+                            <div class="dealer-icon"><i class="fas fa-store"></i></div>
+                            <div>
+                                <h4>Find a Nearby Dealer</h4>
+                                <p>Browse our network of authorized dealers across South Africa.</p>
+                                <a href="find-a-dealer.html" class="dealer-link">
+                                    <i class="fas fa-arrow-right"></i> View Dealers Page
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Signups Table -->
+            <div class="dash-card" style="margin-bottom: 24px;">
+                <h3>
+                    <i class="fas fa-list"></i> Recent Signups
+                    <span class="badge" id="signupsTotal">0</span>
+                    <button class="btn-export" onclick="exportData()" style="margin-left: auto;">
+                        <i class="fas fa-download"></i> Export CSV
+                    </button>
+                </h3>
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Type</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Vehicle</th>
+                                <th>Region</th>
+                                <th>Products / Code</th>
+                            </tr>
+                        </thead>
+                        <tbody id="signupsTableBody">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                    <div class="table-empty" id="tableEmpty">
+                        <i class="fas fa-inbox"></i>
+                        No signups yet. Data will appear here when customers sign up.
+                    </div>
+                </div>
+            </div>
+
+            <!-- ANALYTICS SECTION -->
+            <div class="dashboard-grid" style="margin-bottom: 24px;">
+                <!-- Most Visited Pages -->
+                <div class="dash-card">
+                    <h3><i class="fas fa-eye"></i> Most Visited Pages <span class="badge" id="pageViewsCount">0</span></h3>
+                    <div class="bar-chart" id="pagesChart"></div>
+                </div>
+
+                <!-- Most Clicked Elements -->
+                <div class="dash-card">
+                    <h3><i class="fas fa-mouse-pointer"></i> Most Clicked <span class="badge" id="clicksCount">0</span></h3>
+                    <div class="bar-chart" id="clicksChart"></div>
+                </div>
+            </div>
+
+            <!-- Recent Visitor Activity -->
+            <div class="dash-card" style="margin-bottom: 24px;">
+                <h3>
+                    <i class="fas fa-clock"></i> Recent Visitor Activity
+                    <span class="badge" id="recentActivityCount">0</span>
+                    <button class="btn-export" onclick="exportAnalytics()" style="margin-left: auto;">
+                        <i class="fas fa-download"></i> Export Analytics
+                    </button>
+                </h3>
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Type</th>
+                                <th>Page</th>
+                                <th>Action / Label</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody id="activityTableBody">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                    <div class="table-empty" id="activityEmpty">
+                        <i class="fas fa-chart-line"></i>
+                        No activity yet. Visitor data will appear here when people browse the site.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="scripts/main.js"></script>
+    <script src="scripts/analytics.js"></script>
+    <script>
+        /* =========================================
+           SECRET: TAP LOGO 4 TIMES
+           ========================================= */
+        let tapCount = 0;
+        let tapTimer = null;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const logo = document.getElementById('adminLogo');
+            if (logo) {
+                logo.addEventListener('click', function() {
+                    tapCount++;
+                    if (tapTimer) clearTimeout(tapTimer);
+                    tapTimer = setTimeout(function() {
+                        tapCount = 0;
+                    }, 1200);
+                    if (tapCount >= 4) {
+                        tapCount = 0;
+                        showLogin();
+                    }
+                });
+            }
+
+            // Also trigger from the main logo on admin page and index page
+            const mainLogo = document.querySelector('.header-logo img, .mini-logo');
+            // The admin logo handler is set above
+
+            // Check if already logged in via session
+            if (sessionStorage.getItem('odyssey_admin_logged_in') === 'true') {
+                showDashboard();
+            } else {
+                // Show login overlay on page load so it's accessible (logo is hidden behind display:none)
+                document.getElementById('loginOverlay').classList.add('show');
+            }
+        });
+
+        /* =========================================
+           LOGIN / LOGOUT
+           ========================================= */
+        function showLogin() {
+            document.getElementById('loginOverlay').classList.add('show');
+            document.getElementById('login-username').value = '';
+            document.getElementById('login-password').value = '';
+            document.getElementById('loginError').style.display = 'none';
+            setTimeout(function() {
+                document.getElementById('login-username').focus();
+            }, 500);
+        }
+
+        function attemptLogin() {
+            const username = document.getElementById('login-username').value.trim();
+            const password = document.getElementById('login-password').value.trim();
+
+            if (username === 'admin' && password === 'password123') {
+                document.getElementById('loginError').style.display = 'none';
+                sessionStorage.setItem('odyssey_admin_logged_in', 'true');
+                showDashboard();
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+                document.getElementById('login-password').value = '';
+                document.getElementById('login-password').focus();
+            }
+        }
+
+        function showDashboard() {
+            document.getElementById('loginOverlay').classList.remove('show');
+            document.getElementById('adminWrapper').classList.add('active');
+            loadDashboardData();
+        }
+
+        function logout() {
+            sessionStorage.removeItem('odyssey_admin_logged_in');
+            document.getElementById('adminWrapper').classList.remove('active');
+            document.getElementById('loginOverlay').classList.add('show');
+            tapCount = 0;
+        }
+
+        /* =========================================
+           DASHBOARD DATA LOADER
+           ========================================= */
+        function getCustomerData() {
+            try {
+                const stored = localStorage.getItem('odyssey_customer_data');
+                if (stored) return JSON.parse(stored);
+            } catch(e) {}
+            return [];
+        }
+
+        function loadDashboardData() {
+            const data = getCustomerData();
+
+            // Stats
+            const totalSignups = data.length;
+            const communitySignups = data.filter(function(d) { return d.type === 'community'; }).length;
+            const discountSignups = data.filter(function(d) { return d.type === 'discount'; }).length;
+
+            // Unique regions
+            const regionsSet = {};
+            data.forEach(function(d) {
+                if (d.region) regionsSet[d.region] = (regionsSet[d.region] || 0) + 1;
+            });
+            const uniqueRegions = Object.keys(regionsSet).length;
+
+            document.getElementById('totalSignups').textContent = totalSignups;
+            document.getElementById('communitySignups').textContent = communitySignups;
+            document.getElementById('discountSignups').textContent = discountSignups;
+            document.getElementById('uniqueRegions').textContent = uniqueRegions;
+
+            // Products of Interest (from community signups only)
+            const productCounts = {};
+            data.forEach(function(d) {
+                if (d.products && Array.isArray(d.products)) {
+                    d.products.forEach(function(p) {
+                        // Clean up the label
+                        const clean = p.replace(/&amp;/g, '&').trim();
+                        productCounts[clean] = (productCounts[clean] || 0) + 1;
+                    });
+                }
+            });
+            renderProductsChart(productCounts);
+
+            // Brand Distribution
+            const brandCounts = {};
+            data.forEach(function(d) {
+                if (d.brand) {
+                    brandCounts[d.brand] = (brandCounts[d.brand] || 0) + 1;
+                }
+            });
+            renderBrandChart(brandCounts);
+
+            // Regions
+            renderRegionList(regionsSet);
+
+            // Signups Table
+            renderSignupsTable(data);
+        }
+
+        /* =========================================
+           RENDER PRODUCTS CHART
+           ========================================= */
+        function renderProductsChart(productCounts) {
+            const container = document.getElementById('productsChart');
+            const colors = ['red', 'blue', 'green', 'amber', 'purple', 'teal', 'pink', 'gray'];
+            const entries = Object.entries(productCounts).sort(function(a, b) { return b[1] - a[1]; });
+            const maxVal = entries.length > 0 ? entries[0][1] : 1;
+
+            if (entries.length === 0) {
+                container.innerHTML = '<div class="table-empty"><i class="fas fa-chart-bar"></i>No product data yet</div>';
+                return;
+            }
+
+            container.innerHTML = entries.map(function(entry, i) {
+                var label = entry[0];
+                var count = entry[1];
+                var pct = Math.max((count / maxVal) * 100, 4);
+                var color = colors[i % colors.length];
+                return '<div class="bar-row">' +
+                    '<span class="bar-label">' + label + '</span>' +
+                    '<div class="bar-track">' +
+                        '<div class="bar-fill ' + color + '" style="width: ' + pct + '%;"></div>' +
+                    '</div>' +
+                    '<span style="font-size: 0.78rem; font-weight: 700; color: var(--color-secondary); width: 30px; text-align: right;">' + count + '</span>' +
+                '</div>';
+            }).join('');
+        }
+
+        /* =========================================
+           RENDER BRAND CHART
+           ========================================= */
+        function renderBrandChart(brandCounts) {
+            const container = document.getElementById('brandChart');
+            const colors = ['#dc2626', '#2563eb', '#16a34a', '#d97706', '#7c3aed', '#0d9488', '#6b7280'];
+            const entries = Object.entries(brandCounts).sort(function(a, b) { return b[1] - a[1]; });
+            const maxVal = entries.length > 0 ? entries[0][1] : 1;
+
+            if (entries.length === 0) {
+                container.innerHTML = '<div class="table-empty"><i class="fas fa-chart-pie"></i>No brand data yet</div>';
+                return;
+            }
+
+            container.innerHTML = entries.map(function(entry, i) {
+                var brand = entry[0];
+                var count = entry[1];
+                var pct = (count / maxVal) * 100;
+                var color = colors[i % colors.length];
+                return '<div class="brand-bar-row">' +
+                    '<span class="bb-label">' + brand + '</span>' +
+                    '<div class="bb-track">' +
+                        '<div class="bb-fill" style="width: ' + pct + '%; background: ' + color + ';"></div>' +
+                    '</div>' +
+                    '<span class="bb-count">' + count + '</span>' +
+                '</div>';
+            }).join('');
+        }
+
+        /* =========================================
+           RENDER REGION LIST
+           ========================================= */
+        function renderRegionList(regionsSet) {
+            const container = document.getElementById('regionList');
+            const countEl = document.getElementById('regionCount');
+            const entries = Object.entries(regionsSet).sort(function(a, b) { return b[1] - a[1]; });
+
+            countEl.textContent = entries.length;
+
+            if (entries.length === 0) {
+                container.innerHTML = '<div class="table-empty"><i class="fas fa-globe"></i>No region data yet</div>';
+                return;
+            }
+
+            container.innerHTML = entries.map(function(entry) {
+                return '<div class="region-item">' +
+                    '<span class="region-name"><i class="fas fa-map-pin" style="color: var(--color-accent); margin-right: 6px; font-size: 0.7rem;"></i>' + entry[0] + '</span>' +
+                    '<span class="region-count">' + entry[1] + '</span>' +
+                '</div>';
+            }).join('');
+        }
+
+        /* =========================================
+           RENDER SIGNUPS TABLE
+           ========================================= */
+        function renderSignupsTable(data) {
+            const tbody = document.getElementById('signupsTableBody');
+            const empty = document.getElementById('tableEmpty');
+            const totalEl = document.getElementById('signupsTotal');
+
+            totalEl.textContent = data.length;
+
+            if (data.length === 0) {
+                tbody.innerHTML = '';
+                empty.style.display = 'block';
+                return;
+            }
+
+            empty.style.display = 'none';
+
+            // Sort by date descending (newest first)
+            const sorted = data.sort(function(a, b) {
+                return (b.id || 0) - (a.id || 0);
+            });
+
+            tbody.innerHTML = sorted.map(function(d) {
+                var typeClass = d.type === 'community' ? 'community' : 'discount';
+                var typeLabel = d.type === 'community' ? 'Community' : '10% Discount';
+                var vehicle = (d.brand || '') + (d.model ? ' ' + d.model : '');
+                var products = '';
+                if (d.products && Array.isArray(d.products)) {
+                    products = d.products.slice(0, 2).join(', ');
+                    if (d.products.length > 2) products += ' +' + (d.products.length - 2) + ' more';
+                } else if (d.discountCode) {
+                    products = 'Code: ' + d.discountCode;
+                } else {
+                    products = '-';
+                }
+                return '<tr>' +
+                    '<td>' + (d.date || '-') + '</td>' +
+                    '<td><span class="type-badge ' + typeClass + '">' + typeLabel + '</span></td>' +
+                    '<td><strong>' + (d.fullName || d.name || '') + '</strong></td>' +
+                    '<td>' + (d.email || '-') + '</td>' +
+                    '<td>' + (vehicle || '-') + '</td>' +
+                    '<td>' + (d.region || '-') + '</td>' +
+                    '<td style="font-size: 0.78rem;">' + products + '</td>' +
+                '</tr>';
+            }).join('');
+        }
+
+        /* =========================================
+           EXPORT DATA AS CSV
+           ========================================= */
+        function exportData() {
+            const data = getCustomerData();
+            if (data.length === 0) {
+                alert('No data to export.');
+                return;
+            }
+
+            // CSV headers
+            var csv = 'ID,Date,Type,Name,Surname,Full Name,Email,Phone,Brand,Model,Region,Products/Discount Code\n';
+
+            data.forEach(function(d) {
+                var products = '';
+                if (d.products && Array.isArray(d.products)) {
+                    products = '"' + d.products.join('; ') + '"';
+                } else if (d.discountCode) {
+                    products = d.discountCode;
+                }
+                var row = [
+                    d.id || '',
+                    d.date || '',
+                    d.type || '',
+                    d.name || '',
+                    d.surname || '',
+                    d.fullName || '',
+                    d.email || '',
+                    d.phone || '',
+                    d.brand || '',
+                    d.model || '',
+                    d.region || '',
+                    products
+                ].join(',');
+                csv += row + '\n';
+            });
+
+            // Download
+            var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            var link = document.createElement('a');
+            var url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', 'odyssey_customer_data_' + new Date().toISOString().slice(0,10) + '.csv');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }
+
+        /* =========================================
+           ANALYTICS RENDERERS
+           ========================================= */
+        function getAnalyticsData() {
+            try {
+                var stored = localStorage.getItem('odyssey_analytics_data');
+                if (stored) return JSON.parse(stored);
+            } catch(e) {}
+            return { pageViews: [], clicks: [], formSubmissions: [], sessions: [] };
+        }
+
+        function renderAnalytics() {
+            var analytics = getAnalyticsData();
+
+            // Page views count
+            document.getElementById('pageViewsCount').textContent = analytics.pageViews.length;
+            document.getElementById('clicksCount').textContent = analytics.clicks.length;
+
+            // Most visited pages
+            var pageCounts = {};
+            analytics.pageViews.forEach(function(v) {
+                var key = v.path || '(unknown)';
+                pageCounts[key] = (pageCounts[key] || 0) + 1;
+            });
+            renderAnalyticsChart('pagesChart', pageCounts, ['red', 'blue', 'green', 'amber', 'purple', 'teal']);
+
+            // Most clicked elements
+            var clickCounts = {};
+            analytics.clicks.forEach(function(c) {
+                var key = c.label || c.category || 'click';
+                clickCounts[key] = (clickCounts[key] || 0) + 1;
+            });
+            renderAnalyticsChart('clicksChart', clickCounts, ['blue', 'red', 'green', 'amber', 'teal', 'purple']);
+
+            // Recent activity (mix of page views + clicks, newest first)
+            var allEvents = [];
+            analytics.pageViews.forEach(function(v) {
+                allEvents.push({
+                    time: v.timestamp,
+                    type: 'pageview',
+                    page: v.path,
+                    label: 'Visited: ' + (v.title || v.path),
+                    detail: v.referrer ? 'From: ' + v.referrer : ''
+                });
+            });
+            analytics.clicks.forEach(function(c) {
+                allEvents.push({
+                    time: c.timestamp,
+                    type: 'click',
+                    page: c.path,
+                    label: 'Clicked: ' + c.label,
+                    detail: c.category || ''
+                });
+            });
+            analytics.formSubmissions.forEach(function(f) {
+                allEvents.push({
+                    time: f.timestamp,
+                    type: 'form',
+                    page: f.path,
+                    label: 'Form: ' + (f.formName || f.formId || 'submitted'),
+                    detail: ''
+                });
+            });
+
+            allEvents.sort(function(a, b) {
+                return (b.time || '').localeCompare(a.time || '');
+            });
+
+            var recent = allEvents.slice(0, 30);
+            document.getElementById('recentActivityCount').textContent = allEvents.length;
+
+            var tbody = document.getElementById('activityTableBody');
+            var empty = document.getElementById('activityEmpty');
+
+            if (recent.length === 0) {
+                tbody.innerHTML = '';
+                empty.style.display = 'block';
+                return;
+            }
+            empty.style.display = 'none';
+
+            tbody.innerHTML = recent.map(function(e) {
+                var timeStr = '';
+                if (e.time) {
+                    try {
+                        var d = new Date(e.time);
+                        timeStr = d.toLocaleString('en-ZA', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit' });
+                    } catch(e2) {
+                        timeStr = e.time.slice(11, 19);
+                    }
+                }
+                var typeBadge = '';
+                if (e.type === 'pageview') typeBadge = '<span class="type-badge community">View</span>';
+                else if (e.type === 'click') typeBadge = '<span class="type-badge discount">Click</span>';
+                else typeBadge = '<span class="type-badge" style="background:#e8f5e9;color:#2e7d32;">Form</span>';
+                return '<tr>' +
+                    '<td style="font-size:0.75rem;white-space:nowrap;">' + timeStr + '</td>' +
+                    '<td>' + typeBadge + '</td>' +
+                    '<td>' + (e.page || '-') + '</td>' +
+                    '<td><strong>' + e.label + '</strong></td>' +
+                    '<td style="font-size:0.78rem;color:#999;">' + e.detail + '</td>' +
+                '</tr>';
+            }).join('');
+        }
+
+        function renderAnalyticsChart(elementId, dataMap, colors) {
+            var container = document.getElementById(elementId);
+            if (!container) return;
+            var entries = Object.entries(dataMap).sort(function(a, b) { return b[1] - a[1]; }).slice(0, 8);
+            var maxVal = entries.length > 0 ? entries[0][1] : 1;
+
+            if (entries.length === 0) {
+                container.innerHTML = '<div class="table-empty" style="padding:20px;"><i class="fas fa-chart-simple"></i>No data yet</div>';
+                return;
+            }
+
+            container.innerHTML = entries.map(function(entry, i) {
+                var label = entry[0];
+                var count = entry[1];
+                var pct = Math.max((count / maxVal) * 100, 4);
+                var color = colors[i % colors.length];
+                // Truncate long labels
+                if (label.length > 35) label = label.slice(0, 32) + '...';
+                return '<div class="bar-row">' +
+                    '<span class="bar-label" style="width:80px;">' + label + '</span>' +
+                    '<div class="bar-track">' +
+                        '<div class="bar-fill ' + color + '" style="width: ' + pct + '%;"></div>' +
+                    '</div>' +
+                    '<span style="font-size: 0.78rem; font-weight: 700; color: var(--color-secondary); width: 30px; text-align: right;">' + count + '</span>' +
+                '</div>';
+            }).join('');
+        }
+
+        function exportAnalytics() {
+            var analytics = getAnalyticsData();
+            var allEvents = [];
+            analytics.pageViews.forEach(function(v) {
+                allEvents.push({ type: 'Page View', time: v.timestamp, page: v.path, label: v.title, detail: v.referrer });
+            });
+            analytics.clicks.forEach(function(c) {
+                allEvents.push({ type: 'Click', time: c.timestamp, page: c.path, label: c.label, detail: c.category });
+            });
+            analytics.formSubmissions.forEach(function(f) {
+                allEvents.push({ type: 'Form Submit', time: f.timestamp, page: f.path, label: f.formName || f.formId, detail: '' });
+            });
+
+            allEvents.sort(function(a, b) { return (b.time || '').localeCompare(a.time || ''); });
+
+            if (allEvents.length === 0) { alert('No analytics data to export.'); return; }
+
+            var csv = 'Type,Time,Page,Label,Detail\n';
+            allEvents.forEach(function(e) {
+                csv += [e.type, e.time, '"' + (e.page || '') + '"', '"' + (e.label || '') + '"', '"' + (e.detail || '') + '"'].join(',') + '\n';
+            });
+
+            var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            var link = document.createElement('a');
+            var url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', 'odyssey_analytics_' + new Date().toISOString().slice(0,10) + '.csv');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }
+
+        /* =========================================
+           OVERRIDE loadDashboardData to include analytics
+           ========================================= */
+        var origLoadDashboard = loadDashboardData;
+        loadDashboardData = function() {
+            if (typeof origLoadDashboard === 'function') origLoadDashboard();
+            renderAnalytics();
+        };
+
+        /* =========================================
+           AUTO-REFRESH DATA EVERY 10 SECONDS
+           ========================================= */
+        setInterval(function() {
+            if (document.getElementById('adminWrapper').classList.contains('active')) {
+                loadDashboardData();
+            }
+        }, 10000);
+    </script>
+</body>
+
+</html>

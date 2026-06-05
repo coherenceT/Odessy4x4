@@ -110,10 +110,14 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-left: 0;
 }
 
 .header-logo img {
-    height: 55px;
+    height: 80px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
     filter: brightness(1.2);
 }
 
@@ -216,8 +220,20 @@ header {
    ========================================= */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+@media (max-width: 1200px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .product-card {
@@ -252,9 +268,14 @@ header {
 .status-badge.waiting-for-design { background: #f9a825; color: black; }
 
 .product-image {
-    height: 250px;
+    aspect-ratio: 4 / 3;
     position: relative;
     background: #ffffff;
+    overflow: hidden;
+}
+
+.featured-products-grid .product-image {
+    aspect-ratio: var(--featured-img-ratio, 4/3);
 }
 
 .product-image img {
@@ -793,10 +814,11 @@ header {
 
 .hero-slider-section .hero-slider {
     width: 100%;
-    aspect-ratio: 1600 / 900;
-    max-height: 80vh;
+    aspect-ratio: 16 / 9;
+    max-height: 864px;
     position: relative;
 }
+
 .hero-slider {
     width: 100%;
     height: 100%;
@@ -840,14 +862,6 @@ header {
     object-position: center 35%;
 }
 
-@media (max-width: 768px) {
-    /* On mobile, show the full second image without cropping (letterboxed on dark bg) */
-    .slide-second .slide-bg {
-        object-fit: contain;
-        object-position: center;
-        background: #000;
-    }
-}
 .slide-content {
     position: relative;
     z-index: 3;
@@ -917,14 +931,7 @@ header {
     }
 }
 
-@media (min-width: 769px) {
-    .hero-slider-section .hero-slider {
-        max-height: 95vh;
-    }
-    .slide-bg {
-        object-position: center 30%;
-    }
-}
+
 
 
 /* =========================================
@@ -1069,11 +1076,6 @@ header {
 }
 
 @media (max-width: 768px) {
-    .hero-slider-section .hero-slider {
-        aspect-ratio: 1600 / 900;
-        max-height: 50vh;
-        min-height: 250px;
-    }
 
     .slide-content h1 {
         font-size: 2.2rem;
@@ -1099,7 +1101,7 @@ header {
     }
 
     .header-logo img {
-        height: 45px;
+        height: 60px;
     }
 
     .main-header {
@@ -1123,10 +1125,6 @@ header {
     
     .product-card {
         border-radius: 8px;
-    }
-    
-    .product-image {
-        height: 160px; /* Shorter image height on mobile for 2-column balance */
     }
     
     .product-info {
@@ -1673,10 +1671,6 @@ header {
     
     .product-card {
         border-radius: 8px;
-    }
-    
-    .product-image {
-        height: 140px !important;
     }
     
     .product-title {

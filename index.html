@@ -324,7 +324,7 @@
 
         /* Bushveld showcase */
         .bushveld-section {
-            background: url('assets/images/mainphoto.webp') center center / cover no-repeat;
+            background: url('assets/images/hero-frontier.svg') center center / cover no-repeat;
             min-height: 380px;
             position: relative;
             display: flex;
@@ -395,6 +395,83 @@
         .contact-form-card textarea {
             height: 140px;
             resize: none;
+        }
+
+        .contact-form-card select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1.5px solid var(--color-border);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: var(--color-secondary);
+            background: #ffffff;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23666' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 44px;
+            cursor: pointer;
+        }
+
+        .contact-form-card select:focus {
+            outline: none;
+            border-color: var(--color-accent);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+        }
+
+        .btn-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .btn-row {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+        }
+
+        .btn-email {
+            width: 100%;
+            background: #ffffff;
+            color: var(--color-secondary);
+            border: 2px solid var(--color-border);
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            font-family: inherit;
+        }
+
+        .btn-email:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+            background: #fff5f5;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(211,47,47,0.12);
         }
 
         /* Filter section */
@@ -563,11 +640,11 @@
                 grid-template-columns: 1fr 1fr;
                 gap: 28px;
             }
-            .footer-brand-col {
-                grid-column: 1 / -1;
-                text-align: center;
-            }
-            .footer-brand-col img { margin: 0 auto 12px; }
+    .footer-brand-col {
+        grid-column: 1 / -1;
+        text-align: left;
+    }
+    .footer-brand-col img { margin: 0 0 12px 0; }
         }
         @media (max-width: 380px) {
             .footer-main-grid { grid-template-columns: 1fr; }
@@ -601,6 +678,8 @@
                                 <li><a href="category-fridge-slides.html">Fridge Slides</a></li>
                                 <li><a href="category-drawer-systems.html">Drawer Systems</a></li>
                                 <li><a href="category-accessories.html">Roll Bars</a></li>
+                                <li><a href="category-camping-and-overland.html">Camping &amp; Overland</a></li>
+                                <li><a href="category-roof-racks.html">Roof Racks</a></li>
                             </ul>
                         </li>
                         <li class="has-dropdown">
@@ -659,6 +738,8 @@
                     <a href="category-fridge-slides.html"><i class="fas fa-chevron-right"></i> Fridge Slides</a>
                     <a href="category-drawer-systems.html"><i class="fas fa-chevron-right"></i> Drawer Systems</a>
                     <a href="category-accessories.html"><i class="fas fa-chevron-right"></i> Roll Bars</a>
+                    <a href="category-camping-and-overland.html"><i class="fas fa-chevron-right"></i> Camping &amp; Overland</a>
+                    <a href="category-roof-racks.html"><i class="fas fa-chevron-right"></i> Roof Racks</a>
                 </div>
             </div>
             
@@ -679,24 +760,24 @@
 
             <div class="slider-wrapper">
                 <div class="slide active">
-                    <img src="assets/images/mainphoto.webp" alt="Odyssey 4x4 Main Slider Image" class="slide-bg">
+                    <img src="assets/images/hero-engineered.svg" alt="Odyssey 4x4 Main Slider - Engineered to Last" class="slide-bg">
                 </div>
 
                 <div class="slide slide-second">
-                    <img src="assets/images/secondimageslide.webp" alt="Odyssey 4x4 Bumper Showcase" class="slide-bg" onerror="this.src='assets/images/mainphoto.webp'">
+                    <img src="assets/images/hero-frontier.svg" alt="Odyssey 4x4 Frontier Showcase" class="slide-bg" onerror="this.src='assets/images/hero-engineered.svg'">
                     <div class="slide-overlay"></div>
                 </div>
 
                 <div class="slide">
-                    <img src="assets/images/hero-slide-2.webp" alt="Odyssey 4x4 Rock Sliders" class="slide-bg" onerror="this.src='assets/images/mainphoto.webp'">
+                    <img src="assets/images/hero-slide-2.webp" alt="Odyssey 4x4 Rock Sliders" class="slide-bg" onerror="this.src='assets/images/hero-frontier.svg'">
                 </div>
 
                 <div class="slide">
-                    <img src="assets/images/hero-slide-3.webp" alt="Odyssey 4x4 Expedition Gear" class="slide-bg" onerror="this.src='assets/images/mainphoto.webp'">
+                    <img src="assets/images/hero-slide-3.webp" alt="Odyssey 4x4 Expedition Gear" class="slide-bg" onerror="this.src='assets/images/hero-frontier.svg'">
                 </div>
 
                 <div class="slide">
-                    <img src="assets/images/hero-slide-4.webp" alt="Odyssey 4x4 Drawer Systems" class="slide-bg" onerror="this.src='assets/images/mainphoto.webp'">
+                    <img src="assets/images/hero-slide-4.webp" alt="Odyssey 4x4 Drawer Systems" class="slide-bg" onerror="this.src='assets/images/hero-frontier.svg'">
                 </div>
             </div>
         </div>
@@ -730,7 +811,7 @@
             <h2 class="section-title text-center">OFFROAD ACCESSORIES & GEAR</h2>
             <p class="section-subtitle text-center" style="max-width: 600px; margin: 0 auto 30px;">Premium accessories built to upgrade your vehicle's capability and recovery options.</p>
             
-            <div class="accessories-showcase-grid">
+            <div class="accessories-showcase-grid" style="grid-template-columns: repeat(4, 1fr);">
                 <a href="category-front-bumpers.html" class="accessory-showcase-card">
                     <img src="assets/images/newbumperimage.webp" alt="Front Bumpers" class="accessory-showcase-img">
                     <h3>Front Bumpers</h3>
@@ -752,7 +833,7 @@
                     <span>Shop Slides <i class="fas fa-arrow-right"></i></span>
                 </a>
                 <a href="category-drawer-systems.html" class="accessory-showcase-card">
-                    <img src="offroad_accessories/Decked Drawer System.png" alt="Drawer Systems" class="accessory-showcase-img">
+                    <img src="offroad_accessories/Drawer System.png" alt="Drawer Systems" class="accessory-showcase-img">
                     <h3>Drawer Systems</h3>
                     <span>Shop Systems <i class="fas fa-arrow-right"></i></span>
                 </a>
@@ -760,6 +841,16 @@
                     <img src="offroad_accessories/Adventure Roll Bar.png" alt="Roll Bars" class="accessory-showcase-img">
                     <h3>Roll Bars</h3>
                     <span>Shop Roll Bars <i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="category-camping-and-overland.html" class="accessory-showcase-card">
+                    <img src="assets/images/Camping and Overland Gear.png" alt="Camping & Overland Gear" class="accessory-showcase-img">
+                    <h3>Camping &amp; Overland Gear</h3>
+                    <span>Explore Gear <i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="category-roof-racks.html" class="accessory-showcase-card">
+                    <img src="assets/images/roofracks.png" alt="Roof Racks" class="accessory-showcase-img">
+                    <h3>Roof Racks</h3>
+                    <span>Explore Racks <i class="fas fa-arrow-right"></i></span>
                 </a>
             </div>
         </div>
@@ -830,7 +921,7 @@
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="assets/images/bull-bar-showcase.webp" onerror="this.src='assets/images/mainphoto.webp'" alt="Odyssey 4x4 Manufacturing">
+                    <img src="assets/images/bull-bar-showcase.webp" onerror="this.src='assets/images/hero-frontier.svg'" alt="Odyssey 4x4 Manufacturing">
                 </div>
             </div>
         </div>
@@ -839,13 +930,13 @@
     <!-- TESTIMONIALS SECTION -->
     <section class="testimonials-section">
         <div class="container">
-            <h2 class="section-title text-center">WHAT OUR CUSTOMERS SAY</h2>
-            <p class="section-subtitle text-center" style="max-width: 580px; margin: 0 auto 10px;">Rigs built to last. Here's what fellow adventurers have to say.</p>
+            <h2 class="section-title text-center">HEAR IT FROM THE PEOPLE WHO MATTER</h2>
+            <p class="section-subtitle text-center" style="max-width: 580px; margin: 0 auto 10px;">Here is what fellow adventurers have to say.</p>
             <div class="testimonials-grid">
                 <div class="testimonial-card">
                     <div class="testimonial-quote-icon">"</div>
                     <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">Absolutely incredible quality. The front bumper on my Ranger looks mean and has already saved me twice on the mountain passes. Build quality is second to none.</p>
+                    <p class="testimonial-text">Incredible quality.</p>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar">JV</div>
                         <div>
@@ -857,7 +948,7 @@
                 <div class="testimonial-card">
                     <div class="testimonial-quote-icon">"</div>
                     <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">Fitted the rock sliders and rear bumper system on my Hilux. The fitment was perfect and the team at Odyssey was incredibly helpful throughout the whole process.</p>
+                    <p class="testimonial-text">rock sliders and rear bumper on my Hilux. The fitment was perfect and the team at Odyssey was incredibly helpful throughout the whole process.</p>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar">MB</div>
                         <div>
@@ -869,7 +960,7 @@
                 <div class="testimonial-card">
                     <div class="testimonial-quote-icon">"</div>
                     <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">The drawer system is an absolute game-changer for long-haul overlanding. Solid, well-thought-out, and the carpet finish looks factory-level premium. Highly recommend.</p>
+                    <p class="testimonial-text">The drawer system is a game changer and highly recommend.</p>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar">SK</div>
                         <div>
@@ -882,15 +973,37 @@
         </div>
     </section>
 
-    <!-- BUSHVELD SHOWCASE -->
-    <section class="section-padding bushveld-section">
-        <div class="bushveld-overlay"></div>
-        <div class="container bushveld-content">
-            <h2 style="color: white; font-size: 3rem; margin-bottom: 20px; font-weight: 900;">Built for the Wild</h2>
-            <p style="max-width: 700px; margin: 0 auto 35px; color: rgba(255,255,255,0.85); font-size: 1.05rem; line-height: 1.7;">Our accessories are tested in the harshest South African conditions — Sani Pass, Baviaans, the Richtersveld — to ensure they never fail you when it matters most.</p>
-            <a href="https://wa.me/27722573089?text=Hi%20Odyssey%204x4%2C%20I%20would%20like%20to%20enquire%20about%20your%20products%20for%20my%20vehicle." target="_blank" style="display: inline-flex; align-items: center; gap: 10px; background: #25d366; color: white; padding: 16px 35px; border-radius: 50px; font-weight: 800; font-size: 1rem; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 8px 30px rgba(37,211,102,0.4)';" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='none';">
-                <i class="fab fa-whatsapp" style="font-size: 1.3rem;"></i> GET A QUOTE NOW
-            </a>
+    <!-- THE ODYSSEY COMMUNITY -->
+    <section class="section-padding" style="background: #ffffff; padding: 80px 0;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+                <!-- Left: Text Content -->
+                <div>
+                    <h2 style="font-size: 2.8rem; font-weight: 900; color: var(--color-secondary); margin-bottom: 10px; letter-spacing: -0.5px;">
+                        THE ODYSSEY<br>
+                        <span style="color: var(--color-accent);">COMMUNITY</span>
+                    </h2>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: #555; margin-bottom: 30px; max-width: 520px;">
+                        Sign up and receive early access to new products, exclusive offers, promotions &amp; Stories from the road less travelled.
+                    </p>
+                    <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+                        <a href="odyssey-community.html" style="display: inline-flex; align-items: center; gap: 12px; background: var(--color-accent); color: white; padding: 16px 40px; border-radius: 50px; font-weight: 800; font-size: 1rem; text-decoration: none; transition: all 0.3s ease; letter-spacing: 1px; box-shadow: 0 6px 25px rgba(211,47,47,0.3);" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 35px rgba(211,47,47,0.4)';" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 6px 25px rgba(211,47,47,0.3)';">
+                            <i class="fas fa-user-plus" style="font-size: 1.2rem;"></i> SIGN UP
+                        </a>
+                        <a href="discount-signup.html" style="display: inline-flex; align-items: center; gap: 10px; background: #ffffff; color: var(--color-secondary); padding: 16px 32px; border-radius: 50px; font-weight: 800; font-size: 1rem; text-decoration: none; transition: all 0.3s ease; letter-spacing: 0.5px; border: 2px solid var(--color-border);" onmouseover="this.style.borderColor='var(--color-accent)';this.style.color='var(--color-accent)';this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='var(--color-border)';this.style.color='var(--color-secondary)';this.style.transform='translateY(0)';">
+                            <i class="fas fa-tag" style="color: var(--color-accent);"></i> SEE IF YOU QUALIFY FOR A 10% DISCOUNT
+                        </a>
+                    </div>
+                </div>
+                <!-- Right: Image -->
+                <div style="position: relative;">
+                    <img src="assets/images/sign.jpg" alt="Join the Odyssey Community" style="width: 100%; height: 450px; object-fit: cover; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.12); display: block;">
+                    <div style="position: absolute; bottom: 20px; left: 20px; right: 20px; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); padding: 16px 22px; border-radius: 12px; color: white; font-size: 0.85rem; font-weight: 600; text-align: center; letter-spacing: 0.5px;">
+                        <i class="fas fa-campground" style="margin-right: 8px; color: var(--color-accent);"></i> 
+                        Join fellow adventurers on the road less travelled
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -898,9 +1011,10 @@
     <section id="contact" class="section-padding" style="background: #ffffff;">
         <div class="container">
             <div class="contact-grid">
+                <!-- LEFT: Contact Info -->
                 <div>
                     <h2 style="font-size: 2.2rem; margin-bottom: 30px; font-weight: 900; color: var(--color-secondary);">Direct Enquiries</h2>
-                    <p style="margin-bottom: 35px; color: var(--color-text-muted); line-height: 1.7; font-size: 1rem;">Ready to upgrade your rig? Send us a message via WhatsApp or use the form below to enquire about a product.</p>
+                    <p style="margin-bottom: 35px; color: var(--color-text-muted); line-height: 1.7; font-size: 1rem;">Ready to upgrade your rig? Fill in the form and we'll get back to you on WhatsApp.</p>
                     
                     <div style="margin-bottom: 25px; display: flex; align-items: flex-start; gap: 15px;">
                         <div style="width: 44px; height: 44px; border-radius: 50%; background: rgba(211,47,47,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
@@ -912,17 +1026,7 @@
                         </div>
                     </div>
 
-                    <div style="margin-bottom: 25px; display: flex; align-items: flex-start; gap: 15px;">
-                        <div style="width: 44px; height: 44px; border-radius: 50%; background: rgba(211,47,47,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                            <i class="fas fa-phone" style="color: var(--color-accent);"></i>
-                        </div>
-                        <div>
-                            <h4 style="color: var(--color-secondary); margin-bottom: 5px; font-weight: 700;">Call Us</h4>
-                            <a href="tel:+27722573089" style="color: var(--color-text-muted); font-size: 1rem;">+27 72 257 3089</a>
-                        </div>
-                    </div>
-
-                    <div style="display: flex; align-items: flex-start; gap: 15px;">
+                    <div style="display: flex; align-items: flex-start; gap: 15px; margin-bottom: 25px;">
                         <div style="width: 44px; height: 44px; border-radius: 50%; background: rgba(211,47,47,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                             <i class="fas fa-envelope" style="color: var(--color-accent);"></i>
                         </div>
@@ -931,26 +1035,88 @@
                             <a href="mailto:info@odyssey4x4.co.za" style="color: var(--color-text-muted);">info@odyssey4x4.co.za</a>
                         </div>
                     </div>
+
+                    <div style="display: flex; align-items: flex-start; gap: 15px;">
+                        <div style="width: 44px; height: 44px; border-radius: 50%; background: rgba(211,47,47,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <i class="fab fa-whatsapp" style="color: #25d366;"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--color-secondary); margin-bottom: 5px; font-weight: 700;">WhatsApp</h4>
+                            <a href="https://wa.me/27722573089" target="_blank" style="color: var(--color-text-muted);">+27 72 257 3089</a>
+                        </div>
+                    </div>
+
                 </div>
 
+                <!-- RIGHT: Enquiry Form -->
                 <div class="contact-form-card">
-                    <h3 style="margin-bottom: 25px; font-size: 1.3rem; font-weight: 800; color: var(--color-secondary);">Send an Enquiry</h3>
+                    <h3 style="margin-bottom: 25px; font-size: 1.3rem; font-weight: 800; color: var(--color-secondary);">
+                        <i class="fas fa-paper-plane" style="color: var(--color-accent); margin-right: 8px;"></i> Send an Enquiry
+                    </h3>
                     <form id="whatsapp-form">
-                        <div style="margin-bottom: 18px;">
-                            <label for="contact-name">Full Name</label>
-                            <input type="text" id="contact-name" placeholder="e.g. John Smith" required>
+                        <!-- Row: First Name + Surname -->
+                        <div class="form-row" style="margin-bottom: 18px;">
+                            <div>
+                                <label for="contact-name">First Name <span style="color: var(--color-accent);">*</span></label>
+                                <input type="text" id="contact-name" placeholder="e.g. John" required>
+                            </div>
+                            <div>
+                                <label for="contact-surname">Surname <span style="color: var(--color-accent);">*</span></label>
+                                <input type="text" id="contact-surname" placeholder="e.g. Smith" required>
+                            </div>
                         </div>
-                        <div style="margin-bottom: 18px;">
-                            <label for="contact-vehicle">Your Vehicle</label>
-                            <input type="text" id="contact-vehicle" placeholder="e.g. Ford Ranger 2024">
+
+                        <!-- Row: Vehicle Make + Location -->
+                        <div class="form-row" style="margin-bottom: 18px;">
+                            <div>
+                                <label for="contact-vehicle-make">Vehicle Make <span style="color: var(--color-accent);">*</span></label>
+                                <select id="contact-vehicle-make" required>
+                                    <option value="" disabled selected>Select your vehicle</option>
+                                    <option value="Ford">Ford</option>
+                                    <option value="Toyota">Toyota</option>
+                                    <option value="Nissan">Nissan</option>
+                                    <option value="Isuzu">Isuzu</option>
+                                    <option value="Mazda">Mazda</option>
+                                    <option value="Suzuki">Suzuki</option>
+                                    <option value="Other">Other / Not specified</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="contact-location">Where Are You From? <span style="color: var(--color-accent);">*</span></label>
+                                <input type="text" id="contact-location" placeholder="e.g. Cape Town" required>
+                            </div>
                         </div>
+
+                        <!-- Query Selection (populated dynamically from products) -->
+                        <div style="margin-bottom: 18px;">
+                            <label for="contact-query">I'm Enquiring About <span style="color: var(--color-accent);">*</span></label>
+                            <select id="contact-query" required>
+                                <option value="" disabled selected>Select a product or vehicle</option>
+                                <optgroup label="Product Categories" id="query-categories">
+                                </optgroup>
+                                <optgroup label="Specific Products" id="query-products">
+                                </optgroup>
+                                <optgroup label="Vehicles" id="query-vehicles">
+                                </optgroup>
+                                <option value="General Inquiry">General Inquiry</option>
+                            </select>
+                        </div>
+
+                        <!-- Message -->
                         <div style="margin-bottom: 25px;">
-                            <label for="contact-message">Message</label>
+                            <label for="contact-message">Message <span style="color: var(--color-accent);">*</span></label>
                             <textarea id="contact-message" placeholder="Tell us what you need..." required></textarea>
                         </div>
-                        <button type="submit" style="width: 100%; background: #25d366; color: white; border: none; padding: 16px; border-radius: 8px; font-size: 1rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.3s ease; letter-spacing: 0.5px;" onmouseover="this.style.background='#1db954';" onmouseout="this.style.background='#25d366';">
-                            <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> SEND VIA WHATSAPP
-                        </button>
+
+                        <!-- Dual buttons: WhatsApp + Email -->
+                        <div class="btn-row">
+                            <button type="button" id="btn-send-whatsapp" style="background: #25d366; color: white; border: none; padding: 16px; border-radius: 8px; font-size: 1rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.3s ease; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(37,211,102,0.3); font-family: inherit;" onmouseover="this.style.background='#1db954';this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(37,211,102,0.4)';" onmouseout="this.style.background='#25d366';this.style.transform='translateY(0)';this.style.boxShadow='0 4px 15px rgba(37,211,102,0.3)';">
+                                <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> SEND VIA WHATSAPP
+                            </button>
+                            <button type="button" id="btn-send-email" class="btn-email">
+                                <i class="fas fa-envelope" style="font-size: 1.2rem;"></i> SEND VIA EMAIL
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -1016,55 +1182,48 @@
     </section>
 
     <!-- FOOTER -->
-    <footer style="background: #111111; padding: 60px 0 40px; border-top: 1px solid var(--color-border); color: #ffffff;">
+    <footer style="background: #ffffff; padding: 60px 0 40px; border-top: 1px solid var(--color-border); color: #1a1a1a;">
         <div class="container">
             <div class="footer-main-grid">
-                <div class="footer-col">
-                    <h4 style="margin-bottom: 20px; font-size: 1rem; color: white; letter-spacing: 1px;">Products</h4>
-                    <ul class="footer-links" style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 10px;"><a href="category-front-bumpers.html" style="color: #aaaaaa; transition: color 0.3s;">Front Bumpers</a></li>
-                        <li style="margin-bottom: 10px;"><a href="category-rear-bumpers.html" style="color: #aaaaaa; transition: color 0.3s;">Rear Bumpers</a></li>
-                        <li style="margin-bottom: 10px;"><a href="category-rock-sliders.html" style="color: #aaaaaa; transition: color 0.3s;">Rock Sliders</a></li>
-                        <li style="margin-bottom: 10px;"><a href="category-fridge-slides.html" style="color: #aaaaaa; transition: color 0.3s;">Fridge Slides</a></li>
-                        <li style="margin-bottom: 10px;"><a href="category-drawer-systems.html" style="color: #aaaaaa; transition: color 0.3s;">Drawer Systems</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col footer-brand-col" style="display: flex; flex-direction: column; justify-content: center; grid-column: span 2;">
-                    <img src="assets/images/odyssey4x4-logo.webp" alt="Odyssey 4x4" style="height: 75px; margin-bottom: 16px; background:#ffffff; padding:8px 12px; border-radius:6px; display:inline-block; width:auto; object-fit:contain;">
-                    <h4 style="font-size: 1.8rem; line-height: 1.3; color: white; text-transform: none; font-weight: 900; margin: 0 0 10px;">
+                <div class="footer-col footer-brand-col" style="display: flex; flex-direction: column; justify-content: flex-start;">
+                    <img src="assets/images/odyssey4x4-logo.webp" alt="Odyssey 4x4" style="height: 75px; margin-bottom: 16px; background:#ffffff; padding:8px 12px; border-radius:6px; display:inline-block; width:auto; object-fit:contain; align-self:flex-start;">
+                    <h4 style="font-size: 1.8rem; line-height: 1.3; color: #1a1a1a; text-transform: none; font-weight: 900; margin: 0 0 10px;">
                         Built for Adventure.<br>
                         <span style="color: var(--color-accent);">Engineered to Last.</span>
                     </h4>
+                    <!-- Get In Touch -->
+                    <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid #e8e8e8;">
+                        <h4 style="margin-bottom: 16px; font-size: 1rem; color: #1a1a1a; letter-spacing: 1px;">Get In Touch</h4>
+                        <ul class="footer-links" style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 15px; color: #666666;">
+                                <strong style="display: block; color: #1a1a1a; margin-bottom: 3px;">Email 1:</strong>
+                                <a href="mailto:placeholder1@example.com" style="color: #666666; transition: color 0.3s;">placeholder1@example.com</a>
+                            </li>
+                            <li style="margin-bottom: 15px; color: #666666;">
+                                <strong style="display: block; color: #1a1a1a; margin-bottom: 3px;">Email 2:</strong>
+                                <a href="mailto:placeholder2@example.com" style="color: #666666; transition: color 0.3s;">placeholder2@example.com</a>
+                            </li>
+                            <li style="color: #666666;">
+                                <strong style="display: block; color: #1a1a1a; margin-bottom: 3px;">Workshop:</strong>
+                                41 Gemini St, Brackenfell South, Cape Town
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="footer-col">
-                    <h4 style="margin-bottom: 20px; font-size: 1rem; color: white; letter-spacing: 1px;">Quick Links</h4>
+                    <h4 style="margin-bottom: 20px; font-size: 1rem; color: #1a1a1a; letter-spacing: 1px;">Quick Links</h4>
                     <ul class="footer-links" style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 10px;"><a href="index.html" style="color: #aaaaaa; transition: color 0.3s;">Homepage</a></li>
-                        <li style="margin-bottom: 10px;"><a href="index.html#about" style="color: #aaaaaa; transition: color 0.3s;">About Us</a></li>
-                        <li style="margin-bottom: 10px;"><a href="index.html#contact" style="color: #aaaaaa; transition: color 0.3s;">Contact Us</a></li>
-                        <li style="margin-bottom: 10px;"><a href="vehicle-ford.html" style="color: #aaaaaa; transition: color 0.3s;">Ford Gear</a></li>
-                        <li style="margin-bottom: 10px;"><a href="vehicle-toyota.html" style="color: #aaaaaa; transition: color 0.3s;">Toyota Gear</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4 style="margin-bottom: 20px; font-size: 1rem; color: white; letter-spacing: 1px;">Get In Touch</h4>
-                    <ul class="footer-links" style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 15px; color: #aaaaaa;">
-                            <strong style="display: block; color: white; margin-bottom: 3px;">Email:</strong>
-                            <a href="mailto:info@odyssey4x4.co.za" style="color: #aaaaaa; transition: color 0.3s;">info@odyssey4x4.co.za</a>
-                        </li>
-                        <li style="margin-bottom: 15px; color: #aaaaaa;">
-                            <strong style="display: block; color: white; margin-bottom: 3px;">Phone:</strong>
-                            <a href="tel:+27722573089" style="color: #aaaaaa; transition: color 0.3s;">+27 72 257 3089</a>
-                        </li>
-                        <li style="color: #aaaaaa;">
-                            <strong style="display: block; color: white; margin-bottom: 3px;">Workshop:</strong>
-                            41 Gemini St, Brackenfell South, Cape Town
-                        </li>
+                        <li style="margin-bottom: 10px;"><a href="index.html" style="color: #666666; transition: color 0.3s;">Homepage</a></li>
+                        <li style="margin-bottom: 10px;"><a href="index.html#about" style="color: #666666; transition: color 0.3s;">About Us</a></li>
+                        <li style="margin-bottom: 10px;"><a href="index.html#contact" style="color: #666666; transition: color 0.3s;">Contact Us</a></li>
+                        <li style="margin-bottom: 10px;"><a href="find-a-dealer.html" style="color: #666666; transition: color 0.3s;">Find a Nearby Dealer</a></li>
+                        <li style="margin-bottom: 10px;"><a href="odyssey-community.html" style="color: #666666; transition: color 0.3s;">The Odyssey Community</a></li>
+                        <li style="margin-bottom: 10px;"><a href="discount-signup.html" style="color: #666666; transition: color 0.3s;">Get 10% Off</a></li>
+                        <li style="margin-bottom: 10px;"><a href="explore-gear.html" style="color: #666666; transition: color 0.3s;">Explore All Gear</a></li>
                     </ul>
                 </div>
             </div>
-            <div style="border-top: 1px solid #222; padding-top: 30px; text-align: center; color: #777; font-size: 0.85rem; font-weight: 600;">
+            <div style="border-top: 1px solid #e8e8e8; padding-top: 30px; text-align: center; color: #999999; font-size: 0.85rem; font-weight: 600;">
                 <p>&copy; 2026 Odyssey 4x4 Expedition Gear. All Rights Reserved.</p>
             </div>
         </div>
@@ -1096,19 +1255,133 @@
 
     <!-- SCRIPTS -->
     <script src="scripts/main.js"></script>
+    <script src="scripts/analytics.js"></script>
+    
+    <!-- SECRET: Tap logo 4 times to access Manager Portal -->
     <script>
-        // Contact form override for multi-field version
-        const waForm = document.getElementById('whatsapp-form');
-        if (waForm) {
-            waForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const name = document.getElementById('contact-name')?.value || '';
-                const vehicle = document.getElementById('contact-vehicle')?.value || '';
-                const msg = document.getElementById('contact-message')?.value || '';
-                const text = `Hi Odyssey 4x4, I am ${name}${vehicle ? ' and I drive a ' + vehicle : ''}. ${msg}`;
-                window.open(`https://wa.me/27722573089?text=${encodeURIComponent(text)}`, '_blank');
-            });
+        (function() {
+            let tapCount = 0;
+            let tapTimer = null;
+            const logoLink = document.querySelector('.header-logo');
+            if (logoLink) {
+                logoLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    tapCount++;
+                    if (tapTimer) clearTimeout(tapTimer);
+                    tapTimer = setTimeout(function() {
+                        tapCount = 0;
+                    }, 1200);
+                    if (tapCount >= 4) {
+                        tapCount = 0;
+                        window.location.href = 'admin.html';
+                    }
+                });
+            }
+        })();
+    </script>
+    <script>
+        // Populate query dropdown dynamically from products + categories + vehicles
+        (function populateQueryOptions() {
+            const querySelect = document.getElementById('contact-query');
+            if (!querySelect || typeof products === 'undefined') return;
+
+            // Helper to add options to an optgroup
+            function addOptions(groupId, items) {
+                const group = document.getElementById(groupId);
+                if (!group) return;
+                items.forEach(function(item) {
+                    const opt = document.createElement('option');
+                    opt.value = item.value || item;
+                    opt.textContent = item.label || item;
+                    group.appendChild(opt);
+                });
+            }
+
+            // Categories
+            var categoryNames = [
+                'Front Bumpers', 'Rear Bumpers', 'Rock Sliders',
+                'Fridge Slides', 'Drawer Systems', 'Roll Bars',
+                'Camping & Overland Gear', 'Roof Racks'
+            ];
+            addOptions('query-categories', categoryNames);
+
+            // Specific products from the products array
+            var productNames = products.map(function(p) { return p.name; });
+            addOptions('query-products', productNames);
+
+            // Vehicle brands
+            var vehicleNames = [
+                'Ford Vehicles', 'Toyota Vehicles', 'Nissan Vehicles',
+                'Isuzu Vehicles', 'Mazda Vehicles', 'Suzuki Vehicles'
+            ];
+            addOptions('query-vehicles', vehicleNames);
+        })();
+
+        // Compile form data into a readable text block
+        function getFormText() {
+            var firstName = document.getElementById('contact-name')?.value || '';
+            var surname = document.getElementById('contact-surname')?.value || '';
+            var vehicleMake = document.getElementById('contact-vehicle-make')?.value || '';
+            var location = document.getElementById('contact-location')?.value || '';
+            var queryType = document.getElementById('contact-query')?.value || 'General Inquiry';
+            var msg = document.getElementById('contact-message')?.value || '';
+            var fullName = (firstName + ' ' + surname).trim();
+            var text = 'Hi Odyssey 4x4, my name is ' + fullName + '.';
+            if (location) text += '\nI am from ' + location + '.';
+            if (vehicleMake && vehicleMake !== 'Other') text += '\nVehicle: ' + vehicleMake + '.';
+            if (queryType) text += '\n\nI am enquiring about: ' + queryType + '.';
+            if (msg) text += '\n\nMessage: ' + msg;
+            return text;
         }
+
+        // Form validation helper
+        function validateForm() {
+            var name = document.getElementById('contact-name')?.value.trim();
+            var surname = document.getElementById('contact-surname')?.value.trim();
+            var query = document.getElementById('contact-query')?.value;
+            var msg = document.getElementById('contact-message')?.value.trim();
+            if (!name) { alert('Please enter your first name.'); document.getElementById('contact-name')?.focus(); return false; }
+            if (!surname) { alert('Please enter your surname.'); document.getElementById('contact-surname')?.focus(); return false; }
+            if (!query || query === '') { alert('Please select what you are enquiring about.'); document.getElementById('contact-query')?.focus(); return false; }
+            if (!msg) { alert('Please enter a message.'); document.getElementById('contact-message')?.focus(); return false; }
+            return true;
+        }
+
+        // Allow Enter key to trigger WhatsApp send
+        document.getElementById('whatsapp-form')?.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') {
+                e.preventDefault();
+                document.getElementById('btn-send-whatsapp')?.click();
+            }
+        });
+
+        // WhatsApp button handler
+        document.getElementById('btn-send-whatsapp')?.addEventListener('click', function() {
+            if (!validateForm()) return;
+            var text = getFormText();
+            window.open('https://wa.me/27722573089?text=' + encodeURIComponent(text), '_blank');
+        });
+
+        // Email button handler
+        document.getElementById('btn-send-email')?.addEventListener('click', function() {
+            if (!validateForm()) return;
+            var firstName = document.getElementById('contact-name')?.value || '';
+            var surname = document.getElementById('contact-surname')?.value || '';
+            var vehicleMake = document.getElementById('contact-vehicle-make')?.value || '';
+            var location = document.getElementById('contact-location')?.value || '';
+            var queryType = document.getElementById('contact-query')?.value || 'General Inquiry';
+            var msg = document.getElementById('contact-message')?.value || '';
+            var fullName = (firstName + ' ' + surname).trim();
+
+            var subject = 'Enquiry from ' + fullName + ' - ' + queryType;
+            var body = 'Name: ' + fullName + '\n';
+            if (location) body += 'Location: ' + location + '\n';
+            if (vehicleMake && vehicleMake !== 'Other') body += 'Vehicle: ' + vehicleMake + '\n';
+            body += 'Enquiry: ' + queryType + '\n\n';
+            if (msg) body += 'Message:\n' + msg;
+
+            window.location.href = 'mailto:info@odyssey4x4.co.za?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+        });
     </script>
     <script>
         // HOW WE BUILD IT Process Slideshow

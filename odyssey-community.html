@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Odyssey Community | Sign Up | Odyssey 4x4</title>
+    <meta name="description" content="Join the Odyssey 4x4 Community. Sign up for early access to new products, exclusive offers, promotions and stories from the road less travelled.">
+
+    <!-- Fonts: Montserrat & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Icons: FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/header-redesign.css">
+
+    <style>
+        /* ===== COMMUNITY PAGE SPECIFIC STYLES ===== */
+
+        .community-hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .community-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('assets/images/sign.jpg') center center / cover no-repeat;
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .community-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .community-hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+
+        .community-hero h1 span {
+            color: var(--color-accent);
+        }
+
+        .community-hero p {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .community-form-section {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+
+        .community-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .community-image-wrap {
+            position: sticky;
+            top: 100px;
+        }
+
+        .community-image-wrap img {
+            width: 100%;
+            height: auto;
+            max-height: 600px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+            display: block;
+        }
+
+        .community-image-caption {
+            margin-top: 20px;
+            padding: 18px 22px;
+            background: #f9f9f9;
+            border-radius: 12px;
+            border-left: 4px solid var(--color-accent);
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .community-image-caption i {
+            color: var(--color-accent);
+            margin-right: 8px;
+        }
+
+        .form-card {
+            background: #f9f9f9;
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 40px 36px;
+        }
+
+        .form-card h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--color-secondary);
+            margin-bottom: 6px;
+        }
+
+        .form-card .form-subtitle {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 28px;
+            line-height: 1.5;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--color-secondary);
+        }
+
+        .form-group label .required {
+            color: var(--color-accent);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 13px 16px;
+            border: 1.5px solid var(--color-border);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: var(--color-secondary);
+            background: #ffffff;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px rgba(211,47,47,0.1);
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23666' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 44px;
+            cursor: pointer;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Products checkboxes grid */
+        .products-checkbox-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 6px;
+        }
+
+        @media (max-width: 500px) {
+            .products-checkbox-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .product-checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 14px;
+            background: #ffffff;
+            border: 1.5px solid var(--color-border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .product-checkbox-item:hover {
+            border-color: var(--color-accent);
+            background: #fff5f5;
+        }
+
+        .product-checkbox-item.checked {
+            border-color: var(--color-accent);
+            background: #fff0f0;
+        }
+
+        .product-checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--color-accent);
+            cursor: pointer;
+            flex-shrink: 0;
+            margin: 0;
+        }
+
+        .product-checkbox-item .cb-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-secondary);
+            cursor: pointer;
+        }
+
+        .product-checkbox-item .cb-icon {
+            font-size: 1rem;
+            color: var(--color-accent);
+            opacity: 0.6;
+            width: 20px;
+            text-align: center;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--color-accent);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            font-family: inherit;
+            box-shadow: 0 6px 25px rgba(211,47,47,0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 35px rgba(211,47,47,0.4);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        .form-divider {
+            text-align: center;
+            margin: 24px 0;
+            color: var(--color-text-muted);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .form-divider::before,
+        .form-divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 35%;
+            height: 1px;
+            background: var(--color-border);
+        }
+
+        .form-divider::before { left: 0; }
+        .form-divider::after { right: 0; }
+
+        .form-note {
+            font-size: 0.78rem;
+            color: #999;
+            text-align: center;
+            margin-top: 16px;
+            line-height: 1.5;
+        }
+
+        .form-note a {
+            color: var(--color-accent);
+            text-decoration: underline;
+        }
+
+        /* Success message (hidden initially) */
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .form-success.show {
+            display: block;
+        }
+
+        .form-success .success-icon {
+            font-size: 4rem;
+            color: #22c55e;
+            margin-bottom: 20px;
+        }
+
+        .form-success h3 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--color-secondary);
+            margin-bottom: 10px;
+        }
+
+        .form-success p {
+            color: var(--color-text-muted);
+            font-size: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 992px) {
+            .community-layout {
+                grid-template-columns: 1fr;
+            }
+            .community-image-wrap {
+                position: static;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            .community-image-wrap img {
+                max-height: 350px;
+            }
+            .community-hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .community-form-section {
+                padding: 40px 0;
+            }
+            .form-card {
+                padding: 24px 18px;
+            }
+            .community-hero {
+                padding: 50px 0;
+            }
+            .community-hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER (WHITE THEME) -->
+    <header>
+        <div class="main-header">
+            <div class="container main-header-content">
+                <!-- Logo -->
+                <a href="index.html" class="header-logo">
+                    <img src="assets/images/odyssey4x4-logo.webp" alt="Odyssey 4x4 Logo" style="display:block;background:#ffffff;border-radius:4px;">
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="desktop-nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li class="has-dropdown">
+                            <a href="explore-gear.html">Products <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
+                            <ul class="dropdown">
+                                <li><a href="category-front-bumpers.html">Front Bumpers</a></li>
+                                <li><a href="category-rear-bumpers.html">Rear Bumpers</a></li>
+                                <li><a href="category-rock-sliders.html">Rock Sliders</a></li>
+                                <li><a href="category-fridge-slides.html">Fridge Slides</a></li>
+                                <li><a href="category-drawer-systems.html">Drawer Systems</a></li>
+                                <li><a href="category-accessories.html">Roll Bars</a></li>
+                                <li><a href="category-camping-and-overland.html">Camping &amp; Overland</a></li>
+                                <li><a href="category-roof-racks.html">Roof Racks</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-dropdown">
+                            <a href="explore-gear.html#brand-filter-grid">Vehicles <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
+                            <ul class="dropdown">
+                                <li><a href="vehicle-ford.html">Ford</a></li>
+                                <li><a href="vehicle-toyota.html">Toyota</a></li>
+                                <li><a href="vehicle-nissan.html">Nissan</a></li>
+                                <li><a href="vehicle-isuzu.html">Isuzu</a></li>
+                                <li><a href="vehicle-mazda.html">Mazda</a></li>
+                                <li><a href="vehicle-suzuki.html">Suzuki</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Hamburger Trigger for Mobile -->
+                <div class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE SLIDE-OUT MENU -->
+    <div class="slide-menu-overlay" id="slide-menu-overlay"></div>
+    <div class="slide-menu" id="slide-menu">
+        <div class="slide-menu-header">
+            <a href="index.html" class="slide-menu-logo">
+                <img src="assets/images/odyssey4x4-logo.webp" alt="Odyssey 4x4 Logo" style="background:#ffffff;border-radius:4px;">
+            </a>
+            <button class="slide-menu-close" id="slide-menu-close" aria-label="Close menu">&times;</button>
+        </div>
+        <div class="slide-menu-links">
+            <a href="index.html" class="mobile-link">Home</a>
+            
+            <div class="mobile-accordion">
+                <button class="accordion-toggle"><i class="fas fa-car"></i> Vehicles <i class="fas fa-chevron-down"></i></button>
+                <div class="accordion-content">
+                    <a href="vehicle-ford.html"><i class="fas fa-chevron-right"></i> Ford</a>
+                    <a href="vehicle-toyota.html"><i class="fas fa-chevron-right"></i> Toyota</a>
+                    <a href="vehicle-nissan.html"><i class="fas fa-chevron-right"></i> Nissan</a>
+                    <a href="vehicle-isuzu.html"><i class="fas fa-chevron-right"></i> Isuzu</a>
+                    <a href="vehicle-mazda.html"><i class="fas fa-chevron-right"></i> Mazda</a>
+                    <a href="vehicle-suzuki.html"><i class="fas fa-chevron-right"></i> Suzuki</a>
+                </div>
+            </div>
+            
+            <div class="mobile-accordion">
+                <button class="accordion-toggle"><i class="fas fa-toolbox"></i> Products <i class="fas fa-chevron-down"></i></button>
+                <div class="accordion-content">
+                    <a href="category-front-bumpers.html"><i class="fas fa-chevron-right"></i> Front Bumpers</a>
+                    <a href="category-rear-bumpers.html"><i class="fas fa-chevron-right"></i> Rear Bumpers</a>
+                    <a href="category-rock-sliders.html"><i class="fas fa-chevron-right"></i> Rock Sliders</a>
+                    <a href="category-fridge-slides.html"><i class="fas fa-chevron-right"></i> Fridge Slides</a>
+                    <a href="category-drawer-systems.html"><i class="fas fa-chevron-right"></i> Drawer Systems</a>
+                    <a href="category-accessories.html"><i class="fas fa-chevron-right"></i> Roll Bars</a>
+                    <a href="category-camping-and-overland.html"><i class="fas fa-chevron-right"></i> Camping &amp; Overland</a>
+                    <a href="category-roof-racks.html"><i class="fas fa-chevron-right"></i> Roof Racks</a>
+                </div>
+            </div>
+            
+            <a href="index.html#contact" class="mobile-link" onclick="closeMenu()">Contact</a>
+        </div>
+        <div class="red-ribbon"></div>
+    </div>
+
+    <!-- BREADCRUMB -->
+    <section style="background-color: #f8f9fa; padding: 20px 0;">
+        <div class="container">
+            <div style="display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: #666;">
+                <a href="index.html" style="color: var(--color-accent);">Home</a>
+                <i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i>
+                <span style="font-weight: 600;">The Odyssey Community</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- HERO BANNER -->
+    <section class="community-hero">
+        <div class="container">
+            <h1>THE ODYSSEY <span>COMMUNITY</span></h1>
+            <p>Join our community of overlanders, adventurers, and 4x4 enthusiasts. Be the first to know about new product launches, members-only offers, and get exclusive stories from the road less travelled.</p>
+        </div>
+    </section>
+
+    <!-- SIGNUP FORM SECTION -->
+    <section class="community-form-section">
+        <div class="container">
+            <div class="community-layout">
+
+                <!-- LEFT: Image -->
+                <div class="community-image-wrap">
+                    <img src="assets/images/sign.jpg" alt="Odyssey 4x4 Expedition Gear">
+                    <div class="community-image-caption">
+                        <i class="fas fa-quote-left"></i> 
+                        <strong>Built for Adventure. Engineered to Last.</strong>
+                        <br>Every product is tested in the harshest South African conditions — Sani Pass, Baviaans, the Richtersveld — so you can explore with confidence.
+                    </div>
+                </div>
+
+                <!-- RIGHT: Form -->
+                <div>
+                    <div class="form-card" id="signup-form-card">
+                        <!-- The form -->
+                        <div id="form-content">
+                            <h3>Become an Insider</h3>
+                            <p class="form-subtitle">Fill in your details below and get early access to new products, exclusive offers, promotions, and stories from the road less travelled.</p>
+
+                            <form id="community-signup-form" onsubmit="return handleSubmit(event)">
+                                <!-- Row: Name + Surname -->
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="signup-name">Name <span class="required">*</span></label>
+                                        <input type="text" id="signup-name" placeholder="e.g. John" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="signup-surname">Surname <span class="required">*</span></label>
+                                        <input type="text" id="signup-surname" placeholder="e.g. Smith" required>
+                                    </div>
+                                </div>
+
+                                <!-- Email -->
+                                <div class="form-group">
+                                    <label for="signup-email">Email Address <span class="required">*</span></label>
+                                    <input type="email" id="signup-email" placeholder="e.g. john@example.com" required>
+                                </div>
+
+                                <!-- Vehicle Brand -->
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="signup-brand">Vehicle Brand <span class="required">*</span></label>
+                                        <select id="signup-brand" required onchange="updateVehicleModels()">
+                                            <option value="" disabled selected>Select your brand</option>
+                                            <option value="ford">Ford</option>
+                                            <option value="toyota">Toyota</option>
+                                            <option value="nissan">Nissan</option>
+                                            <option value="isuzu">Isuzu</option>
+                                            <option value="mazda">Mazda</option>
+                                            <option value="suzuki">Suzuki</option>
+                                            <option value="other">Other / Not specified</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="signup-model">Vehicle Model <span class="required">*</span></label>
+                                        <select id="signup-model" required>
+                                            <option value="" disabled selected>Select your model</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Region -->
+                                <div class="form-group">
+                                    <label for="signup-region">Region / Where Are You From? <span class="required">*</span></label>
+                                    <input type="text" id="signup-region" placeholder="e.g. Cape Town, Western Cape" required>
+                                </div>
+
+                                <!-- Products of Interest -->
+                                <div class="form-group">
+                                    <label>Which products interest you most? <span class="required">*</span></label>
+                                    <p style="font-size: 0.8rem; color: #999; margin: -4px 0 10px;">Select one or more</p>
+                                    <div class="products-checkbox-grid" id="products-checkbox-grid">
+                                        <!-- Populated by JS -->
+                                    </div>
+                                    <div id="product-error" style="color: var(--color-accent); font-size: 0.82rem; margin-top: 6px; display: none;">Please select at least one product.</div>
+                                </div>
+
+                                <!-- Submit -->
+                                <button type="submit" class="btn-submit">
+                                    <i class="fas fa-paper-plane"></i> JOIN THE COMMUNITY
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Success message (shown after submission) -->
+                        <div class="form-success" id="form-success">
+                            <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+                            <h3>Welcome to the Community!</h3>
+                            <p>Thank you for signing up. You'll be the first to hear about new products, exclusive offers, and stories from the road less travelled.</p>
+                            <a href="index.html" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; background: var(--color-accent); color: white; padding: 14px 32px; border-radius: 50px; font-weight: 800; font-size: 0.95rem; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 25px rgba(211,47,47,0.3)';" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';">
+                                <i class="fas fa-arrow-left"></i> BACK TO HOME
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background: #ffffff; padding: 60px 0 40px; border-top: 1px solid var(--color-border); color: #1a1a1a;">
+        <div class="container">
+            <div class="footer-main-grid">
+                <div class="footer-col footer-brand-col" style="display: flex; flex-direction: column; justify-content: flex-start;">
+                    <img src="assets/images/odyssey4x4-logo.webp" alt="Odyssey 4x4" style="height: 75px; margin-bottom: 16px; background:#ffffff; padding:8px 12px; border-radius:6px; display:inline-block; width:auto; object-fit:contain; align-self:flex-start;">
+                    <h4 style="font-size: 1.8rem; line-height: 1.3; color: #1a1a1a; text-transform: none; font-weight: 900; margin: 0 0 10px;">
+                        Built for Adventure.<br>
+                        <span style="color: var(--color-accent);">Engineered to Last.</span>
+                    </h4>
+                    <!-- Get In Touch -->
+                    <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid #e8e8e8;">
+                        <h4 style="margin-bottom: 16px; font-size: 1rem; color: #1a1a1a; letter-spacing: 1px;">Get In Touch</h4>
+                        <ul class="footer-links" style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 15px; color: #666666;">
+                                <strong style="display: block; color: #1a1a1a; margin-bottom: 3px;">Email 1:</strong>
+                                <a href="mailto:placeholder1@example.com" style="color: #666666; transition: color 0.3s;">placeholder1@example.com</a>
+                            </li>
+                            <li style="margin-bottom: 15px; color: #666666;">
+                                <strong style="display: block; color: #1a1a1a; margin-bottom: 3px;">Email 2:</strong>
+                                <a href="mailto:placeholder2@example.com" style="color: #666666; transition: color 0.3s;">placeholder2@example.com</a>
+                            </li>
+                            <li style="color: #666666;">
+                                <strong style="display: block; color: #1a1a1a; margin-bottom: 3px;">Workshop:</strong>
+                                41 Gemini St, Brackenfell South, Cape Town
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4 style="margin-bottom: 20px; font-size: 1rem; color: #1a1a1a; letter-spacing: 1px;">Quick Links</h4>
+                    <ul class="footer-links" style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px;"><a href="index.html" style="color: #666666; transition: color 0.3s;">Homepage</a></li>
+                        <li style="margin-bottom: 10px;"><a href="index.html#about" style="color: #666666; transition: color 0.3s;">About Us</a></li>
+                        <li style="margin-bottom: 10px;"><a href="index.html#contact" style="color: #666666; transition: color 0.3s;">Contact Us</a></li>
+                        <li style="margin-bottom: 10px;"><a href="find-a-dealer.html" style="color: #666666; transition: color 0.3s;">Find a Nearby Dealer</a></li>
+                        <li style="margin-bottom: 10px;"><a href="odyssey-community.html" style="color: #666666; transition: color 0.3s;">The Odyssey Community</a></li>
+                        <li style="margin-bottom: 10px;"><a href="explore-gear.html" style="color: #666666; transition: color 0.3s;">Explore All Gear</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top: 1px solid #e8e8e8; padding-top: 30px; text-align: center; color: #999999; font-size: 0.85rem; font-weight: 600;">
+                <p>&copy; 2026 Odyssey 4x4 Expedition Gear. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PULSATING FLOATING WHATSAPP SYSTEM -->
+    <div class="whatsapp-float-container">
+        <button class="whatsapp-float-trigger" aria-label="Open WhatsApp Menu">
+            <i class="fab fa-whatsapp"></i>
+        </button>
+        <div class="whatsapp-popup-menu">
+            <div class="whatsapp-menu-header">
+                <h4>Inquire Directly</h4>
+            </div>
+            <a href="https://wa.me/27722573089?text=Hi%20Odyssey%204x4%2C%20I%20would%20like%20to%20inquire%20about%20Front%20Bumpers." target="_blank" class="whatsapp-menu-item">
+                <i class="fas fa-truck-front"></i> Front Bumpers
+            </a>
+            <a href="https://wa.me/27722573089?text=Hi%20Odyssey%204x4%2C%20I%20would%20like%20to%20inquire%20about%20Rear%20Bumpers." target="_blank" class="whatsapp-menu-item">
+                <i class="fas fa-truck-monster"></i> Rear Bumpers
+            </a>
+            <a href="https://wa.me/27722573089?text=Hi%20Odyssey%204x4%2C%20I%20would%20like%20to%20inquire%20about%20Rock%20Sliders." target="_blank" class="whatsapp-menu-item">
+                <i class="fas fa-grip-lines"></i> Rock Sliders
+            </a>
+            <a href="https://wa.me/27722573089?text=Hi%20Odyssey%204x4%2C%20I%20have%20a%20general%20question%20about%20your%20off-road%20gear." target="_blank" class="whatsapp-menu-item">
+                <i class="fas fa-envelope"></i> General Inquiry
+            </a>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="scripts/main.js"></script>
+    <script src="scripts/analytics.js"></script>
+    <script>
+        /* =========================================
+           VEHICLE MODELS PER BRAND
+           ========================================= */
+        const vehicleModels = {
+            ford: ['Ranger', 'Ranger Raptor', 'Everest', 'Ranger Wildtrak', 'Ranger Tremor', 'Other Ford'],
+            toyota: ['Hilux', 'Hilux Legend', 'Hilux Raider', 'Land Cruiser 70', 'Land Cruiser 300', 'Fortuner', 'Prado', 'GR Corolla', 'Other Toyota'],
+            nissan: ['Navara', 'Navara Pro-4X', 'Patrol', 'X-Trail', 'Other Nissan'],
+            isuzu: ['D-Max', 'D-Max LS', 'D-Max X-Rider', 'MU-X', 'Other Isuzu'],
+            mazda: ['BT-50', 'BT-50 Double Cab', 'CX-5', 'CX-8', 'CX-60', 'Other Mazda'],
+            suzuki: ['Jimny', 'Jimny 5-Door', 'Vitara', 'Grand Vitara', 'S-Cross', 'Other Suzuki'],
+            other: ['Not specified']
+        };
+
+        /* =========================================
+           PRODUCT CATEGORIES FOR CHECKBOXES
+           ========================================= */
+        const communityProducts = [
+            { id: 'front-bumpers', label: 'Front Bumpers', icon: 'fa-shield-halved' },
+            { id: 'rear-bumpers', label: 'Rear Bumpers', icon: 'fa-truck-pickup' },
+            { id: 'rock-sliders', label: 'Rock Sliders', icon: 'fa-grip-lines' },
+            { id: 'fridge-slides', label: 'Fridge Slides', icon: 'fa-temperature-low' },
+            { id: 'drawer-systems', label: 'Drawer Systems', icon: 'fa-box-open' },
+            { id: 'roll-bars', label: 'Roll Bars', icon: 'fa-circle-notch' },
+            { id: 'camping-overland', label: 'Camping &amp; Overland Gear', icon: 'fa-campground' },
+            { id: 'roof-racks', label: 'Roof Racks', icon: 'fa-bag-shopping' }
+        ];
+
+        /* =========================================
+           INIT - DOM READY
+           ========================================= */
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProductCheckboxes();
+            setupCheckboxInteractions();
+        });
+
+        /* =========================================
+           RENDER PRODUCT CHECKBOXES
+           ========================================= */
+        function renderProductCheckboxes() {
+            const grid = document.getElementById('products-checkbox-grid');
+            if (!grid) return;
+
+            grid.innerHTML = communityProducts.map(function(p) {
+                return `
+                    <label class="product-checkbox-item">
+                        <input type="checkbox" name="products" value="${p.id}">
+                        <i class="fas ${p.icon} cb-icon"></i>
+                        <span class="cb-label">${p.label}</span>
+                    </label>
+                `;
+            }).join('');
+        }
+
+        /* =========================================
+           CHECKBOX CLICK BEHAVIOR
+           ========================================= */
+        function setupCheckboxInteractions() {
+            const items = document.querySelectorAll('.product-checkbox-item');
+            items.forEach(function(item) {
+                const checkbox = item.querySelector('input[type="checkbox"]');
+                // Let the browser handle the toggle via the <label> element
+                // We just sync the visual state on change
+                checkbox.addEventListener('change', function() {
+                    item.classList.toggle('checked', this.checked);
+                });
+                // Initialize visual state
+                item.classList.toggle('checked', checkbox.checked);
+            });
+        }
+
+        /* =========================================
+           UPDATE VEHICLE MODELS BASED ON BRAND
+           ========================================= */
+        function updateVehicleModels() {
+            const brandSelect = document.getElementById('signup-brand');
+            const modelSelect = document.getElementById('signup-model');
+            const selectedBrand = brandSelect.value;
+
+            // Clear existing options
+            modelSelect.innerHTML = '';
+
+            if (!selectedBrand || selectedBrand === '') {
+                const defaultOpt = document.createElement('option');
+                defaultOpt.value = '';
+                defaultOpt.disabled = true;
+                defaultOpt.selected = true;
+                defaultOpt.textContent = 'Select your model';
+                modelSelect.appendChild(defaultOpt);
+                return;
+            }
+
+            // Get models for the selected brand
+            const models = vehicleModels[selectedBrand] || ['Not specified'];
+
+            // Add default option
+            const defaultOpt = document.createElement('option');
+            defaultOpt.value = '';
+            defaultOpt.disabled = true;
+            defaultOpt.selected = true;
+            defaultOpt.textContent = 'Select your model';
+            modelSelect.appendChild(defaultOpt);
+
+            // Add model options
+            models.forEach(function(model) {
+                const opt = document.createElement('option');
+                opt.value = model.toLowerCase().replace(/\s+/g, '-');
+                opt.textContent = model;
+                modelSelect.appendChild(opt);
+            });
+        }
+
+        /* =========================================
+           FORM SUBMISSION HANDLER
+           ========================================= */
+        function handleSubmit(event) {
+            event.preventDefault();
+
+            // Validate at least one product is selected
+            const checkedProducts = document.querySelectorAll('input[name="products"]:checked');
+            const productError = document.getElementById('product-error');
+
+            if (checkedProducts.length === 0) {
+                productError.style.display = 'block';
+                // Highlight all checkboxes with error border
+                document.querySelectorAll('.product-checkbox-item').forEach(function(item) {
+                    item.style.borderColor = 'var(--color-accent)';
+                });
+                return false;
+            }
+
+            productError.style.display = 'none';
+
+            // Gather form data
+            const name = document.getElementById('signup-name').value.trim();
+            const surname = document.getElementById('signup-surname').value.trim();
+            const email = document.getElementById('signup-email').value.trim();
+            const brand = document.getElementById('signup-brand');
+            const brandLabel = brand.options[brand.selectedIndex].text;
+            const model = document.getElementById('signup-model');
+            const modelLabel = model.options[model.selectedIndex]?.text || 'Not specified';
+            const region = document.getElementById('signup-region').value.trim();
+
+            const selectedProducts = [];
+            checkedProducts.forEach(function(cb) {
+                const label = cb.closest('.product-checkbox-item').querySelector('.cb-label').textContent.trim();
+                selectedProducts.push(label);
+            });
+
+            const fullName = name + ' ' + surname;
+
+            // Build the message for WhatsApp / email
+            let message = 'Hi Odyssey 4x4! I would like to join the Odyssey Community.\n\n';
+            message += 'Name: ' + fullName + '\n';
+            message += 'Email: ' + email + '\n';
+            message += 'Vehicle: ' + brandLabel + ' - ' + modelLabel + '\n';
+            message += 'Region: ' + region + '\n';
+            message += 'Products interested in: ' + selectedProducts.join(', ') + '\n\n';
+            message += 'Looking forward to being part of the community!';
+
+            // ===== TRACK FORM SUBMISSION =====
+            if (window.odysseyAnalytics) {
+                window.odysseyAnalytics.trackFormSubmit('community-signup-form', 'Community Signup');
+            }
+
+            // ===== SAVE TO LOCALSTORAGE =====
+            const signupData = {
+                id: Date.now(),
+                type: 'community',
+                name: name,
+                surname: surname,
+                fullName: fullName,
+                email: email,
+                brand: brandLabel,
+                model: modelLabel,
+                region: region,
+                products: selectedProducts,
+                timestamp: new Date().toISOString(),
+                date: new Date().toLocaleDateString('en-ZA')
+            };
+
+            let allSignups = [];
+            try {
+                const stored = localStorage.getItem('odyssey_customer_data');
+                if (stored) allSignups = JSON.parse(stored);
+            } catch(e) { allSignups = []; }
+            allSignups.push(signupData);
+            localStorage.setItem('odyssey_customer_data', JSON.stringify(allSignups));
+
+            // Try email first (mailto:)
+            const subject = 'New Community Signup - ' + fullName;
+            const mailtoUrl = 'mailto:info@odyssey4x4.co.za?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(message);
+            
+            // Also open WhatsApp as a secondary option
+            const waUrl = 'https://wa.me/27722573089?text=' + encodeURIComponent(message);
+
+            // Show success state
+            document.getElementById('form-content').style.display = 'none';
+            document.getElementById('form-success').classList.add('show');
+
+            // Open email client
+            window.location.href = mailtoUrl;
+
+            // Also open WhatsApp after a short delay
+            setTimeout(function() {
+                window.open(waUrl, '_blank');
+            }, 800);
+
+            return false;
+        }
+    </script>
+</body>
+
+</html>

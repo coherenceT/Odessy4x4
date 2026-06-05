@@ -33,13 +33,23 @@ header {
 .header-logo {
     display: flex;
     align-items: center;
+    margin-right: auto;
+}
+
+@media (min-width: 992px) {
+    .header-logo {
+        margin-left: -10px;
+    }
 }
 
 .header-logo img {
-    height: 55px !important;
+    height: 80px !important;
+    width: auto !important;
+    max-width: 100%;
+    object-fit: contain;
     display: block;
     transition: transform 0.3s ease;
-    filter: none !important; /* No brightness filters since background is white */
+    filter: none !important;
 }
 
 .header-logo img:hover {
@@ -167,7 +177,7 @@ header {
     }
     
     .header-logo img {
-        height: 50px !important;
+        height: 60px !important;
     }
     
     /* Horizontal scrolling for product-nav-bar on mobile */
