@@ -476,8 +476,8 @@ function setupHeroSlider() {
     function resetAutoPlay() {
         if (slideTimeout) clearTimeout(slideTimeout);
         
-        // First slide (index 0) stays for 7 seconds, others for 3.5 seconds
-        const duration = (current === 0) ? 7000 : 3500;
+        // All slides stay for 7 seconds to give visitors comfortable reading time
+        const duration = 7000;
         
         slideTimeout = setTimeout(() => {
             goToSlide(current + 1);

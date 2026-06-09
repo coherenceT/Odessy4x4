@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <rect width="400" height="300" fill="#1a1a1a"/>
+  <g transform="translate(200,150)" fill="none" stroke="#d32f2f" stroke-width="2.5">
+    <!-- Welding torch -->
+    <line x1="-60" y1="40" x2="60" y2="-40" stroke="#ff6b6b" stroke-width="3"/>
+    <line x1="-60" y1="40" x2="-80" y2="60" stroke="#888" stroke-width="4"/>
+    <circle cx="62" cy="-42" r="5" fill="#ff6b6b" stroke="none"/>
+    <!-- Sparks -->
+    <circle cx="80" cy="-55" r="2" fill="#ffcc00" stroke="none"/>
+    <circle cx="70" cy="-65" r="1.5" fill="#ffcc00" stroke="none"/>
+    <circle cx="90" cy="-45" r="1.5" fill="#ffcc00" stroke="none"/>
+    <circle cx="85" cy="-70" r="1" fill="#ffcc00" stroke="none"/>
+  </g>
+  <text x="200" y="230" text-anchor="middle" fill="#666" font-family="Inter, sans-serif" font-size="11" font-weight="600">FABRICATION & WELDING</text>
+</svg>

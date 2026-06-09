@@ -587,6 +587,13 @@
             max-width: 560px;
             margin: 0;
         }
+        .proc-slide-subtitle {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--color-accent);
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
         .proc-arrow {
             position: absolute;
             top: 50%; transform: translateY(-50%);
@@ -599,7 +606,10 @@
             cursor: pointer; z-index: 10;
             transition: all 0.3s ease;
             backdrop-filter: blur(4px);
+            opacity: 0.4;
         }
+        .process-slideshow-wrap:hover .proc-arrow { opacity: 1; }
+        @media (hover: hover) { .proc-arrow { opacity: 0; } .process-slideshow-wrap:hover .proc-arrow { opacity: 1; } }
         .proc-arrow:hover { background: var(--color-accent); border-color: var(--color-accent); }
         .proc-arrow.prev { left: 25px; }
         .proc-arrow.next { right: 25px; }
@@ -621,11 +631,12 @@
             .proc-slide-content { padding: 25px 20px 40px; }
             .proc-slide-title { font-size: 1.45rem; }
             .proc-slide-desc { font-size: 0.88rem; }
+            .proc-slide-subtitle { font-size: 0.8rem; }
             .proc-dots { right: 20px; bottom: 15px; }
             .proc-arrow { width: 38px; height: 38px; font-size: 0.85rem; }
             .proc-arrow.prev { left: 12px; }
             .proc-arrow.next { right: 12px; }
-            .process-slideshow-wrap { height: 58vh; min-height: 360px; }
+            .process-slideshow-wrap { height: 68vh; min-height: 420px; }
         }
 
         /* Footer responsive */
@@ -1179,52 +1190,57 @@
     <section class="process-slideshow-section">
         <div class="process-slideshow-header">
             <h2 class="section-title">HOW WE BUILD IT</h2>
-            <p class="section-subtitle" style="max-width: 620px; margin: 0 auto;">Every Odyssey product goes through a rigorous 5-step engineering process.</p>
+            <p class="section-subtitle" style="max-width: 620px; margin: 0 auto;">Every Odyssey product goes through a rigorous 5-step engineering process from concept to completion.</p>
         </div>
         <div class="process-slideshow-wrap">
             <div class="proc-slide active">
-                <img src="odyssey_engineering_process/01 3D Design &amp; CAD.png" alt="3D Design and CAD">
+                <img src="assets/images/Precision Design &amp; Engineering.svg" alt="Precision Design &amp; Engineering">
                 <div class="proc-slide-overlay"></div>
                 <div class="proc-slide-content">
                     <div class="proc-step-label">Step 01</div>
-                    <h3 class="proc-slide-title">3D Design &amp; CAD</h3>
-                    <p class="proc-slide-desc">Every product starts as a precision 3D CAD model, engineered for exact vehicle fitment.</p>
+                    <h3 class="proc-slide-title">Precision Design &amp; Engineering</h3>
+                    <p class="proc-slide-subtitle">Built with purpose. Designed to perform.</p>
+                    <p class="proc-slide-desc">Every bumper begins as a detailed 3D CAD model, engineered for strength, fitment, recovery capability, and real-world off-road performance before a single piece of steel is cut.</p>
                 </div>
             </div>
             <div class="proc-slide">
-                <img src="odyssey_engineering_process/02 CNC Laser Cutting.png" alt="CNC Laser Cutting">
+                <img src="assets/images/CNC Laser Cutting.svg" alt="CNC Laser Cutting">
                 <div class="proc-slide-overlay"></div>
                 <div class="proc-slide-content">
                     <div class="proc-step-label">Step 02</div>
                     <h3 class="proc-slide-title">CNC Laser Cutting</h3>
-                    <p class="proc-slide-desc">High-grade steel is laser cut to micron accuracy, ensuring perfect edges every time.</p>
+                    <p class="proc-slide-subtitle">Accuracy down to the millimetre.</p>
+                    <p class="proc-slide-desc">Using advanced CNC laser technology, every component is cut with exceptional precision, ensuring perfect fitment, clean edges, and consistent quality across every product we produce.</p>
                 </div>
             </div>
             <div class="proc-slide">
-                <img src="odyssey_engineering_process/03 Expert Welding.png" alt="Expert Welding">
+                <img src="odyssey_engineering_process/03 Expert Welding.png" alt="Fabrication and Welding">
                 <div class="proc-slide-overlay"></div>
                 <div class="proc-slide-content">
                     <div class="proc-step-label">Step 03</div>
-                    <h3 class="proc-slide-title">Expert Welding</h3>
-                    <p class="proc-slide-desc">Hand-MIG and TIG welded by our experienced team for maximum structural integrity.</p>
+                    <h3 class="proc-slide-title">Fabrication &amp; Welding</h3>
+                    <p class="proc-slide-subtitle">Where steel becomes strength.</p>
+                    <p class="proc-slide-desc">Each component is carefully formed, assembled, and welded by our skilled team to create a structure that delivers maximum durability both on and off the trail.</p>
                 </div>
             </div>
             <div class="proc-slide">
-                <img src="odyssey_engineering_process/04 Powder Coating.png" alt="Powder Coating">
+                <img src="assets/images/Premium Surface Coating.svg" alt="Premium Surface Coating">
                 <div class="proc-slide-overlay"></div>
                 <div class="proc-slide-content">
                     <div class="proc-step-label">Step 04</div>
-                    <h3 class="proc-slide-title">Powder Coating</h3>
-                    <p class="proc-slide-desc">Heavy-duty premium powder coat applied for superior corrosion and chip resistance.</p>
+                    <h3 class="proc-slide-title">Premium Surface Coating</h3>
+                    <p class="proc-slide-subtitle">A tough finish for tough conditions.</p>
+                    <p class="proc-slide-desc">Every bumper undergoes a professional coating process that enhances corrosion resistance, improves durability, and delivers the premium finish Odyssey products are known for.</p>
                 </div>
             </div>
             <div class="proc-slide">
-                <img src="odyssey_engineering_process/05 QA &amp; Dispatch.png" alt="QA and Dispatch">
+                <img src="assets/images/Quality Assurance.svg" alt="Quality Assurance">
                 <div class="proc-slide-overlay"></div>
                 <div class="proc-slide-content">
                     <div class="proc-step-label">Step 05</div>
-                    <h3 class="proc-slide-title">QA &amp; Dispatch</h3>
-                    <p class="proc-slide-desc">Rigorous quality inspection and fitment checks before your gear leaves our workshop.</p>
+                    <h3 class="proc-slide-title">Quality Assurance</h3>
+                    <p class="proc-slide-subtitle">Every Detail Matters.</p>
+                    <p class="proc-slide-desc">Every bumper is carefully inspected throughout the manufacturing process to ensure exceptional quality, precise fitment, and reliable performance in demanding conditions.</p>
                 </div>
             </div>
             <button class="proc-arrow prev" onclick="procPrev()" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
@@ -1459,7 +1475,7 @@
 
             function resetProcTimer() {
                 clearInterval(procTimer);
-                procTimer = setInterval(function() { procGoTo(procIdx + 1); }, 4500);
+                procTimer = setInterval(function() { procGoTo(procIdx + 1); }, 6000);
             }
 
             if (slides.length && dotsContainer) {
