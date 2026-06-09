@@ -12,6 +12,76 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/header-redesign.css">
+
+    <style>
+        /* ===== FIND A DEALER PAGE - MOBILE RESPONSIVE OVERRIDES ===== */
+        @media (max-width: 768px) {
+            /* Switch two-column layout to single column */
+            .dealer-grid {
+                grid-template-columns: 1fr !important;
+                gap: 30px !important;
+            }
+
+            /* Page heading */
+            .dealer-page-heading {
+                font-size: 1.8rem !important;
+            }
+
+            .dealer-page-subtitle {
+                font-size: 0.9rem !important;
+            }
+
+            /* Card padding reduction */
+            .dealer-card {
+                padding: 24px !important;
+            }
+
+            /* Section padding reduction */
+            .dealer-section {
+                padding-top: 40px !important;
+                padding-bottom: 40px !important;
+            }
+
+            /* Breadcrumb padding */
+            .dealer-breadcrumb-section {
+                padding: 14px 0 !important;
+            }
+
+            /* Visit Workshop section */
+            .dealer-visit-card {
+                padding: 28px 20px !important;
+            }
+
+            .dealer-visit-card h3 {
+                font-size: 1.1rem !important;
+            }
+
+            .dealer-visit-card p {
+                font-size: 0.9rem !important;
+            }
+
+            /* Make buttons full-width on mobile */
+            .dealer-card a[style*="display: inline-flex"],
+            .dealer-visit-card a[style*="display: inline-flex"] {
+                width: 100% !important;
+                justify-content: center !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .dealer-page-heading {
+                font-size: 1.5rem !important;
+            }
+
+            .dealer-card {
+                padding: 20px 16px !important;
+            }
+
+            .dealer-card h2 {
+                font-size: 1.3rem !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -101,7 +171,7 @@
     </div>
 
     <!-- BREADCRUMB -->
-    <section style="background-color: #f8f9fa; padding: 20px 0;">
+    <section class="dealer-breadcrumb-section" style="background-color: #f8f9fa; padding: 20px 0;">
         <div class="container">
             <div style="display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: #666;">
                 <a href="index.html" style="color: var(--color-accent);">Home</a>
@@ -112,20 +182,20 @@
     </section>
 
     <!-- PAGE HEADER -->
-    <section class="section-padding" style="background-color: #ffffff; padding-top: 60px; padding-bottom: 40px; border-bottom: 1px solid var(--color-border);">
+    <section class="dealer-section" style="background-color: #ffffff; padding-top: 60px; padding-bottom: 40px; border-bottom: 1px solid var(--color-border);">
         <div class="container">
-            <h1 style="font-size: 2.8rem; color: var(--color-secondary); margin-bottom: 15px;">Find a Nearby Dealer</h1>
-            <p style="color: var(--color-text-muted); font-size: 1.05rem; max-width: 700px; line-height: 1.7; font-weight: 600;">Visit our workshop directly or contact us to find your nearest Odyssey 4x4 dealer and stockist.</p>
+            <h1 class="dealer-page-heading" style="font-size: 2.8rem; color: var(--color-secondary); margin-bottom: 15px;">Find a Nearby Dealer</h1>
+            <p class="dealer-page-subtitle" style="color: var(--color-text-muted); font-size: 1.05rem; max-width: 700px; line-height: 1.7; font-weight: 600;">Visit our workshop directly or contact us to find your nearest Odyssey 4x4 dealer and stockist.</p>
         </div>
     </section>
 
     <!-- DEALER INFO -->
-    <section class="section-padding" style="background: #fafafa;">
+    <section class="dealer-section" style="background: #fafafa; padding-top: 80px; padding-bottom: 80px;">
         <div class="container">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start;">
+            <div class="dealer-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start;">
                 <!-- Workshop / Headquarters -->
                 <div>
-                    <div style="background: #ffffff; border: 1px solid var(--color-border); border-radius: 12px; padding: 35px; box-shadow: var(--shadow-premium);">
+                    <div class="dealer-card" style="background: #ffffff; border: 1px solid var(--color-border); border-radius: 12px; padding: 35px; box-shadow: var(--shadow-premium);">
                         <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(211,47,47,0.1); display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
                             <i class="fas fa-store" style="font-size: 1.4rem; color: var(--color-accent);"></i>
                         </div>
@@ -160,7 +230,7 @@
 
                 <!-- Dealer Inquiry Form -->
                 <div>
-                    <div style="background: #ffffff; border: 1px solid var(--color-border); border-radius: 12px; padding: 35px; box-shadow: var(--shadow-premium);">
+                    <div class="dealer-card" style="background: #ffffff; border: 1px solid var(--color-border); border-radius: 12px; padding: 35px; box-shadow: var(--shadow-premium);">
                         <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(211,47,47,0.1); display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
                             <i class="fas fa-truck" style="font-size: 1.4rem; color: var(--color-accent);"></i>
                         </div>
@@ -179,11 +249,11 @@
     </section>
 
     <!-- HOW TO FIND US -->
-    <section class="section-padding" style="background: #ffffff;">
+    <section class="dealer-section" style="background: #ffffff; padding-top: 80px; padding-bottom: 80px;">
         <div class="container">
             <h2 class="section-title text-center">Visit Our Workshop</h2>
             <p class="section-subtitle text-center" style="max-width: 600px; margin: 0 auto 40px;">We are based in Cape Town and welcome walk-in customers during business hours.</p>
-            <div style="background: #f5f5f5; border-radius: 12px; padding: 40px; text-align: center; border: 1px solid var(--color-border);">
+            <div class="dealer-visit-card" style="background: #f5f5f5; border-radius: 12px; padding: 40px; text-align: center; border: 1px solid var(--color-border);">
                 <i class="fas fa-map-pin" style="font-size: 3rem; color: var(--color-accent); margin-bottom: 20px;"></i>
                 <h3 style="font-size: 1.3rem; color: var(--color-secondary); margin-bottom: 8px;">Odyssey 4x4 Workshop</h3>
                 <p style="color: var(--color-text-muted); font-size: 1.05rem; margin-bottom: 5px;">41 Gemini Street, Brackenfell South</p>

@@ -897,21 +897,19 @@ header {
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
-    transition: all 0.3s ease;
-    opacity: 0.4;
+    transition: opacity 0.3s ease, background 0.3s ease, transform 0.3s ease;
+    opacity: 0;
 }
 
-.hero-slider-section:hover .slider-arrow {
-    opacity: 1;
-}
-
-@media (hover: hover) {
+/* On touch devices (no hover), buttons are always slightly visible */
+@media (hover: none) {
     .slider-arrow {
-        opacity: 0;
+        opacity: 0.4;
     }
-    .hero-slider-section:hover .slider-arrow {
-        opacity: 1;
-    }
+}
+
+.slider-arrow.visible {
+    opacity: 1 !important;
 }
 
 .slider-arrow:hover {

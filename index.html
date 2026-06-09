@@ -604,12 +604,13 @@
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             cursor: pointer; z-index: 10;
-            transition: all 0.3s ease;
+            transition: opacity 0.3s ease, background 0.3s ease, transform 0.3s ease;
             backdrop-filter: blur(4px);
-            opacity: 0.4;
+            opacity: 0;
         }
-        .process-slideshow-wrap:hover .proc-arrow { opacity: 1; }
-        @media (hover: hover) { .proc-arrow { opacity: 0; } .process-slideshow-wrap:hover .proc-arrow { opacity: 1; } }
+        /* On touch devices (no hover), buttons are always slightly visible */
+        @media (hover: none) { .proc-arrow { opacity: 0.4; } }
+        .proc-arrow.visible { opacity: 1 !important; }
         .proc-arrow:hover { background: var(--color-accent); border-color: var(--color-accent); }
         .proc-arrow.prev { left: 25px; }
         .proc-arrow.next { right: 25px; }
@@ -1487,6 +1488,11 @@
                     dotsContainer.appendChild(dot);
                 });
                 resetProcTimer();
+            }
+
+            // Side-hover button behavior using shared function from main.js
+            if (typeof setupSideHoverButtons === 'function') {
+                setupSideHoverButtons('.process-slideshow-wrap', '.proc-arrow', 100);
             }
         })();
     </script>

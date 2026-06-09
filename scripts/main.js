@@ -494,4 +494,54 @@ function setupHeroSlider() {
     window.sliderPrev = () => {
         goToSlide(current - 1);
     };
+    
+    // Side-hover button behavior: buttons appear when hovering near edges, disappear after 2s
+    setupSideHoverButtons('.hero-slider-section', '.slider-arrow', 100);
+}
+
+/* =========================================
+   10b. SLIDER SIDE-HOVER BUTTON BEHAVIOR
+   ========================================= */
+function setupSideHoverButtons(containerSelector, buttonSelector, sideThreshold) {
+    const container = document.querySelector(containerSelector);
+    if (!container) return;
+    const buttons = container.querySelectorAll(buttonSelector);
+    if (!buttons.length) return;
+    
+    let hideTimeout = null;
+    let buttonsVisible = false;
+    
+    container.addEventListener('mousemove', function(e) {
+        const rect = container.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const width = rect.width;
+        const nearSide = x < sideThreshold || x > width - sideThreshold;
+        
+        if (nearSide && !buttonsVisible) {
+            buttons.forEach(function(btn) { btn.classList.add('visible'); });
+            buttonsVisible = true;
+            if (hideTimeout) clearTimeout(hideTimeout);
+            hideTimeout = setTimeout(function() {
+                buttons.forEach(function(btn) { btn.classList.remove('visible'); });
+                buttonsVisible = false;
+                hideTimeout = null;
+            }, 2000);
+        } else if (!nearSide && buttonsVisible) {
+            buttons.forEach(function(btn) { btn.classList.remove('visible'); });
+            buttonsVisible = false;
+            if (hideTimeout) {
+                clearTimeout(hideTimeout);
+                hideTimeout = null;
+            }
+        }
+    });
+    
+    container.addEventListener('mouseleave', function() {
+        buttons.forEach(function(btn) { btn.classList.remove('visible'); });
+        buttonsVisible = false;
+        if (hideTimeout) {
+            clearTimeout(hideTimeout);
+            hideTimeout = null;
+        }
+    });
 }
