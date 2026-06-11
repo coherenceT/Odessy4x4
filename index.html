@@ -343,6 +343,20 @@
             text-align: center;
         }
 
+        /* ===== COUNTER ANIMATION ===== */
+        .stat-number {
+            display: inline-block;
+            transition: transform 0.1s ease;
+        }
+        .stat-number.animate {
+            animation: counterPop 0.4s ease;
+        }
+        @keyframes counterPop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
         /* Contact Form */
         .contact-grid {
             display: grid;
@@ -948,25 +962,27 @@
         </div>
     </section>
 
-    <!-- ABOUT / HISTORY SECTION -->
+    <!-- ABOUT / OUR STORY SECTION -->
     <section id="about" class="about-section section-padding" style="background: #ffffff;">
         <div class="container">
             <div class="about-grid">
                 <div class="about-content">
-                    <h2 class="section-title">OUR HISTORY</h2>
-                    <p class="about-lead">Odyssey 4x4 was born from a passion for exploring the unforgiving African landscape. For years, we have been designing and manufacturing premium 4x4 accessories that withstand the toughest conditions.</p>
-                    <p class="about-text">Our commitment is to quality, durability, and a rugged aesthetic that transforms your vehicle into the ultimate expedition machine. Every single component leaves our workshop having passed our rigorous quality standard checks.</p>
-                    <div style="margin-top: 30px; display: flex; gap: 20px; flex-wrap: wrap;">
-                        <div style="text-align: center;">
-                            <div style="font-size: 2.5rem; font-weight: 900; color: var(--color-accent); line-height: 1;">10+</div>
+                    <h2 class="section-title">OUR STORY</h2>
+                    <p class="about-lead">Odyssey 4x4 was built on a simple belief: adventure should never be limited by the equipment you trust.</p>
+                    <p class="about-text">Born from a passion for exploring Africa's remote roads, rugged trails, and hidden destinations, Odyssey was created to design products that are as capable as the people who use them. Every bumper, roof rack, slider, and accessory is engineered with purpose, built for durability, and designed to perform when it matters most.</p>
+                    <p class="about-text">We're more than a 4x4 brand—we're a community of adventurers, explorers, and dreamers who understand that the best memories are made beyond the beaten path.</p>
+                    <p class="about-text" style="font-weight: 700; color: var(--color-accent);">Because every journey has a destination. Every adventure has a story. Every story begins with an Odyssey.</p>
+                    <div class="stats-counter-row" style="margin-top: 35px; display: flex; gap: 30px; flex-wrap: wrap;">
+                        <div class="stat-item" style="text-align: center;">
+                            <div class="stat-number" data-target="10" data-suffix="+" style="font-size: 2.5rem; font-weight: 900; color: var(--color-accent); line-height: 1;">0</div>
                             <div style="font-size: 0.75rem; font-weight: 700; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px;">Years Experience</div>
                         </div>
-                        <div style="text-align: center;">
-                            <div style="font-size: 2.5rem; font-weight: 900; color: var(--color-accent); line-height: 1;">500+</div>
+                        <div class="stat-item" style="text-align: center;">
+                            <div class="stat-number" data-target="500" data-suffix="+" style="font-size: 2.5rem; font-weight: 900; color: var(--color-accent); line-height: 1;">0</div>
                             <div style="font-size: 0.75rem; font-weight: 700; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px;">Rigs Built</div>
                         </div>
-                        <div style="text-align: center;">
-                            <div style="font-size: 2.5rem; font-weight: 900; color: var(--color-accent); line-height: 1;">5★</div>
+                        <div class="stat-item" style="text-align: center;">
+                            <div class="stat-number" data-target="5" data-suffix="★" style="font-size: 2.5rem; font-weight: 900; color: var(--color-accent); line-height: 1;">0</div>
                             <div style="font-size: 0.75rem; font-weight: 700; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px;">Rated Quality</div>
                         </div>
                     </div>
@@ -1325,6 +1341,76 @@
     <!-- SCRIPTS -->
     <script src="scripts/main.js"></script>
     <script src="scripts/analytics.js"></script>
+    
+    <!-- ANIMATED COUNTERS FOR OUR STORY SECTION -->
+    <script>
+        (function() {
+            'use strict';
+
+            // Only run if IntersectionObserver is supported
+            if (!('IntersectionObserver' in window)) return;
+
+            var section = document.getElementById('about');
+            if (!section) return;
+
+            var counters = section.querySelectorAll('.stat-number');
+            if (!counters.length) return;
+
+            var hasAnimated = false;
+
+            // Ease-out function for smooth deceleration
+            function easeOutCubic(t) {
+                return 1 - Math.pow(1 - t, 3);
+            }
+
+            function animateCounter(el) {
+                var target = parseInt(el.getAttribute('data-target'), 10);
+                var suffix = el.getAttribute('data-suffix') || '';
+                var duration = 2000; // 2 seconds
+                var startTime = null;
+
+                function step(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    var elapsed = timestamp - startTime;
+                    var progress = Math.min(elapsed / duration, 1);
+                    var easedProgress = easeOutCubic(progress);
+                    var current = Math.round(easedProgress * target);
+                    el.textContent = current + suffix;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    } else {
+                        el.textContent = target + suffix;
+                        el.classList.add('animate');
+                        // Remove the animation class after it completes so it can re-trigger if needed
+                        setTimeout(function() {
+                            el.classList.remove('animate');
+                        }, 500);
+                    }
+                }
+
+                requestAnimationFrame(step);
+            }
+
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting && !hasAnimated) {
+                        hasAnimated = true;
+                        counters.forEach(function(c) {
+                            // Small staggered delay for each counter
+                            var delay = parseInt(c.getAttribute('data-target'), 10) > 100 ? 200 : 0;
+                            setTimeout(function() {
+                                animateCounter(c);
+                            }, delay);
+                        });
+                        observer.disconnect();
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            observer.observe(section);
+        })();
+    </script>
     
     <!-- SECRET: Tap logo 4 times to access Manager Portal -->
     <script>
