@@ -1,47 +1,15 @@
 /* =========================================
    ODYSSEY 4x4 - CLICK & PAGE TRACKING ANALYTICS
    Tracks page views, clicks, and user interactions
-   Stores everything in localStorage under 'odyssey_analytics_data'
+   Routes through the Supabase data layer (with localStorage fallback)
    ========================================= */
 
 (function() {
     'use strict';
 
     /* =========================================
-       CONFIGURATION
-       ========================================= */
-    const STORAGE_KEY = 'odyssey_analytics_data';
-    const MAX_EVENTS = 2000; // Max events to store (oldest trimmed)
-
-    /* =========================================
        HELPERS
        ========================================= */
-    function getAnalytics() {
-        try {
-            const stored = localStorage.getItem(STORAGE_KEY);
-            if (stored) return JSON.parse(stored);
-        } catch(e) {}
-        return { pageViews: [], clicks: [], formSubmissions: [], sessions: [] };
-    }
-
-    function saveAnalytics(data) {
-        // Trim if over max
-        if (data.clicks.length > MAX_EVENTS) data.clicks = data.clicks.slice(-MAX_EVENTS);
-        if (data.pageViews.length > MAX_EVENTS) data.pageViews = data.pageViews.slice(-MAX_EVENTS);
-        if (data.formSubmissions.length > MAX_EVENTS) data.formSubmissions = data.formSubmissions.slice(-MAX_EVENTS);
-        if (data.sessions.length > MAX_EVENTS) data.sessions = data.sessions.slice(-MAX_EVENTS);
-        try {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-        } catch(e) {
-            // If localStorage is full, trim more aggressively
-            data.clicks = data.clicks.slice(-500);
-            data.pageViews = data.pageViews.slice(-500);
-            data.formSubmissions = data.formSubmissions.slice(-500);
-            data.sessions = data.sessions.slice(-500);
-            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch(e2) {}
-        }
-    }
-
     function now() {
         return new Date().toISOString();
     }
@@ -65,9 +33,8 @@
        TRACK PAGE VIEW
        ========================================= */
     function trackPageView() {
-        var data = getAnalytics();
         var pg = pageName();
-        data.pageViews.push({
+        db.trackPageView({
             type: 'pageview',
             path: pg.path,
             title: pg.title,
@@ -76,16 +43,14 @@
             timestamp: now(),
             sessionId: getSessionId()
         });
-        saveAnalytics(data);
     }
 
     /* =========================================
        TRACK CLICK
        ========================================= */
     function trackClick(element, label, category) {
-        var data = getAnalytics();
         var pg = pageName();
-        data.clicks.push({
+        db.trackClick({
             type: 'click',
             path: pg.path,
             label: label || element.textContent || element.tagName,
@@ -97,16 +62,14 @@
             timestamp: now(),
             sessionId: getSessionId()
         });
-        saveAnalytics(data);
     }
 
     /* =========================================
        TRACK FORM SUBMISSION
        ========================================= */
     function trackFormSubmit(formId, formName) {
-        var data = getAnalytics();
         var pg = pageName();
-        data.formSubmissions.push({
+        db.trackFormSubmit({
             type: 'form_submit',
             path: pg.path,
             formId: formId || '',
@@ -114,7 +77,6 @@
             timestamp: now(),
             sessionId: getSessionId()
         });
-        saveAnalytics(data);
     }
 
     /* =========================================
@@ -123,9 +85,7 @@
     window.odysseyAnalytics = {
         trackClick: trackClick,
         trackFormSubmit: trackFormSubmit,
-        trackPageView: trackPageView,
-        getAnalytics: getAnalytics,
-        STORAGE_KEY: STORAGE_KEY
+        trackPageView: trackPageView
     };
 
     /* =========================================

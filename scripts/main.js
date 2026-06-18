@@ -95,16 +95,23 @@ const products = [
     // --- CAMPING & OVERLAND GEAR ---
     {
         id: 46,
-        name: "Odyssey Camping & Overland Gear Kit",
+        name: "Odyssey SecureClamp 3kg Gas Carrier",
         category: "camping-and-overland",
         brand: "universal",
-        price: 12500,
-        image: "assets/images/Camping and Overland Gear.png",
+        price: 2900,
+        image: "assets/images/Gas1.jpg",
+        images: ["assets/images/Gas1.jpg", "assets/images/Gas2.jpg", "assets/images/Gas3.jpg", "assets/images/Gas4.jpg", "assets/images/Gas5.jpg", "assets/images/Gas6.jpg"],
         status: "in-stock",
-        partNumber: "OD-CO-UN46",
-        description: "Complete camping and overland gear kit designed for extended self-sufficient expeditions across the African bushveld.",
-        features: ["Premium gear organization system", "Modular expandable design", "Heavy-duty weather-resistant materials", "Easy vehicle install and removal", "Compact storage when not in use"],
-        specifications: { material: "Heavy Duty Fabric & Alloy", weight: "18kg", capacity: "120L", warranty: "2 Years" }
+        partNumber: "OD-SC-UN46",
+        description: "Built for the demands of serious overland travel, the Odyssey Secure Clamp 3kg Gas Mount combines lightweight construction with uncompromising strength. Precision-manufactured from high-grade Aluminium, it delivers exceptional durability while keeping weight to a minimum—making it the ideal solution for touring, camping, and off-road adventures.\n\nEngineered to withstand harsh conditions and relentless corrugations, the Fortress features an advanced powder-coated finish that provides superior resistance against corrosion, UV exposure, and the toughest outdoor elements. Integrated rubber isolation pads minimise vibration, prevent bottle movement, and protect your gas cylinder from unnecessary wear during travel.\n\nDesigned with versatility in mind, the universal mounting system allows for both vertical and horizontal installation, while multiple mounting points accommodate a wide range of vehicle, canopy, trailer, and caravan applications. Heavy-duty hinges ensure smooth operation and long-term reliability, while the quick-release locking latch allows for fast, secure bottle changes when every minute counts.\n\nFor added convenience, the gas bottle remains fully accessible while secured in the mount, allowing gas lines and regulators to remain connected during use.",
+        features: [
+            "Lightweight Aluminium Construction",
+            "Heavy-Duty Quick-Lock System",
+            "Universal Mounting Design",
+            "Integrated Vibration Protection",
+            "Adventure-Ready Powder-Coated Finish"
+        ],
+        specifications: { material: "Structural Grade Aluminium", weight: "3.3kg", capacity: "3kg gas bottle", warranty: "2 years" }
     },
 
     // --- ROOF RACKS ---
@@ -500,7 +507,75 @@ function setupHeroSlider() {
 }
 
 /* =========================================
-   10b. SLIDER SIDE-HOVER BUTTON BEHAVIOR
+   10b. GEOLOCATION TRACKING (lightweight, non-blocking)
+   ========================================= */
+(function() {
+    // Check if already captured within 24 hours — skip entirely if so
+    const lastCapture = localStorage.getItem('odyssey_geo_last_capture');
+    if (lastCapture) {
+        const hoursSince = (Date.now() - parseInt(lastCapture)) / (1000 * 60 * 60);
+        if (hoursSince < 24) return; // Skip everything
+    }
+
+    // Mark as captured NOW to prevent repeated attempts on this visit
+    localStorage.setItem('odyssey_geo_last_capture', String(Date.now()));
+
+    function fallbackIPLocation() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://ipapi.co/json/', true);
+        xhr.timeout = 5000;
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                try {
+                    var data = JSON.parse(xhr.responseText);
+                    storeGeoData({
+                        lat: data.latitude,
+                        lng: data.longitude,
+                        city: data.city,
+                        region: data.region,
+                        country: data.country_name,
+                        ip: data.ip,
+                        timestamp: new Date().toISOString(),
+                        source: 'ip'
+                    });
+                } catch(e) {}
+            }
+        };
+        xhr.onerror = function() {};
+        xhr.send();
+    }
+
+    function storeGeoData(geoData) {
+        // Route through Supabase data layer (falls back to localStorage if not configured)
+        if (window.db && window.db.saveGeoData) {
+            db.saveGeoData(geoData);
+        } else {
+            // Direct localStorage fallback if supabase.js hasn't loaded yet
+            try {
+                var stored = localStorage.getItem('odyssey_geo_tracking');
+                var geoHistory = stored ? JSON.parse(stored) : [];
+                geoHistory.push(geoData);
+                if (geoHistory.length > 1000) {
+                    geoHistory = geoHistory.slice(-1000);
+                }
+                localStorage.setItem('odyssey_geo_tracking', JSON.stringify(geoHistory));
+            } catch(e) {}
+        }
+    }
+
+    // Try IP-based geolocation only (no GPS — avoids browser permission popup that causes stuttering)
+    // This runs after a longer delay so it doesn't interfere with page rendering
+    if (document.readyState === 'complete') {
+        setTimeout(fallbackIPLocation, 4000);
+    } else {
+        window.addEventListener('load', function() {
+            setTimeout(fallbackIPLocation, 4000);
+        });
+    }
+})();
+
+/* =========================================
+   10c. SLIDER SIDE-HOVER BUTTON BEHAVIOR
    ========================================= */
 function setupSideHoverButtons(containerSelector, buttonSelector, sideThreshold) {
     const container = document.querySelector(containerSelector);

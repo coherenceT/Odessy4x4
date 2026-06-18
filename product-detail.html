@@ -134,14 +134,35 @@
     <section class="section-padding" style="background-color: #ffffff;">
         <div class="container">
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-bottom: 60px;">
-                <!-- Product Image -->
+                <!-- Product Image Gallery -->
                 <div>
-                    <div style="position: relative; background: #fafafa; border: 1px solid var(--color-border); border-radius: 12px; overflow: hidden; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-premium);">
-                        <img id="product-image" src="" alt="Product" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="product-gallery-container" style="position: relative; background: #fafafa; border: 1px solid var(--color-border); border-radius: 12px; overflow: hidden; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-premium);">
+                        <img id="product-image" src="" alt="Product" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;">
                         <div id="placeholder-banner" class="design-ref-label" style="display: none; position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.7); color: white; text-align: center; padding: 10px; font-size: 0.8rem; font-weight: 600;">
                             Design Reference - Fitment photo coming soon.
                         </div>
+                        <!-- Gallery Navigation Arrows -->
+                        <button id="gallery-prev" class="gallery-arrow gallery-arrow-prev" aria-label="Previous image" style="display: none;">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button id="gallery-next" class="gallery-arrow gallery-arrow-next" aria-label="Next image" style="display: none;">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <!-- Image Counter -->
+                        <div id="gallery-counter" class="gallery-counter" style="display: none;">1 / 2</div>
                     </div>
+                </div>
+
+                <!-- Lightbox Modal -->
+                <div id="image-lightbox" class="lightbox-overlay" style="display: none;">
+                    <span class="lightbox-close">&times;</span>
+                    <button class="lightbox-arrow lightbox-arrow-prev" aria-label="Previous image">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <img class="lightbox-image" id="lightbox-image" src="" alt="Enlarged product view">
+                    <button class="lightbox-arrow lightbox-arrow-next" aria-label="Next image">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
 
                 <!-- Product Info -->
@@ -158,7 +179,10 @@
 
                     <div style="border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); padding: 25px 0; margin-bottom: 25px;">
                         <h3 style="margin-bottom: 12px; font-size: 1.1rem; color: var(--color-secondary);">Description</h3>
-                        <p id="product-description" style="color: var(--color-text-main); line-height: 1.8; font-size: 0.95rem;"></p>
+                        <div id="product-description-container">
+                            <p id="product-description" class="description-truncated" style="color: var(--color-text-main); line-height: 1.8; font-size: 0.95rem;"></p>
+                        </div>
+                        <button id="show-more-btn" class="show-more-btn" style="display: none;">Show More <i class="fas fa-chevron-down"></i></button>
                     </div>
 
                     <div style="margin-bottom: 30px;">
@@ -173,9 +197,6 @@
                         <button id="whatsapp-inquire-btn" class="btn btn-whatsapp btn-block" style="padding: 18px; font-size: 1.15rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; border-radius: 8px;">
                             <i class="fab fa-whatsapp" style="font-size: 1.4rem;"></i> INQUIRE VIA WHATSAPP
                         </button>
-                        <p style="font-size: 0.8rem; color: var(--color-text-muted); text-align: center; font-weight: 600; margin: 0;">
-                            <i class="fas fa-info-circle"></i> Custom sizing and vehicle-specific variations can be engineered upon request.
-                        </p>
                     </div>
                 </div>
             </div>
@@ -191,10 +212,11 @@
     </section>
 
     <!-- FOOTER -->
-    <footer style="background: #ffffff; padding: 60px 0; border-top: 1px solid var(--color-border); color: #1a1a1a;">
+    <footer style="background: #ffffff; padding: 60px 0 40px; border-top: 1px solid var(--color-border); color: #1a1a1a;">
         <div class="container">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-bottom: 50px;">
-                <div class="footer-col" style="display: flex; flex-direction: column; justify-content: center;">
+            <div class="footer-main-grid">
+                <div class="footer-col footer-brand-col" style="display: flex; flex-direction: column; justify-content: flex-start;">
+                    <img src="assets/images/odyssey4x4-logo.webp" alt="Odyssey 4x4" style="height: 75px; margin-bottom: 16px; background:#ffffff; padding:8px 12px; border-radius:6px; display:inline-block; width:auto; object-fit:contain; align-self:flex-start;">
                     <h4 style="font-size: 1.8rem; line-height: 1.3; color: #1a1a1a; text-transform: none; font-weight: 900; margin: 0 0 10px;">
                         Built for Adventure.<br>
                         <span style="color: var(--color-accent);">Engineered to Last.</span>
@@ -225,6 +247,9 @@
                         <li style="margin-bottom: 10px;"><a href="index.html#about" style="color: #666666; transition: color 0.3s;">About Us</a></li>
                         <li style="margin-bottom: 10px;"><a href="index.html#contact" style="color: #666666; transition: color 0.3s;">Contact Us</a></li>
                         <li style="margin-bottom: 10px;"><a href="find-a-dealer.html" style="color: #666666; transition: color 0.3s;">Find a Nearby Dealer</a></li>
+                        <li style="margin-bottom: 10px;"><a href="odyssey-community.html" style="color: #666666; transition: color 0.3s;">The Odyssey Community</a></li>
+                        <li style="margin-bottom: 10px;"><a href="discount-signup.html" style="color: #666666; transition: color 0.3s;">Get 10% Off</a></li>
+                        <li style="margin-bottom: 10px;"><a href="explore-gear.html" style="color: #666666; transition: color 0.3s;">Explore All Gear</a></li>
                     </ul>
                 </div>
             </div>
@@ -259,10 +284,126 @@
     </div>
 
     <!-- SCRIPTS -->
+    <script src="scripts/supabase.js"></script>
     <script src="scripts/main.js"></script>
     <script src="scripts/analytics.js"></script>
     <script>
-        // Get product ID from URL query
+        // =========================================
+        // IMAGE GALLERY STATE
+        // =========================================
+        let currentImageIndex = 0;
+        let productImages = [];
+
+        // =========================================
+        // LIGHTBOX
+        // =========================================
+        function openLightbox() {
+            const lightbox = document.getElementById('image-lightbox');
+            const lightboxImg = document.getElementById('lightbox-image');
+            if (!lightbox || !lightboxImg || productImages.length === 0) return;
+            lightboxImg.src = productImages[currentImageIndex];
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('image-lightbox');
+            if (!lightbox) return;
+            lightbox.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        function updateGalleryImage() {
+            const imgEl = document.getElementById('product-image');
+            const counterEl = document.getElementById('gallery-counter');
+            const prevBtn = document.getElementById('gallery-prev');
+            const nextBtn = document.getElementById('gallery-next');
+            if (!imgEl || productImages.length === 0) return;
+            
+            imgEl.src = productImages[currentImageIndex];
+            
+            if (counterEl && productImages.length > 1) {
+                counterEl.textContent = `${currentImageIndex + 1} / ${productImages.length}`;
+            }
+            
+            if (prevBtn && nextBtn) {
+                prevBtn.style.display = productImages.length > 1 ? 'flex' : 'none';
+                nextBtn.style.display = productImages.length > 1 ? 'flex' : 'none';
+            }
+            if (counterEl) {
+                counterEl.style.display = productImages.length > 1 ? 'block' : 'none';
+            }
+        }
+
+        function galleryPrev() {
+            if (productImages.length === 0) return;
+            currentImageIndex = (currentImageIndex - 1 + productImages.length) % productImages.length;
+            updateGalleryImage();
+        }
+
+        function galleryNext() {
+            if (productImages.length === 0) return;
+            currentImageIndex = (currentImageIndex + 1) % productImages.length;
+            updateGalleryImage();
+        }
+
+        function lightboxPrev() {
+            if (productImages.length === 0) return;
+            currentImageIndex = (currentImageIndex - 1 + productImages.length) % productImages.length;
+            document.getElementById('lightbox-image').src = productImages[currentImageIndex];
+            updateGalleryImage();
+        }
+
+        function lightboxNext() {
+            if (productImages.length === 0) return;
+            currentImageIndex = (currentImageIndex + 1) % productImages.length;
+            document.getElementById('lightbox-image').src = productImages[currentImageIndex];
+            updateGalleryImage();
+        }
+
+        // =========================================
+        // SHOW MORE
+        // =========================================
+        function setupShowMore(descriptionText) {
+            const descEl = document.getElementById('product-description');
+            const showMoreBtn = document.getElementById('show-more-btn');
+            if (!descEl || !showMoreBtn) return;
+
+            // Split by double newlines to get paragraphs
+            const paragraphs = descriptionText.split('\n\n');
+            
+            if (paragraphs.length <= 1) {
+                // Single paragraph - show all
+                descEl.textContent = descriptionText;
+                showMoreBtn.style.display = 'none';
+                return;
+            }
+
+            // Initially show only first paragraph
+            descEl.textContent = paragraphs[0];
+            descEl.classList.add('description-truncated');
+            showMoreBtn.style.display = 'inline-flex';
+            
+            let expanded = false;
+            showMoreBtn.addEventListener('click', function() {
+                expanded = !expanded;
+                if (expanded) {
+                    descEl.textContent = paragraphs.join('\n\n');
+                    descEl.classList.remove('description-truncated');
+                    descEl.classList.add('description-expanded');
+                    showMoreBtn.innerHTML = 'Show Less <i class="fas fa-chevron-up"></i>';
+                } else {
+                    descEl.textContent = paragraphs[0];
+                    descEl.classList.remove('description-expanded');
+                    descEl.classList.add('description-truncated');
+                    showMoreBtn.innerHTML = 'Show More <i class="fas fa-chevron-down"></i>';
+                }
+            });
+        }
+
+        // =========================================
+        // PRODUCT RENDER
+        // =========================================
         const urlParams = new URLSearchParams(window.location.search);
         const productId = parseInt(urlParams.get('id')) || parseInt(window.location.pathname.match(/product-(\d+)/)?.[1]);
 
@@ -278,11 +419,18 @@
             document.getElementById('breadcrumb-category').innerHTML = `<a href="explore-gear.html?category=${product.category}" style="color: var(--color-accent);">${formatCategory(product.category)}</a>`;
             document.getElementById('breadcrumb-product').textContent = product.name;
 
-            // Update details
-            const isPlaceholder = product.image.includes('placeholder');
-            const displayImage = isPlaceholder && product.fitmentImage ? product.fitmentImage : product.image;
+            // Initialize gallery images
+            if (product.images && product.images.length > 0) {
+                productImages = product.images;
+            } else {
+                productImages = [product.image];
+            }
             
-            document.getElementById('product-image').src = displayImage;
+            currentImageIndex = 0;
+            updateGalleryImage();
+
+            const isPlaceholder = product.image.includes('placeholder');
+            
             document.getElementById('product-image').alt = product.name;
             document.getElementById('product-image').onerror = function () { this.src = 'assets/images/placeholder.webp'; };
 
@@ -299,17 +447,18 @@
             const stockBadge = document.getElementById('product-stock');
             if (product.status === 'out-of-stock') {
                 stockBadge.textContent = 'SOLD OUT';
-                stockBadge.style.background = '#c62828'; // Red for sold out
+                stockBadge.style.background = '#c62828';
             } else if (product.status === 'waiting-for-design') {
                 stockBadge.textContent = 'NEW DESIGN COMING';
-                stockBadge.style.background = '#f9a825'; // Gold
+                stockBadge.style.background = '#f9a825';
                 stockBadge.style.color = '#000';
             } else {
                 stockBadge.textContent = 'IN STOCK';
-                stockBadge.style.background = '#2e7d32'; // Green
+                stockBadge.style.background = '#2e7d32';
             }
 
-            document.getElementById('product-description').textContent = product.description;
+            // Description with Show More
+            setupShowMore(product.description);
 
             // Features list
             const featuresList = document.getElementById('product-features');
@@ -331,6 +480,7 @@
             const specsContainer = document.getElementById('product-specifications');
             specsContainer.innerHTML = '';
             Object.entries(product.specifications).forEach(([key, value]) => {
+                const specKey = key.charAt(0).toUpperCase() + key.slice(1);
                 const specCard = document.createElement('div');
                 specCard.style.padding = '20px';
                 specCard.style.background = '#ffffff';
@@ -338,7 +488,7 @@
                 specCard.style.border = '1px solid var(--color-border)';
                 specCard.style.boxShadow = '0 2px 8px rgba(0,0,0,0.02)';
                 specCard.innerHTML = `
-                    <div style="font-weight: 700; text-transform: uppercase; margin-bottom: 8px; color: var(--color-secondary); font-size: 0.85rem; letter-spacing: 0.5px;">${key.replace(/([A-Z])/g, ' $1').trim()}</div>
+                    <div style="font-weight: 700; text-transform: uppercase; margin-bottom: 8px; color: var(--color-secondary); font-size: 0.85rem; letter-spacing: 0.5px;">${specKey}</div>
                     <div style="color: var(--color-text-muted); font-size: 0.95rem; font-weight: 600;">${value}</div>
                 `;
                 specsContainer.appendChild(specCard);
@@ -347,6 +497,32 @@
             // Hook up WhatsApp inquiry button
             document.getElementById('whatsapp-inquire-btn').addEventListener('click', () => {
                 window.enquireWhatsApp(product.id);
+            });
+
+            // Hook up gallery navigation
+            document.getElementById('gallery-prev').addEventListener('click', galleryPrev);
+            document.getElementById('gallery-next').addEventListener('click', galleryNext);
+
+            // Hook up lightbox
+            document.getElementById('product-image').addEventListener('click', function() {
+                if (productImages.length > 0) {
+                    openLightbox();
+                }
+            });
+            document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+            document.getElementById('image-lightbox').addEventListener('click', function(e) {
+                if (e.target === this) closeLightbox();
+            });
+            document.querySelector('.lightbox-arrow-prev').addEventListener('click', lightboxPrev);
+            document.querySelector('.lightbox-arrow-next').addEventListener('click', lightboxNext);
+
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                const lightbox = document.getElementById('image-lightbox');
+                if (lightbox.style.display !== 'flex') return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') lightboxPrev();
+                if (e.key === 'ArrowRight') lightboxNext();
             });
 
         } else {

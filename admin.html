@@ -733,6 +733,43 @@
                 </div>
             </div>
 
+            <!-- GEOLOCATION SECTION -->
+            <div class="dashboard-grid" style="margin-bottom: 24px;">
+                <!-- Visitor Geolocation Map / Stats -->
+                <div class="dash-card">
+                    <h3><i class="fas fa-globe-americas"></i> Visitor Geolocation <span class="badge" id="geoCount">0</span></h3>
+                    <div class="region-list" id="geoRegionList">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+                
+                <!-- Recent Geo Captures -->
+                <div class="dash-card">
+                    <h3><i class="fas fa-map-pin"></i> Recent Visitor Locations <span class="badge" id="recentGeoCount">0</span></h3>
+                    <div style="overflow-x: auto;">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>Source</th>
+                                    <th>City</th>
+                                    <th>Region</th>
+                                    <th>Country</th>
+                                    <th>Coordinates</th>
+                                </tr>
+                            </thead>
+                            <tbody id="geoTableBody">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                        <div class="table-empty" id="geoTableEmpty">
+                            <i class="fas fa-map-marker-alt"></i>
+                            No geolocation data yet. Data will appear when visitors browse the site.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- ANALYTICS SECTION -->
             <div class="dashboard-grid" style="margin-bottom: 24px;">
                 <!-- Most Visited Pages -->
@@ -783,6 +820,7 @@
     </div>
 
     <!-- ===== SCRIPTS ===== -->
+    <script src="scripts/supabase.js"></script>
     <script src="scripts/main.js"></script>
     <script src="scripts/analytics.js"></script>
     <script>
@@ -849,10 +887,10 @@
             }
         }
 
-        function showDashboard() {
+        async function showDashboard() {
             document.getElementById('loginOverlay').classList.remove('show');
             document.getElementById('adminWrapper').classList.add('active');
-            loadDashboardData();
+            await loadDashboardData();
         }
 
         function logout() {
@@ -863,28 +901,32 @@
         /* =========================================
            DASHBOARD DATA LOADER
            ========================================= */
-        function getCustomerData() {
+        async function loadDashboardData() {
+            // Fetch from Supabase data layer (falls back to localStorage)
+            var data = [];
             try {
-                const stored = localStorage.getItem('odyssey_customer_data');
-                if (stored) return JSON.parse(stored);
-            } catch(e) {}
-            return [];
-        }
-
-        function loadDashboardData() {
-            const data = getCustomerData();
+                if (window.db && window.db.getCustomerData) {
+                    data = await db.getCustomerData();
+                }
+            } catch(e) {
+                try {
+                    var stored = localStorage.getItem('odyssey_customer_data');
+                    if (stored) data = JSON.parse(stored);
+                } catch(e2) {}
+            }
+            if (!Array.isArray(data)) data = [];
 
             // Stats
-            const totalSignups = data.length;
-            const communitySignups = data.filter(function(d) { return d.type === 'community'; }).length;
-            const discountSignups = data.filter(function(d) { return d.type === 'discount'; }).length;
+            var totalSignups = data.length;
+            var communitySignups = data.filter(function(d) { return d.type === 'community'; }).length;
+            var discountSignups = data.filter(function(d) { return d.type === 'discount'; }).length;
 
             // Unique regions
-            const regionsSet = {};
+            var regionsSet = {};
             data.forEach(function(d) {
                 if (d.region) regionsSet[d.region] = (regionsSet[d.region] || 0) + 1;
             });
-            const uniqueRegions = Object.keys(regionsSet).length;
+            var uniqueRegions = Object.keys(regionsSet).length;
 
             document.getElementById('totalSignups').textContent = totalSignups;
             document.getElementById('communitySignups').textContent = communitySignups;
@@ -892,12 +934,11 @@
             document.getElementById('uniqueRegions').textContent = uniqueRegions;
 
             // Products of Interest (from community signups only)
-            const productCounts = {};
+            var productCounts = {};
             data.forEach(function(d) {
                 if (d.products && Array.isArray(d.products)) {
                     d.products.forEach(function(p) {
-                        // Clean up the label
-                        const clean = p.replace(/&amp;/g, '&').trim();
+                        var clean = p.replace(/&amp;/g, '&').trim();
                         productCounts[clean] = (productCounts[clean] || 0) + 1;
                     });
                 }
@@ -905,7 +946,7 @@
             renderProductsChart(productCounts);
 
             // Brand Distribution
-            const brandCounts = {};
+            var brandCounts = {};
             data.forEach(function(d) {
                 if (d.brand) {
                     brandCounts[d.brand] = (brandCounts[d.brand] || 0) + 1;
@@ -1052,14 +1093,26 @@
         /* =========================================
            EXPORT DATA AS CSV
            ========================================= */
-        function exportData() {
-            const data = getCustomerData();
-            if (data.length === 0) {
+        async function exportData() {
+            var data = [];
+            try {
+                if (window.db && window.db.getCustomerData) {
+                    data = await db.getCustomerData();
+                } else {
+                    var stored = localStorage.getItem('odyssey_customer_data');
+                    if (stored) data = JSON.parse(stored);
+                }
+            } catch(e) {
+                try {
+                    var stored = localStorage.getItem('odyssey_customer_data');
+                    if (stored) data = JSON.parse(stored);
+                } catch(e2) {}
+            }
+            if (!Array.isArray(data) || data.length === 0) {
                 alert('No data to export.');
                 return;
             }
 
-            // CSV headers
             var csv = 'ID,Date,Type,Name,Surname,Full Name,Email,Phone,Brand,Model,Region,Products/Discount Code\n';
 
             data.forEach(function(d) {
@@ -1086,7 +1139,6 @@
                 csv += row + '\n';
             });
 
-            // Download
             var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
             var link = document.createElement('a');
             var url = URL.createObjectURL(blob);
@@ -1101,16 +1153,21 @@
         /* =========================================
            ANALYTICS RENDERERS
            ========================================= */
-        function getAnalyticsData() {
+        async function renderAnalytics() {
+            var analytics = { pageViews: [], clicks: [], formSubmissions: [], sessions: [] };
             try {
-                var stored = localStorage.getItem('odyssey_analytics_data');
-                if (stored) return JSON.parse(stored);
-            } catch(e) {}
-            return { pageViews: [], clicks: [], formSubmissions: [], sessions: [] };
-        }
-
-        function renderAnalytics() {
-            var analytics = getAnalyticsData();
+                if (window.db && window.db.getAnalytics) {
+                    analytics = await db.getAnalytics();
+                } else {
+                    var stored = localStorage.getItem('odyssey_analytics_data');
+                    if (stored) analytics = JSON.parse(stored);
+                }
+            } catch(e) {
+                try {
+                    var stored = localStorage.getItem('odyssey_analytics_data');
+                    if (stored) analytics = JSON.parse(stored);
+                } catch(e2) {}
+            }
 
             // Page views count
             document.getElementById('pageViewsCount').textContent = analytics.pageViews.length;
@@ -1231,8 +1288,22 @@
             }).join('');
         }
 
-        function exportAnalytics() {
-            var analytics = getAnalyticsData();
+        async function exportAnalytics() {
+            var analytics = { pageViews: [], clicks: [], formSubmissions: [], sessions: [] };
+            try {
+                if (window.db && window.db.getAnalytics) {
+                    analytics = await db.getAnalytics();
+                } else {
+                    var stored = localStorage.getItem('odyssey_analytics_data');
+                    if (stored) analytics = JSON.parse(stored);
+                }
+            } catch(e) {
+                try {
+                    var stored = localStorage.getItem('odyssey_analytics_data');
+                    if (stored) analytics = JSON.parse(stored);
+                } catch(e2) {}
+            }
+
             var allEvents = [];
             analytics.pageViews.forEach(function(v) {
                 allEvents.push({ type: 'Page View', time: v.timestamp, page: v.path, label: v.title, detail: v.referrer });
@@ -1265,12 +1336,114 @@
         }
 
         /* =========================================
-           OVERRIDE loadDashboardData to include analytics
+           GEOLOCATION RENDERERS
+           ========================================= */
+        async function renderGeoData() {
+            var geoData = [];
+            try {
+                if (window.db && window.db.getGeoData) {
+                    geoData = await db.getGeoData();
+                } else {
+                    var stored = localStorage.getItem('odyssey_geo_tracking');
+                    if (stored) geoData = JSON.parse(stored);
+                }
+            } catch(e) {
+                try {
+                    var stored = localStorage.getItem('odyssey_geo_tracking');
+                    if (stored) geoData = JSON.parse(stored);
+                } catch(e2) {}
+            }
+            if (!Array.isArray(geoData)) geoData = [];
+            
+            document.getElementById('geoCount').textContent = geoData.length;
+            document.getElementById('recentGeoCount').textContent = geoData.length;
+            
+            // Region/City breakdown
+            var cityCounts = {};
+            var regionCounts = {};
+            var countryCounts = {};
+            
+            geoData.forEach(function(d) {
+                var city = d.city || 'Unknown City';
+                var region = d.region || 'Unknown Region';
+                var country = d.country || 'Unknown';
+                cityCounts[city] = (cityCounts[city] || 0) + 1;
+                regionCounts[region] = (regionCounts[region] || 0) + 1;
+                countryCounts[country] = (countryCounts[country] || 0) + 1;
+            });
+            
+            // Render region list (combined)
+            var regionContainer = document.getElementById('geoRegionList');
+            var combined = {};
+            Object.keys(regionCounts).forEach(function(r) {
+                combined[r] = regionCounts[r];
+            });
+            Object.keys(cityCounts).forEach(function(c) {
+                if (c !== 'Unknown City') {
+                    combined[c] = cityCounts[c];
+                }
+            });
+            
+            var entries = Object.entries(combined).sort(function(a, b) { return b[1] - a[1]; }).slice(0, 10);
+            
+            if (entries.length === 0) {
+                regionContainer.innerHTML = '<div class="table-empty"><i class="fas fa-globe"></i>No location data yet</div>';
+            } else {
+                regionContainer.innerHTML = entries.map(function(entry) {
+                    return '<div class="region-item">' +
+                        '<span class="region-name"><i class="fas fa-map-pin" style="color: var(--color-accent); margin-right: 6px; font-size: 0.7rem;"></i>' + entry[0] + '</span>' +
+                        '<span class="region-count">' + entry[1] + '</span>' +
+                    '</div>';
+                }).join('');
+            }
+            
+            // Render recent geo table
+            var tbody = document.getElementById('geoTableBody');
+            var empty = document.getElementById('geoTableEmpty');
+            
+            if (geoData.length === 0) {
+                tbody.innerHTML = '';
+                empty.style.display = 'block';
+                return;
+            }
+            empty.style.display = 'none';
+            
+            // Most recent first
+            var recent = geoData.slice().reverse().slice(0, 20);
+            
+            tbody.innerHTML = recent.map(function(d) {
+                var timeStr = '';
+                if (d.timestamp) {
+                    try {
+                        var dt = new Date(d.timestamp);
+                        timeStr = dt.toLocaleString('en-ZA', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit' });
+                    } catch(e) {
+                        timeStr = d.timestamp.slice(11, 19);
+                    }
+                }
+                var sourceBadge = d.source === 'gps' ? 
+                    '<span class="type-badge community" style="background:#e8f5e9;color:#2e7d32;">GPS</span>' :
+                    '<span class="type-badge discount" style="background:#fff3e0;color:#e65100;">IP</span>';
+                var coords = d.lat && d.lng ? d.lat.toFixed(4) + ', ' + d.lng.toFixed(4) : '-';
+                return '<tr>' +
+                    '<td style="font-size:0.75rem;white-space:nowrap;">' + timeStr + '</td>' +
+                    '<td>' + sourceBadge + '</td>' +
+                    '<td>' + (d.city || '-') + '</td>' +
+                    '<td>' + (d.region || '-') + '</td>' +
+                    '<td>' + (d.country || '-') + '</td>' +
+                    '<td style="font-size:0.78rem;">' + coords + '</td>' +
+                '</tr>';
+            }).join('');
+        }
+
+        /* =========================================
+           OVERRIDE loadDashboardData to include analytics + geo
            ========================================= */
         var origLoadDashboard = loadDashboardData;
-        loadDashboardData = function() {
-            if (typeof origLoadDashboard === 'function') origLoadDashboard();
-            renderAnalytics();
+        loadDashboardData = async function() {
+            if (typeof origLoadDashboard === 'function') await origLoadDashboard();
+            await renderAnalytics();
+            await renderGeoData();
         };
 
         /* =========================================

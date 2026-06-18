@@ -149,10 +149,10 @@
     </section>
 
     <!-- FOOTER -->
-    <footer style="background: #ffffff; padding: 60px 0; border-top: 1px solid var(--color-border); color: #1a1a1a;">
+    <footer style="background: #ffffff; padding: 60px 0 40px; border-top: 1px solid var(--color-border); color: #1a1a1a;">
         <div class="container">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-bottom: 50px;">
-                <div class="footer-col" style="display: flex; flex-direction: column; justify-content: flex-start;">
+            <div class="footer-main-grid">
+                <div class="footer-col footer-brand-col" style="display: flex; flex-direction: column; justify-content: flex-start;">
                     <img src="assets/images/odyssey4x4-logo.webp" alt="Odyssey 4x4" style="height: 75px; margin-bottom: 16px; background:#ffffff; padding:8px 12px; border-radius:6px; display:inline-block; width:auto; object-fit:contain; align-self:flex-start;">
                     <h4 style="font-size: 1.8rem; line-height: 1.3; color: #1a1a1a; text-transform: none; font-weight: 900; margin: 0 0 10px;">
                         Built for Adventure.<br>
@@ -185,6 +185,8 @@
                         <li style="margin-bottom: 10px;"><a href="index.html#contact" style="color: #666666; transition: color 0.3s;">Contact Us</a></li>
                         <li style="margin-bottom: 10px;"><a href="find-a-dealer.html" style="color: #666666; transition: color 0.3s;">Find a Nearby Dealer</a></li>
                         <li style="margin-bottom: 10px;"><a href="odyssey-community.html" style="color: #666666; transition: color 0.3s;">The Odyssey Community</a></li>
+                        <li style="margin-bottom: 10px;"><a href="discount-signup.html" style="color: #666666; transition: color 0.3s;">Get 10% Off</a></li>
+                        <li style="margin-bottom: 10px;"><a href="explore-gear.html" style="color: #666666; transition: color 0.3s;">Explore All Gear</a></li>
                     </ul>
                 </div>
             </div>
@@ -219,6 +221,7 @@
     </div>
 
     <!-- SCRIPTS -->
+    <script src="scripts/supabase.js"></script>
     <script src="scripts/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
