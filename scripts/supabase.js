@@ -110,9 +110,9 @@ CREATE POLICY "anon_all_geo" ON geo_tracking FOR ALL TO anon USING (true) WITH C
        data uses localStorage (current behavior).
        ========================================= */
     var CONFIG = {
-        ENABLED: false,        // ← Set to true when you have your keys
-        SUPABASE_URL: '',      // ← Your project URL (e.g. https://xxx.supabase.co)
-        SUPABASE_ANON_KEY: ''  // ← Your anon public key
+        ENABLED: true,
+        SUPABASE_URL: 'https://ucorjwhzaglhrmibrrlp.supabase.co',
+        SUPABASE_ANON_KEY: 'sb_publishable_If1wA_IrG8flUSmSETyk_g_ciIsv1Jf'
     };
 
     /* =========================================
