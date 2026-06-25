@@ -68,8 +68,7 @@ const products = [
         name: "Odyssey Drawer System",
         category: "drawer-systems",
         brand: "universal",
-        price: 16500,
-        image: "offroad_accessories/Drawer System.png",
+        price: 16500,            image: "assets/images/Drawer System.png",
         status: "in-stock",
         partNumber: "OD-DS-UN41",
         description: "Ergonomic drawer system that fits your truck bed, keeping tool and overlanding gear dry and organized.",
@@ -83,8 +82,7 @@ const products = [
         name: "Odyssey Roll Bar",
         category: "accessories",
         brand: "universal",
-        price: 11500,
-        image: "offroad_accessories/Adventure Roll Bar.png",
+        price: 11500,            image: "assets/images/Adventure Roll Bar.png",
         status: "in-stock",
         partNumber: "OD-RB-UN40",
         description: "Heavy duty steel roll bar designed to secure gear and add structural integrity to your load bed.",
@@ -127,6 +125,75 @@ const products = [
         description: "Aerodynamic low-profile expedition roof rack with integrated mounting points for additional gear, lights, and accessories.",
         features: ["Low profile aerodynamic design", "Heavy duty steel tube construction", "Integrated light mount tabs", "Multiple lashing points", "Textured black powder-coated finish"],
         specifications: { material: "Heavy Duty Steel", weight: "32kg", loadCapacity: "150kg", warranty: "2 Years" }
+    },
+
+    // --- PRODUCT A: Odyssey Navigate Phone Mount ---
+    {
+        id: 48,
+        name: "Odyssey Navigate Phone Mount",
+        category: "camping-and-overland",
+        brand: "universal",
+        price: 600,
+        image: "assets/images/Phone Mount9.png",
+        images: ["assets/images/Phone Mount9.png", "assets/images/Phone Mount2.png", "assets/images/Phone Mount3.png", "assets/images/Phone Mount6.png", "assets/images/Phone mount.png", "assets/images/Phone Mount7.png", "assets/images/Phone Mount8.png", "assets/images/Phone Mount10.png", "assets/images/Phone Mount11.png"],
+        status: "in-stock",
+        partNumber: "OD-NM-UN48",
+        description: "Keep your phone secure, accessible, and exactly where you need it with the Odyssey Navigate — a vehicle-specific phone mounting solution engineered for adventure, touring, and everyday driving.\n\nThe innovative dual-locking mounting system combines convenience with security. A low-profile mounting plate is secured to your phone or phone case using premium automotive-grade 3M adhesive, allowing your device to be quickly attached and removed when needed. Once locked into position, the phone remains securely held in place, even on rough terrain and corrugated roads.\n\nUnlike conventional magnetic mounts, the Navigate features an integrated anti-theft locking mechanism. The phone cannot simply be pulled from the mount and must first be manually released before being rotated and removed, providing additional peace of mind when travelling or leaving your vehicle unattended.\n\nWhether you're navigating remote trails, following GPS routes, or keeping important information within easy reach, the Navigate delivers exceptional stability, security, and convenience in one premium package.",
+        features: [
+            "Vehicle-specific design for seamless fitment",
+            "High-strength steel construction",
+            "Premium black powder-coated finish",
+            "Aggressive modern styling",
+            "Integrated accessory mounting points",
+            "Designed to enhance both appearance and functionality"
+        ],
+        specifications: { material: "Structural Grade Steel", weight: "410 grams", capacity: "Smart Phone Mount", warranty: "2 years" }
+    },
+
+    // --- PRODUCT B: Odyssey Nomad Sport Rack ---
+    {
+        id: 49,
+        name: "Odyssey Nomad Sport Rack",
+        category: "accessories",
+        brand: "universal",
+        price: 16500,
+        image: "assets/images/Sport Rack3.png",
+        images: ["assets/images/Sport Rack3.png", "assets/images/Sport Rack4.png", "assets/images/Sport Rack5.png"],
+        status: "in-stock",
+        partNumber: "OD-NSR-UN49",
+        description: "Transform the look of your vehicle with the Odyssey Nomad Sport Rack — a bold combination of aggressive styling, premium craftsmanship, and everyday practicality.\n\nThe modern open-frame design not only enhances the visual appeal of your vehicle but also provides versatile mounting options for accessories, lighting, recovery equipment, and lifestyle gear. Whether you're building a show vehicle, weekend tourer, or daily-driven adventure rig, the Nomad Sport Rack delivers the perfect balance between form and function.\n\nMore than just an accessory, the Nomad Sport Rack is a statement piece designed for owners who want their vehicle to stand apart from the crowd. Its unique styling and vehicle-specific design create a commanding presence that elevates the overall look of your vehicle while adding practical functionality.",
+        features: [
+            "Vehicle-specific design for seamless fitment",
+            "High-strength steel construction",
+            "Premium black powder-coated finish",
+            "Aggressive modern styling",
+            "Integrated accessory mounting points",
+            "Designed to enhance both appearance and functionality"
+        ],
+        specifications: { material: "Structural Grade Steel", weight: "34kg", capacity: "Multi-Purpose", warranty: "2 years" }
+    },
+
+    // --- PRODUCT C: Odyssey Pathfinder Ditch Light Brackets ---
+    {
+        id: 50,
+        name: "Odyssey Pathfinder Ditch Light Brackets",
+        category: "camping-and-overland",
+        brand: "universal",
+        price: 990,
+        image: "assets/images/Ditch light brackets.png",
+        images: ["assets/images/Ditch light brackets.png", "assets/images/Ditch light brackets2.png", "assets/images/Ditch light brackets3.png", "assets/images/Ditch light brackets4.png", "assets/images/Ditch light brackets6.png", "assets/images/Ditch light brackets7.png"],
+        status: "in-stock",
+        partNumber: "OD-PDL-UN50",
+        description: "Take control of the road ahead with the Odyssey Pathfinder Ditch Light Brackets — purpose-built to provide superior auxiliary lighting performance for serious adventurers, overlanders, and off-road enthusiasts.\n\nBy positioning auxiliary lights higher on the vehicle, the Pathfinder brackets improve visibility along the sides of the road and help eliminate dark blind spots often missed by standard headlights. This elevated mounting position allows light to project further down the trail and into surrounding areas, increasing driver confidence when travelling at night, in poor weather, or through challenging terrain.\n\nAvailable in both single-light and double-light configurations, the adjustable mounting design allows you to fine-tune light positioning to suit your specific driving needs and lighting setup. Whether you're mounting compact fog lights, powerful spotlights, or a combination of both, the Pathfinder brackets provide a secure and reliable mounting solution.",
+        features: [
+            "Vehicle-Specific Fitment",
+            "No Drilling Required",
+            "High-Strength Steel Construction",
+            "Premium Powder-Coated Finish",
+            "Improved Night-Time Visibility",
+            "Single & Double Light Options"
+        ],
+        specifications: { material: "Structural Grade Steel", weight: "660 grams per set", capacity: "Single and double mount", warranty: "2 years" }
     }
 ];
 
@@ -153,7 +220,7 @@ const categories = [
 /* =========================================
    2. FEATURED PRODUCTS
    ========================================= */
-const featuredProductIds = [25, 27, 29, 31, 41, 46, 47];
+const featuredProductIds = [25, 27, 29, 31, 41, 46, 47, 48, 49, 50];
 
 function renderFeaturedProducts() {
     const grid = document.querySelector('.featured-products-grid');
@@ -256,12 +323,18 @@ function renderFilterUI() {
 
     if (brandGrid) {
         brandGrid.innerHTML = brands.map(brand => `
-            <div class="filter-card brand-card ${currentFilterType === 'brand' && currentFilterValue === brand.id ? 'active' : ''}" 
+            <div class="filter-card ${currentFilterType === 'brand' && currentFilterValue === brand.id ? 'active' : ''}" 
                  onclick="applyFilter('brand', '${brand.id}')">
-                <img src="${brand.logo}" alt="${brand.name}" class="filter-brand-logo" style="height: 18px; width: auto; object-fit: contain; margin-right: 8px;">
+                <img src="${brand.logo}" alt="${brand.name}" class="filter-brand-logo" style="height: 48px; width: auto; object-fit: contain; margin-right: 12px;">
                 <span>${brand.name}</span>
             </div>
         `).join('');
+        // Prepend an "All Vehicles" option
+        const allPill = document.createElement('div');
+        allPill.className = 'filter-card' + (currentFilterType !== 'brand' ? ' active' : '');
+        allPill.onclick = function() { resetFilters(); };
+        allPill.innerHTML = '<i class="fas fa-th-large"></i><span>All Vehicles</span>';
+        brandGrid.insertBefore(allPill, brandGrid.firstChild);
     }
 
     if (categoryGrid) {
@@ -272,6 +345,12 @@ function renderFilterUI() {
                 <span>${cat.name}</span>
             </div>
         `).join('');
+        // Prepend an "All Products" option
+        const allPill = document.createElement('div');
+        allPill.className = 'filter-card' + (currentFilterType !== 'category' ? ' active' : '');
+        allPill.onclick = function() { resetFilters(); };
+        allPill.innerHTML = '<i class="fas fa-th-large"></i><span>All Products</span>';
+        categoryGrid.insertBefore(allPill, categoryGrid.firstChild);
     }
 }
 
@@ -426,16 +505,37 @@ function setupMenu() {
     if (slideMenuClose) slideMenuClose.addEventListener('click', window.closeMenu);
     if (slideMenuOverlay) slideMenuOverlay.addEventListener('click', window.closeMenu);
 
-    // Mobile Accordion Logic
+    // Mobile Accordion Logic: clicking main sections navigates, clicking the chevron expands
     const accordionToggles = document.querySelectorAll('.accordion-toggle');
     accordionToggles.forEach(btn => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', function(e) {
+            // If clicking the chevron icon, just expand/collapse
+            if (e.target.classList.contains('fa-chevron-down')) {
+                const content = btn.nextElementSibling;
+                const isExpanded = content.classList.contains('expanded');
+                document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('expanded'));
+                document.querySelectorAll('.accordion-toggle i:last-child').forEach(i => i.style.transform = '');
+                if (!isExpanded) {
+                    content.classList.add('expanded');
+                    const chevron = btn.querySelector('i:last-child');
+                    if (chevron) chevron.style.transform = 'rotate(180deg)';
+                }
+                return;
+            }
+            // Navigate for main section buttons
+            if (btn.querySelector('.fa-toolbox')) {
+                window.location.href = 'explore-gear.html';
+                return;
+            }
+            if (btn.querySelector('.fa-car')) {
+                window.location.href = 'explore-gear.html#brand-filter-grid';
+                return;
+            }
+            // Default: expand/collapse
             const content = btn.nextElementSibling;
             const isExpanded = content.classList.contains('expanded');
-            // Collapse all first
             document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('expanded'));
             document.querySelectorAll('.accordion-toggle i:last-child').forEach(i => i.style.transform = '');
-            // Then expand the clicked one if it was collapsed
             if (!isExpanded) {
                 content.classList.add('expanded');
                 const chevron = btn.querySelector('i:last-child');

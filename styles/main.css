@@ -280,12 +280,12 @@ header {
 
 .product-image img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 1; /* Pure opacity for white theme clarity */
-}
+    height: 100%;        object-fit: contain;
+        opacity: 1; /* Pure opacity for white theme clarity */
+        padding: 8px;
+    }
 
-.design-ref-label {
+    .design-ref-label {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -1025,6 +1025,20 @@ header {
         text-align: left;
     }
     .footer-brand-col img { margin: 0 0 12px 0; }
+    .footer-col { text-align: left; }
+    .footer-col h4 { margin-bottom: 12px; font-size: 0.85rem; }
+    .footer-links li { margin-bottom: 8px; }
+    .footer-links a, .footer-links li { font-size: 0.8rem; }
+}
+@media (max-width: 480px) {
+    .footer-main-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    .footer-brand-col { grid-column: auto; }
+    footer { padding: 40px 0 30px !important; }
+    .footer-col h4 { font-size: 0.9rem; margin-bottom: 14px; }
+    .footer-links a, .footer-links li { font-size: 0.85rem; }
 }
 @media (max-width: 380px) {
     .footer-main-grid { grid-template-columns: 1fr; }
@@ -1832,9 +1846,16 @@ header {
    ========================================= */
 .brand-grid, .accessories-showcase-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
     gap: 25px;
     margin-top: 40px;
+}
+
+.brand-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.accessories-showcase-grid {
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .brand-card, .accessory-showcase-card {
@@ -1855,6 +1876,11 @@ header {
     overflow: hidden;
 }
 
+.brand-card {
+    min-height: 210px;
+    padding: 35px 20px;
+}
+
 .brand-card:hover, .accessory-showcase-card:hover {
     transform: translateY(-6px);
     border-color: var(--color-accent);
@@ -1862,19 +1888,15 @@ header {
 }
 
 .brand-logo-img {
-    height: 60px;
+    height: 90px;
     max-width: 100%;
     object-fit: contain;
     margin-bottom: 20px;
     transition: transform 0.3s ease;
-    filter: grayscale(100%);
-    opacity: 0.8;
 }
 
 .brand-card:hover .brand-logo-img {
     transform: scale(1.08);
-    filter: grayscale(0%);
-    opacity: 1;
 }
 
 .accessory-showcase-img {
@@ -1920,7 +1942,10 @@ header {
    13. MOBILE RESPONSIVE 2X2 GRID & CARDS
    ========================================= */
 @media (max-width: 992px) {
-    .brand-grid, .accessories-showcase-grid {
+    .brand-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .accessories-showcase-grid {
         grid-template-columns: repeat(3, 1fr);
     }
 }
@@ -1929,52 +1954,61 @@ header {
     /* 2x2 layout on mobile for ALL product grids */
     .grid {
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 12px !important;
+        gap: 10px !important;
     }
     
     .product-card {
-        border-radius: 8px;
+        border-radius: 10px;
+    }
+    
+    .product-image {
+        aspect-ratio: 4 / 3;
+        min-height: 140px;
+    }
+    
+    .product-image img {
+        object-fit: cover;
     }
     
     .product-title {
-        font-size: 0.8rem !important;
-        margin: 5px 0 !important;
-        height: 2.8em;
+        font-size: 0.85rem !important;
+        margin: 6px 0 4px !important;
+        height: 2.6em;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        line-height: 1.4;
+        line-height: 1.3;
     }
     
     .product-price {
-        font-size: 0.95rem !important;
+        font-size: 1rem !important;
         font-weight: 800;
     }
     
     .product-info {
-        padding: 8px !important;
+        padding: 10px !important;
     }
     
     .product-category {
-        font-size: 0.6rem !important;
+        font-size: 0.65rem !important;
     }
     
     .product-actions {
-        padding: 0 8px 8px !important;
+        padding: 0 10px 10px !important;
     }
     
     .btn-whatsapp {
-        padding: 8px !important;
-        font-size: 0.7rem !important;
-        gap: 4px !important;
+        padding: 10px !important;
+        font-size: 0.75rem !important;
+        gap: 6px !important;
     }
     
     .status-badge {
-        font-size: 0.55rem !important;
-        padding: 2px 6px !important;
-        top: 6px !important;
-        right: 6px !important;
+        font-size: 0.6rem !important;
+        padding: 3px 8px !important;
+        top: 8px !important;
+        right: 8px !important;
     }
     
     .brand-grid, .accessories-showcase-grid {
@@ -1988,7 +2022,7 @@ header {
     }
     
     .brand-logo-img {
-        height: 45px;
+        height: 60px;
         margin-bottom: 12px;
     }
     
@@ -1999,6 +2033,59 @@ header {
     
     .brand-card h3, .accessory-showcase-card h3 {
         font-size: 0.85rem;
+    }
+}
+
+/* Mobile Product Detail Page */
+@media (max-width: 768px) {
+    .product-detail-grid {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+    }
+    #product-name {
+        font-size: 1.5rem !important;
+        line-height: 1.3 !important;
+    }
+    #product-price {
+        font-size: 1.4rem !important;
+    }
+    #product-category {
+        font-size: 0.75rem !important;
+    }
+    #product-part-number {
+        font-size: 0.75rem !important;
+    }
+    #product-specifications {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px !important;
+    }
+    .product-gallery-container {
+        aspect-ratio: 4/3 !important;
+    }
+    /* Reduce section padding on mobile */
+    .product-detail-grid + div {
+        padding: 24px !important;
+    }
+    /* Reduce footer padding on index page mobile */
+    footer .footer-main-grid {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+    }
+    footer .footer-col {
+        text-align: left;
+    }
+    footer .footer-brand-col {
+        grid-column: 1 !important;
+    }
+    footer .footer-col h4 {
+        font-size: 0.85rem;
+        margin-bottom: 12px;
+    }
+    footer .footer-links li {
+        margin-bottom: 6px;
+    }
+    footer .footer-links a {
+        font-size: 0.8rem;
     }
 }
 

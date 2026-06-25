@@ -133,11 +133,11 @@
     <!-- PRODUCT DETAILS -->
     <section class="section-padding" style="background-color: #ffffff;">
         <div class="container">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-bottom: 60px;">
+            <div class="product-detail-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-bottom: 60px;">
                 <!-- Product Image Gallery -->
                 <div>
                     <div class="product-gallery-container" style="position: relative; background: #fafafa; border: 1px solid var(--color-border); border-radius: 12px; overflow: hidden; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-premium);">
-                        <img id="product-image" src="" alt="Product" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;">
+                        <img id="product-image" src="" alt="Product" style="width: 100%; height: 100%; object-fit: contain; cursor: pointer; padding: 20px;">
                         <div id="placeholder-banner" class="design-ref-label" style="display: none; position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.7); color: white; text-align: center; padding: 10px; font-size: 0.8rem; font-weight: 600;">
                             Design Reference - Fitment photo coming soon.
                         </div>
@@ -197,6 +197,7 @@
                         <button id="whatsapp-inquire-btn" class="btn btn-whatsapp btn-block" style="padding: 18px; font-size: 1.15rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; border-radius: 8px;">
                             <i class="fab fa-whatsapp" style="font-size: 1.4rem;"></i> INQUIRE VIA WHATSAPP
                         </button>
+                        <div id="whatsapp-disclaimer" style="display: none; text-align: center; font-size: 0.8rem; color: var(--color-text-muted); font-weight: 600; padding: 0 5px;"></div>
                     </div>
                 </div>
             </div>
@@ -498,6 +499,21 @@
             document.getElementById('whatsapp-inquire-btn').addEventListener('click', () => {
                 window.enquireWhatsApp(product.id);
             });
+
+            // WhatsApp disclaimers for specific products
+            const disclaimerEl = document.getElementById('whatsapp-disclaimer');
+            if (disclaimerEl) {
+                const disclaimers = {
+                    46: 'Gas cylinder not included',
+                    48: 'Cell Phone Not Included',
+                    49: 'Installation not included',
+                    50: 'Lights not included'
+                };
+                if (disclaimers[product.id]) {
+                    disclaimerEl.textContent = disclaimers[product.id];
+                    disclaimerEl.style.display = 'block';
+                }
+            }
 
             // Hook up gallery navigation
             document.getElementById('gallery-prev').addEventListener('click', galleryPrev);

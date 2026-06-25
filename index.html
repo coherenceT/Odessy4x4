@@ -643,15 +643,16 @@
         }
         .proc-dot.active { background: var(--color-accent); width: 24px; border-radius: 4px; }
         @media (max-width: 768px) {
-            .proc-slide-content { padding: 25px 20px 40px; }
-            .proc-slide-title { font-size: 1.45rem; }
-            .proc-slide-desc { font-size: 0.88rem; }
-            .proc-slide-subtitle { font-size: 0.8rem; }
-            .proc-dots { right: 20px; bottom: 15px; }
-            .proc-arrow { width: 38px; height: 38px; font-size: 0.85rem; }
-            .proc-arrow.prev { left: 12px; }
-            .proc-arrow.next { right: 12px; }
-            .process-slideshow-wrap { height: 68vh; min-height: 420px; }
+            .proc-slide-content { padding: 20px 16px 30px; }
+            .proc-slide-title { font-size: 1.2rem; margin-bottom: 6px; }
+            .proc-slide-desc { font-size: 0.8rem; line-height: 1.5; max-width: 100%; }
+            .proc-slide-subtitle { font-size: 0.75rem; margin-bottom: 4px; }
+            .proc-step-label { font-size: 0.6rem; margin-bottom: 6px; }
+            .proc-dots { right: 16px; bottom: 12px; }
+            .proc-arrow { width: 34px; height: 34px; font-size: 0.75rem; }
+            .proc-arrow.prev { left: 8px; }
+            .proc-arrow.next { right: 8px; }
+            .process-slideshow-wrap { height: 50vh; min-height: 320px; }
         }
 
         /* Footer responsive */
@@ -838,10 +839,6 @@
                 </div>
 
                 <div class="slide">
-                    <img src="assets/images/hero-slide-3.webp" alt="Odyssey 4x4 Expedition Gear" class="slide-bg" onerror="this.src='assets/images/hero-frontier.svg'">
-                </div>
-
-                <div class="slide">
                     <img src="assets/images/hero-slide-4.webp" alt="Odyssey 4x4 Drawer Systems" class="slide-bg" onerror="this.src='assets/images/hero-frontier.svg'">
                 </div>
             </div>
@@ -883,12 +880,12 @@
                     <span>Shop Bumpers <i class="fas fa-arrow-right"></i></span>
                 </a>
                 <a href="category-rear-bumpers.html" class="accessory-showcase-card">
-                    <img src="offroad_accessories/Evolution Rear Bumpers.png" alt="Rear Bumpers" class="accessory-showcase-img">
+                    <img src="assets/images/Evolution Rear Bumpers.png" alt="Rear Bumpers" class="accessory-showcase-img">
                     <h3>Rear Bumpers</h3>
                     <span>Shop Bumpers <i class="fas fa-arrow-right"></i></span>
                 </a>
                 <a href="category-rock-sliders.html" class="accessory-showcase-card">
-                    <img src="offroad_accessories/Rock Sliders.png" alt="Rock Sliders" class="accessory-showcase-img">
+                    <img src="assets/images/Rock Sliders.png" alt="Rock Sliders" class="accessory-showcase-img">
                     <h3>Rock Sliders</h3>
                     <span>Shop Sliders <i class="fas fa-arrow-right"></i></span>
                 </a>
@@ -898,12 +895,12 @@
                     <span>Shop Slides <i class="fas fa-arrow-right"></i></span>
                 </a>
                 <a href="category-drawer-systems.html" class="accessory-showcase-card">
-                    <img src="offroad_accessories/Drawer System.png" alt="Drawer Systems" class="accessory-showcase-img">
+                    <img src="assets/images/Drawer System.png" alt="Drawer Systems" class="accessory-showcase-img">
                     <h3>Drawer Systems</h3>
                     <span>Shop Systems <i class="fas fa-arrow-right"></i></span>
                 </a>
                 <a href="category-accessories.html" class="accessory-showcase-card">
-                    <img src="offroad_accessories/Adventure Roll Bar.png" alt="Roll Bars" class="accessory-showcase-img">
+                    <img src="assets/images/Adventure Roll Bar.png" alt="Roll Bars" class="accessory-showcase-img">
                     <h3>Roll Bars</h3>
                     <span>Shop Roll Bars <i class="fas fa-arrow-right"></i></span>
                 </a>
@@ -1269,15 +1266,14 @@
     <!-- FOOTER -->
     <footer style="background: #ffffff; padding: 60px 0 40px; border-top: 1px solid var(--color-border); color: #1a1a1a;">
         <div class="container">
-            <div class="footer-main-grid" style="grid-template-columns: 1.5fr 1fr 1.2fr 1fr 1fr; gap: 30px;">
+            <div class="footer-main-grid">
                 <!-- Brand Column -->
-                <div class="footer-col" style="display: flex; flex-direction: column;">
+                <div class="footer-col footer-brand-col" style="display: flex; flex-direction: column;">
                     <img src="assets/images/odyssey4x4-logo.webp" alt="Odyssey 4x4" style="height: 60px; margin-bottom: 16px; background:#ffffff; padding:6px 10px; border-radius:6px; display:inline-block; width:auto; object-fit:contain; align-self:flex-start;">
                     <div style="margin-bottom: 16px;">
                         <a href="#" style="color: #666; font-size: 1.2rem; transition: color 0.3s;" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                     </div>
-                    <p style="color: #888; font-size: 0.82rem; margin: 0 0 4px; line-height: 1.5;">&copy; Copyright. 2024 RHINO 4&times;4 Africa</p>
-                    <p style="color: #888; font-size: 0.82rem; margin: 0; line-height: 1.5;">Designed &amp; Developed by WordPress Guys | UK</p>
+                    <p style="color: #888; font-size: 0.82rem; margin: 0; line-height: 1.5;">&copy; 2026 Odyssey 4x4 Expedition Gear. All Rights Reserved.</p>
                 </div>
                 <!-- Quick Links -->
                 <div class="footer-col">
