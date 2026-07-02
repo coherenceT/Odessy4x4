@@ -249,7 +249,8 @@
             const renderGrid = (grid, items) => {
                 grid.innerHTML = items.map(product => {
                     const isPlaceholder = product.image.includes('placeholder');
-                    const displayImage = isPlaceholder && product.fitmentImage ? product.fitmentImage : product.image;
+                    const vehicleImgs = product.vehicleImages && product.vehicleImages[brandId];
+                    const displayImage = vehicleImgs && vehicleImgs.length > 0 ? vehicleImgs[0] : (isPlaceholder && product.fitmentImage ? product.fitmentImage : product.image);
                     
                     let statusLabel = 'In Stock';
                     if (product.status === 'out-of-stock') statusLabel = 'Sold Out';

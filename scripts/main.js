@@ -82,7 +82,7 @@ const products = [
         name: "Odyssey Roll Bar",
         category: "accessories",
         brand: "universal",
-        price: 11500,            image: "assets/images/Adventure Roll Bar.png",
+        price: 11500,            image: "assets/images/Sport Rack3.png",
         status: "in-stock",
         partNumber: "OD-RB-UN40",
         description: "Heavy duty steel roll bar designed to secure gear and add structural integrity to your load bed.",
@@ -112,20 +112,7 @@ const products = [
         specifications: { material: "Structural Grade Aluminium", weight: "3.3kg", capacity: "3kg gas bottle", warranty: "2 years" }
     },
 
-    // --- ROOF RACKS ---
-    {
-        id: 47,
-        name: "Odyssey Expedition Roof Rack",
-        category: "roof-racks",
-        brand: "universal",
-        price: 8500,
-        image: "assets/images/Expedition Roof Rack.webp",
-        status: "in-stock",
-        partNumber: "OD-RR-UN47",
-        description: "Aerodynamic low-profile expedition roof rack with integrated mounting points for additional gear, lights, and accessories.",
-        features: ["Low profile aerodynamic design", "Heavy duty steel tube construction", "Integrated light mount tabs", "Multiple lashing points", "Textured black powder-coated finish"],
-        specifications: { material: "Heavy Duty Steel", weight: "32kg", loadCapacity: "150kg", warranty: "2 Years" }
-    },
+
 
     // --- PRODUCT A: Odyssey Navigate Phone Mount ---
     {
@@ -194,6 +181,172 @@ const products = [
             "Single & Double Light Options"
         ],
         specifications: { material: "Structural Grade Steel", weight: "660 grams per set", capacity: "Single and double mount", warranty: "2 years" }
+    },
+
+    // --- PRODUCT D: Odyssey Onyx (Rear Bumper) ---
+    {
+        id: 51,
+        name: "Odyssey Onyx",
+        category: "rear-bumpers",
+        brand: "universal",
+        price: 12999,
+        image: "assets/images/odysseyonyx/odysseyonyx3.png",
+        images: ["assets/images/odysseyonyx/odysseyonyx3.png", "assets/images/odysseyonyx/odyssey onyx1.png", "assets/images/odysseyonyx/odysseyonyx2.png", "assets/images/odysseyonyx/odysseyonyx4.png", "assets/images/rear-ford1.png", "assets/images/rear-ford2.png", "assets/images/rear-toyota.png", "assets/images/rear-isuzu.png", "assets/images/rear-nissan.png"],
+        status: "in-stock",
+        partNumber: "OD-OY-UN51",
+        description: "The Odyssey Onyx rear bumper is engineered for drivers who demand maximum protection without compromising on style. Its high-clearance design optimizes departure angles while the integrated recovery points ensure you are always prepared for demanding off-road recovery scenarios.\n\nManufactured from structural grade steel and finished with a premium powder coat, the Onyx delivers long-lasting durability against corrosion, scratches, and harsh UV exposure. Vehicle-specific engineering ensures the bumper follows factory body lines for a seamless, factory-fitted appearance.\n\nIntegrated side access steps provide convenient access to your load bed, while high-output LED sport lights and LED number plate lights enhance visibility and safety. Full compatibility with factory reverse sensors and parking cameras means your vehicle's original safety systems remain fully functional.",
+        features: [
+            "High-clearance design",
+            "Vehicle-specific engineering",
+            "Maintains factory body lines",
+            "Integrated recovery points",
+            "Optimized weight distribution",
+            "Integrated side access steps",
+            "Compatible with factory reverse sensors",
+            "Compatible with factory parking cameras",
+            "Integrated high-output LED sport lights",
+            "Integrated LED number plate lights"
+        ],
+        specifications: { material: "Structural Grade Steel", weight: "30kg", capacity: "Vehicle Specific", warranty: "2 years" },
+        vehicleImages: {
+            ford: ["assets/images/rear-ford1.png", "assets/images/rear-ford2.png"],
+            toyota: ["assets/images/rear-toyota.png"],
+            isuzu: ["assets/images/rear-isuzu.png"],
+            nissan: ["assets/images/rear-nissan.png"]
+        }
+    },
+
+    // --- PRODUCT E: Odyssey Rampage (Front Bumper) ---
+    {
+        id: 52,
+        name: "Odyssey Rampage",
+        category: "front-bumpers",
+        brand: "universal",
+        price: 0,
+        image: "assets/images/Rampage.png",
+        status: "waiting-for-design",
+        partNumber: "OD-RMP-UN52",
+        description: "The Odyssey Rampage rear bumper is precision engineered to follow original body lines, delivering a clean, integrated look with uncompromising strength. Constructed from lightweight, high-strength structural grade steel, it offers an exceptional balance between durability and weight savings.\n\nFeaturing an integrated heavy-duty winch cradle and aluminium bash plate, the Rampage is built for serious off-road recovery and underbody protection. Easily accessible recovery points and factory sensor compatibility ensure practicality meets performance.\n\nAn unrestricted airflow design maintains optimal radiator and intercooler cooling, while the high-clearance profile improves departure angles for demanding terrain. Bolt-on installation allows for a straightforward fitment without permanent vehicle modifications.",
+        features: [
+            "Precision engineered to follow original body lines",
+            "Lightweight, high-strength steel construction",
+            "Integrated heavy-duty winch cradle",
+            "Integrated Aluminium bash plate",
+            "Easily accessible recovery points",
+            "Factory sensor compatible (where applicable)",
+            "Unrestricted airflow to the radiator and intercooler",
+            "Bolt-on installation",
+            "Auxiliary driving light mounting provisions",
+            "High-clearance profile"
+        ],
+        specifications: { material: "Structural Grade Steel", weight: "Vehicle Specific", capacity: "Vehicle Specific", warranty: "2 years" },
+    },
+
+    // --- PRODUCT F: Odyssey X-Rail Roof Rack ---
+    {
+        id: 53,
+        name: "Odyssey X-Rail Roof Rack",
+        category: "roof-racks",
+        brand: "universal",
+        price: 12999,
+        image: "assets/images/placeholder.webp",
+        status: "waiting-for-design",
+        partNumber: "OD-XR-UN53",
+        description: "The Odyssey X-Rail Roof Rack redefines roof-mounted cargo systems with its ultra-slimline profile and outstanding load capacity. Engineered from structural grade steel, the X-Rail delivers a lightweight yet robust platform designed to withstand the demands of extended overland touring.\n\nVehicle-specific design ensures seamless integration with factory mounting points, eliminating the need for drilling or permanent modifications. The weather-sealed mounting system prevents water ingress and protects your vehicle's roof from corrosion.\n\nMOLLE panel compatibility and extensive mounting slots provide limitless configuration options for recovery gear, lighting, fuel containers, and expedition equipment. Whether you are building a touring rig or a daily-driven adventure vehicle, the X-Rail delivers unmatched versatility and strength.",
+        features: [
+            "Ultra-Slimline Profile",
+            "Lightweight Construction",
+            "Outstanding Load Capacity",
+            "Vehicle-Specific Design",
+            "Factory Mounting Points",
+            "Weather-Sealed Mounting System",
+            "MOLLE Panel Compatible",
+            "Extensive Mounting Slots"
+        ],
+        specifications: { material: "Structural Grade Steel", weight: "Vehicle Specific", capacity: "Vehicle Specific", warranty: "2 years" },
+    },
+
+    // --- PRODUCT G: Odyssey Dock X - Gas Bottle Mount ---
+    {
+        id: 54,
+        name: "Odyssey D.O.X - Gas Bottle Mount",
+        category: "camping-and-overland",
+        brand: "universal",
+        price: 1000,
+        image: "assets/images/dockx1.png",
+        images: ["assets/images/dockx1.png", "assets/images/dockx2.png", "assets/images/dockx3.png", "assets/images/dockx4.png", "assets/images/dockx5.png"],
+        status: "in-stock",
+        partNumber: "OD-DX-UN54",
+        description: "The Odyssey Dock X, code identifier D.O.X, is a purpose-built gas bottle mount engineered for overland touring, camping, and off-road adventures. Manufactured from high-strength structural grade steel, the D.O.X delivers uncompromising durability in a lightweight, compact form factor.\n\nFitting most 2 kg and 3 kg gas bottles, the D.O.X features a dual locking retention system paired with a heavy-duty retention strap for maximum bottle security across the roughest corrugated terrain. The anti-theft locking design deters unauthorised removal, providing peace of mind when leaving your vehicle unattended.\n\nQuick bottle removal and gas hose accessibility while mounted ensure seamless operation during camp setup and pack-down. Multiple mounting options allow installation on roof racks, canopies, trailers, and load beds, while the compact, space-saving design preserves valuable cargo space.",
+        features: [
+            "High-Strength Steel Construction",
+            "Fits Most 2 kg & 3 kg Gas Bottles",
+            "Lightweight Design",
+            "Dual Locking Retention System",
+            "Heavy-Duty Retention Strap",
+            "Quick Bottle Removal",
+            "Gas Hose Accessible While Mounted",
+            "Anti-Theft Locking Design",
+            "Multiple Mounting Options",
+            "Easy Installation",
+            "Compact, Space-Saving Design"
+        ],
+        specifications: { material: "Structural Grade Steel", weight: "1.6kg", capacity: "2kg & 3kg gas bottle", warranty: "2 years" },
+    },
+
+    // --- VEHICLE-SPECIFIC REAR BUMPERS ---
+    {
+        id: 55,
+        name: "Odyssey Rear Bumper - Ford Ranger",
+        category: "rear-bumpers",
+        brand: "ford",
+        price: 12999,
+        image: "assets/images/rear-ford1.png",
+        images: ["assets/images/rear-ford1.png", "assets/images/rear-ford2.png"],
+        status: "in-stock",
+        partNumber: "OD-RB-FD55",
+        description: "Precision-engineered rear bumper designed specifically for the Ford Ranger platform. Manufactured from structural grade steel with a premium powder-coated finish, this bumper delivers exceptional rear-end protection while maintaining factory body lines and sensor compatibility.\n\nIntegrated recovery points and side access steps provide practical off-road functionality, while the high-clearance profile optimizes departure angles for demanding terrain.",
+        features: ["Ford Ranger specific fitment", "High-clearance design", "Integrated recovery points", "Factory sensor compatible", "Premium powder-coated finish", "Side access steps"],
+        specifications: { material: "Structural Grade Steel", weight: "Vehicle Specific", capacity: "Vehicle Specific", warranty: "2 years" }
+    },
+    {
+        id: 56,
+        name: "Odyssey Rear Bumper - Toyota Hilux",
+        category: "rear-bumpers",
+        brand: "toyota",
+        price: 12999,
+        image: "assets/images/rear-toyota.png",
+        status: "in-stock",
+        partNumber: "OD-RB-TY56",
+        description: "Purpose-built rear bumper for the Toyota Hilux, engineered to provide maximum rear-end protection and recovery capability. Constructed from structural grade steel, this bumper follows the Hilux factory body lines for a seamless, integrated appearance.\n\nFeatures integrated recovery points, side access steps, and full compatibility with factory reverse sensors and parking cameras.",
+        features: ["Toyota Hilux specific fitment", "High-clearance design", "Integrated recovery points", "Factory sensor compatible", "Premium powder-coated finish", "Side access steps"],
+        specifications: { material: "Structural Grade Steel", weight: "Vehicle Specific", capacity: "Vehicle Specific", warranty: "2 years" }
+    },
+    {
+        id: 57,
+        name: "Odyssey Rear Bumper - Isuzu D-Max",
+        category: "rear-bumpers",
+        brand: "isuzu",
+        price: 12999,
+        image: "assets/images/rear-isuzu.png",
+        status: "in-stock",
+        partNumber: "OD-RB-IZ57",
+        description: "Vehicle-specific rear bumper engineered for the Isuzu D-Max platform. Built from structural grade steel with a durable powder-coated finish, this bumper provides comprehensive rear-end protection without compromising factory aesthetics.\n\nIntegrated recovery points and high-clearance design ensure optimal off-road performance, while factory sensor compatibility maintains your vehicle's original safety features.",
+        features: ["Isuzu D-Max specific fitment", "High-clearance design", "Integrated recovery points", "Factory sensor compatible", "Premium powder-coated finish", "Side access steps"],
+        specifications: { material: "Structural Grade Steel", weight: "Vehicle Specific", capacity: "Vehicle Specific", warranty: "2 years" }
+    },
+    {
+        id: 58,
+        name: "Odyssey Rear Bumper - Nissan Navara",
+        category: "rear-bumpers",
+        brand: "nissan",
+        price: 12999,
+        image: "assets/images/rear-nissan.png",
+        status: "in-stock",
+        partNumber: "OD-RB-NI58",
+        description: "Custom-engineered rear bumper for the Nissan Navara, designed to deliver maximum protection and off-road capability. Manufactured from structural grade steel with a premium powder coat finish, this bumper integrates seamlessly with the Navara's factory body lines.\n\nEquipped with integrated recovery points, side access steps, and full factory sensor compatibility for a complete rear-end protection solution.",
+        features: ["Nissan Navara specific fitment", "High-clearance design", "Integrated recovery points", "Factory sensor compatible", "Premium powder-coated finish", "Side access steps"],
+        specifications: { material: "Structural Grade Steel", weight: "Vehicle Specific", capacity: "Vehicle Specific", warranty: "2 years" }
     }
 ];
 
@@ -220,7 +373,7 @@ const categories = [
 /* =========================================
    2. FEATURED PRODUCTS
    ========================================= */
-const featuredProductIds = [25, 27, 29, 31, 41, 46, 47, 48, 49, 50];
+const featuredProductIds = [25, 27, 29, 31, 41, 46, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58];
 
 function renderFeaturedProducts() {
     const grid = document.querySelector('.featured-products-grid');
@@ -245,7 +398,7 @@ function renderFeaturedProducts() {
                 <div class="product-info">
                     <span class="product-category">${formatCategory(product.category)}</span>
                     <h3 class="product-title" style="margin: 8px 0;"><a href="product-detail.html?id=${product.id}">${product.name}</a></h3>
-                    <p class="product-price">R ${product.price.toLocaleString()}</p>
+                    <p class="product-price">${product.price > 0 ? 'R ' + product.price.toLocaleString() : 'Price TBC'}</p>
                 </div>
                 </div>
             </div>
@@ -387,7 +540,7 @@ function renderProducts() {
                 <div class="product-info">
                     <span class="product-category">${formatCategory(product.category)}</span>
                     <h3 class="product-title" style="margin: 8px 0;"><a href="product-detail.html?id=${product.id}">${product.name}</a></h3>
-                    <p class="product-price">R ${product.price.toLocaleString()}</p>
+                    <p class="product-price">${product.price > 0 ? 'R ' + product.price.toLocaleString() : 'Price TBC'}</p>
                 </div>
                 </div>
             </div>

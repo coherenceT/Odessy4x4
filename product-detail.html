@@ -441,7 +441,7 @@
 
             document.getElementById('product-category').textContent = formatCategory(product.category);
             document.getElementById('product-name').textContent = product.name;
-            document.getElementById('product-price').textContent = `R ${product.price.toLocaleString()}`;
+            document.getElementById('product-price').textContent = product.price > 0 ? `R ${product.price.toLocaleString()}` : 'Price TBC';
             document.getElementById('product-part-number').textContent = `PART NUMBER: ${product.partNumber}`;
 
             // Status / stock badge config
@@ -507,7 +507,11 @@
                     46: 'Gas cylinder not included',
                     48: 'Cell Phone Not Included',
                     49: 'Installation not included',
-                    50: 'Lights not included'
+                    50: 'Lights not included',
+                    51: 'Excluding fitment T & C Apply',
+                    52: 'Excluding fitment T & C Apply',
+                    53: 'Excluding fitment T & C Apply',
+                    54: 'Gas cylinder & straps not included T & C Apply'
                 };
                 if (disclaimers[product.id]) {
                     disclaimerEl.textContent = disclaimers[product.id];
